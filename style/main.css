@@ -144,14 +144,20 @@ a.togel>.icon
     overflow: auto;
 }
 
+h2.titr
+{
+    float: right;
+    width: calc(100% - 0px);
+    margin: 0 0 10px;
+}
+
 span.icon
 {
     float: right;
     margin-left: 7px;
-    padding: 1px 0 2px;
+    padding: 5px 0 5px;
     font-family: myIcon;
     font-weight: normal;
-    font-size: 1.325rem;
     vertical-align: middle;
 }
 
@@ -499,7 +505,97 @@ span.matnItemMNU
 .tarikhNVB
 {
     float: right;
-    color: hsl(0, 0%, 60%);
+    color: hsl(0, 0%, 40%);
+}
+
+
+/*  کادر حساب ها  */
+
+#kadrHesabha
+{
+    float: right;
+    width: 100%;
+    overflow: auto;
+}
+
+.hesab
+{
+    float: right;
+    width: calc(33.333% - 20px);
+    min-width: 376px;
+    margin: 10px;
+    padding: 15px 0;
+    border-radius: 10px;
+    overflow: auto;
+    background-color: hsl(39, 100%, 87%);
+}
+
+.titrHSB
+{
+    float: right;
+    width: calc(100% - 40px);
+    overflow: hidden;
+    margin: 0 20px 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid hsl(39, 100%, 70%);
+    font-size: 1.125rem;
+}
+
+.namHSB
+{
+    float: right;
+    width: calc(100% - 130px);
+}
+
+img.bankHSB
+{
+    float: right;
+    width: 29px;
+    margin-left: 5px;
+}
+
+span.matnTitrHSB
+{
+    float: right;
+    width: calc(100% - 34px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mandehHSB
+{
+    float: left;
+    width: 130px;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.kadrShomKartHSB
+{
+    float: right;
+    width: calc(100% - 40px);
+    margin: 0 20px;
+    color: hsl(0, 0%, 40%);
+}
+
+.titrShomKartHSB
+{
+    float: right;
+    width: 90px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.shomKartHSB
+{
+    float: left;
+    width: calc(100% - 90px);
+    text-align: left;
+    direction: ltr;
 }
 
 @media only screen and (max-width: 767px)
