@@ -389,6 +389,9 @@ h1#titrHDR
     width: calc(100% - 80px);
     margin: 20px 0 10px 0;
     padding: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     font-size: 1.5rem;
 }
 
