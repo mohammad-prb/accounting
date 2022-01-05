@@ -9,7 +9,7 @@ $safheh = "index";
 <!DOCTYPE html>
 <html lang="fa-ir">
 <head>
-    <title>حساب ها</title>
+    <title>صفحه اصلی</title>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="shortcut icon" href="pic/logo.png"/>
@@ -49,17 +49,27 @@ $safheh = "index";
                                 <div class="titrHSB">
                                     <div class="namHSB">
                                         <img src="pic/bank/'. $row["bankID"] .@'.png" alt="bank" class="bankHSB"/>
-                                        <span class="matnTitrHSB">'. $row["nam"] .@'</span>
+                                        <span title="'. $row["nam"] .'" class="matnTitrHSB">'. $row["nam"] .@'</span>
                                     </div>
-                                    <div class="mandehHSB">2,135,324,024</div>
+                                    <div title="مانده حساب" class="mandehHSB">2,135,324,024</div>
                                 </div>
                                 <div class="kadrShomKartHSB">
                                     <div class="titrShomKartHSB">شماره کارت: </div>
-                                    <div class="shomKartHSB">'. faselehdar($row["shomKart"]) .@'</div>
+                                    <div title="'. faselehdar($row["shomKart"]) .'" class="shomKartHSB">'. faselehdar($row["shomKart"]) .@'</div>
                                 </div>
                                 <div class="kadrShomKartHSB">
                                     <div class="titrShomKartHSB">شماره حساب: </div>
-                                    <div class="shomKartHSB">'. $row["shomHesab"] .@'</div>
+                                    <div title="'. $row["shomHesab"] .'" class="shomKartHSB">'. $row["shomHesab"] .@'</div>
+                                </div>
+                                <div class="kadrEmkanatHSB">
+                                    <a href="javascript:void(0);" title="حذف" class="emkanatHSB" onclick=""></a>
+                                    <a href="javascript:void(0);" title="ویرایش" class="emkanatHSB" onclick=""></a>
+                                    <a href="javascript:void(0);" title="حساب پیشفرض" class="emkanatHSB" onclick=""></a>
+                                    <a href="javascript:void(0);" title="صورتحساب" class="emkanatHSB" onclick=""></a>
+                                    <a href="javascript:void(0);" title="آمار" class="emkanatHSB" onclick=""></a>
+                                    <a href="javascript:void(0);" title="افراد" class="emkanatHSB" onclick=""></a>
+                                    <a href="javascript:void(0);" title="دسته بندی ها" class="emkanatHSB" onclick=""></a>
+                                    <a href="javascript:void(0);" title="بروزرسانی مانده" class="emkanatHSB" onclick=""></a>
                                 </div>
                             </div>';
                 }

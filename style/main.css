@@ -598,6 +598,36 @@ span.matnTitrHSB
     direction: ltr;
 }
 
+.kadrEmkanatHSB
+{
+    float: right;
+    width: calc(100% - 40px);
+    margin: 10px 20px 0;
+}
+
+a.emkanatHSB, a.emkanatHSB:link, a.emkanatHSB:visited
+{
+    float: right;
+    width: 12.5%;
+    padding: 5px 0;
+    text-align: center;
+    font-family: myIcon;
+    font-size: 1.25rem;
+    color: hsl(0, 0%, 20%);
+    transition: color 0.1s;
+}
+
+a.emkanatHSB:hover
+{
+    color: hsl(352, 100%, 57%);
+}
+
+a.emkanatHSB:active
+{
+    transition: none;
+    color: hsl(352, 100%, 80%);
+}
+
 @media only screen and (max-width: 767px)
 {
 
