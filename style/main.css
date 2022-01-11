@@ -168,6 +168,49 @@ span.matnTitr
 }
 
 
+/*  کادر انتخاب  */
+
+.kadrENT
+{
+    position: relative;
+    z-index: 1;
+    float: right;
+    padding: 3px;
+    border-radius: 8px;
+    background-color: hsla(0, 0%, 70%, 0.5);
+}
+
+span.kadrPoshtENT
+{
+    position: absolute;
+    z-index: 2;
+    height: 34px;
+    border-radius: 8px;
+    transition: left 0.2s, top 0.2s, width 0.2s;
+    background-color: hsla(0, 0%, 100%, 0.5);
+}
+
+a.gozinehENT, a.gozinehENT:link, a.gozinehENT:visited
+{
+    position: relative;
+    z-index: 3;
+    float: right;
+    padding: 4px 10px;
+    text-align: center;
+    color: hsl(0, 0%, 40%);
+}
+
+a.gozinehENT:hover
+{
+    color: hsl(0, 0%, 10%);
+}
+
+a.gozinehENT:active
+{
+    color: hsl(0, 0%, 20%);
+}
+
+
 /*    پیغام   */
 
 #CountainerKadrNamayeshPeygham
@@ -515,6 +558,7 @@ span.matnItemMNU
 {
     float: right;
     width: 100%;
+    margin-bottom: 20px;
     overflow: auto;
 }
 
@@ -608,7 +652,7 @@ span.matnTitrHSB
 a.emkanatHSB, a.emkanatHSB:link, a.emkanatHSB:visited
 {
     float: right;
-    width: 12.5%;
+    width: 14.286%;
     padding: 5px 0;
     text-align: center;
     font-family: myIcon;
@@ -626,6 +670,70 @@ a.emkanatHSB:active
 {
     transition: none;
     color: hsl(352, 100%, 80%);
+}
+
+
+
+/*  ثبت واریزی  */
+
+#kadrSabt
+{
+    float: right;
+    width: 100%;
+    padding-top: 30px;
+    border-top: 1px solid hsl(0, 0%, 85%);
+}
+
+.kadrSBT
+{
+    float: right;
+    width: calc(50% - 20px);
+    margin: 10px;
+    padding: 15px 0 5px;
+    border-radius: 10px;
+    overflow: auto;
+}
+
+#kadrSBTK
+{
+    background-color: hsl(352, 100%, 95%);
+}
+
+#kadrSBTV
+{
+    background-color: hsl(148, 64%, 90%);
+}
+
+h3.titrSBT
+{
+    float: right;
+    width: calc(100% - 40px);
+    margin: 0 20px;
+    padding: 0;
+    font-size: 1.25rem;
+}
+
+.kadrEtelaatSBT
+{
+    float: right;
+    width: calc(100% - 40px);
+    margin: 10px 20px 0;
+}
+
+.etelaatSBT
+{
+    float: right;
+    margin: 0 0 15px 30px;
+}
+
+.iconEtelaatSBT
+{
+    float: right;
+    margin-left: 5px;
+    padding: 7px 0;
+    font-family: myIcon;
+    font-size: 1.5rem;
+    color: hsla(0, 0%, 0%, 0.5);
 }
 
 @media only screen and (max-width: 767px)

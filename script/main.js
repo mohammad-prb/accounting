@@ -1,3 +1,10 @@
+/*      تنظیم صفحه بعد از لود کامل      */
+function tanzimSaf()
+{
+    var lmnENT = document.getElementsByClassName("kadrENT");
+    for (let i=0; i<lmnENT.length; i++) taghirENT(lmnENT[i].getElementsByClassName("gozinehENT")[0]);
+}
+
 /*      بستن کادر پیغام      */
 function bastanPeygham()
 {
@@ -74,3 +81,12 @@ function checkbax(lmn, vaziat)
     }
 }
 
+/*      عوض کردن ورودی و خروجی در ثبت واریزی      */
+function taghirENT(lmn)
+{
+    var lmnPosht = lmn.parentElement.getElementsByClassName("kadrPoshtENT")[0];
+    lmn.parentElement.dataset.gozineh = lmn.dataset.value;
+    lmnPosht.style.width = lmn.clientWidth + "px";
+    lmnPosht.style.top = lmn.offsetTop + "px";
+    lmnPosht.style.left = lmn.offsetLeft + "px";
+}

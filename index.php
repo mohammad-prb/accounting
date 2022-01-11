@@ -15,7 +15,7 @@ $safheh = "index";
     <link rel="shortcut icon" href="pic/logo.png"/>
     <link rel="stylesheet" href="style/main.css"/>
 </head>
-<body dir="rtl">
+<body dir="rtl" onload="tanzimSaf();">
 <div id="fullCountainer">
 
     <div id="CountainerKadrNamayeshPeygham" style="display: none">
@@ -64,9 +64,8 @@ $safheh = "index";
                                 <div class="kadrEmkanatHSB">
                                     <a href="javascript:void(0);" title="حذف" class="emkanatHSB" onclick=""></a>
                                     <a href="javascript:void(0);" title="ویرایش" class="emkanatHSB" onclick=""></a>
-                                    <a href="javascript:void(0);" title="حساب پیشفرض" class="emkanatHSB" onclick=""></a>
                                     <a href="javascript:void(0);" title="صورتحساب" class="emkanatHSB" onclick=""></a>
-                                    <a href="javascript:void(0);" title="آمار" class="emkanatHSB" onclick=""></a>
+                                    <a href="javascript:void(0);" title="آمار حساب" class="emkanatHSB" onclick=""></a>
                                     <a href="javascript:void(0);" title="افراد" class="emkanatHSB" onclick=""></a>
                                     <a href="javascript:void(0);" title="دسته بندی ها" class="emkanatHSB" onclick=""></a>
                                     <a href="javascript:void(0);" title="بروزرسانی مانده" class="emkanatHSB" onclick=""></a>
@@ -75,6 +74,35 @@ $safheh = "index";
                 }
             }
             ?>
+        </div>
+
+        <div id="kadrSabt">
+            <h2 class="titr"><span class="icon"></span><span class="matnTitr">ثبت واریزی</span></h2>
+            <div class="kadrSBT" id="kadrSBTK">
+                <h3 class="titrSBT"><span class="icon"></span><span class="matnTitr">ثبت خروجی</span></h3>
+                <div class="kadrEtelaatSBT">
+                    <div class="etelaatSBT">
+                        <div class="iconEtelaatSBT" title="نوع"></div>
+                        <div class="kadrENT">
+                            <span class="kadrPoshtENT"></span>
+                            <a class="gozinehENT" onclick="taghirENT(this);" data-value="1" href="javascript:void(0);">برداشت با کارت</a>
+                            <a class="gozinehENT" onclick="taghirENT(this);" data-value="2" href="javascript:void(0);">اینترنتی</a>
+                        </div>
+                    </div>
+                    <div class="etelaatSBT">
+                        <div class="iconEtelaatSBT" title="وسیله"></div>
+                        <div class="kadrENT">
+                            <span class="kadrPoshtENT"></span>
+                            <a class="gozinehENT" onclick="taghirENT(this);" data-value="1" href="javascript:void(0);">کارتخوان</a>
+                            <a class="gozinehENT" onclick="taghirENT(this);" data-value="2" href="javascript:void(0);">عابر بانک</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="kadrSBT" id="kadrSBTV">
+                <h3 class="titrSBT"><span class="icon"></span><span class="matnTitr">ثبت ورودی</span></h3>
+            </div>
         </div>
     </div>
 
