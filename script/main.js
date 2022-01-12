@@ -90,3 +90,12 @@ function taghirENT(lmn)
     lmnPosht.style.top = lmn.offsetTop + "px";
     lmnPosht.style.left = lmn.offsetLeft + "px";
 }
+
+/*      نمایش مبلغ ورودی کاربر با ممیز      */
+function namayeshMablaghSBT(lmn)
+{
+    var meghdar = lmn.value.trim();
+    if (!adadiAst(meghdar)) return;
+    if (meghdar === "") lmn.parentElement.getElementsByClassName("mablaghSBT")[0].innerHTML = "";
+    else lmn.parentElement.getElementsByClassName("mablaghSBT")[0].innerHTML = momayezdar(meghdar) + " ریال";
+}

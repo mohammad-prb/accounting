@@ -86,9 +86,12 @@ a, a:link, a:visited
 
 input, textarea
 {
+    direction: ltr;
+    width: calc(100% - 22px);
+    padding: 4px 10px;
     background-color: hsl(0, 0%, 97%);
     border: 1px solid hsl(0, 0%, 80%);
-    border-radius: 5px;
+    border-radius: 8px;
     font-family: vazir;
     font-size: 1rem;
     transition: background-color 0.2s;
@@ -103,9 +106,10 @@ input:focus, textarea:focus
 select
 {
     padding: 3px 5px;
-    border-radius: 5px;
+    border-radius: 8px;
     font-family: vazir;
     font-size: 1rem;
+    border: 1px solid hsl(0, 0%, 80%);
     background-color: hsl(0, 0%, 97%);
 }
 
@@ -686,10 +690,11 @@ a.emkanatHSB:active
 
 .kadrSBT
 {
+    position: relative;
     float: right;
     width: calc(50% - 20px);
     margin: 10px;
-    padding: 15px 0 5px;
+    padding: 15px 0 0;
     border-radius: 10px;
     overflow: auto;
 }
@@ -708,9 +713,49 @@ h3.titrSBT
 {
     float: right;
     width: calc(100% - 40px);
-    margin: 0 20px;
-    padding: 0;
+    margin: 0 20px 5px;
+    padding: 0 0 10px 0;
     font-size: 1.25rem;
+}
+
+a.btnErsalSBT, a.btnErsalSBT:link, a.btnErsalSBT:visited
+{
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    padding: 3px 15px;
+    border-radius: 8px;
+    transition: background-color 0.1s;
+}
+
+#kadrSBTK h3.titrSBT
+{
+    border-bottom: 1px solid hsl(352, 100%, 85%);
+}
+
+#kadrSBTV h3.titrSBT
+{
+    border-bottom: 1px solid hsl(148, 64%, 60%);
+}
+
+#kadrSBTK>a.btnErsalSBT
+{
+    background-color: hsl(352, 100%, 90%);
+}
+
+#kadrSBTK>a.btnErsalSBT:hover
+{
+    background-color: hsl(352, 100%, 87%);
+}
+
+#kadrSBTV>a.btnErsalSBT
+{
+    background-color: hsl(148, 64%, 80%);
+}
+
+#kadrSBTV>a.btnErsalSBT:hover
+{
+    background-color: hsl(148, 64%, 75%);
 }
 
 .kadrEtelaatSBT
@@ -726,14 +771,66 @@ h3.titrSBT
     margin: 0 0 15px 30px;
 }
 
+.etelaatSBT.tamamSafheh
+{
+    width: 100%;
+    margin-left: 0;
+}
+
 .iconEtelaatSBT
 {
     float: right;
     margin-left: 5px;
     padding: 7px 0;
-    font-family: myIcon;
-    font-size: 1.5rem;
-    color: hsla(0, 0%, 0%, 0.5);
+    color: hsla(0, 0%, 0%, 0.7);
+}
+
+.etelaatSBT select, .etelaatSBT input
+{
+    background-color: hsla(0, 0%, 100%, 0.5);
+}
+
+.etelaatSBT input:focus
+{
+    background-color: hsla(0, 0%, 100%, 1);
+}
+
+.kadrTarikhSBT
+{
+    float: right;
+}
+
+input.txtTarikh
+{
+    float: right;
+    width: 20px;
+    margin-left: 3px;
+}
+
+input.txtTarikh:last-child
+{
+    width: 40px;
+}
+
+input.txtMablagh
+{
+    float: right;
+    width: 150px;
+}
+
+span.mablaghSBT
+{
+    float: right;
+    padding: 7px 0;
+    margin-right: 10px;
+    color: hsl(0, 0%, 50%);
+}
+
+input.txtTozih
+{
+    float: right;
+    width: calc(100% - 115px);
+    direction: rtl;
 }
 
 @media only screen and (max-width: 767px)
