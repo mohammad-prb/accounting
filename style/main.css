@@ -562,7 +562,7 @@ span.matnItemMNU
 {
     float: right;
     width: 100%;
-    margin-bottom: 20px;
+    margin-top: 20px;
     overflow: auto;
 }
 
@@ -684,8 +684,8 @@ a.emkanatHSB:active
 {
     float: right;
     width: 100%;
-    padding-top: 30px;
-    border-top: 1px solid hsl(0, 0%, 85%);
+    padding-bottom: 20px;
+    border-bottom: 1px solid hsl(0, 0%, 85%);
 }
 
 .kadrSBT

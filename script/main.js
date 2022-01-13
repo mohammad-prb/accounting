@@ -85,7 +85,7 @@ function checkbax(lmn, vaziat)
 function taghirENT(lmn)
 {
     var lmnPosht = lmn.parentElement.getElementsByClassName("kadrPoshtENT")[0];
-    lmn.parentElement.dataset.gozineh = lmn.dataset.value;
+    lmn.parentElement.dataset.value = lmn.dataset.value;
     lmnPosht.style.width = lmn.clientWidth + "px";
     lmnPosht.style.top = lmn.offsetTop + "px";
     lmnPosht.style.left = lmn.offsetLeft + "px";
@@ -98,4 +98,27 @@ function namayeshMablaghSBT(lmn)
     if (!adadiAst(meghdar)) return;
     if (meghdar === "") lmn.parentElement.getElementsByClassName("mablaghSBT")[0].innerHTML = "";
     else lmn.parentElement.getElementsByClassName("mablaghSBT")[0].innerHTML = momayezdar(meghdar) + " ریال";
+}
+
+/*      تغییر نوع واریزی      */
+function taghirNoeSBT(lmn)
+{
+    var noe = Number(lmn.parentElement.dataset.value);
+    var lmnVasileh = document.getElementById("vasilehSBTK");
+
+    if (noe === 1)
+    {
+        lmnVasileh.innerHTML = '<span class="kadrPoshtENT"></span>\n' +
+            '<a class="gozinehENT" onclick="taghirENT(this);" data-value="2" href="javascript:void(0);">کارتخوان</a>\n' +
+            '<a class="gozinehENT" onclick="taghirENT(this);" data-value="3" href="javascript:void(0);">عابر بانک</a>';
+    }
+    else if (noe === 2)
+    {
+        lmnVasileh.innerHTML = '<span class="kadrPoshtENT"></span>\n' +
+            '<a class="gozinehENT" onclick="taghirENT(this);" data-value="4" href="javascript:void(0);">کارت</a>\n' +
+            '<a class="gozinehENT" onclick="taghirENT(this);" data-value="5" href="javascript:void(0);">حساب</a>\n' +
+            '<a class="gozinehENT" onclick="taghirENT(this);" data-value="6" href="javascript:void(0);">پرداخت</a>';
+    }
+
+    taghirENT(lmnVasileh.getElementsByClassName("gozinehENT")[0]);
 }
