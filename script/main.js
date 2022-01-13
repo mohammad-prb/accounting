@@ -28,7 +28,16 @@ function namayeshPeygham(matn, dokmehha = 0, tabe = "")
 /*      بستن کادر لودینگ      */
 function bastanLoading(lmn)
 {
-    lmn.parentElement.parentElement.style.display = "none";
+    lmn.getElementsByClassName("kadrKolLoading")[0].remove();
+}
+
+/*      نمایش لودینگ      */
+function namayeshLoading(lmn)
+{
+    var loading = document.createElement("div");
+    loading.setAttribute("class", "kadrKolLoading");
+    loading.innerHTML = '<div class="kadrLoading"><img src="pic/loading.png" class="loading"></div>';
+    lmn.appendChild(loading);
 }
 
 /*      عوض کردن وضعیت توگل      */
@@ -127,7 +136,7 @@ function taghirNoeSBT(lmn)
     taghirVasilehSBT(lmnVasileh.getElementsByClassName("gozinehENT")[0]);
 }
 
-var vasileh = 2;  // پیشفرض:کارتخوان
+var vasileh = 2;  // پیشفرض: کارتخوان
 /*      تغییر وسیله پرداخت      */
 function taghirVasilehSBT(lmn)
 {
@@ -171,4 +180,32 @@ function taghirVasilehSBT(lmn)
 
     if (vasileh === 4 || vasileh === 5) document.getElementById("varizBeSBTK").parentElement.style.display = "block";
     else document.getElementById("varizBeSBTK").parentElement.style.display = "none";
+}
+
+/*      ثبت واریزی      */
+function sabtVarizi(noe)
+{
+    var strQ = "";
+
+    if (noe === 1)
+    {
+
+    }
+    else if (noe === 0)
+    {
+
+    }
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function ()
+    {
+        if (this.readyState === 4 && this.status === 200)
+        {
+            bastanLoading(document.getElementById("kadrSBTK"));
+        }
+    };
+    xhttp.open("POST", "ajax/sabt-varizi.php?sid="+Math.random(), true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("strQ="+strQ);
+    namayeshLoading(document.getElementById("kadrSBTK"));
 }

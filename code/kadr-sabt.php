@@ -2,7 +2,7 @@
     <h2 class="titr"><span class="icon"></span><span class="matnTitr">ثبت واریزی</span></h2>
     <div class="kadrSBT" id="kadrSBTK">
         <h3 class="titrSBT"><span class="icon"></span><span class="matnTitr">ثبت خروجی</span></h3>
-        <a class="btnErsalSBT" href="javascript:void(0);" onclick=""><span class="icon"></span><span class="matnTitr">ثبت</span></a>
+        <a class="btnErsalSBT" href="javascript:void(0);" onclick="sabtVarizi(1);"><span class="icon"></span><span class="matnTitr">ثبت</span></a>
         <div class="kadrEtelaatSBT">
             <div class="etelaatSBT">
                 <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">نوع:</span></div>
@@ -54,6 +54,8 @@
                         }
                     }
                     ?>
+                    <option value="1">نامشخص</option>
+                    <option value="2">دیگران...</option>
                 </select>
             </div>
             <div class="etelaatSBT">
@@ -78,7 +80,7 @@
 
     <div class="kadrSBT" id="kadrSBTV">
         <h3 class="titrSBT"><span class="icon"></span><span class="matnTitr">ثبت ورودی</span></h3>
-        <a class="btnErsalSBT" href="javascript:void(0);" onclick=""><span class="icon"></span><span class="matnTitr">ثبت</span></a>
+        <a class="btnErsalSBT" href="javascript:void(0);" onclick="sabtVarizi(0);"><span class="icon"></span><span class="matnTitr">ثبت</span></a>
         <div class="kadrEtelaatSBT">
             <div class="etelaatSBT">
                 <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">دسته:</span></div>
@@ -111,6 +113,8 @@
                         }
                     }
                     ?>
+                    <option value="1">نامشخص</option>
+                    <option value="2">دیگران...</option>
                 </select>
             </div>
             <div class="etelaatSBT">
@@ -133,3 +137,11 @@
         </div>
     </div>
 </div>
+<script>
+    document.getElementById("kadrSBTK").onkeydown = function(e){
+        if (e.keyCode === 13) sabtVarizi(1);
+    };
+    document.getElementById("kadrSBTV").onkeydown = function(e){
+        if (e.keyCode === 13) sabtVarizi(0);
+    };
+</script>

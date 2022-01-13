@@ -6,6 +6,15 @@ include ("code/lib.php");
 include ("code/etesal-db.php");
 $safheh = "index";
 $hesabID = 1;
+
+if (!isset($_SESSION["token"]))
+{
+    if (function_exists('random_bytes'))
+        $_SESSION["token"] = bin2hex(random_bytes(32));
+    else
+        $_SESSION["token"] = bin2hex(mcrypt_create_iv(32, MCRYPT_DEV_URANDOM));
+}
+$tkn = $_SESSION["token"];
 ?>
 <!DOCTYPE html>
 <html lang="fa-ir">
@@ -44,7 +53,8 @@ $hesabID = 1;
 <script src="script/lib.js"></script>
 <script src="script/main.js"></script>
 <script>
-    <?php echo 'var arrObjDasteh = ' . json_encode($arrDasteh) . ";";?>
+    var arrObjDasteh = <?php echo json_encode($arrDasteh);?>;
+    var tkn = "<?php echo $tkn;?>";
 </script>
 </body>
 </html>
