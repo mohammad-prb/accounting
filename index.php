@@ -63,13 +63,16 @@ $hesabID = 1;
                         <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">دسته:</span></div>
                         <select name="dasteh" id="dastehSBTK">
                             <?php
-                            $sql = "select id, onvan, noe from tbl_dasteh where hesabID = ".$hesabID." and noe <= 2 and vaziat = 1 order by onvan";
+                            $arrDasteh = array();
+                            $sql = "select id, onvan, noe from tbl_dasteh where hesabID = ".$hesabID." and vaziat = 1 order by onvan";
                             $result = $con->query($sql);
                             if ($result !== false && $result->num_rows > 0)
                             {
                                 while ($row = $result->fetch_assoc())
                                 {
-                                    echo '<option value="'. $row["id"] .'" data-noe="'. $row["noe"] .'">'. $row["onvan"] .'</option>';
+                                    array_push($arrDasteh, $row);
+                                    if ($row["noe"] <= 2)
+                                        echo '<option value="'. $row["id"] .'">'. $row["onvan"] .'</option>';
                                 }
                             }
                             ?>
@@ -110,7 +113,7 @@ $hesabID = 1;
                             {
                                 while ($row = $result->fetch_assoc())
                                 {
-                                    echo '<option value="'. $row["id"] .'" data-noe="'. $row["noe"] .'">'. $row["onvan"] .'</option>';
+                                    echo '<option value="'. $row["id"] .'">'. $row["onvan"] .'</option>';
                                 }
                             }
                             ?>
@@ -127,7 +130,7 @@ $hesabID = 1;
                             {
                                 while ($row = $result->fetch_assoc())
                                 {
-                                    echo '<option value="'. $row["id"] .'" data-noe="'. $row["noe"] .'">'. $row["nam"] .'</option>';
+                                    echo '<option value="'. $row["id"] .'">'. $row["nam"] .'</option>';
                                 }
                             }
                             ?>
@@ -198,6 +201,9 @@ $hesabID = 1;
 </div>
 <script src="script/lib.js"></script>
 <script src="script/main.js"></script>
+<script>
+    <?php echo 'var arrObjDasteh = ' . json_encode($arrDasteh) . ";";?>
+</script>
 </body>
 </html>
 <?php $con->close();?>

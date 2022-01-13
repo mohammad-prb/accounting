@@ -100,10 +100,13 @@ function namayeshMablaghSBT(lmn)
     else lmn.parentElement.getElementsByClassName("mablaghSBT")[0].innerHTML = momayezdar(meghdar) + " ریال";
 }
 
+var noe = 1;  // پیشفرض: برداشت با کارت
 /*      تغییر نوع واریزی      */
 function taghirNoeSBT(lmn)
 {
-    var noe = Number(lmn.parentElement.dataset.value);
+    if (noe === Number(lmn.parentElement.dataset.value)) return;
+
+    noe = Number(lmn.parentElement.dataset.value);
     var lmnVasileh = document.getElementById("vasilehSBTK");
 
     if (noe === 1)
@@ -115,10 +118,54 @@ function taghirNoeSBT(lmn)
     else if (noe === 2)
     {
         lmnVasileh.innerHTML = '<span class="kadrPoshtENT"></span>\n' +
-            '<a class="gozinehENT" onclick="taghirENT(this);" data-value="4" href="javascript:void(0);">کارت</a>\n' +
-            '<a class="gozinehENT" onclick="taghirENT(this);" data-value="5" href="javascript:void(0);">حساب</a>\n' +
-            '<a class="gozinehENT" onclick="taghirENT(this);" data-value="6" href="javascript:void(0);">پرداخت</a>';
+            '<a class="gozinehENT" onclick="taghirENT(this);taghirVasilehSBT(this);" data-value="4" href="javascript:void(0);">کارت</a>\n' +
+            '<a class="gozinehENT" onclick="taghirENT(this);taghirVasilehSBT(this);" data-value="5" href="javascript:void(0);">حساب</a>\n' +
+            '<a class="gozinehENT" onclick="taghirENT(this);taghirVasilehSBT(this);" data-value="6" href="javascript:void(0);">پرداخت</a>';
     }
 
     taghirENT(lmnVasileh.getElementsByClassName("gozinehENT")[0]);
+    taghirVasilehSBT(lmnVasileh.getElementsByClassName("gozinehENT")[0]);
+}
+
+var vasileh = 2;  // پیشفرض:کارتخوان
+/*      تغییر وسیله پرداخت      */
+function taghirVasilehSBT(lmn)
+{
+    if (vasileh === Number(lmn.parentElement.dataset.value)) return;
+
+    vasileh = Number(lmn.parentElement.dataset.value);
+    var lmnDasteh = document.getElementById("dastehSBTK");
+    lmnDasteh.innerHTML = "";
+
+    if (vasileh === 6)
+    {
+        for (let i=0; i<arrObjDasteh.length; i++)
+        {
+            if (Number(arrObjDasteh[i]["noe"]) === 4)
+            {
+                let option = document.createElement("option");
+                option.value = arrObjDasteh[i]["id"];
+                option.innerHTML = arrObjDasteh[i]["onvan"];
+                lmnDasteh.appendChild(option);
+            }
+        }
+    }
+    else
+    {
+        for (let i=0; i<arrObjDasteh.length; i++)
+        {
+            if (Number(arrObjDasteh[i]["noe"]) <= 2)
+            {
+                let option = document.createElement("option");
+                option.value = arrObjDasteh[i]["id"];
+                option.innerHTML = arrObjDasteh[i]["onvan"];
+                lmnDasteh.appendChild(option);
+            }
+        }
+    }
+
+    let option = document.createElement("option");
+    option.value = 0;
+    option.innerHTML = "دیگر...";
+    lmnDasteh.appendChild(option);
 }
