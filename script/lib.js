@@ -305,3 +305,11 @@ function getPassword(tedadRagham = 8)
     else
         return pass;
 }
+
+/*      تابع چک کردن یک عبارت با رگولار اکسپرشن      */
+function check(str, pattern, flag = "")
+{
+    var regex = new RegExp(pattern, flag);
+    if (str.match(regex) === null) return false;
+    else return true;
+}

@@ -185,16 +185,68 @@ function taghirVasilehSBT(lmn)
 /*      ثبت واریزی      */
 function sabtVarizi(noe)
 {
-    var strQ = "";
+    var strQ = "khoroojiAst=" + noe;
 
     if (noe === 1)
     {
+        var noeID = document.getElementById("noeSBTK").dataset.value.toString();
+        var vasilehID = document.getElementById("vasilehSBTK").dataset.value.toString();
+        var dastehID = document.getElementById("dastehSBTK").value.toString();
+        var fard = document.getElementById("varizBeSBTK").value.toString();
+        var rooz = document.querySelectorAll("#tarikhSBTK>input.txtTarikh")[0].value.toString();
+        var mah = document.querySelectorAll("#tarikhSBTK>input.txtTarikh")[1].value.toString();
+        var sal = document.querySelectorAll("#tarikhSBTK>input.txtTarikh")[2].value.toString();
+        var mablagh = document.getElementById("mablaghSBTK").value.toString();
+        var tozih = document.getElementById("tozihSBTK").value.toString();
 
+        if (!check(noeID, "^[1-2]$") || !check(vasilehID, "^[1-6]$")) {
+            namayeshPeygham("واریز با خطا مواجه شد، لطفا دوباره تلاش کنید.");
+            return;
+        }
+        strQ += "&noeID=" + noeID + "&vasilehID=" + vasilehID;
     }
     else if (noe === 0)
     {
-
+        var dastehID = document.getElementById("dastehSBTV").value.toString();
+        var fard = document.getElementById("varizBeSBTV").value.toString();
+        var rooz = document.querySelectorAll("#tarikhSBTV>input.txtTarikh")[0].value.toString();
+        var mah = document.querySelectorAll("#tarikhSBTV>input.txtTarikh")[1].value.toString();
+        var sal = document.querySelectorAll("#tarikhSBTV>input.txtTarikh")[2].value.toString();
+        var mablagh = document.getElementById("mablaghSBTV").value.toString();
+        var tozih = document.getElementById("tozihSBTV").value.toString();
     }
+    else return;
+
+    if (!check(dastehID, "^[1-9]+[0-9]*$") || !check(fard, "^[1-9]+[0-9]*$")) {
+        namayeshPeygham("روز اشتباه است.");
+        return;
+    }
+    strQ += "&dastehID=" + dastehID + "&fard=" + fard;
+
+    if (!check(rooz, "^(0?[1-9]|[1-2][1-9]|3[0-1])$")) {
+        namayeshPeygham("روز اشتباه است.");
+        return;
+    }
+    strQ += "&rooz=" + rooz;
+
+    if (!check(mah, "^(0?[1-9]|1[0-2])$")) {
+        namayeshPeygham("ماه اشتباه است.");
+        return;
+    }
+    strQ += "&mah=" + mah;
+
+    if (!check(sal, "^[1-9][0-9]{3}$")) {
+        namayeshPeygham("سال اشتباه است.");
+        return;
+    }
+    strQ += "&sal=" + sal;
+
+    if (!check(mablagh, "^[1-9][0-9]*$")) {
+        namayeshPeygham("مبلغ اشتباه است.");
+        return;
+    }
+    strQ += "&mablagh=" + mablagh;
+    strQ += "&tozih=" + tozih;
 
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function ()
@@ -206,6 +258,8 @@ function sabtVarizi(noe)
     };
     xhttp.open("POST", "ajax/sabt-varizi.php?sid="+Math.random(), true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("strQ="+strQ);
+    xhttp.send(strQ+"&tk="+tkn);
     namayeshLoading(document.getElementById("kadrSBTK"));
 }
+
+alert(check("1399", "^[1-9][0-9]{3}$"));

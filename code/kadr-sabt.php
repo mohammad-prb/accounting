@@ -68,12 +68,12 @@
             </div>
             <div class="etelaatSBT tamamSafheh">
                 <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">مبلغ:</span></div>
-                <input type="text" class="txtMablagh" name="mablagh" oninput="namayeshMablaghSBT(this);" maxlength="10" placeholder="به ریال"/>
+                <input type="text" class="txtMablagh" id="mablaghSBTK" name="mablagh" oninput="namayeshMablaghSBT(this);" maxlength="10" placeholder="به ریال"/>
                 <span class="mablaghSBT"></span>
             </div>
             <div class="etelaatSBT tamamSafheh">
                 <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">توضیخات:</span></div>
-                <input type="text" class="txtTozih" name="tozih" placeholder="اختیاری"/>
+                <input type="text" class="txtTozih" id="tozihSBTK" name="tozih" placeholder="اختیاری"/>
             </div>
         </div>
     </div>
@@ -127,12 +127,12 @@
             </div>
             <div class="etelaatSBT tamamSafheh">
                 <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">مبلغ:</span></div>
-                <input type="text" class="txtMablagh" name="mablagh" oninput="namayeshMablaghSBT(this);" maxlength="10" placeholder="به ریال"/>
+                <input type="text" class="txtMablagh" id="mablaghSBTV" name="mablagh" oninput="namayeshMablaghSBT(this);" maxlength="10" placeholder="به ریال"/>
                 <span class="mablaghSBT"></span>
             </div>
             <div class="etelaatSBT tamamSafheh">
                 <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">توضیخات:</span></div>
-                <input type="text" class="txtTozih" name="tozih" placeholder="اختیاری"/>
+                <input type="text" class="txtTozih" id="tozihSBTV" name="tozih" placeholder="اختیاری"/>
             </div>
         </div>
     </div>
