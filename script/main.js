@@ -168,4 +168,7 @@ function taghirVasilehSBT(lmn)
     option.value = 0;
     option.innerHTML = "دیگر...";
     lmnDasteh.appendChild(option);
+
+    if (vasileh === 4 || vasileh === 5) document.getElementById("varizBeSBTK").parentElement.style.display = "block";
+    else document.getElementById("varizBeSBTK").parentElement.style.display = "none";
 }

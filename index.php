@@ -79,6 +79,22 @@ $hesabID = 1;
                             <option value="1" data-noe="0">دیگر...</option>
                         </select>
                     </div>
+                    <div class="etelaatSBT" style="display:none;">
+                        <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">واریز به:</span></div>
+                        <select name="varizBe" id="varizBeSBTK">
+                            <?php
+                            $sql = "select id, nam, noe from tbl_afrad where hesabID = ".$hesabID." and noe <= 2 and vaziat = 1 order by nam";
+                            $result = $con->query($sql);
+                            if ($result !== false && $result->num_rows > 0)
+                            {
+                                while ($row = $result->fetch_assoc())
+                                {
+                                    echo '<option value="'. $row["id"] .'">'. $row["nam"] .'</option>';
+                                }
+                            }
+                            ?>
+                        </select>
+                    </div>
                     <div class="etelaatSBT">
                         <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">تاریخ:</span></div>
                         <div class="kadrTarikhSBT" id="tarikhSBTK">
