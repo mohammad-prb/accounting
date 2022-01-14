@@ -408,7 +408,7 @@ a.dokmehLaghv:active
     height: 100%;
     line-height: 100%;
     background-color: hsla(0, 0%, 0%, 0.5);
-    animation: aniFade 0.2s;
+    animation: aniFade 0.1s;
     animation-fill-mode: both;
 }
 

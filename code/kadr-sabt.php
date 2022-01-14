@@ -1,6 +1,6 @@
 <div id="kadrSabt">
     <h2 class="titr"><span class="icon"></span><span class="matnTitr">ثبت واریزی</span></h2>
-    <select name="hesabha" class="sltHesabha">
+    <select name="hesabha" class="sltHesabha" onchange="taghirHesabSBT(this);">
         <?php
             $sql = "select * from tbl_hesab where vaziat = 1 order by tartib";
             $result = $con->query($sql);
@@ -50,7 +50,7 @@
                         }
                     }
                     ?>
-                    <option value="1" data-noe="0">دیگر...</option>
+                    <option value="1">دیگر...</option>
                 </select>
             </div>
             <div class="etelaatSBT" style="display:none;">
@@ -109,7 +109,7 @@
                         }
                     }
                     ?>
-                    <option value="1" data-noe="0">دیگر...</option>
+                    <option value="1">دیگر...</option>
                 </select>
             </div>
             <div class="etelaatSBT">

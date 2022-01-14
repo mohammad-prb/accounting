@@ -192,6 +192,98 @@ function taghirVasilehSBT(lmn)
     else document.getElementById("varizBeSBTK").parentElement.style.display = "none";
 }
 
+/*      تغییر حساب در ثبت واریزی      */
+function taghirHesabSBT(lmn)
+{
+    var hesabID = Number(lmn.value);
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function ()
+    {
+        if (this.readyState === 4 && this.status === 200)
+        {
+            bastanLoading(document.getElementById("kadrSBTK"));
+            bastanLoading(document.getElementById("kadrSBTV"));
+
+            var objNatijeh = JSON.parse(this.responseText);
+            var arrAfrad = objNatijeh["afrad"];
+            vasileh = 0; // برای اینکه تابع "تغییر وسیله" در صورت تغییر این متغیر کار میکند
+            arrObjDasteh = objNatijeh["dasteh"];
+            taghirVasilehSBT(document.querySelector("#vasilehSBTK .gozinehENT"));
+
+            /* دسته بندی ثبت ورودی */
+            var lmnSelectDastehBandi = document.getElementById("dastehSBTV");
+            lmnSelectDastehBandi.innerHTML = "";
+            for (let i=0; i<arrAfrad.length; i++)
+            {
+                if (Number(arrObjDasteh[i]["noe"]) === 1 || Number(arrObjDasteh[i]["noe"]) === 3)
+                {
+                    var option = document.createElement("option");
+                    option.value = arrObjDasteh[i]["id"];
+                    option.innerHTML = arrObjDasteh[i]["onvan"];
+                    lmnSelectDastehBandi.appendChild(option);
+                }
+            }
+            option = document.createElement("option");
+            option.value = "1";
+            option.innerHTML = "دیگر...";
+            lmnSelectDastehBandi.appendChild(option);
+
+            /* واریز به ها */
+            var lmnSelectSBTK = document.getElementById("varizBeSBTK");
+            lmnSelectSBTK.innerHTML = "";
+            for (let i=0; i<arrAfrad.length; i++)
+            {
+                if (arrAfrad[i]["noe"] <= 2)
+                {
+                    option = document.createElement("option");
+                    option.value = arrAfrad[i]["id"];
+                    option.innerHTML = arrAfrad[i]["nam"];
+                    lmnSelectSBTK.appendChild(option);
+                }
+            }
+
+            /* واریز کننده ها */
+            var lmnSelectSBTV = document.getElementById("varizKonandehSBTV");
+            lmnSelectSBTV.innerHTML = "";
+            for (let i=0; i<arrAfrad.length; i++)
+            {
+                if (Number(arrAfrad[i]["noe"]) === 1 || Number(arrAfrad[i]["noe"]) === 3)
+                {
+                    option = document.createElement("option");
+                    option.value = arrAfrad[i]["id"];
+                    option.innerHTML = arrAfrad[i]["nam"];
+                    lmnSelectSBTV.appendChild(option);
+                }
+            }
+
+            option = document.createElement("option");
+            option.value = "1";
+            option.innerHTML = "نامشخص";
+            lmnSelectSBTK.appendChild(option);
+
+            option = document.createElement("option");
+            option.value = "1";
+            option.innerHTML = "نامشخص";
+            lmnSelectSBTV.appendChild(option);
+
+            option = document.createElement("option");
+            option.value = "2";
+            option.innerHTML = "دیگران...";
+            lmnSelectSBTK.appendChild(option);
+
+            option = document.createElement("option");
+            option.value = "2";
+            option.innerHTML = "دیگران...";
+            lmnSelectSBTV.appendChild(option);
+        }
+    };
+    xhttp.open("POST", "ajax/gereften-etelaat-hesab.php?sid="+Math.random(), true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("hesabID="+hesabID+"&tk="+tkn);
+    namayeshLoading(document.getElementById("kadrSBTK"));
+    namayeshLoading(document.getElementById("kadrSBTV"));
+}
+
 /*      ثبت واریزی      */
 function sabtVarizi(noe)
 {
