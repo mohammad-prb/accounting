@@ -5,7 +5,6 @@ include ("code/jdf.php");
 include ("code/lib.php");
 include ("code/etesal-db.php");
 $safheh = "index";
-$hesabID = 1;
 
 if (!isset($_SESSION["token"]))
 {
@@ -15,6 +14,16 @@ if (!isset($_SESSION["token"]))
         $_SESSION["token"] = bin2hex(mcrypt_create_iv(32, MCRYPT_DEV_URANDOM));
 }
 $tkn = $_SESSION["token"];
+
+$sql = "select * from tbl_tanzimat";
+$result = $con->query($sql);
+if ($result !== false && $result->num_rows > 0)
+{
+    if ($row = $result->fetch_assoc())
+    {
+        $hesabID = $row["hesabPishfarz"];
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="fa-ir">

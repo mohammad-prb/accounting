@@ -7,8 +7,15 @@ include ("../code/lib.php");
 include ("../code/jdf.php");
 include ("../code/etesal-db.php");
 
-// todo hesabID
-$hesabID = 1;
+$sql = "select * from tbl_tanzimat";
+$result = $con->query($sql);
+if ($result !== false && $result->num_rows > 0)
+{
+    if ($row = $result->fetch_assoc())
+    {
+        $hesabID = $row["hesabPishfarz"];
+    }
+}
 
 if (isset($_POST["khoroojiAst"])) $khoroojiAst = htmlspecialchars(stripcslashes(trim($_POST["khoroojiAst"]))); else die();
 if (isset($_POST["dastehID"])) $dastehID = htmlspecialchars(stripcslashes(trim($_POST["dastehID"]))); else die();
