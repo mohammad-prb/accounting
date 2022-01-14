@@ -35,6 +35,14 @@
     100%{opacity: 1}
 }
 
+@keyframes aniFlash
+{
+    0%{right: -400px; opacity: 0}
+    10%{right: 20px; opacity: 1}
+    90%{right: 20px; opacity: 1}
+    100%{right: 20px; opacity: 0}
+}
+
 /* width */
 body *:not(.scrollAdi)::-webkit-scrollbar
 {
@@ -256,7 +264,7 @@ a.gozinehENT:active
     display: block;
     width: 400px;
     margin: 0 auto;
-    animation: aniFadeShodan 0.2s;
+    animation: aniFade 0.2s;
     animation-fill-mode: forwards;
     background-color: white;
     border-radius: 10px;
@@ -353,6 +361,38 @@ a.dokmehLaghv:active
 
 
 
+/*  فلش  */
+
+.kadrFlash
+{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1500;
+    display: inline-block;
+    max-width: 400px;
+    padding: 8px 15px;
+    border-radius: 8px;
+    background-color: hsl(204, 100%, 85%);
+    box-shadow: 1px 1px 3px hsl(0, 0%, 90%);
+    animation: aniFlash 5s;
+    animation-fill-mode: both;
+}
+
+.iconFlash
+{
+    float: right;
+    font-family: myIcon;
+    font-size: 1.5rem;
+    margin-left: 10px;
+}
+
+.matnFlash
+{
+    float: right;
+}
+
+
 
 /*  لودینگ  */
 
@@ -368,6 +408,8 @@ a.dokmehLaghv:active
     height: 100%;
     line-height: 100%;
     background-color: hsla(0, 0%, 0%, 0.5);
+    animation: aniFade 0.2s;
+    animation-fill-mode: both;
 }
 
 .kadrLoading
@@ -389,28 +431,6 @@ img.loading
 {
     width: 100%;
     animation: aniLoading 0.8s linear infinite;
-}
-
-a.zabdarLoading, a.zabdarLoading:link, a.zabdarLoading:visited
-{
-    position: absolute;
-    top: 22px;
-    right: 18px;
-    font-size: 1.5rem;
-    font-family: myIcon;
-    color: hsl(0, 0%, 10%);
-    animation: aniZabdarLoading 0.5s 5s;
-    animation-fill-mode: both;
-}
-
-a.zabdarLoading:hover
-{
-    color: hsl(0, 0%, 15%);
-}
-
-a.zabdarLoading:active
-{
-    color: hsl(0, 0%, 20%);
 }
 
 

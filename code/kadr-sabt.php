@@ -84,7 +84,7 @@
         <div class="kadrEtelaatSBT">
             <div class="etelaatSBT">
                 <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">دسته:</span></div>
-                <select name="dasteh" id="noeSBTV">
+                <select name="dasteh" id="dastehSBTV">
                     <?php
                     $sql = "select id, onvan, noe from tbl_dasteh where hesabID = ".$hesabID." and (noe = 1 or noe = 3) and vaziat = 1 order by onvan";
                     $result = $con->query($sql);

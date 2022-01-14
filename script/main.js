@@ -25,6 +25,16 @@ function namayeshPeygham(matn, dokmehha = 0, tabe = "")
     if (dokmehha === 0) document.getElementById("kadrPoshtPeygham").focus();
 }
 
+/*      نمایش فلش      */
+function flash(matn, icon = "")
+{
+    var lmn = document.createElement("div");
+    lmn.setAttribute("class", "kadrFlash");
+    lmn.innerHTML = '<div class="iconFlash">'+ icon +'</div><div class="matnFlash">'+ matn +'</div>';
+    document.body.appendChild(lmn);
+    setTimeout(function(){lmn.remove();}, 5000);
+}
+
 /*      بستن کادر لودینگ      */
 function bastanLoading(lmn)
 {
@@ -200,7 +210,7 @@ function sabtVarizi(noe)
         var tozih = document.getElementById("tozihSBTK").value.toString();
 
         if (!check(noeID, "^[1-2]$") || !check(vasilehID, "^[1-6]$")) {
-            namayeshPeygham("واریز با خطا مواجه شد، لطفا دوباره تلاش کنید.");
+            namayeshPeygham("لطفا فیلد هارا برسی کرده، و مجددا تلاش کنید.");
             return;
         }
         strQ += "&noeID=" + noeID + "&vasilehID=" + vasilehID;
@@ -208,7 +218,7 @@ function sabtVarizi(noe)
     else if (noe === 0)
     {
         var dastehID = document.getElementById("dastehSBTV").value.toString();
-        var fard = document.getElementById("varizBeSBTV").value.toString();
+        var fard = document.getElementById("varizKonandehSBTV").value.toString();
         var rooz = document.querySelectorAll("#tarikhSBTV>input.txtTarikh")[0].value.toString();
         var mah = document.querySelectorAll("#tarikhSBTV>input.txtTarikh")[1].value.toString();
         var sal = document.querySelectorAll("#tarikhSBTV>input.txtTarikh")[2].value.toString();
@@ -218,12 +228,12 @@ function sabtVarizi(noe)
     else return;
 
     if (!check(dastehID, "^[1-9]+[0-9]*$") || !check(fard, "^[1-9]+[0-9]*$")) {
-        namayeshPeygham("روز اشتباه است.");
+        namayeshPeygham("لطفا فیلد هارا برسی کرده، و مجددا تلاش کنید.");
         return;
     }
     strQ += "&dastehID=" + dastehID + "&fard=" + fard;
 
-    if (!check(rooz, "^(0?[1-9]|[1-2][1-9]|3[0-1])$")) {
+    if (!check(rooz, "^(0?[1-9]|[1-2][0-9]|3[0-1])$")) {
         namayeshPeygham("روز اشتباه است.");
         return;
     }
@@ -254,6 +264,24 @@ function sabtVarizi(noe)
         if (this.readyState === 4 && this.status === 200)
         {
             bastanLoading(document.getElementById("kadrSBTK"));
+            var natijeh = this.responseText;
+            if (natijeh === "ok")
+            {
+                flash("واریز با موفقیت ثبت شد.");
+                if (noe === 1)
+                {
+                    document.getElementById("mablaghSBTK").value = "";
+                    document.getElementById("tozihSBTK").value = "";
+                    document.getElementById("mablaghSBTK").parentElement.getElementsByClassName("mablaghSBT")[0].innerHTML = "";
+                }
+                else
+                {
+                    document.getElementById("mablaghSBTV").value = "";
+                    document.getElementById("tozihSBTV").value = "";
+                    document.getElementById("mablaghSBTV").parentElement.getElementsByClassName("mablaghSBT")[0].innerHTML = "";
+                }
+            }
+            else namayeshPeygham("ثبت با خطا مواجه شد، لطفا پس از بررسی فیلد ها مجددا تلاش کنید.");
         }
     };
     xhttp.open("POST", "ajax/sabt-varizi.php?sid="+Math.random(), true);
@@ -261,5 +289,3 @@ function sabtVarizi(noe)
     xhttp.send(strQ+"&tk="+tkn);
     namayeshLoading(document.getElementById("kadrSBTK"));
 }
-
-alert(check("1399", "^[1-9][0-9]{3}$"));
