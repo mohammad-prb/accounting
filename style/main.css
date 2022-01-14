@@ -702,6 +702,7 @@ a.emkanatHSB:active
 
 #kadrSabt
 {
+    position: relative;
     float: right;
     width: 100%;
     padding-bottom: 20px;
@@ -736,6 +737,13 @@ h3.titrSBT
     margin: 0 20px 5px;
     padding: 0 0 10px 0;
     font-size: 1.25rem;
+}
+
+select.sltHesabha
+{
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 a.btnErsalSBT, a.btnErsalSBT:link, a.btnErsalSBT:visited

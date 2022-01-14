@@ -1,5 +1,18 @@
 <div id="kadrSabt">
     <h2 class="titr"><span class="icon"></span><span class="matnTitr">ثبت واریزی</span></h2>
+    <select name="hesabha" class="sltHesabha">
+        <?php
+            $sql = "select * from tbl_hesab where vaziat = 1 order by tartib";
+            $result = $con->query($sql);
+            if ($result !== false && $result->num_rows > 0)
+            {
+                while ($row = $result->fetch_assoc())
+                {
+                    echo '<option value="'. $row["id"] .'">'. $row["nam"] .' ('. substr($row["shomKart"], 12, 4) .')</option>';
+                }
+            }
+        ?>
+    </select>
     <div class="kadrSBT" id="kadrSBTK">
         <h3 class="titrSBT"><span class="icon"></span><span class="matnTitr">ثبت خروجی</span></h3>
         <a class="btnErsalSBT" href="javascript:void(0);" onclick="sabtVarizi(1);"><span class="icon"></span><span class="matnTitr">ثبت</span></a>

@@ -227,6 +227,9 @@ function sabtVarizi(noe)
     }
     else return;
 
+    var hesabID = Number(document.getElementsByClassName("sltHesabha")[0].value);
+    strQ += "&hesabID=" + hesabID;
+
     if (!check(dastehID, "^[1-9]+[0-9]*$") || !check(fard, "^[1-9]+[0-9]*$")) {
         namayeshPeygham("لطفا فیلد هارا برسی کرده، و مجددا تلاش کنید.");
         return;

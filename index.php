@@ -15,13 +15,13 @@ if (!isset($_SESSION["token"]))
 }
 $tkn = $_SESSION["token"];
 
-$sql = "select * from tbl_tanzimat";
+$sql = "select * from tbl_hesab where vaziat = 1 order by tartib limit 1";
 $result = $con->query($sql);
 if ($result !== false && $result->num_rows > 0)
 {
     if ($row = $result->fetch_assoc())
     {
-        $hesabID = $row["hesabPishfarz"];
+        $hesabID = $row["id"];
     }
 }
 ?>
