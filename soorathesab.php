@@ -4,37 +4,18 @@ date_default_timezone_set("Asia/Tehran");
 include ("code/jdf.php");
 include ("code/lib.php");
 include ("code/etesal-db.php");
-$safheh = "index";
-
-if (!isset($_SESSION["token"]))
-{
-    if (function_exists('random_bytes'))
-        $_SESSION["token"] = bin2hex(random_bytes(32));
-    else
-        $_SESSION["token"] = bin2hex(mcrypt_create_iv(32, MCRYPT_DEV_URANDOM));
-}
-$tkn = $_SESSION["token"];
-
-$sql = "select * from tbl_hesab where vaziat = 1 order by tartib limit 1";
-$result = $con->query($sql);
-if ($result !== false && $result->num_rows > 0)
-{
-    if ($row = $result->fetch_assoc())
-    {
-        $hesabID = $row["id"];
-    }
-}
+$safheh = "soorathesab";
 ?>
 <!DOCTYPE html>
 <html lang="fa-ir">
 <head>
-    <title>صفحه اصلی</title>
+    <title>صورتحساب</title>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="shortcut icon" href="pic/logo.png"/>
     <link rel="stylesheet" href="style/main.css"/>
 </head>
-<body dir="rtl" onload="tanzimSaf();">
+<body dir="rtl">
 <div id="fullCountainer">
 
     <div id="CountainerKadrNamayeshPeygham" style="display: none">
@@ -42,7 +23,7 @@ if ($result !== false && $result->num_rows > 0)
             <a id="kadrPoshtPeygham" href="javascript:void(0);" onclick="bastanPeygham();"></a>
             <div id="kadrPeygham">
                 <div>
-                    <div id="titrPeygham"><span class="icon"></span><span class="matnTitr">پیغام سیستم</span></div>
+                    <div id="titrPeygham"><span class="icon"></span><span class="matnTitr">پیغام سیستم</span></div>
                     <div id="matnPeygham"></div>
                     <span id="kadrDokmehPeygham"></span>
                 </div>
@@ -54,17 +35,12 @@ if ($result !== false && $result->num_rows > 0)
 
     <div id="sotoonChap">
         <?php require("code/navar-bala.php");?>
-        <?php require("code/kadr-sabt.php");?>
-        <?php require("code/kadr-hesabha.php");?>
+
     </div>
 
 </div>
 <script src="script/lib.js"></script>
 <script src="script/main.js"></script>
-<script>
-    var arrObjDasteh = <?php echo json_encode($arrDasteh);?>;
-    var tkn = "<?php echo $tkn;?>";
-</script>
 </body>
 </html>
 <?php $con->close();?>

@@ -17,8 +17,8 @@ function namayeshPeygham(matn, dokmehha = 0, tabe = "")
     document.getElementById("CountainerKadrNamayeshPeygham").style.display = 'table';
     document.getElementById("matnPeygham").innerHTML = matn;
     if (dokmehha === 1)
-        document.getElementById("kadrDokmehPeygham").innerHTML = '<a class="dokmehTL dokmehTaeed" onclick="' + tabe + '" href="javascript:void (0);"><span class="icon"></span><span class="matnTitr">تایید</span></a>' +
-            '<a class="dokmehTL dokmehLaghv" onclick="bastanPeygham();" href="javascript:void (0);"><span class="icon"></span><span class="matnTitr">انصراف</span></a>';
+        document.getElementById("kadrDokmehPeygham").innerHTML = '<a class="dokmehTL dokmehTaeed" onclick="' + tabe + '" href="javascript:void (0);"><span class="icon"></span><span class="matnTitr">تایید</span></a>' +
+            '<a class="dokmehTL dokmehLaghv" onclick="bastanPeygham();" href="javascript:void (0);"><span class="icon"></span><span class="matnTitr">انصراف</span></a>';
     else
         document.getElementById("kadrDokmehPeygham").innerHTML = "";
 
