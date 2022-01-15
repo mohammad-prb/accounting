@@ -384,3 +384,110 @@ function sabtVarizi(noe)
     xhttp.send(strQ+"&tk="+tkn);
     namayeshLoading(document.getElementById("kadrSBTK"));
 }
+
+/*      تابع تغییر دسته بندی، در فیلتر صورتحساب      */
+function taghirDastehFSRT(...noe)
+{
+    var lmnSelect = document.getElementById("dastehSBTK");
+    lmnSelect.innerHTML = "<option value='hameh'>-</option>";
+
+    for (let i=0; i<arrObjDasteh.length; i++)
+    {
+        if (noe.indexOf(Number(arrObjDasteh[i]["noe"])) >= 0)
+        {
+            let option = document.createElement("option");
+            option.value = arrObjDasteh[i]["id"];
+            option.innerHTML = arrObjDasteh[i]["onvan"];
+            lmnSelect.appendChild(option);
+        }
+    }
+
+    let option = document.createElement("option");
+    option.value = "1";
+    option.innerHTML = "دیگر...";
+    lmnSelect.appendChild(option);
+}
+
+var khorojiAst = "hameh";  // پیشفرض: همه
+/*      تغییر خروجی و ورودی، در فیلتر صورتحساب      */
+function taghirKVFSRT(lmn)
+{
+    var noe = lmn.parentElement.dataset.value;
+    if (noe === khorojiAst) return;
+    khorojiAst = noe;
+
+    var lmnNoe = document.getElementById("noeSBTK").parentElement;
+    var lmnVasileh = document.getElementById("vasilehSBTK").parentElement;
+    var lmnVarizKonandeh = document.getElementById("varizKonandehSBTV").parentElement;
+
+    if (noe === "hameh")
+    {
+        lmnNoe.style.display = "none";
+        lmnVasileh.style.display = "none";
+        lmnVarizKonandeh.style.display = "none";
+        taghirDastehFSRT(1);
+    }
+    else if (Number(noe) === 1)
+    {
+        lmnNoe.style.display = "block";
+        taghirENT(lmnNoe.getElementsByClassName("gozinehENT")[0]);
+        taghirNoeFSRT(lmnNoe.getElementsByClassName("gozinehENT")[0]);
+        lmnVarizKonandeh.style.display = "none";
+        taghirDastehFSRT(1,2);
+    }
+    else if (Number(noe) === 0)
+    {
+        lmnNoe.style.display = "none";
+        lmnVasileh.style.display = "none";
+        lmnVarizKonandeh.style.display = "block";
+        taghirDastehFSRT(1,3);
+    }
+}
+
+var noeFSRT = "hameh";  // پیشفرض: همه
+/*      تغییر نوع واریزی      */
+function taghirNoeFSRT(lmn)
+{
+    if (noeFSRT === lmn.parentElement.dataset.value) return;
+    noeFSRT = lmn.parentElement.dataset.value;
+    var lmnVasileh = document.getElementById("vasilehSBTK");
+
+    if (Number(noeFSRT) === 1)
+    {
+        lmnVasileh.innerHTML = '<span class="kadrPoshtENT"></span>\n' +
+            '<a class="gozinehENT" onclick="taghirENT(this);" data-value="hameh" href="javascript:void(0);">همه</a>\n' +
+            '<a class="gozinehENT" onclick="taghirENT(this);" data-value="2" href="javascript:void(0);">کارتخوان</a>\n' +
+            '<a class="gozinehENT" onclick="taghirENT(this);" data-value="3" href="javascript:void(0);">عابر بانک</a>';
+
+        lmnVasileh.parentElement.style.display = "block";
+        taghirENT(lmnVasileh.getElementsByClassName("gozinehENT")[0]);
+        taghirVasilehFSRT(lmnVasileh.getElementsByClassName("gozinehENT")[0]);
+    }
+    else if (Number(noeFSRT) === 2)
+    {
+        lmnVasileh.innerHTML = '<span class="kadrPoshtENT"></span>\n' +
+            '<a class="gozinehENT" onclick="taghirENT(this);taghirVasilehFSRT(this);" data-value="hameh" href="javascript:void(0);">همه</a>\n' +
+            '<a class="gozinehENT" onclick="taghirENT(this);taghirVasilehFSRT(this);" data-value="4" href="javascript:void(0);">کارت</a>\n' +
+            '<a class="gozinehENT" onclick="taghirENT(this);taghirVasilehFSRT(this);" data-value="5" href="javascript:void(0);">حساب</a>\n' +
+            '<a class="gozinehENT" onclick="taghirENT(this);taghirVasilehFSRT(this);" data-value="6" href="javascript:void(0);">پرداخت</a>';
+
+        lmnVasileh.parentElement.style.display = "block";
+        taghirENT(lmnVasileh.getElementsByClassName("gozinehENT")[0]);
+        taghirVasilehFSRT(lmnVasileh.getElementsByClassName("gozinehENT")[0]);
+    }
+    else lmnVasileh.parentElement.style.display = "none";
+}
+
+var vasilehFSRT = "hameh";  // پیشفرض: همه
+/*      تغییر وسیله پرداخت      */
+function taghirVasilehFSRT(lmn)
+{
+    if (vasilehFSRT === lmn.parentElement.dataset.value) return;
+    vasilehFSRT = lmn.parentElement.dataset.value;
+
+    if (Number(vasilehFSRT) === 6) taghirDastehFSRT(4);
+    else taghirDastehFSRT(1,2);
+
+    if (Number(vasilehFSRT) === 4 || Number(vasilehFSRT) === 5) document.getElementById("varizBeSBTK").parentElement.style.display = "block";
+    else document.getElementById("varizBeSBTK").parentElement.style.display = "none";
+}
