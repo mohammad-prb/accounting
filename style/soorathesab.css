@@ -221,3 +221,40 @@ a.emkanatSTB:active
 {
     border-top: 1px solid hsl(148, 64%, 60%);
 }
+
+.kadrSatrTarikh
+{
+    position: relative;
+    float: right;
+    width: 100%;
+    height: 0;
+    margin: 10px 0 20px;
+    overflow: visible;
+    border-top: 1px solid hsl(0, 0%, 80%);
+}
+
+a.satrTarikh, a.satrTarikh:link, a.satrTarikh:visited
+{
+    display: inline-block;
+    position: absolute;
+    top: -11px;
+    right: 0;
+    left: 0;
+    width: 80px;
+    margin: 0 auto;
+    padding: 0 10px;
+    text-align: center;
+    font-size: 0.875rem;
+    color: hsl(0, 0%, 50%);
+    background-color: white;
+}
+
+a.satrTarikh:hover
+{
+    color: hsl(0, 0%, 0%);
+}
+
+a.satrTarikh:active
+{
+    color: hsl(0, 0%, 30%);
+}

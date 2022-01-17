@@ -633,6 +633,7 @@ function emalFilterSRT()
         {
             bastanLoading(document.getElementById("kadrSoorathesab"));
             var arrObjEtelaat = JSON.parse(this.responseText);
+            var tarikh = "";
             var lmnKadr = document.getElementById("kadrSoorathesab");
             lmnKadr.innerHTML = "";
 
@@ -646,6 +647,16 @@ function emalFilterSRT()
             /*  آیتم های صورت حساب  */
             for (let i=0; i<arrObjEtelaat.length; i++)
             {
+                /*  افتادن تاریخ هنگام عوض شدن  */
+                if (arrObjEtelaat[i]["tarikh"] !== tarikh)
+                {
+                    tarikh = arrObjEtelaat[i]["tarikh"];
+                    var lmnTarikh = document.createElement("div");
+                    lmnTarikh.setAttribute("class", "kadrSatrTarikh");
+                    lmnTarikh.innerHTML = "<a href='javascript:void(0);' onclick='tanzimTarikhSoorathesab(this);' class='satrTarikh'>"+ tarikh +"</a>";
+                    lmnKadr.appendChild(lmnTarikh);
+                }
+
                 var strHTML = '<div class="kadrSTB '+ (Number(arrObjEtelaat[i]["khoroojiAst"]) === 1 ? "khorooji" : "voroodi") +'">\n' +
                     '               <div class="headerSTB">\n' +
                     '                    <div class="kadrEtelaatSTB">';
@@ -722,4 +733,14 @@ function emalFilterSRT()
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send(strQ+"&tk="+tkn);
     namayeshLoading(document.getElementById("kadrSoorathesab"));
+}
+
+/*      تنظیم یک تاریخ خاص در صورتحساب      */
+function tanzimTarikhSoorathesab(lmn)
+{
+    var tarikh = lmn.innerHTML;
+    document.querySelectorAll("#tarikhSBTK>input")[0].value = tarikh.substr(8,2);
+    document.querySelectorAll("#tarikhSBTK>input")[1].value = tarikh.substr(5,2);
+    document.querySelectorAll("#tarikhSBTK>input")[2].value = tarikh.substr(0,4);
+    emalFilterSRT();
 }
