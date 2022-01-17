@@ -636,6 +636,14 @@ function emalFilterSRT()
             var lmnKadr = document.getElementById("kadrSoorathesab");
             lmnKadr.innerHTML = "";
 
+            /*  آمار و اطلاعات فیلتر  */
+            document.getElementById("tedadNataiejSRT").innerHTML = momayezdar(arrObjEtelaat.length);
+            var tedadKhorooji = 0;
+            var tedadVoroodi = 0;
+            var meghdarKhorooji = 0;
+            var meghdarVoroodi = 0;
+
+            /*  آیتم های صورت حساب  */
             for (let i=0; i<arrObjEtelaat.length; i++)
             {
                 var strHTML = '<div class="kadrSTB '+ (Number(arrObjEtelaat[i]["khoroojiAst"]) === 1 ? "khorooji" : "voroodi") +'">\n' +
@@ -644,6 +652,8 @@ function emalFilterSRT()
 
                 if (Number(arrObjEtelaat[i]["khoroojiAst"]) === 1)
                 {
+                    tedadKhorooji++;
+                    meghdarKhorooji += Number(arrObjEtelaat[i]["mablagh"]);
                     strHTML += '<div class="etelaatSTB">\n' +
                         '    <div class="onvanEtelaatSTB"><span class="icon"></span><span class="matnTitr">نوع:</span></div>\n' +
                         '    <div class="meghdarEtelaatSTB">'+ (Number(arrObjEtelaat[i]["noeID"]) === 1 ? "برداشت با کارت" : "اینترنتی") +'</div>\n' +
@@ -657,52 +667,55 @@ function emalFilterSRT()
                     {
                         strHTML += '<div class="etelaatSTB">\n' +
                             '    <div class="onvanEtelaatSTB"><span class="icon"></span><span class="matnTitr">واریز به:</span></div>\n' +
-                            '    <div class="meghdarEtelaatSTB">'+ arrObjEtelaat[i]["nam"] +'</div>\n' +
+                            '    <div class="meghdarEtelaatSTB fardSTB">'+ arrObjEtelaat[i]["nam"] +'</div>\n' +
                             '</div>';
                     }
                 }
                 else if (Number(arrObjEtelaat[i]["khoroojiAst"]) === 0)
                 {
+                    tedadVoroodi++;
+                    meghdarVoroodi += Number(arrObjEtelaat[i]["mablagh"]);
                     strHTML += '<div class="etelaatSTB">\n' +
                         '    <div class="onvanEtelaatSTB"><span class="icon"></span><span class="matnTitr">واریز کننده:</span></div>\n' +
-                        '    <div class="meghdarEtelaatSTB">'+ arrObjEtelaat[i]["nam"] +'</div>\n' +
+                        '    <div class="meghdarEtelaatSTB fardSTB">'+ arrObjEtelaat[i]["nam"] +'</div>\n' +
                         '</div>';
                 }
 
                 strHTML += '<div class="etelaatSTB">\n' +
                     '                    <div class="onvanEtelaatSTB"><span class="icon"></span><span class="matnTitr">دسته:</span></div>\n' +
-                    '                    <div class="meghdarEtelaatSTB">'+ arrObjEtelaat[i]["onvan"] +'</div>\n' +
+                    '                    <div class="meghdarEtelaatSTB dastehSTB">'+ arrObjEtelaat[i]["onvan"] +'</div>\n' +
                     '                </div>\n' +
                     '                <div class="etelaatSTB">\n' +
                     '                    <div class="onvanEtelaatSTB"><span class="icon"></span><span class="matnTitr">تاریخ:</span></div>\n' +
-                    '                    <div class="meghdarEtelaatSTB">'+ arrObjEtelaat[i]["tarikh"] +'</div>\n' +
+                    '                    <div class="meghdarEtelaatSTB tarikhSTB">'+ arrObjEtelaat[i]["tarikh"] +'</div>\n' +
                     '                </div>\n' +
                     '                <div class="etelaatSTB">\n' +
                     '                    <div class="onvanEtelaatSTB"><span class="icon"></span><span class="matnTitr">مبلغ:</span></div>\n' +
-                    '                    <div class="meghdarEtelaatSTB">'+ momayezdar(arrObjEtelaat[i]["mablagh"]) +'</div>\n' +
+                    '                    <div class="meghdarEtelaatSTB mablaghSTB">'+ momayezdar(arrObjEtelaat[i]["mablagh"]) +'</div>\n' +
                     '                </div>\n' +
                     '            </div>\n' +
                     '            <div class="kadrEmkanatSTB">\n' +
                     '                <a href="javascript:void(0);" onclick="" class="emkanatSTB"></a>\n' +
                     '                <a href="javascript:void(0);" onclick="" class="emkanatSTB"></a>\n' +
                     '            </div>\n' +
-                    '        </div>\n';
-
-                if (arrObjEtelaat[i]["tozih"] !== "")
-                {
-                    strHTML += '<div class="kadrTozihSTB">\n' +
-                        '    <div class="onvanEtelaatSTB"><span class="icon"></span><span class="matnTitr">توضیحات:</span></div>\n' +
-                        '    <div class="meghdarEtelaatSTB">'+ arrObjEtelaat[i]["tozih"] +'</div>\n' +
-                        '</div>';
-                }
-
-                strHTML += '</div>';
+                    '        </div>' +
+                    '        <div class="kadrTozihSTB">\n' +
+                    '            <div class="onvanEtelaatSTB"><span class="icon"></span><span class="matnTitr">توضیحات:</span></div>\n' +
+                    '            <div class="meghdarEtelaatSTB tozihSTB">'+ arrObjEtelaat[i]["tozih"] +'</div>\n' +
+                    '        </div>' +
+                    '    </div>';
 
                 var lmn = document.createElement("div");
                 lmn.setAttribute("class", "kadrDorSTB");
                 lmn.innerHTML = strHTML;
                 lmnKadr.appendChild(lmn);
             }
+
+            document.getElementById("tedadKhoroojiSRT").innerHTML = momayezdar(tedadKhorooji);
+            document.getElementById("tedadVoroodiSRT").innerHTML = momayezdar(tedadVoroodi);
+            document.getElementById("meghdarKhoroojiSRT").innerHTML = momayezdar(meghdarKhorooji);
+            document.getElementById("meghdarVoroodiSRT").innerHTML = momayezdar(meghdarVoroodi);
+            document.getElementById("tarazSRT").innerHTML = momayezdar(meghdarVoroodi - meghdarKhorooji);
         }
     };
     xhttp.open("POST", "ajax/gereftan-soorathesab.php?sid="+Math.random(), true);

@@ -56,6 +56,32 @@ if ($result !== false && $result->num_rows > 0)
     <div id="sotoonChap">
         <?php require("code/navar-bala.php");?>
         <?php require("code/filter-soorathesab.php");?>
+        <div id="kadrAmarSoorathesab">
+            <div class="amarSRT">
+                <div class="titrAmarSRT"><span class="icon"></span><span class="matnTitr">تعداد نتایج:</span></div>
+                <div class="meghdarAmarSRT" id="tedadNataiejSRT">0</div>
+            </div>
+            <div class="amarSRT">
+                <div class="titrAmarSRT"><span class="icon"></span><span class="matnTitr">تعداد خروجی:</span></div>
+                <div class="meghdarAmarSRT" id="tedadKhoroojiSRT">0</div>
+            </div>
+            <div class="amarSRT">
+                <div class="titrAmarSRT"><span class="icon"></span><span class="matnTitr">تعداد ورودی:</span></div>
+                <div class="meghdarAmarSRT" id="tedadVoroodiSRT">0</div>
+            </div>
+            <div class="amarSRT">
+                <div class="titrAmarSRT"><span class="icon"></span><span class="matnTitr">خروجی:</span></div>
+                <div class="meghdarAmarSRT" id="meghdarKhoroojiSRT">0</div>
+            </div>
+            <div class="amarSRT">
+                <div class="titrAmarSRT"><span class="icon"></span><span class="matnTitr">ورودی:</span></div>
+                <div class="meghdarAmarSRT" id="meghdarVoroodiSRT">0</div>
+            </div>
+            <div class="amarSRT">
+                <div class="titrAmarSRT"><span class="icon"></span><span class="matnTitr">تراز:</span></div>
+                <div class="meghdarAmarSRT" id="tarazSRT">0</div>
+            </div>
+        </div>
         <div id="kadrSoorathesab"></div>
     </div>
 

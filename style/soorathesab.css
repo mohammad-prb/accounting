@@ -57,13 +57,39 @@ span#kadrVasetEmalFilter
     margin: auto;
 }
 
+#kadrAmarSoorathesab
+{
+    float: right;
+    width: 100%;
+    margin: 30px 0;
+}
+
+.amarSRT
+{
+    float: right;
+    margin-left: 30px;
+    font-size: 0.875rem;
+}
+
+.titrAmarSRT
+{
+    float: right;
+    color: hsl(0, 0%, 40%);
+    margin-left: 3pt;
+}
+
+.meghdarAmarSRT
+{
+    float: right;
+    direction: ltr;
+}
+
 #kadrSoorathesab
 {
     position: relative;
     float: right;
     width: 100%;
     min-height: 100px;
-    margin-top: 30px;
     border-radius: 8px;
     overflow: hidden;
 }
@@ -116,16 +142,6 @@ span#kadrVasetEmalFilter
     cursor: context-menu;
 }
 
-.kadrSTB.khorooji .etelaatSTB:last-child
-{
-    color: hsl(352, 100%, 40%);
-}
-
-.kadrSTB.voroodi .etelaatSTB:last-child
-{
-    color: hsl(148, 64%, 40%);
-}
-
 .onvanEtelaatSTB
 {
     float: right;
@@ -136,6 +152,31 @@ span#kadrVasetEmalFilter
 .meghdarEtelaatSTB
 {
     float: right;
+}
+
+.kadrSTB.khorooji .mablaghSTB
+{
+    color: hsl(352, 100%, 40%);
+}
+
+.kadrSTB.voroodi .mablaghSTB
+{
+    color: hsl(148, 64%, 40%);
+}
+
+.dastehSTB
+{
+    color: hsl(39, 100%, 35%);
+}
+
+.fardSTB
+{
+    color: hsl(301, 36%, 50%);
+}
+
+.tozihSTB
+{
+    color: hsl(204, 100%, 35%);
 }
 
 .kadrEmkanatSTB
