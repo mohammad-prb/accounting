@@ -29,8 +29,8 @@
                 <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">وسیله:</span></div>
                 <div class="kadrENT" id="vasilehSBTK">
                     <span class="kadrPoshtENT"></span>
-                    <a class="gozinehENT" onclick="taghirENT(this);" data-value="2" href="javascript:void(0);">کارتخوان</a>
-                    <a class="gozinehENT" onclick="taghirENT(this);" data-value="3" href="javascript:void(0);">عابر بانک</a>
+                    <a class="gozinehENT" onclick="taghirENT(this);" data-value="1" href="javascript:void(0);">کارتخوان</a>
+                    <a class="gozinehENT" onclick="taghirENT(this);" data-value="2" href="javascript:void(0);">عابر بانک</a>
                 </div>
             </div>
             <div class="etelaatSBT">

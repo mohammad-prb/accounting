@@ -33,14 +33,14 @@ if ((integer)$khoroojiAst == 1)
 {
     if (isset($_POST["noeID"])) $noeID = $_POST["noeID"]; else die();
     if (isset($_POST["vasilehID"])) $vasilehID = $_POST["vasilehID"]; else die();
-    if (preg_match("/^[1-2]$/", $noeID) !== 1 || preg_match("/^[1-6]$/", $vasilehID) !== 1) die();
+    if (preg_match("/^[1-2]$/", $noeID) !== 1 || preg_match("/^[1-5]$/", $vasilehID) !== 1) die();
 }
 else
 {
     $noeID = $vasilehID = 0;
 }
 
-$sql = "insert into tbl_soorathesab (hesabID, khoroojiAst, noeID, vasilehID, dastehID, fardID, mablagh, tarikh, tozih, zamanSabt) values (?,?,?,?,?,?,?,?,?)";
+$sql = "insert into tbl_soorathesab (hesabID, khoroojiAst, noeID, vasilehID, dastehID, fardID, mablagh, tarikh, tozih, zamanSabt) values (?,?,?,?,?,?,?,?,?,?)";
 $stmt = $con->prepare($sql);
 $stmt->bind_param("iiiiiiisss", $hesabID, $khoroojiAst, $noeID, $vasilehID, $dastehID, $fard, $mablagh, $tarikh, $tozih, $zamanSabt);
 if ($stmt->execute() == true) echo "ok";

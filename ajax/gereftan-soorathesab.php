@@ -24,18 +24,17 @@ if (preg_match("/^(|0?[1-9]|1[0-2])$/", $mah) !== 1) die();
 if (preg_match("/^(|[1-9][0-9]{3})$/", $sal) !== 1) die();
 if (preg_match("/^(|[1-9][0-9]*)$/", $mablagh) !== 1) die();
 
-
 if ((integer)$noeVariz == 1)
 {
-    if (isset($_POST["noeID"])) $noeID = $_POST["noeID"]; else die();
+    if (isset($_POST["noe"])) $noeID = $_POST["noe"]; else die();
     if (preg_match("/^(hameh|[1-2])$/", $noeID) !== 1) die();
 
     if ($noeID != "hameh")
     {
-        if (isset($_POST["vasilehID"])) $vasilehID = $_POST["vasilehID"]; else die();
+        if (isset($_POST["vasileh"])) $vasilehID = $_POST["vasileh"]; else die();
         if (preg_match("/^(hameh|[1-6])$/", $vasilehID) !== 1) die();
 
-        if ((integer)$vasilehID == 4 || (integer)$vasilehID == 5)
+        if ((integer)$vasilehID == 3 || (integer)$vasilehID == 4)
         {
             if (isset($_POST["fard"])) $fard = htmlspecialchars(stripcslashes(trim($_POST["fard"]))); else die();
             if (preg_match("/^(hameh|[1-9]+[0-9]*)$/", $fard) !== 1) die();
@@ -54,7 +53,7 @@ $sql = @"select tbl_soorathesab.id as id, khoroojiAst, noeID, tbl_vasileh.nam as
         inner join tbl_dasteh on tbl_dasteh.id = dastehID
         left join tbl_vasileh on tbl_vasileh.id = vasilehID
         left join tbl_afrad on tbl_afrad.id = fardID
-        where tbl_soorathesab.vaziat = 1";
+        where tbl_soorathesab.vaziat = 1 and tbl_soorathesab.hesabID = " . $hesabID;
 
 if ($dastehID != "hameh") $sql .= " and dastehID = " . $dastehID;
 if ($mablagh != "") $sql .= " and mablagh = " . $mablagh;
@@ -69,7 +68,7 @@ if ($noeVariz != "hameh")
             if ($vasilehID != "hameh")
             {
                 $sql .= " and vasilehID = " . $vasilehID;
-                if (($vasilehID == 4 || $vasilehID == 5) && $fard != "hameh")
+                if (($vasilehID == 3 || $vasilehID == 4) && $fard != "hameh")
                 {
                     $sql .= " and fardID = " . $fard;
                 }
@@ -84,6 +83,9 @@ if ($noeVariz != "hameh")
         }
     }
 }
+
+if (strlen($mah) == 1) $mah = "0".$mah;
+if (strlen($rooz) == 1) $rooz = "0".$rooz;
 
 if ($sal == "") $strTarikh = "____/";
 else $strTarikh = $sal . "/";

@@ -24,7 +24,7 @@ input.txtMablagh
 
 input.txtTozih
 {
-    width: 200px;
+    width: 183px;
 }
 
 a#emalFilter, a#emalFilter:link, a#emalFilter:visited
@@ -112,17 +112,25 @@ span#kadrVasetEmalFilter
 .etelaatSTB
 {
     float: right;
-    margin: 0 0 10px 15px;
+    margin: 0 0 10px 30px;
     cursor: context-menu;
+}
+
+.kadrSTB.khorooji .etelaatSTB:last-child
+{
+    color: hsl(352, 100%, 40%);
+}
+
+.kadrSTB.voroodi .etelaatSTB:last-child
+{
+    color: hsl(148, 64%, 40%);
 }
 
 .onvanEtelaatSTB
 {
     float: right;
     margin-left: 5px;
-    padding: 5px 0;
-    font-family: myIcon;
-    color: hsl(0, 0%, 50%);
+    color: hsl(0, 0%, 40%);
 }
 
 .meghdarEtelaatSTB

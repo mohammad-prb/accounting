@@ -133,15 +133,15 @@ function taghirNoeSBT(lmn)
     if (noe === 1)
     {
         lmnVasileh.innerHTML = '<span class="kadrPoshtENT"></span>\n' +
-            '<a class="gozinehENT" onclick="taghirENT(this);" data-value="2" href="javascript:void(0);">کارتخوان</a>\n' +
-            '<a class="gozinehENT" onclick="taghirENT(this);" data-value="3" href="javascript:void(0);">عابر بانک</a>';
+            '<a class="gozinehENT" onclick="taghirENT(this);" data-value="1" href="javascript:void(0);">کارتخوان</a>\n' +
+            '<a class="gozinehENT" onclick="taghirENT(this);" data-value="2" href="javascript:void(0);">عابر بانک</a>';
     }
     else if (noe === 2)
     {
         lmnVasileh.innerHTML = '<span class="kadrPoshtENT"></span>\n' +
-            '<a class="gozinehENT" onclick="taghirENT(this);taghirVasilehSBT(this);" data-value="4" href="javascript:void(0);">کارت</a>\n' +
-            '<a class="gozinehENT" onclick="taghirENT(this);taghirVasilehSBT(this);" data-value="5" href="javascript:void(0);">حساب</a>\n' +
-            '<a class="gozinehENT" onclick="taghirENT(this);taghirVasilehSBT(this);" data-value="6" href="javascript:void(0);">پرداخت</a>';
+            '<a class="gozinehENT" onclick="taghirENT(this);taghirVasilehSBT(this);" data-value="3" href="javascript:void(0);">کارت</a>\n' +
+            '<a class="gozinehENT" onclick="taghirENT(this);taghirVasilehSBT(this);" data-value="4" href="javascript:void(0);">حساب</a>\n' +
+            '<a class="gozinehENT" onclick="taghirENT(this);taghirVasilehSBT(this);" data-value="5" href="javascript:void(0);">پرداخت</a>';
     }
 
     taghirENT(lmnVasileh.getElementsByClassName("gozinehENT")[0]);
@@ -303,7 +303,7 @@ function sabtVarizi(noe)
         var mablagh = document.getElementById("mablaghSBTK").value.toString();
         var tozih = document.getElementById("tozihSBTK").value.toString();
 
-        if (!check(noeID, "^[1-2]$") || !check(vasilehID, "^[1-6]$")) {
+        if (!check(noeID, "^[1-2]$") || !check(vasilehID, "^[1-5]$")) {
             namayeshPeygham("لطفا فیلد هارا برسی کرده، و مجددا تلاش کنید.");
             return;
         }
@@ -461,8 +461,8 @@ function taghirNoeFSRT(lmn)
     {
         lmnVasileh.innerHTML = '<span class="kadrPoshtENT"></span>\n' +
             '<a class="gozinehENT" onclick="taghirENT(this);" data-value="hameh" href="javascript:void(0);">همه</a>\n' +
-            '<a class="gozinehENT" onclick="taghirENT(this);" data-value="2" href="javascript:void(0);">کارتخوان</a>\n' +
-            '<a class="gozinehENT" onclick="taghirENT(this);" data-value="3" href="javascript:void(0);">عابر بانک</a>';
+            '<a class="gozinehENT" onclick="taghirENT(this);" data-value="1" href="javascript:void(0);">کارتخوان</a>\n' +
+            '<a class="gozinehENT" onclick="taghirENT(this);" data-value="2 href="javascript:void(0);">عابر بانک</a>';
 
         lmnVasileh.parentElement.style.display = "block";
         taghirENT(lmnVasileh.getElementsByClassName("gozinehENT")[0]);
@@ -472,9 +472,9 @@ function taghirNoeFSRT(lmn)
     {
         lmnVasileh.innerHTML = '<span class="kadrPoshtENT"></span>\n' +
             '<a class="gozinehENT" onclick="taghirENT(this);taghirVasilehFSRT(this);" data-value="hameh" href="javascript:void(0);">همه</a>\n' +
-            '<a class="gozinehENT" onclick="taghirENT(this);taghirVasilehFSRT(this);" data-value="4" href="javascript:void(0);">کارت</a>\n' +
-            '<a class="gozinehENT" onclick="taghirENT(this);taghirVasilehFSRT(this);" data-value="5" href="javascript:void(0);">حساب</a>\n' +
-            '<a class="gozinehENT" onclick="taghirENT(this);taghirVasilehFSRT(this);" data-value="6" href="javascript:void(0);">پرداخت</a>';
+            '<a class="gozinehENT" onclick="taghirENT(this);taghirVasilehFSRT(this);" data-value="3" href="javascript:void(0);">کارت</a>\n' +
+            '<a class="gozinehENT" onclick="taghirENT(this);taghirVasilehFSRT(this);" data-value="4" href="javascript:void(0);">حساب</a>\n' +
+            '<a class="gozinehENT" onclick="taghirENT(this);taghirVasilehFSRT(this);" data-value="5" href="javascript:void(0);">پرداخت</a>';
 
         lmnVasileh.parentElement.style.display = "block";
         taghirENT(lmnVasileh.getElementsByClassName("gozinehENT")[0]);
@@ -493,7 +493,7 @@ function taghirVasilehFSRT(lmn)
     if (Number(vasilehFSRT) === 6) taghirDastehFSRT(4);
     else taghirDastehFSRT(1,2);
 
-    if (Number(vasilehFSRT) === 4 || Number(vasilehFSRT) === 5) document.getElementById("varizBeSBTK").parentElement.style.display = "block";
+    if (Number(vasilehFSRT) === 3 || Number(vasilehFSRT) === 4) document.getElementById("varizBeSBTK").parentElement.style.display = "block";
     else document.getElementById("varizBeSBTK").parentElement.style.display = "none";
 }
 
@@ -562,6 +562,8 @@ function tavizHesabSRT(lmn)
             option.value = "2";
             option.innerHTML = "دیگران...";
             lmnSelect.appendChild(option);
+
+            emalFilterSRT();
         }
     };
     xhttp.open("POST", "ajax/gereften-etelaat-hesab.php?sid="+Math.random(), true);
@@ -574,7 +576,7 @@ function tavizHesabSRT(lmn)
 function emalFilterSRT()
 {
     var fard, noeVariz = document.getElementById("khoroojiAstSBTK").dataset.value.trim().toString();
-    var hesabID = document.getElementsByClassName("sltHesabha")[0].value;
+    var hesabID = Number(document.getElementsByClassName("sltHesabha")[0].value);
     var strQ = "noeVariz=" + noeVariz + "&hesabID=" + hesabID;
 
     if (Number(noeVariz) === 1)
@@ -586,7 +588,7 @@ function emalFilterSRT()
         {
             var vasileh = document.getElementById("vasilehSBTK").dataset.value.trim().toString();
             strQ += "&vasileh=" + vasileh;
-            if (Number(vasileh) === 4 || Number(vasileh) === 5)
+            if (Number(vasileh) === 3 || Number(vasileh) === 4)
             {
                 fard = document.getElementById("varizBeSBTK").value.trim().toString();
                 strQ += "&fard=" + fard;
@@ -642,41 +644,41 @@ function emalFilterSRT()
 
                 if (Number(arrObjEtelaat[i]["khoroojiAst"]) === 1)
                 {
-                    strHTML += '<div class="etelaatSTB" title="نوع">\n' +
-                        '    <div class="onvanEtelaatSTB"></div>\n' +
-                        '    <div class="meghdarEtelaatSTB">'+ (Number(arrObjEtelaat[i]["noe"]) === 1 ? "برداشت با کارت" : "اینترنتی") +'</div>\n' +
+                    strHTML += '<div class="etelaatSTB">\n' +
+                        '    <div class="onvanEtelaatSTB"><span class="icon"></span><span class="matnTitr">نوع:</span></div>\n' +
+                        '    <div class="meghdarEtelaatSTB">'+ (Number(arrObjEtelaat[i]["noeID"]) === 1 ? "برداشت با کارت" : "اینترنتی") +'</div>\n' +
                         '</div>\n' +
-                        '<div class="etelaatSTB" title="وسیله">\n' +
-                        '    <div class="onvanEtelaatSTB"></div>\n' +
+                        '<div class="etelaatSTB">\n' +
+                        '    <div class="onvanEtelaatSTB"><span class="icon"></span><span class="matnTitr">وسیله:</span></div>\n' +
                         '    <div class="meghdarEtelaatSTB">'+ arrObjEtelaat[i]["vasileh"] + '</div>\n' +
                         '</div>';
 
-                    if (Number(arrObjEtelaat[i]["vasilehID"]) === 4 || Number(arrObjEtelaat[i]["vasilehID"]) === 5)
+                    if (Number(arrObjEtelaat[i]["vasilehID"]) === 3 || Number(arrObjEtelaat[i]["vasilehID"]) === 4)
                     {
-                        strHTML += '<div class="etelaatSTB" title="واریز به">\n' +
-                            '    <div class="onvanEtelaatSTB"></div>\n' +
+                        strHTML += '<div class="etelaatSTB">\n' +
+                            '    <div class="onvanEtelaatSTB"><span class="icon"></span><span class="matnTitr">واریز به:</span></div>\n' +
                             '    <div class="meghdarEtelaatSTB">'+ arrObjEtelaat[i]["nam"] +'</div>\n' +
                             '</div>';
                     }
                 }
                 else if (Number(arrObjEtelaat[i]["khoroojiAst"]) === 0)
                 {
-                    strHTML += '<div class="etelaatSTB" title="واریز کننده">\n' +
-                        '    <div class="onvanEtelaatSTB"></div>\n' +
+                    strHTML += '<div class="etelaatSTB">\n' +
+                        '    <div class="onvanEtelaatSTB"><span class="icon"></span><span class="matnTitr">واریز کننده:</span></div>\n' +
                         '    <div class="meghdarEtelaatSTB">'+ arrObjEtelaat[i]["nam"] +'</div>\n' +
                         '</div>';
                 }
 
-                strHTML += '<div class="etelaatSTB" title="دسته">\n' +
-                    '                    <div class="onvanEtelaatSTB"></div>\n' +
+                strHTML += '<div class="etelaatSTB">\n' +
+                    '                    <div class="onvanEtelaatSTB"><span class="icon"></span><span class="matnTitr">دسته:</span></div>\n' +
                     '                    <div class="meghdarEtelaatSTB">'+ arrObjEtelaat[i]["onvan"] +'</div>\n' +
                     '                </div>\n' +
-                    '                <div class="etelaatSTB" title="تاریخ">\n' +
-                    '                    <div class="onvanEtelaatSTB"></div>\n' +
+                    '                <div class="etelaatSTB">\n' +
+                    '                    <div class="onvanEtelaatSTB"><span class="icon"></span><span class="matnTitr">تاریخ:</span></div>\n' +
                     '                    <div class="meghdarEtelaatSTB">'+ arrObjEtelaat[i]["tarikh"] +'</div>\n' +
                     '                </div>\n' +
-                    '                <div class="etelaatSTB" title="مبلغ">\n' +
-                    '                    <div class="onvanEtelaatSTB"></div>\n' +
+                    '                <div class="etelaatSTB">\n' +
+                    '                    <div class="onvanEtelaatSTB"><span class="icon"></span><span class="matnTitr">مبلغ:</span></div>\n' +
                     '                    <div class="meghdarEtelaatSTB">'+ momayezdar(arrObjEtelaat[i]["mablagh"]) +'</div>\n' +
                     '                </div>\n' +
                     '            </div>\n' +
@@ -688,8 +690,8 @@ function emalFilterSRT()
 
                 if (arrObjEtelaat[i]["tozih"] !== "")
                 {
-                    strHTML += '<div class="kadrTozihSTB" title="توضیحات">\n' +
-                        '    <div class="onvanEtelaatSTB"></div>\n' +
+                    strHTML += '<div class="kadrTozihSTB">\n' +
+                        '    <div class="onvanEtelaatSTB"><span class="icon"></span><span class="matnTitr">توضیحات:</span></div>\n' +
                         '    <div class="meghdarEtelaatSTB">'+ arrObjEtelaat[i]["tozih"] +'</div>\n' +
                         '</div>';
                 }
