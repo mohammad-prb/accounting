@@ -1,8 +1,14 @@
-#kadrSoorathesab
+#kadrFilterSoorathesab
 {
     position: relative;
     float: right;
     width: 100%;
+}
+
+#kadrFilterSRT
+{
+    float: right;
+    margin-top: 10px;
 }
 
 .etelaatSBT.tamamSafheh
@@ -19,4 +25,150 @@ input.txtMablagh
 input.txtTozih
 {
     width: 200px;
+}
+
+a#emalFilter, a#emalFilter:link, a#emalFilter:visited
+{
+    float: right;
+    width: 100%;
+    padding: 8px 0;
+    border-radius: 8px;
+    text-align: center;
+    color: hsl(39, 100%, 20%);
+    background-color: hsl(39, 100%, 87%);
+    transition: background-color 0.1s;
+}
+
+a#emalFilter:hover
+{
+    background-color: hsl(39, 100%, 80%);
+}
+
+a#emalFilter:active
+{
+    transition: none;
+    background-color: hsl(39, 100%, 75%);
+}
+
+span#kadrVasetEmalFilter
+{
+    display: block;
+    width: 94px;
+    margin: auto;
+}
+
+#kadrSoorathesab
+{
+    position: relative;
+    float: right;
+    width: 100%;
+    min-height: 100px;
+    margin-top: 30px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.kadrDorSTB
+{
+    position: relative;
+    float: right;
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    background-color: hsl(0, 0%, 90%);
+}
+
+.kadrSTB
+{
+    float: right;
+    width: 100%;
+    padding: 10px 0 0;
+}
+
+.kadrSTB.khorooji
+{
+    background-color: hsl(352, 100%, 95%);
+}
+
+.kadrSTB.voroodi
+{
+    background-color: hsl(148, 64%, 90%);
+}
+
+.headerSTB
+{
+    float: right;
+    width: calc(100% - 20px);
+    margin: 0 10px 0;
+}
+
+.kadrEtelaatSTB
+{
+    float: right;
+    width: calc(100% - 70px);
+}
+
+.etelaatSTB
+{
+    float: right;
+    margin: 0 0 10px 15px;
+    cursor: context-menu;
+}
+
+.onvanEtelaatSTB
+{
+    float: right;
+    margin-left: 5px;
+    padding: 5px 0;
+    font-family: myIcon;
+    color: hsl(0, 0%, 50%);
+}
+
+.meghdarEtelaatSTB
+{
+    float: right;
+}
+
+.kadrEmkanatSTB
+{
+    float: left;
+}
+
+a.emkanatSTB, a.emkanatSTB:link, a.emkanatSTB:visited
+{
+    float: left;
+    font-family: myIcon;
+    padding: 3px;
+    margin-right: 5px;
+    font-size: 1.325rem;
+    color: hsl(0, 0%, 30%);
+}
+
+a.emkanatSTB:hover
+{
+    color: hsl(0, 0%, 0%);
+}
+
+a.emkanatSTB:active
+{
+    color: hsl(0, 0%, 10%);
+}
+
+.kadrTozihSTB
+{
+    float: right;
+    width: calc(100% - 20px);
+    margin: 0 10px 10px;
+    padding-top: 10px;
+}
+
+.kadrSTB.khorooji .kadrTozihSTB
+{
+    border-top: 1px solid hsl(352, 100%, 85%);
+}
+
+.kadrSTB.voroodi .kadrTozihSTB
+{
+    border-top: 1px solid hsl(148, 64%, 60%);
 }

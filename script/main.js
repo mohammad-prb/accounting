@@ -2,7 +2,9 @@
 function tanzimSaf()
 {
     var lmnENT = document.getElementsByClassName("kadrENT");
-    for (let i=0; i<lmnENT.length; i++) taghirENT(lmnENT[i].getElementsByClassName("gozinehENT")[0]);
+    for (let i=0; i<lmnENT.length; i++)
+        if (lmnENT[i].getElementsByClassName("gozinehENT")[0])
+            taghirENT(lmnENT[i].getElementsByClassName("gozinehENT")[0]);
 }
 
 /*      بستن کادر پیغام      */
@@ -419,12 +421,14 @@ function taghirKVFSRT(lmn)
     var lmnNoe = document.getElementById("noeSBTK").parentElement;
     var lmnVasileh = document.getElementById("vasilehSBTK").parentElement;
     var lmnVarizKonandeh = document.getElementById("varizKonandehSBTV").parentElement;
+    var lmnVarizBe = document.getElementById("varizBeSBTK").parentElement;
 
     if (noe === "hameh")
     {
         lmnNoe.style.display = "none";
         lmnVasileh.style.display = "none";
         lmnVarizKonandeh.style.display = "none";
+        lmnVarizBe.style.display = "none";
         taghirDastehFSRT(1);
     }
     else if (Number(noe) === 1)
@@ -440,6 +444,7 @@ function taghirKVFSRT(lmn)
         lmnNoe.style.display = "none";
         lmnVasileh.style.display = "none";
         lmnVarizKonandeh.style.display = "block";
+        lmnVarizBe.style.display = "none";
         taghirDastehFSRT(1,3);
     }
 }
@@ -490,4 +495,216 @@ function taghirVasilehFSRT(lmn)
 
     if (Number(vasilehFSRT) === 4 || Number(vasilehFSRT) === 5) document.getElementById("varizBeSBTK").parentElement.style.display = "block";
     else document.getElementById("varizBeSBTK").parentElement.style.display = "none";
+}
+
+/*      تغییر دادن حساب در صورتحساب      */
+function tavizHesabSRT(lmn)
+{
+    var hesabID = Number(lmn.value);
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function ()
+    {
+        if (this.readyState === 4 && this.status === 200)
+        {
+            bastanLoading(document.getElementById("kadrFilterSoorathesab"));
+
+            var objNatijeh = JSON.parse(this.responseText);
+            var arrAfrad = objNatijeh["afrad"];
+            khorojiAst = 0; // برای اینکه تابع "تغییر KV" در صورت تغییر این متغیر کار میکند
+            arrObjDasteh = objNatijeh["dasteh"];
+            taghirENT(document.querySelector("#khoroojiAstSBTK .gozinehENT"));
+            taghirKVFSRT(document.querySelector("#khoroojiAstSBTK .gozinehENT"));
+
+            /* واریز کننده ها */
+            var option, lmnSelect = document.getElementById("varizKonandehSBTV");
+            lmnSelect.innerHTML = "<option value='hameh'>-</option>";
+            for (let i=0; i<arrAfrad.length; i++)
+            {
+                if (Number(arrAfrad[i]["noe"]) === 1 || Number(arrAfrad[i]["noe"]) === 3)
+                {
+                    option = document.createElement("option");
+                    option.value = arrAfrad[i]["id"];
+                    option.innerHTML = arrAfrad[i]["nam"];
+                    lmnSelect.appendChild(option);
+                }
+            }
+
+            option = document.createElement("option");
+            option.value = "1";
+            option.innerHTML = "نامشخص";
+            lmnSelect.appendChild(option);
+
+            option = document.createElement("option");
+            option.value = "2";
+            option.innerHTML = "دیگران...";
+            lmnSelect.appendChild(option);
+
+            /* واریز به ها */
+            lmnSelect = document.getElementById("varizBeSBTK");
+            lmnSelect.innerHTML = "<option value='hameh'>-</option>";
+            for (let i=0; i<arrAfrad.length; i++)
+            {
+                if (Number(arrAfrad[i]["noe"]) <= 2)
+                {
+                    option = document.createElement("option");
+                    option.value = arrAfrad[i]["id"];
+                    option.innerHTML = arrAfrad[i]["nam"];
+                    lmnSelect.appendChild(option);
+                }
+            }
+
+            option = document.createElement("option");
+            option.value = "1";
+            option.innerHTML = "نامشخص";
+            lmnSelect.appendChild(option);
+
+            option = document.createElement("option");
+            option.value = "2";
+            option.innerHTML = "دیگران...";
+            lmnSelect.appendChild(option);
+        }
+    };
+    xhttp.open("POST", "ajax/gereften-etelaat-hesab.php?sid="+Math.random(), true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("hesabID="+hesabID+"&tk="+tkn);
+    namayeshLoading(document.getElementById("kadrFilterSoorathesab"));
+}
+
+/*      تابع اعمال فیلتر صورتحساب      */
+function emalFilterSRT()
+{
+    var fard, noeVariz = document.getElementById("khoroojiAstSBTK").dataset.value.trim().toString();
+    var hesabID = document.getElementsByClassName("sltHesabha")[0].value;
+    var strQ = "noeVariz=" + noeVariz + "&hesabID=" + hesabID;
+
+    if (Number(noeVariz) === 1)
+    {
+        var noe = document.getElementById("noeSBTK").dataset.value.trim().toString();
+        strQ += "&noe=" + noe;
+
+        if (noe !== "hameh")
+        {
+            var vasileh = document.getElementById("vasilehSBTK").dataset.value.trim().toString();
+            strQ += "&vasileh=" + vasileh;
+            if (Number(vasileh) === 4 || Number(vasileh) === 5)
+            {
+                fard = document.getElementById("varizBeSBTK").value.trim().toString();
+                strQ += "&fard=" + fard;
+            }
+        }
+    }
+    else if (Number(noeVariz) === 0)
+    {
+        fard = document.getElementById("varizKonandehSBTV").value.trim().toString();
+        strQ += "&fard=" + fard;
+    }
+
+    var dastehID = document.getElementById("dastehSBTK").value.trim().toString();
+    var rooz = document.querySelectorAll("#tarikhSBTK>input")[0].value.trim().toString();
+    var mah = document.querySelectorAll("#tarikhSBTK>input")[1].value.trim().toString();
+    var sal = document.querySelectorAll("#tarikhSBTK>input")[2].value.trim().toString();
+    var mablagh = document.getElementById("mablaghSBTK").value.trim().toString();
+    var tozih = document.getElementById("tozihSBTK").value.trim().toString();
+
+    if (!check(rooz, "^(|0?[1-9]|[1-2][0-9]|3[0-1])$")) {
+        namayeshPeygham("روز اشتباه است.");
+    }
+
+    if (!check(mah, "^(|0?[1-9]|1[0-2])$")) {
+        namayeshPeygham("ماه اشتباه است.");
+    }
+
+    if (!check(sal, "^(|[1-9][0-9]{3})$")) {
+        namayeshPeygham("سال اشتباه است.");
+    }
+
+    if (!check(mablagh, "^(|[1-9][0-9]*)$")) {
+        namayeshPeygham("مبلغ اشتباه است.");
+    }
+
+    strQ += "&dastehID=" + dastehID + "&rooz=" + rooz + "&mah=" + mah + "&sal=" + sal + "&mablagh=" + mablagh + "&tozih=" + tozih;
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function ()
+    {
+        if (this.readyState === 4 && this.status === 200)
+        {
+            bastanLoading(document.getElementById("kadrSoorathesab"));
+            var arrObjEtelaat = JSON.parse(this.responseText);
+            var lmnKadr = document.getElementById("kadrSoorathesab");
+            lmnKadr.innerHTML = "";
+
+            for (let i=0; i<arrObjEtelaat.length; i++)
+            {
+                var strHTML = '<div class="kadrSTB '+ (Number(arrObjEtelaat[i]["khoroojiAst"]) === 1 ? "khorooji" : "voroodi") +'">\n' +
+                    '               <div class="headerSTB">\n' +
+                    '                    <div class="kadrEtelaatSTB">';
+
+                if (Number(arrObjEtelaat[i]["khoroojiAst"]) === 1)
+                {
+                    strHTML += '<div class="etelaatSTB" title="نوع">\n' +
+                        '    <div class="onvanEtelaatSTB"></div>\n' +
+                        '    <div class="meghdarEtelaatSTB">'+ (Number(arrObjEtelaat[i]["noe"]) === 1 ? "برداشت با کارت" : "اینترنتی") +'</div>\n' +
+                        '</div>\n' +
+                        '<div class="etelaatSTB" title="وسیله">\n' +
+                        '    <div class="onvanEtelaatSTB"></div>\n' +
+                        '    <div class="meghdarEtelaatSTB">'+ arrObjEtelaat[i]["vasileh"] + '</div>\n' +
+                        '</div>';
+
+                    if (Number(arrObjEtelaat[i]["vasilehID"]) === 4 || Number(arrObjEtelaat[i]["vasilehID"]) === 5)
+                    {
+                        strHTML += '<div class="etelaatSTB" title="واریز به">\n' +
+                            '    <div class="onvanEtelaatSTB"></div>\n' +
+                            '    <div class="meghdarEtelaatSTB">'+ arrObjEtelaat[i]["nam"] +'</div>\n' +
+                            '</div>';
+                    }
+                }
+                else if (Number(arrObjEtelaat[i]["khoroojiAst"]) === 0)
+                {
+                    strHTML += '<div class="etelaatSTB" title="واریز کننده">\n' +
+                        '    <div class="onvanEtelaatSTB"></div>\n' +
+                        '    <div class="meghdarEtelaatSTB">'+ arrObjEtelaat[i]["nam"] +'</div>\n' +
+                        '</div>';
+                }
+
+                strHTML += '<div class="etelaatSTB" title="دسته">\n' +
+                    '                    <div class="onvanEtelaatSTB"></div>\n' +
+                    '                    <div class="meghdarEtelaatSTB">'+ arrObjEtelaat[i]["onvan"] +'</div>\n' +
+                    '                </div>\n' +
+                    '                <div class="etelaatSTB" title="تاریخ">\n' +
+                    '                    <div class="onvanEtelaatSTB"></div>\n' +
+                    '                    <div class="meghdarEtelaatSTB">'+ arrObjEtelaat[i]["tarikh"] +'</div>\n' +
+                    '                </div>\n' +
+                    '                <div class="etelaatSTB" title="مبلغ">\n' +
+                    '                    <div class="onvanEtelaatSTB"></div>\n' +
+                    '                    <div class="meghdarEtelaatSTB">'+ momayezdar(arrObjEtelaat[i]["mablagh"]) +'</div>\n' +
+                    '                </div>\n' +
+                    '            </div>\n' +
+                    '            <div class="kadrEmkanatSTB">\n' +
+                    '                <a href="javascript:void(0);" onclick="" class="emkanatSTB"></a>\n' +
+                    '                <a href="javascript:void(0);" onclick="" class="emkanatSTB"></a>\n' +
+                    '            </div>\n' +
+                    '        </div>\n';
+
+                if (arrObjEtelaat[i]["tozih"] !== "")
+                {
+                    strHTML += '<div class="kadrTozihSTB" title="توضیحات">\n' +
+                        '    <div class="onvanEtelaatSTB"></div>\n' +
+                        '    <div class="meghdarEtelaatSTB">'+ arrObjEtelaat[i]["tozih"] +'</div>\n' +
+                        '</div>';
+                }
+
+                strHTML += '</div>';
+
+                var lmn = document.createElement("div");
+                lmn.setAttribute("class", "kadrDorSTB");
+                lmn.innerHTML = strHTML;
+                lmnKadr.appendChild(lmn);
+            }
+        }
+    };
+    xhttp.open("POST", "ajax/gereftan-soorathesab.php?sid="+Math.random(), true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send(strQ+"&tk="+tkn);
+    namayeshLoading(document.getElementById("kadrSoorathesab"));
 }
