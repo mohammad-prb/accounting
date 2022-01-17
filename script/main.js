@@ -190,7 +190,7 @@ function taghirVasilehSBT(lmn)
     option.innerHTML = "دیگر...";
     lmnDasteh.appendChild(option);
 
-    if (vasileh === 4 || vasileh === 5) document.getElementById("varizBeSBTK").parentElement.style.display = "block";
+    if (vasileh === 3 || vasileh === 4) document.getElementById("varizBeSBTK").parentElement.style.display = "block";
     else document.getElementById("varizBeSBTK").parentElement.style.display = "none";
 }
 
@@ -714,10 +714,12 @@ function emalFilterSRT()
                     '            <div class="onvanEtelaatSTB"><span class="icon"></span><span class="matnTitr">توضیحات:</span></div>\n' +
                     '            <div class="meghdarEtelaatSTB tozihSTB">'+ arrObjEtelaat[i]["tozih"] +'</div>\n' +
                     '        </div>' +
-                    '    </div>';
+                    '    </div>\n' +
+                    '    <a onclick="entekhabSTB(this);" class="emkanatSTB btnSelectSTB" data-vaziat="0"></a>';
 
                 var lmn = document.createElement("div");
                 lmn.setAttribute("class", "kadrDorSTB");
+                lmn.dataset.vaziat = "0";
                 lmn.innerHTML = strHTML;
                 lmnKadr.appendChild(lmn);
             }
@@ -733,6 +735,69 @@ function emalFilterSRT()
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send(strQ+"&tk="+tkn);
     namayeshLoading(document.getElementById("kadrSoorathesab"));
+}
+
+var tedadSelect = 0, tedadKhoroojiSLT = 0, tedadVoroodiSLT = 0, meghdarKhoroojiSLT = 0, meghdarVoroodiSLT = 0, tarazSLT = 0;
+/*      سلکت کردن صورتحساب ها      */
+function entekhabSTB(lmn)
+{
+    var lmnAmar = document.getElementById("kadrAmarSelect");
+    var mablagh = hazfMomayez(lmn.parentElement.getElementsByClassName("mablaghSTB")[0].innerHTML);
+
+    if (Number(lmn.dataset.vaziat) === 0)
+    {
+        tedadSelect++;
+        lmn.innerHTML = "";
+        lmn.dataset.vaziat = "1";
+        lmn.parentElement.dataset.vaziat = "1";
+        lmnAmar.style.bottom = "10px";
+        if (lmn.parentElement.querySelector(".kadrSTB.khorooji"))
+        {
+            tedadKhoroojiSLT++;
+            meghdarKhoroojiSLT += mablagh;
+            tarazSLT -= mablagh;
+        }
+        else if (lmn.parentElement.querySelector(".kadrSTB.voroodi"))
+        {
+            tedadVoroodiSLT++;
+            meghdarVoroodiSLT += mablagh;
+            tarazSLT += mablagh;
+        }
+    }
+    else
+    {
+        tedadSelect--;
+        lmn.innerHTML = "";
+        lmn.dataset.vaziat = "0";
+        lmn.parentElement.dataset.vaziat = "0";
+        if (tedadSelect === 0) lmnAmar.style.bottom = "-51px";
+        if (lmn.parentElement.querySelector(".kadrSTB.khorooji"))
+        {
+            tedadKhoroojiSLT--;
+            meghdarKhoroojiSLT -= mablagh;
+            tarazSLT += mablagh;
+        }
+        else if (lmn.parentElement.querySelector(".kadrSTB.voroodi"))
+        {
+            tedadVoroodiSLT--;
+            meghdarVoroodiSLT -= mablagh;
+            tarazSLT -= mablagh;
+        }
+    }
+
+    document.getElementById("tedadSelect").innerHTML = momayezdar(tedadSelect);
+    document.getElementById("tedadKoroojiSelect").innerHTML = momayezdar(tedadKhoroojiSLT);
+    document.getElementById("tedadVoroodiSelect").innerHTML = momayezdar(tedadVoroodiSLT);
+    document.getElementById("meghdarKoroojiSelect").innerHTML = momayezdar(meghdarKhoroojiSLT);
+    document.getElementById("meghdarVoroodiSelect").innerHTML = momayezdar(meghdarVoroodiSLT);
+    document.getElementById("tarazSelect").innerHTML = momayezdar(tarazSLT);
+}
+
+/*      دی سلکت کردن صورتحساب ها      */
+function laghvSelect()
+{
+    var arrLmn = document.querySelectorAll("a.btnSelectSTB[data-vaziat='1']");
+    for (let i=0; i<arrLmn.length; i++) entekhabSTB(arrLmn[i]);
 }
 
 /*      تنظیم یک تاریخ خاص در صورتحساب      */

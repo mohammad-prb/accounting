@@ -38,19 +38,7 @@ if ($result !== false && $result->num_rows > 0)
 <body dir="rtl" onload="tanzimSaf();emalFilterSRT();">
 <div id="fullCountainer">
 
-    <div id="CountainerKadrNamayeshPeygham" style="display: none">
-        <div id="kadrNamayeshPeygham">
-            <a id="kadrPoshtPeygham" href="javascript:void(0);" onclick="bastanPeygham();"></a>
-            <div id="kadrPeygham">
-                <div>
-                    <div id="titrPeygham"><span class="icon"></span><span class="matnTitr">پیغام سیستم</span></div>
-                    <div id="matnPeygham"></div>
-                    <span id="kadrDokmehPeygham"></span>
-                </div>
-            </div>
-        </div>
-    </div>
-
+    <?php require("code/peygham.php");?>
     <?php require("code/menu.php");?>
 
     <div id="sotoonChap">
@@ -83,6 +71,36 @@ if ($result !== false && $result->num_rows > 0)
             </div>
         </div>
         <div id="kadrSoorathesab"></div>
+        <div id="kadrAmarSelect">
+            <div class="amarSelect tedad">
+                <div class="titrSelect"><span class="icon"></span><span class="matnTitr">تعداد سلکت:</span></div>
+                <div class="meghdarSelect" id="tedadSelect">0</div>
+            </div>
+            <div class="amarSelect tedad">
+                <div class="titrSelect"><span class="icon"></span><span class="matnTitr">تعداد خروجی:</span></div>
+                <div class="meghdarSelect" id="tedadKoroojiSelect">0</div>
+            </div>
+            <div class="amarSelect tedad">
+                <div class="titrSelect"><span class="icon"></span><span class="matnTitr">تعداد ورودی:</span></div>
+                <div class="meghdarSelect" id="tedadVoroodiSelect">0</div>
+            </div>
+            <div class="amarSelect mablagh">
+                <div class="titrSelect"><span class="icon"></span><span class="matnTitr">خروجی:</span></div>
+                <div class="meghdarSelect khorooji" id="meghdarKoroojiSelect">0</div>
+            </div>
+            <div class="amarSelect mablagh">
+                <div class="titrSelect"><span class="icon"></span><span class="matnTitr">ورودی:</span></div>
+                <div class="meghdarSelect voroodi" id="meghdarVoroodiSelect">0</div>
+            </div>
+            <div class="amarSelect mablagh">
+                <div class="titrSelect"><span class="icon"></span><span class="matnTitr">تراز:</span></div>
+                <div class="meghdarSelect taraz" id="tarazSelect">0</div>
+            </div>
+            <div class="amarSelect dokmeh">
+                <a href="javascript:void(0);" onclick="" class="btnEmkanatSelect" title="حذف سلکت شده ها"></a>
+                <a href="javascript:void(0);" onclick="laghvSelect();" class="btnEmkanatSelect" title="لغو سلکت ها"></a>
+            </div>
+        </div>
     </div>
 
 </div>

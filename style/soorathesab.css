@@ -102,7 +102,12 @@ span#kadrVasetEmalFilter
     border-radius: 8px;
     overflow: hidden;
     margin-bottom: 10px;
-    background-color: hsl(0, 0%, 90%);
+}
+
+.kadrDorSTB[data-vaziat="1"]>.kadrSTB
+{
+    transform: scale(0.93);
+    pointer-events: none;
 }
 
 .kadrSTB
@@ -110,6 +115,9 @@ span#kadrVasetEmalFilter
     float: right;
     width: 100%;
     padding: 10px 0 0;
+    border-radius: 8px;
+    transform-origin: 75%;
+    transition: transform 0.3s;
 }
 
 .kadrSTB.khorooji
@@ -132,7 +140,7 @@ span#kadrVasetEmalFilter
 .kadrEtelaatSTB
 {
     float: right;
-    width: calc(100% - 70px);
+    width: calc(100% - 95px);
 }
 
 .etelaatSTB
@@ -182,11 +190,12 @@ span#kadrVasetEmalFilter
 .kadrEmkanatSTB
 {
     float: left;
+    width: 95px;
 }
 
 a.emkanatSTB, a.emkanatSTB:link, a.emkanatSTB:visited
 {
-    float: left;
+    float: right;
     font-family: myIcon;
     padding: 3px;
     margin-right: 5px;
@@ -202,6 +211,21 @@ a.emkanatSTB:hover
 a.emkanatSTB:active
 {
     color: hsl(0, 0%, 10%);
+}
+
+a.btnSelectSTB, a.btnSelectSTB:link, a.btnSelectSTB:visited
+{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    margin-right: 0;
+    font-family: myIcon;
+    cursor: pointer;
+}
+
+a.btnSelectSTB[data-vaziat="1"]
+{
+    color: hsl(204, 100%, 40%);
 }
 
 .kadrTozihSTB
@@ -257,4 +281,91 @@ a.satrTarikh:hover
 a.satrTarikh:active
 {
     color: hsl(0, 0%, 30%);
+}
+
+#kadrAmarSelect
+{
+    position: fixed;
+    bottom: -51px;
+    right: 10px;
+    z-index: 900;
+    width: calc(100% - 42px);
+    padding: 10px;
+    border-radius: 8px;
+    background-color: hsl(204, 100%, 92%);
+    border: 1px solid hsl(204, 100%, 70%);
+    transition: bottom 0.2s;
+}
+
+.amarSelect
+{
+    float: right;
+    text-align: center;
+}
+
+.amarSelect.tedad
+{
+    width: calc(15% - 9px);
+}
+
+.amarSelect.mablagh
+{
+    width: calc(18.333% - 9px);
+}
+
+.amarSelect.dokmeh
+{
+    width: 52px;
+}
+
+.titrSelect
+{
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
+    color: hsl(0, 0%, 40%);
+}
+
+.meghdarSelect
+{
+    display: inline-block;
+    text-align: right;
+    vertical-align: middle;
+}
+
+.meghdarSelect.khorooji
+{
+    color: hsl(352, 100%, 35%);
+}
+
+.meghdarSelect.voroodi
+{
+    color: hsl(148, 64%, 40%);
+}
+
+.meghdarSelect.taraz
+{
+    direction: ltr;
+    color: hsl(39, 100%, 35%);
+}
+
+a.btnEmkanatSelect, a.btnEmkanatSelect:link, a.btnEmkanatSelect:visited
+{
+    float: left;
+    padding: 2px;
+    border-radius: 50%;
+    font-family: myIcon;
+    font-size: 1.325rem;
+    transition: color 0.1s;
+}
+
+a.btnEmkanatSelect:hover
+{
+    color: hsl(352, 100%, 50%);
+}
+
+a.btnEmkanatSelect:active
+{
+    transition: none;
+    color: hsl(352, 100%, 20%);
 }
