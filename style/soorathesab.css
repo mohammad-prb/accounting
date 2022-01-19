@@ -448,7 +448,7 @@ a.btnEmkanatSelect:active
     border-radius: 10px;
 }
 
-#kadrVSRT>div
+#kadrVSRT>div:first-child
 {
     position: relative;
     width: calc(100% - 30px);

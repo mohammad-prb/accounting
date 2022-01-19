@@ -128,7 +128,7 @@ function taghirNoeSBT(lmn)
     if (noe === Number(lmn.parentElement.dataset.value)) return;
 
     noe = Number(lmn.parentElement.dataset.value);
-    var lmnVasileh = document.getElementById("vasilehSBTK");
+    var lmnVasileh = document.getElementById("vasilehVSRT");
 
     if (noe === 1)
     {
@@ -983,7 +983,7 @@ function taghirVasilehVSRT(lmn)
 /*      باز کردن کادر ویرایش صورتحساب      */
 function virayeshSRT(lmn)
 {
-    var hesabID = Number(document.getElementsByClassName("sltHesabha")[0].value);
+    if (document.getElementById("CountainerKadrViraieshSRT")) return;
     var lmnKadr = lmn.parentElement.parentElement.parentElement.parentElement;
     var id = Number(lmnKadr.dataset.id);
     var khoroojiAst = Number(lmnKadr.dataset.khoroojiAst);
@@ -1111,5 +1111,144 @@ function virayeshSRT(lmn)
 /*      ثبت ویرایش صورتحساب      */
 function sabtVirayeshSRT(id)
 {
+    var khoroojiAst = Number(document.getElementById("noeVarizVSRT").dataset.khoroojiAst);
+    var hesabID = Number(document.getElementsByClassName("sltHesabha")[0].value);
+    var strQ = "id=" + id + "&khoroojiAst=" + khoroojiAst + "&hesabID=" + hesabID;
 
+    if (khoroojiAst === 1)
+    {
+        var noeID = document.getElementById("noeVSRT").dataset.value.toString();
+        var vasilehID = document.getElementById("vasilehVSRT").dataset.value.toString();
+        var fard = document.getElementById("varizBeVSRT").value.toString();
+
+        if (!check(noeID, "^[1-2]$") || !check(vasilehID, "^[1-5]$")) {
+            namayeshPeygham("لطفا فیلد هارا برسی کرده، و مجددا تلاش کنید.");
+            return;
+        }
+        strQ += "&noeID=" + noeID + "&vasilehID=" + vasilehID;
+    }
+    else var fard = document.getElementById("varizKonandehVSRT").value.toString();
+
+    var dastehID = document.getElementById("dastehVSRT").value.toString();
+    var rooz = document.querySelectorAll("#tarikhVSRT>input.txtTarikh")[0].value.toString();
+    var mah = document.querySelectorAll("#tarikhVSRT>input.txtTarikh")[1].value.toString();
+    var sal = document.querySelectorAll("#tarikhVSRT>input.txtTarikh")[2].value.toString();
+    var mablagh = document.getElementById("mablaghVSRT").value.toString();
+    var tozih = document.getElementById("tozihVSRT").value.toString().replace(/(<([^>]+)>)/ig, '');
+
+    if (!check(dastehID, "^[1-9]+[0-9]*$") || !check(fard, "^[1-9]+[0-9]*$")) {
+        namayeshPeygham("لطفا فیلد هارا برسی کرده، و مجددا تلاش کنید.");
+        return;
+    }
+    strQ += "&dastehID=" + dastehID + "&fard=" + fard;
+
+    if (!check(rooz, "^(0?[1-9]|[1-2][0-9]|3[0-1])$")) {
+        namayeshPeygham("روز اشتباه است.");
+        return;
+    }
+    strQ += "&rooz=" + rooz;
+
+    if (!check(mah, "^(0?[1-9]|1[0-2])$")) {
+        namayeshPeygham("ماه اشتباه است.");
+        return;
+    }
+    strQ += "&mah=" + mah;
+
+    if (!check(sal, "^[1-9][0-9]{3}$")) {
+        namayeshPeygham("سال اشتباه است.");
+        return;
+    }
+    strQ += "&sal=" + sal;
+
+    if (!check(mablagh, "^[1-9][0-9]*$")) {
+        namayeshPeygham("مبلغ اشتباه است.");
+        return;
+    }
+    strQ += "&mablagh=" + mablagh;
+    strQ += "&tozih=" + tozih;
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function ()
+    {
+        if (this.readyState === 4 && this.status === 200)
+        {
+            bastanLoading(document.getElementById("kadrVSRT"));
+            var natijeh = this.responseText;
+            if (natijeh === "ok")
+            {
+                flash("ویرایش با موفقیت انجام شد.");
+                var strHTML = "";
+                var lmn = document.querySelector(".kadrDorSTB[data-id='"+id+"']");
+                var mablaghGhabli = hazfMomayez(lmn.getElementsByClassName("mablaghSTB")[0].innerHTML);
+                var lmnTaraz = document.getElementById("tarazSRT");
+
+                if (khoroojiAst === 1)
+                {
+                    var lmnKhorooji = document.getElementById("meghdarKhoroojiSRT");
+                    lmnKhorooji.innerHTML = momayezdar(hazfMomayez(lmnKhorooji.innerHTML) - mablaghGhabli + Number(mablagh));
+                    lmnTaraz.innerHTML = momayezdar(hazfMomayez(lmnTaraz.innerHTML) + mablaghGhabli - Number(mablagh));
+
+                    let vasileh = document.querySelector("#vasilehVSRT>a.gozinehENT[data-value='"+vasilehID+"']").innerHTML;
+                    switch (vasileh)
+                    {
+                        case 'کارت': vasileh = "کارت به کارت"; break;
+                        case 'حساب': vasileh = "حساب به حساب"; break;
+                    }
+
+                    strHTML += '<div class="etelaatSTB">\n' +
+                        '    <div class="onvanEtelaatSTB"><span class="icon riz"></span><span class="matnTitr riz">نوع:</span></div>\n' +
+                        '    <div class="meghdarEtelaatSTB">'+ document.querySelector("#noeVSRT>a.gozinehENT[data-value='"+noeID+"']").innerHTML +'</div>\n' +
+                        '</div>' +
+                        '<div class="etelaatSTB">\n' +
+                        '    <div class="onvanEtelaatSTB"><span class="icon riz"></span><span class="matnTitr riz">وسیله:</span></div>\n' +
+                        '    <div class="meghdarEtelaatSTB">'+ vasileh +'</div>\n' +
+                        '</div>';
+
+                    if (Number(vasilehID) === 3 || Number(vasilehID) === 4)
+                    {
+                        var lmnVarizBe = document.getElementById("varizBeVSRT");
+                        strHTML += '<div class="etelaatSTB">\n' +
+                            '                    <div class="onvanEtelaatSTB"><span class="icon riz"></span><span class="matnTitr riz">واریز به:</span></div>\n' +
+                            '                    <div class="meghdarEtelaatSTB fardSTB">'+ lmnVarizBe.options[lmnVarizBe.selectedIndex].text +'</div>\n' +
+                            '                </div>';
+                    }
+                }
+                else
+                {
+                    var lmnVoroodi = document.getElementById("meghdarVoroodiSRT");
+                    lmnVoroodi.innerHTML = momayezdar(hazfMomayez(lmnVoroodi.innerHTML) - mablaghGhabli + Number(mablagh));
+                    lmnTaraz.innerHTML = momayezdar(hazfMomayez(lmnTaraz.innerHTML) - mablaghGhabli + Number(mablagh));
+
+                    var lmnVarizKonandeh = document.getElementById("varizKonandehVSRT");
+                    strHTML += '<div class="etelaatSTB">\n' +
+                        '                    <div class="onvanEtelaatSTB"><span class="icon riz"></span><span class="matnTitr riz">واریز کننده:</span></div>\n' +
+                        '                    <div class="meghdarEtelaatSTB fardSTB">'+ lmnVarizKonandeh.options[lmnVarizKonandeh.selectedIndex].text +'</div>\n' +
+                        '                </div>';
+                }
+
+                var lmnDasteh = document.getElementById("dastehVSRT");
+                strHTML += '<div class="etelaatSTB">\n' +
+                    '                    <div class="onvanEtelaatSTB"><span class="icon riz"></span><span class="matnTitr riz">دسته:</span></div>\n' +
+                    '                    <div class="meghdarEtelaatSTB dastehSTB">'+ lmnDasteh.options[lmnDasteh.selectedIndex].text +'</div>\n' +
+                    '                </div>\n' +
+                    '                <div class="etelaatSTB">\n' +
+                    '                    <div class="onvanEtelaatSTB"><span class="icon riz"></span><span class="matnTitr riz">تاریخ:</span></div>\n' +
+                    '                    <div class="meghdarEtelaatSTB tarikhSTB">'+ tarikhKon(sal, mah, rooz) +'</div>\n' +
+                    '                </div>\n' +
+                    '                <div class="etelaatSTB">\n' +
+                    '                    <div class="onvanEtelaatSTB"><span class="icon riz"></span><span class="matnTitr riz">مبلغ:</span></div>\n' +
+                    '                    <div class="meghdarEtelaatSTB mablaghSTB">'+ momayezdar(mablagh) +'</div>\n' +
+                    '                </div>';
+
+                lmn.getElementsByClassName("kadrEtelaatSTB")[0].innerHTML = strHTML;
+                lmn.getElementsByClassName("tozihSTB")[0].innerHTML = tozih;
+                document.getElementById("CountainerKadrViraieshSRT").remove();
+            }
+            else namayeshPeygham("ویرایش با خطا مواجه شد، لطفا پس از بررسی فیلد ها مجددا تلاش کنید.");
+        }
+    };
+    xhttp.open("POST", "./ajax/virayesh-soorathesab.php?sid="+Math.random(), true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send(strQ+"&tk="+tkn);
+    namayeshLoading(document.getElementById("kadrVSRT"));
 }

@@ -214,6 +214,14 @@ function tarikhAst(str)
     return true;
 }
 
+/*      تبدیل روز و ماه و سال به رشته تاریخ   */
+function tarikhKon(sal, mah, rooz)
+{
+    if (rooz < 10 && rooz.toString().length === 1) rooz = "0" + rooz;
+    if (mah < 10 && mah.toString().length === 1) mah = "0" + mah;
+    return sal + "/" + mah + "/" + rooz;
+}
+
 /*      چک کردن فقط عدد بودن      */
 function adadiAst(str)
 {
