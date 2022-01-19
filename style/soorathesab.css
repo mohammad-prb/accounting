@@ -150,6 +150,11 @@ span#kadrVasetEmalFilter
     cursor: context-menu;
 }
 
+.etelaatSTB:last-child
+{
+    margin-left: 0;
+}
+
 .onvanEtelaatSTB
 {
     float: right;

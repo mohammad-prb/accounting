@@ -279,7 +279,7 @@ function taghirHesabSBT(lmn)
             lmnSelectSBTV.appendChild(option);
         }
     };
-    xhttp.open("POST", "ajax/gereften-etelaat-hesab.php?sid="+Math.random(), true);
+    xhttp.open("POST", "./ajax/gereften-etelaat-hesab.php?sid="+Math.random(), true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("hesabID="+hesabID+"&tk="+tkn);
     namayeshLoading(document.getElementById("kadrSBTK"));
@@ -381,7 +381,7 @@ function sabtVarizi(noe)
             else namayeshPeygham("ثبت با خطا مواجه شد، لطفا پس از بررسی فیلد ها مجددا تلاش کنید.");
         }
     };
-    xhttp.open("POST", "ajax/sabt-varizi.php?sid="+Math.random(), true);
+    xhttp.open("POST", "./ajax/sabt-varizi.php?sid="+Math.random(), true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send(strQ+"&tk="+tkn);
     namayeshLoading(document.getElementById("kadrSBTK"));
@@ -566,7 +566,7 @@ function tavizHesabSRT(lmn)
             emalFilterSRT();
         }
     };
-    xhttp.open("POST", "ajax/gereften-etelaat-hesab.php?sid="+Math.random(), true);
+    xhttp.open("POST", "./ajax/gereften-etelaat-hesab.php?sid="+Math.random(), true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("hesabID="+hesabID+"&tk="+tkn);
     namayeshLoading(document.getElementById("kadrFilterSoorathesab"));
@@ -706,8 +706,8 @@ function emalFilterSRT()
                     '                </div>\n' +
                     '            </div>\n' +
                     '            <div class="kadrEmkanatSTB">\n' +
-                    '                <a href="javascript:void(0);" onclick="" class="emkanatSTB"></a>\n' +
-                    '                <a href="javascript:void(0);" onclick="" class="emkanatSTB"></a>\n' +
+                    '                <a href="javascript:void(0);" onclick="" class="emkanatSTB btnHazfSTB"></a>\n' +
+                    '                <a href="javascript:void(0);" onclick="" class="emkanatSTB btnVirayeshSTB"></a>\n' +
                     '            </div>\n' +
                     '        </div>' +
                     '        <div class="kadrTozihSTB">\n' +
@@ -720,6 +720,8 @@ function emalFilterSRT()
                 var lmn = document.createElement("div");
                 lmn.setAttribute("class", "kadrDorSTB");
                 lmn.dataset.vaziat = "0";
+                lmn.dataset.id = arrObjEtelaat[i]["id"];
+                lmn.dataset.khoroojiAst = arrObjEtelaat[i]["khoroojiAst"];
                 lmn.innerHTML = strHTML;
                 lmnKadr.appendChild(lmn);
             }
@@ -729,12 +731,75 @@ function emalFilterSRT()
             document.getElementById("meghdarKhoroojiSRT").innerHTML = momayezdar(meghdarKhorooji);
             document.getElementById("meghdarVoroodiSRT").innerHTML = momayezdar(meghdarVoroodi);
             document.getElementById("tarazSRT").innerHTML = momayezdar(meghdarVoroodi - meghdarKhorooji);
+            shomarehBandiItemhayeSRT();
         }
     };
-    xhttp.open("POST", "ajax/gereftan-soorathesab.php?sid="+Math.random(), true);
+    xhttp.open("POST", "./ajax/gereftan-soorathesab.php?sid="+Math.random(), true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send(strQ+"&tk="+tkn);
     namayeshLoading(document.getElementById("kadrSoorathesab"));
+}
+
+/*      حذف یک صورتحساب      */
+function hazfSoorathesab(shom)
+{
+    bastanPeygham();
+    var lmn = document.getElementsByClassName("kadrDorSTB")[shom];
+    if (Number(lmn.dataset.vaziat) === 1) return;
+
+    namayeshLoading(lmn);
+    var hesabID = Number(document.getElementsByClassName("sltHesabha")[0].value);
+    var id = Number(lmn.dataset.id);
+    var khoroojiAst = Number(lmn.dataset.khoroojiAst);
+    var mablagh = hazfMomayez(lmn.getElementsByClassName("mablaghSTB")[0].innerHTML);
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function ()
+    {
+        if (this.readyState === 4 && this.status === 200)
+        {
+            if (this.responseText === "ok")
+            {
+                flash("حذف با موفقیت انجام شد.");
+                var taraz = document.getElementById("tarazSRT");
+                var tedadNataiej = document.getElementById("tedadNataiejSRT");
+                tedadNataiej.innerHTML = momayezdar(hazfMomayez(tedadNataiej.innerHTML)-1);
+
+                if (khoroojiAst === 1)
+                {
+                    var tedadKhorooji = document.getElementById("tedadKhoroojiSRT");
+                    var meghdarKhorooji = document.getElementById("meghdarKhoroojiSRT");
+                    tedadKhorooji.innerHTML = momayezdar(hazfMomayez(tedadKhorooji.innerHTML) - 1);
+                    meghdarKhorooji.innerHTML = momayezdar(hazfMomayez(meghdarKhorooji.innerHTML) - mablagh);
+                    taraz.innerHTML = momayezdar(hazfMomayez(taraz.innerHTML) + mablagh);
+                }
+                else if (khoroojiAst === 0)
+                {
+                    var tedadVoroodi = document.getElementById("tedadVoroodiSRT");
+                    var meghdarVoroodi = document.getElementById("meghdarVoroodiSRT");
+                    tedadVoroodi.innerHTML = momayezdar(hazfMomayez(tedadVoroodi.innerHTML) - 1);
+                    meghdarVoroodi.innerHTML = momayezdar(hazfMomayez(meghdarVoroodi.innerHTML) - mablagh);
+                    taraz.innerHTML = momayezdar(hazfMomayez(taraz.innerHTML) - mablagh);
+                }
+
+                if (lmn.nextElementSibling.className !== "kadrDorSTB" && lmn.previousElementSibling.className !== "kadrDorSTB")
+                    lmn.previousElementSibling.remove();
+                lmn.remove();
+                shomarehBandiItemhayeSRT();
+            }
+            else namayeshPeygham("حذف با خطا مواجه شد، لطفا دوباره تلاش کنید!");
+        }
+    };
+    xhttp.open("POST", "./ajax/hazf-soorathesab.php?sid="+Math.random(), true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("id="+id+"&hesabID="+hesabID+"&tk="+tkn);
+}
+
+/*      شماره بندی آیتم های صورتحساب      */
+function shomarehBandiItemhayeSRT()
+{
+    var arrlmn = document.getElementsByClassName("btnHazfSTB");
+    for (let i=0; i<arrlmn.length; i++) arrlmn[i].setAttribute("onclick", "namayeshPeygham('آیا برای حذف اطمینان دارید؟', 1, 'hazfSoorathesab("+i+")');");
 }
 
 var tedadSelect = 0, tedadKhoroojiSLT = 0, tedadVoroodiSLT = 0, meghdarKhoroojiSLT = 0, meghdarVoroodiSLT = 0, tarazSLT = 0;

@@ -238,6 +238,17 @@ a.gozinehENT:active
     animation-fill-mode: both;
 }
 
+#CountainerKadrNamayeshPeygham span.icon
+{
+    float: none;
+    font-size: 1.5rem;
+}
+
+#CountainerKadrNamayeshPeygham span.matnTitr
+{
+    float: none;
+}
+
 #kadrNamayeshPeygham
 {
     position: relative;
@@ -271,15 +282,6 @@ a.gozinehENT:active
 }
 
 #kadrPeygham>div
-{
-    position: relative;
-    width: calc(100% - 30px);
-    max-height: calc(100% - 30px);
-    overflow: auto;
-    padding: 15px;
-}
-
-#kadrPeygham>form
 {
     position: relative;
     width: calc(100% - 30px);
