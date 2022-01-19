@@ -865,6 +865,82 @@ function laghvSelect()
     for (let i=0; i<arrLmn.length; i++) entekhabSTB(arrLmn[i]);
 }
 
+/*      حذف صورتحساب های سلکت شده      */
+function hazfSoorathesabSelectShodeh()
+{
+    bastanPeygham();
+    var arrLmn = document.querySelectorAll(".kadrDorSTB[data-vaziat='1']");
+    if (arrLmn.length === 0) return;
+
+    namayeshLoading(document.getElementById("kadrSoorathesab"));
+    var hesabID = Number(document.getElementsByClassName("sltHesabha")[0].value);
+    var arrObjEtelaat = [], arrId = [];
+    for (let i=0; i<arrLmn.length; i++)
+    {
+        arrId.push(Number(arrLmn[i].dataset.id));
+        arrObjEtelaat.push({
+            id : Number(arrLmn[i].dataset.id),
+            khoroojiAst : Number(arrLmn[i].dataset.khoroojiAst),
+            mablagh : hazfMomayez(arrLmn[i].getElementsByClassName("mablaghSTB")[0].innerHTML)
+        });
+    }
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function ()
+    {
+        if (this.readyState === 4 && this.status === 200)
+        {
+            bastanLoading(document.getElementById("kadrSoorathesab"));
+            var arrNatijeh = JSON.parse(this.responseText);
+            var lmnTaraz = document.getElementById("tarazSRT");
+            var lmnTedadNataiej = document.getElementById("tedadNataiejSRT");
+            var lmnTedadKhorooji = document.getElementById("tedadKhoroojiSRT");
+            var lmnMeghdarKhorooji = document.getElementById("meghdarKhoroojiSRT");
+            var lmnTedadVoroodi = document.getElementById("tedadVoroodiSRT");
+            var lmnMeghdarVoroodi = document.getElementById("meghdarVoroodiSRT");
+            var tedadMovafaghiat = 0, tedadKhorooji = 0, tedadVoroodi = 0, mablaghKhorooji = 0, mablaghVoroodi = 0;
+
+            for (let i=0; i<arrNatijeh.length; i++)
+            {
+                if (arrNatijeh[i] === "ok")
+                {
+                    tedadMovafaghiat++;
+                    if (arrObjEtelaat[i]["khoroojiAst"] === 1)
+                    {
+                        tedadKhorooji++;
+                        mablaghKhorooji += arrObjEtelaat[i]["mablagh"];
+                    }
+                    else if (arrObjEtelaat[i]["khoroojiAst"] === 0)
+                    {
+                        tedadVoroodi++;
+                        mablaghVoroodi += arrObjEtelaat[i]["mablagh"];
+                    }
+
+                    if (arrLmn[i].nextElementSibling.className !== "kadrDorSTB" && arrLmn[i].previousElementSibling.className !== "kadrDorSTB")
+                        arrLmn[i].previousElementSibling.remove();
+
+                    entekhabSTB(arrLmn[i]);
+                    arrLmn[i].remove();
+                }
+            }
+
+            lmnTedadNataiej.innerHTML = momayezdar(hazfMomayez(lmnTedadNataiej.innerHTML) - tedadMovafaghiat);
+            lmnTedadKhorooji.innerHTML = momayezdar(hazfMomayez(lmnTedadKhorooji.innerHTML) - tedadKhorooji);
+            lmnMeghdarKhorooji.innerHTML = momayezdar(hazfMomayez(lmnMeghdarKhorooji.innerHTML) - mablaghKhorooji);
+            lmnTedadVoroodi.innerHTML = momayezdar(hazfMomayez(lmnTedadVoroodi.innerHTML) - tedadVoroodi);
+            lmnMeghdarVoroodi.innerHTML = momayezdar(hazfMomayez(lmnMeghdarVoroodi.innerHTML) - mablaghVoroodi);
+            lmnTaraz.innerHTML = momayezdar(hazfMomayez(lmnTaraz.innerHTML) - mablaghVoroodi + mablaghKhorooji);
+            shomarehBandiItemhayeSRT();
+
+            if (tedadMovafaghiat === arrNatijeh.length) flash(tedadMovafaghiat + " مورد با موفقیت حذف شد.");
+            else namayeshPeygham("حذف " + tedadMovafaghiat + " مورد موفقیت آمیز بود، و " + (arrNatijeh.length - tedadMovafaghiat) + " مورد ناموفق بود. (نا موفق ها سلکت شده باقی مانده اند)");
+        }
+    };
+    xhttp.open("POST", "./ajax/hazf-soorathesab-select.php?sid="+Math.random(), true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("ai="+JSON.stringify(arrId)+"&hesabID="+hesabID+"&tk="+tkn);
+}
+
 /*      تنظیم یک تاریخ خاص در صورتحساب      */
 function tanzimTarikhSoorathesab(lmn)
 {

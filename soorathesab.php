@@ -97,7 +97,7 @@ if ($result !== false && $result->num_rows > 0)
                 <div class="meghdarSelect taraz" id="tarazSelect">0</div>
             </div>
             <div class="amarSelect dokmeh">
-                <a href="javascript:void(0);" onclick="" class="btnEmkanatSelect" title="حذف سلکت شده ها"></a>
+                <a href="javascript:void(0);" onclick="namayeshPeygham('آیا برای حذف موارد انتخابی اطمینان دارید؟', 1, 'hazfSoorathesabSelectShodeh()');" class="btnEmkanatSelect" title="حذف سلکت شده ها"></a>
                 <a href="javascript:void(0);" onclick="laghvSelect();" class="btnEmkanatSelect" title="لغو سلکت ها"></a>
             </div>
         </div>
