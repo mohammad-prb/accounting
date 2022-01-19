@@ -49,7 +49,7 @@ elseif ($noeVariz != "hameh")
 }
 
 $arrNatijeh = array();
-$sql = @"select tbl_soorathesab.id as id, khoroojiAst, noeID, tbl_vasileh.nam as vasileh, vasilehID, onvan, tbl_afrad.nam as nam, mablagh, tarikh, tozih from tbl_soorathesab
+$sql = @"select tbl_soorathesab.id as id, khoroojiAst, noeID, tbl_vasileh.nam as vasileh, vasilehID, dastehID, onvan, fardID, tbl_afrad.nam as nam, mablagh, tarikh, tozih from tbl_soorathesab
         inner join tbl_dasteh on tbl_dasteh.id = dastehID
         left join tbl_vasileh on tbl_vasileh.id = vasilehID
         left join tbl_afrad on tbl_afrad.id = fardID

@@ -38,7 +38,7 @@
                 <select name="dasteh" id="dastehSBTK">
                     <?php
                     $arrDasteh = array();
-                    $sql = "select id, onvan, noe from tbl_dasteh where hesabID = ".$hesabID." and vaziat = 1 order by onvan";
+                    $sql = "select id, onvan, noe, tartib from tbl_dasteh where (hesabID = ".$hesabID." or hesabID = 0) and vaziat = 1 order by tartib";
                     $result = $con->query($sql);
                     if ($result !== false && $result->num_rows > 0)
                     {
@@ -50,25 +50,25 @@
                         }
                     }
                     ?>
-                    <option value="1">دیگر...</option>
                 </select>
             </div>
             <div class="etelaatSBT" style="display:none;">
                 <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">واریز به:</span></div>
                 <select name="varizBe" id="varizBeSBTK">
                     <?php
-                    $sql = "select id, nam, noe from tbl_afrad where hesabID = ".$hesabID." and noe <= 2 and vaziat = 1 order by nam";
+                    $arrAfrad = array();
+                    $sql = "select id, nam, noe, tartib from tbl_afrad where (hesabID = ".$hesabID." or hesabID = 0) and vaziat = 1 order by tartib";
                     $result = $con->query($sql);
                     if ($result !== false && $result->num_rows > 0)
                     {
                         while ($row = $result->fetch_assoc())
                         {
-                            echo '<option value="'. $row["id"] .'">'. $row["nam"] .'</option>';
+                            array_push($arrAfrad, $row);
+                            if ($row["noe"] <= 2)
+                                echo '<option value="'. $row["id"] .'">'. $row["nam"] .'</option>';
                         }
                     }
                     ?>
-                    <option value="1">نامشخص</option>
-                    <option value="2">دیگران...</option>
                 </select>
             </div>
             <div class="etelaatSBT">
@@ -99,7 +99,7 @@
                 <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">دسته:</span></div>
                 <select name="dasteh" id="dastehSBTV">
                     <?php
-                    $sql = "select id, onvan, noe from tbl_dasteh where hesabID = ".$hesabID." and (noe = 1 or noe = 3) and vaziat = 1 order by onvan";
+                    $sql = "select id, onvan, noe, tartib from tbl_dasteh where (hesabID = ".$hesabID." or hesabID = 0) and (noe <= 1 or noe = 3) and vaziat = 1 order by tartib";
                     $result = $con->query($sql);
                     if ($result !== false && $result->num_rows > 0)
                     {
@@ -109,14 +109,13 @@
                         }
                     }
                     ?>
-                    <option value="1">دیگر...</option>
                 </select>
             </div>
             <div class="etelaatSBT">
                 <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">واریز کننده:</span></div>
                 <select name="varizKonandeh" id="varizKonandehSBTV">
                     <?php
-                    $sql = "select id, nam, noe from tbl_afrad where hesabID = ".$hesabID." and (noe = 1 or noe = 3) and vaziat = 1 order by nam";
+                    $sql = "select id, nam, noe, tartib from tbl_afrad where (hesabID = ".$hesabID." or hesabID = 0) and (noe <= 1 or noe = 3) and vaziat = 1 order by tartib";
                     $result = $con->query($sql);
                     if ($result !== false && $result->num_rows > 0)
                     {
@@ -126,8 +125,6 @@
                         }
                     }
                     ?>
-                    <option value="1">نامشخص</option>
-                    <option value="2">دیگران...</option>
                 </select>
             </div>
             <div class="etelaatSBT">

@@ -51,6 +51,7 @@ if ($result !== false && $result->num_rows > 0)
 <script src="script/main.js"></script>
 <script>
     var arrObjDasteh = <?php echo json_encode($arrDasteh);?>;
+    var arrObjAfrad = <?php echo json_encode($arrAfrad);?>;
     var tkn = "<?php echo $tkn;?>";
 </script>
 </body>

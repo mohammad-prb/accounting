@@ -64,11 +64,30 @@ span#kadrVasetEmalFilter
     margin: 30px 0;
 }
 
+a#btnSelectAll, a#btnSelectAll:link, a#btnSelectAll:visited
+{
+    float: left;
+    padding: 1px;
+    cursor: pointer;
+    color: hsl(0, 0%, 30%);
+    font-family: myIcon;
+    font-size: 1.325rem;
+}
+
+a#btnSelectAll:hover
+{
+    color: hsl(0, 0%, 0%);
+}
+
+a#btnSelectAll:active
+{
+    color: hsl(0, 0%, 20%);
+}
+
 .amarSRT
 {
     float: right;
     margin-left: 30px;
-    font-size: 0.875rem;
 }
 
 .titrAmarSRT
@@ -76,6 +95,7 @@ span#kadrVasetEmalFilter
     float: right;
     color: hsl(0, 0%, 40%);
     margin-left: 3pt;
+    font-size: 0.875rem;
 }
 
 .meghdarAmarSRT
@@ -147,7 +167,6 @@ span#kadrVasetEmalFilter
 {
     float: right;
     margin: 0 0 10px 30px;
-    cursor: context-menu;
 }
 
 .etelaatSTB:last-child
@@ -159,6 +178,8 @@ span#kadrVasetEmalFilter
 {
     float: right;
     margin-left: 5px;
+    padding-top: 1px;
+    font-size: 0.875rem;
     color: hsl(0, 0%, 40%);
 }
 
@@ -328,6 +349,8 @@ a.satrTarikh:active
     display: inline-block;
     text-align: left;
     vertical-align: middle;
+    font-size: 0.875rem;
+    padding: 1px 0;
     color: hsl(0, 0%, 40%);
 }
 
@@ -373,4 +396,167 @@ a.btnEmkanatSelect:active
 {
     transition: none;
     color: hsl(352, 100%, 20%);
+}
+
+
+
+/*    کادر ویرایش   */
+
+#CountainerKadrViraieshSRT
+{
+    display: table;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1001;
+    background-color: hsla(0, 0%, 13%, 0.5);
+    animation: aniFade 0.1s;
+    animation-fill-mode: both;
+}
+
+#kadrNamayeshVSRT
+{
+    position: relative;
+    display: table-cell;
+    height: 100%;
+    width: 100%;
+    vertical-align: middle;
+}
+
+#kadrPoshtVSRT
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    cursor: context-menu;
+}
+
+#kadrVSRT
+{
+    position: relative;
+    display: block;
+    width: 60%;
+    margin: 0 auto;
+    animation: aniFade 0.2s;
+    animation-fill-mode: forwards;
+    background-color: white;
+    border-radius: 10px;
+}
+
+#kadrVSRT>div
+{
+    position: relative;
+    width: calc(100% - 30px);
+    max-height: calc(100% - 30px);
+    overflow: auto;
+    padding: 15px;
+}
+
+#titrVSRT
+{
+    float: right;
+    padding: 0 10px 0 0;
+    font-size: 1.25rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+#noeVarizVSRT
+{
+    float: left;
+    font-size: 1.25rem;
+    padding: 0 0 0 10px;
+}
+
+#noeVarizVSRT[data-khorooji-ast="1"]
+{
+    color: hsl(352, 100%, 50%);
+}
+
+#noeVarizVSRT[data-khorooji-ast="0"]
+{
+    color: hsl(148, 64%, 40%);
+}
+
+.etelaatVSRT
+{
+    float: right;
+    width: calc(100% - 15px);
+    margin: 10px 15px 5px 0;
+    padding-top: 20px;
+    color: hsl(0, 0%, 40%);
+    border-top: 1px solid hsl(0, 0%, 80%);
+}
+
+#kadrDokmehVSRT
+{
+    float: right;
+    width: 100%;
+}
+
+#kadrDokmehVSRT span.icon
+{
+    float: none;
+    font-size: 1.5rem;
+}
+
+#kadrDokmehVSRT span.matnTitr
+{
+    float: none;
+}
+
+a.dokmehTL, a.dokmehTL:link, a.dokmehTL:visited
+{
+    float: right;
+    width: calc(50% - 25px);
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    transition: color 0.1s, background-color 0.1s;
+}
+
+a.dokmehTaeed, a.dokmehTaeed:link, a.dokmehTaeed:visited
+{
+    margin: 0 0 0 5px;
+    background-color: hsl(148, 64%, 85%);
+    color: hsl(148, 64%, 30%);
+}
+
+a.dokmehTaeed:hover
+{
+    background-color: hsl(148, 64%, 75%);
+    color: hsl(148, 64%, 25%);
+}
+
+a.dokmehTaeed:active
+{
+    transition: none;
+    background-color: hsl(148, 64%, 65%);
+    color: hsl(148, 64%, 25%);
+}
+
+a.dokmehLaghv, a.dokmehLaghv:link, a.dokmehLaghv:visited
+{
+    margin: 0 5px 0 0;
+    background-color: hsl(0, 84%, 92%);
+    color: hsl(0, 84%, 50%);
+}
+
+a.dokmehLaghv:hover
+{
+    background-color: hsl(0, 84%, 87%);
+    color: hsl(0, 84%, 45%);
+}
+
+a.dokmehLaghv:active
+{
+    transition: none;
+    background-color: hsl(0, 84%, 85%);
+    color: hsl(0, 84%, 40%);
 }
