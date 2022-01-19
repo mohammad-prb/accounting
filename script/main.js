@@ -158,7 +158,7 @@ function taghirVasilehSBT(lmn)
     var lmnDasteh = document.getElementById("dastehSBTK");
     lmnDasteh.innerHTML = "";
 
-    if (vasileh === 6)
+    if (vasileh === 5)
     {
         for (let i=0; i<arrObjDasteh.length; i++)
         {
@@ -428,7 +428,7 @@ function taghirNoeFSRT(lmn)
         lmnVasileh.innerHTML = '<span class="kadrPoshtENT"></span>\n' +
             '<a class="gozinehENT" onclick="taghirENT(this);" data-value="hameh" href="javascript:void(0);">همه</a>\n' +
             '<a class="gozinehENT" onclick="taghirENT(this);" data-value="1" href="javascript:void(0);">کارتخوان</a>\n' +
-            '<a class="gozinehENT" onclick="taghirENT(this);" data-value="2 href="javascript:void(0);">عابر بانک</a>';
+            '<a class="gozinehENT" onclick="taghirENT(this);" data-value="2" href="javascript:void(0);">عابر بانک</a>';
 
         lmnVasileh.parentElement.style.display = "block";
         taghirENT(lmnVasileh.getElementsByClassName("gozinehENT")[0]);
@@ -912,6 +912,74 @@ function tanzimTarikhSoorathesab(lmn)
     emalFilterSRT();
 }
 
+var noeVSRT = 0;
+/*      تغییر نوع در ویرایش صورتحساب      */
+function taghirNoeVSRT(lmn)
+{
+    if (noeVSRT === Number(lmn.parentElement.dataset.value)) return;
+
+    noeVSRT = Number(lmn.parentElement.dataset.value);
+    var lmnVasileh = document.getElementById("vasilehVSRT");
+
+    if (noeVSRT === 1)
+    {
+        lmnVasileh.innerHTML = '<span class="kadrPoshtENT"></span>\n' +
+            '<a class="gozinehENT" onclick="taghirENT(this);" data-value="1" href="javascript:void(0);">کارتخوان</a>\n' +
+            '<a class="gozinehENT" onclick="taghirENT(this);" data-value="2" href="javascript:void(0);">عابر بانک</a>';
+    }
+    else if (noeVSRT === 2)
+    {
+        lmnVasileh.innerHTML = '<span class="kadrPoshtENT"></span>\n' +
+            '<a class="gozinehENT" onclick="taghirENT(this);taghirVasilehVSRT(this);" data-value="3" href="javascript:void(0);">کارت</a>\n' +
+            '<a class="gozinehENT" onclick="taghirENT(this);taghirVasilehVSRT(this);" data-value="4" href="javascript:void(0);">حساب</a>\n' +
+            '<a class="gozinehENT" onclick="taghirENT(this);taghirVasilehVSRT(this);" data-value="5" href="javascript:void(0);">پرداخت</a>';
+    }
+
+    taghirENT(lmnVasileh.getElementsByClassName("gozinehENT")[0]);
+    taghirVasilehVSRT(lmnVasileh.getElementsByClassName("gozinehENT")[0]);
+}
+
+var vasilehVSRT = 0;
+/*      تغییر وسیله در ویرایش صورتحساب      */
+function taghirVasilehVSRT(lmn)
+{
+    if (vasilehVSRT === Number(lmn.parentElement.dataset.value)) return;
+
+    vasilehVSRT = Number(lmn.parentElement.dataset.value);
+    var lmnDasteh = document.getElementById("dastehVSRT");
+    lmnDasteh.innerHTML = "";
+
+    if (vasilehVSRT === 5)
+    {
+        for (let i=0; i<arrObjDasteh.length; i++)
+        {
+            if (Number(arrObjDasteh[i]["noe"]) === 4)
+            {
+                let option = document.createElement("option");
+                option.value = arrObjDasteh[i]["id"];
+                option.innerHTML = arrObjDasteh[i]["onvan"];
+                lmnDasteh.appendChild(option);
+            }
+        }
+    }
+    else
+    {
+        for (let i=0; i<arrObjDasteh.length; i++)
+        {
+            if (Number(arrObjDasteh[i]["noe"]) <= 2)
+            {
+                let option = document.createElement("option");
+                option.value = arrObjDasteh[i]["id"];
+                option.innerHTML = arrObjDasteh[i]["onvan"];
+                lmnDasteh.appendChild(option);
+            }
+        }
+    }
+
+    if (vasilehVSRT === 3 || vasilehVSRT === 4) document.getElementById("varizBeVSRT").parentElement.style.display = "block";
+    else document.getElementById("varizBeVSRT").parentElement.style.display = "none";
+}
+
 /*      باز کردن کادر ویرایش صورتحساب      */
 function virayeshSRT(lmn)
 {
@@ -919,7 +987,7 @@ function virayeshSRT(lmn)
     var lmnKadr = lmn.parentElement.parentElement.parentElement.parentElement;
     var id = Number(lmnKadr.dataset.id);
     var khoroojiAst = Number(lmnKadr.dataset.khoroojiAst);
-    var noe = Number(lmnKadr.dataset.noe);
+    var noeID = Number(lmnKadr.dataset.noe);
     var vasilehId = Number(lmnKadr.dataset.vasilehId);
     var fardId = Number(lmnKadr.dataset.fardId);
     var dastehId = Number(lmnKadr.dataset.dastehId);
@@ -941,8 +1009,8 @@ function virayeshSRT(lmn)
             '                        <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">نوع:</span></div>\n' +
             '                        <div class="kadrENT" id="noeVSRT">\n' +
             '                            <span class="kadrPoshtENT"></span>\n' +
-            '                            <a class="gozinehENT" onclick="taghirENT(this);taghirNoeSBT(this);" data-value="1" href="javascript:void(0);">برداشت با کارت</a>\n' +
-            '                            <a class="gozinehENT" onclick="taghirENT(this);taghirNoeSBT(this);" data-value="2" href="javascript:void(0);">اینترنتی</a>\n' +
+            '                            <a class="gozinehENT" onclick="taghirENT(this);taghirNoeVSRT(this);" data-value="1" href="javascript:void(0);">برداشت با کارت</a>\n' +
+            '                            <a class="gozinehENT" onclick="taghirENT(this);taghirNoeVSRT(this);" data-value="2" href="javascript:void(0);">اینترنتی</a>\n' +
             '                        </div>\n' +
             '                    </div>\n' +
             '                    <div class="etelaatSBT">\n' +
@@ -987,7 +1055,8 @@ function virayeshSRT(lmn)
 
     for (let i=0; i<arrObjDasteh.length; i++)
     {
-        if ((khoroojiAst === 1 && Number(arrObjDasteh[i]["noe"]) <= 2) || (khoroojiAst === 0 && (Number(arrObjDasteh[i]["noe"]) <= 1 || Number(arrObjDasteh[i]["noe"]) === 3)))
+        // در زمان خروجی بودن، توسط تابع تغییر وسیله، دسته بندی پر میشود.
+        if (khoroojiAst === 0 && (Number(arrObjDasteh[i]["noe"]) <= 1 || Number(arrObjDasteh[i]["noe"]) === 3))
             strHTML += '<option value="'+ arrObjDasteh[i]["id"] +'" '+ (Number(arrObjDasteh[i]["id"])===dastehId?"selected":"") +'>'+ arrObjDasteh[i]["onvan"] +'</option>';
     }
 
@@ -1021,6 +1090,22 @@ function virayeshSRT(lmn)
     lmnVirayesh.innerHTML = strHTML;
     document.body.appendChild(lmnVirayesh);
     lmnVirayesh.onkeydown = function(e){if (e.keyCode === 13) sabtVirayeshSRT(id);};
+
+    if (khoroojiAst === 1)
+    {
+        var gozinehVasileh, gozinehNoe = document.querySelectorAll("#noeVSRT .gozinehENT")[noeID-1];
+        noeVSRT = 0;
+        taghirENT(gozinehNoe);
+        taghirNoeVSRT(gozinehNoe);
+
+        if (vasilehId < 3) gozinehVasileh = document.querySelectorAll("#vasilehVSRT .gozinehENT")[vasilehId-1];
+        else gozinehVasileh = document.querySelectorAll("#vasilehVSRT .gozinehENT")[vasilehId-3];
+        vasilehVSRT = 0;
+        taghirENT(gozinehVasileh);
+        taghirVasilehVSRT(gozinehVasileh);
+
+        document.querySelector("#dastehVSRT option[value='"+ dastehId +"']").setAttribute("selected", "");
+    }
 }
 
 /*      ثبت ویرایش صورتحساب      */
