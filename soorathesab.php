@@ -107,6 +107,7 @@ if ($result !== false && $result->num_rows > 0)
 </div>
 <script src="script/lib.js"></script>
 <script src="script/main.js"></script>
+<script src="script/soorathesab.js"></script>
 <script>
     var arrObjDasteh = <?php echo json_encode($arrDasteh);?>;
     var arrObjAfrad = <?php echo json_encode($arrAfrad);?>;

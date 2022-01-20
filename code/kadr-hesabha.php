@@ -7,13 +7,15 @@
     {
         while ($row = $result->fetch_assoc())
         {
+            $hesabID = $row["id"];
+            include ("code/mohasebeh-mandeh.php");
             echo @'<div class="hesab">
                                 <div class="titrHSB">
                                     <div class="namHSB">
                                         <img src="pic/bank/'. $row["bankID"] .@'.png" alt="bank" class="bankHSB"/>
                                         <span title="'. $row["nam"] .'" class="matnTitrHSB">'. $row["nam"] .@'</span>
                                     </div>
-                                    <div title="مانده حساب" class="mandehHSB">2,135,324,024</div>
+                                    <div title="مانده حساب" class="mandehHSB" id="mandeh'. $row["id"] .'">'. momayezdar($mandeh) .@'</div>
                                 </div>
                                 <div class="kadrShomKartHSB">
                                     <div class="titrShomKartHSB">شماره کارت: </div>
@@ -30,7 +32,7 @@
                                     <a href="javascript:void(0);" title="آمار حساب" class="emkanatHSB" onclick=""></a>
                                     <a href="javascript:void(0);" title="افراد" class="emkanatHSB" onclick=""></a>
                                     <a href="javascript:void(0);" title="دسته بندی ها" class="emkanatHSB" onclick=""></a>
-                                    <a href="javascript:void(0);" title="بروزرسانی مانده" class="emkanatHSB" onclick=""></a>
+                                    <a href="javascript:void(0);" title="بروزرسانی مانده" class="emkanatHSB" onclick="gereftanMandeh('. $row["id"] .@', this.parentElement.parentElement.getElementsByClassName(\'mandehHSB\')[0]);"></a>
                                 </div>
                             </div>';
         }

@@ -34,6 +34,16 @@ if ((integer)$khoroojiAst == 1)
     if (isset($_POST["noeID"])) $noeID = $_POST["noeID"]; else die();
     if (isset($_POST["vasilehID"])) $vasilehID = $_POST["vasilehID"]; else die();
     if (preg_match("/^[1-2]$/", $noeID) !== 1 || preg_match("/^[1-5]$/", $vasilehID) !== 1) die();
+
+    $sql = "select mablagh from tbl_soorathesab where vaziat = 1 and id = " . $id;
+    $result = $con->query($sql);
+    if ($result !== false && $result->num_rows > 0)
+        if ($row = $result->fetch_assoc())
+            $mablaghGhabli = $row["mablagh"];
+
+    include ("../code/mohasebeh-mandeh.php");
+    if (($mandeh + $mablaghGhabli - $mablagh) < 0) die("er:mandeh");
+
     $sql = "update tbl_soorathesab set noeID=?, vasilehID=?, dastehID=?, fardID=?, mablagh=?, tarikh=?, tozih=? where id=? and khoroojiAst=1 and vaziat=1";
     $stmt = $con->prepare($sql);
     $stmt->bind_param("iiiiissi", $noeID, $vasilehID, $dastehID, $fard, $mablagh, $tarikh, $tozih, $id);

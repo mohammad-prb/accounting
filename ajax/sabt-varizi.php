@@ -34,6 +34,9 @@ if ((integer)$khoroojiAst == 1)
     if (isset($_POST["noeID"])) $noeID = $_POST["noeID"]; else die();
     if (isset($_POST["vasilehID"])) $vasilehID = $_POST["vasilehID"]; else die();
     if (preg_match("/^[1-2]$/", $noeID) !== 1 || preg_match("/^[1-5]$/", $vasilehID) !== 1) die();
+
+    include ("../code/mohasebeh-mandeh.php");
+    if ($mandeh - $mablagh < 0) die("er:mandeh");
 }
 else
 {
