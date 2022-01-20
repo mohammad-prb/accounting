@@ -517,7 +517,7 @@ a.dokmehTL, a.dokmehTL:link, a.dokmehTL:visited
     width: calc(50% - 25px);
     padding: 10px;
     text-align: center;
-    border-radius: 5px;
+    border-radius: 8px;
     transition: color 0.1s, background-color 0.1s;
 }
 

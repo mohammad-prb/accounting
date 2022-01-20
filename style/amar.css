@@ -1,0 +1,59 @@
+#kadrKolAmar
+{
+    position: relative;
+    float: right;
+    width: 100%;
+}
+
+#kadrFilterAMR
+{
+    float: right;
+    width: calc(100% - 40px);
+    padding: 10px 20px;
+    margin: 10px 0;
+    background-color: hsl(0, 0%, 97%);
+    border: solid hsl(0, 0%, 85%);
+    border-width: 1px 0;
+}
+
+.filterSRT
+{
+    float: right;
+    margin-left: 30px;
+}
+
+.titrFSRT
+{
+    float: right;
+    margin-left: 5px;
+    padding: 5px 0 4px;
+    color: hsl(0, 0%, 20%);
+}
+
+#tarikhFSRT
+{
+    float: right;
+}
+
+a#btnFSRT, a#btnFSRT:link, a#btnFSRT:visited
+{
+    float: right;
+    padding: 4px 15px;
+    border-radius: 8px;
+    background-color: hsl(148, 64%, 85%);
+    color: hsl(148, 64%, 30%);
+    transition: background-color 0.1s;
+}
+
+a#btnFSRT:hover
+{
+    background-color: hsl(148, 64%, 75%);
+    color: hsl(148, 64%, 25%);
+}
+
+a#btnFSRT:active
+{
+    transition: none;
+    background-color: hsl(148, 64%, 65%);
+    color: hsl(148, 64%, 25%);
+}

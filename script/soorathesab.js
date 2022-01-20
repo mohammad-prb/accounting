@@ -705,9 +705,9 @@ function virayeshSRT(lmn)
         '                    <div class="etelaatSBT">\n' +
         '                        <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">تاریخ:</span></div>\n' +
         '                        <div class="kadrTarikhSBT" id="tarikhVSRT">\n' +
-        '                            <input type="text" class="txtTarikh" name="rooz" value="'+ tarikh.substr(8,2) +'" onfocus="this.select();" maxlength="2" placeholder="روز"/>\n' +
-        '                            <input type="text" class="txtTarikh" name="mah" value="'+ tarikh.substr(5,2) +'" onfocus="this.select();" maxlength="2" placeholder="ماه"/>\n' +
-        '                            <input type="text" class="txtTarikh" name="sal" value="'+ tarikh.substr(0,4) +'" onfocus="this.select();" maxlength="4" placeholder="سال"/>\n' +
+        '                            <input type="text" class="txtTarikh" name="rooz" value="'+ tarikh.substr(8,2) +'" onfocus="this.select();" oninput="if(this.value.length>1) this.nextElementSibling.focus();" maxlength="2" placeholder="روز" autocomplete="off"/>\n' +
+        '                            <input type="text" class="txtTarikh" name="mah" value="'+ tarikh.substr(5,2) +'" onfocus="this.select();" oninput="if(this.value.length>1) this.nextElementSibling.focus();" maxlength="2" placeholder="ماه" autocomplete="off"/>\n' +
+        '                            <input type="text" class="txtTarikh" name="sal" value="'+ tarikh.substr(0,4) +'" onfocus="this.select();" oninput="if(this.value.length>3) document.getElementById(\'mablaghVSRT\').focus();" maxlength="4" placeholder="سال" autocomplete="off"/>\n' +
         '                        </div>\n' +
         '                    </div>\n' +
         '                    <div class="etelaatSBT">\n' +
