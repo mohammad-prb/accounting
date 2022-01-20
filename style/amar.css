@@ -57,3 +57,95 @@ a#btnFSRT:active
     background-color: hsl(148, 64%, 65%);
     color: hsl(148, 64%, 25%);
 }
+
+#kadrAmar
+{
+    float: right;
+    width: 100%;
+    margin-top: 30px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+#kadrAmarMablagh
+{
+    float: right;
+    width: 300px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    background-color: hsl(39, 100%, 87%);
+}
+
+.amarMablagh
+{
+    float: right;
+    width: 100%;
+    padding: 5px 0;
+}
+
+#mandeh
+{
+    font-size: 1.25rem;
+    border-bottom: 1px solid hsl(39, 100%, 70%);
+    margin-bottom: 5px;
+}
+
+.titrAMR
+{
+    float: right;
+}
+
+.meghdarAMR
+{
+    float: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#kadrNemoodarMablagh
+{
+    float: left;
+    width: calc(100% - 360px);
+    padding: 0 20px 0 0;
+}
+
+#kadrAmarTedad
+{
+    float: right;
+    width: 340px;
+    margin-top: 10px;
+}
+
+.amarTedad
+{
+    float: right;
+    width: calc(33.333% - 27px);
+    height: 27px;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    cursor: context-menu;
+}
+
+.amarTedad:nth-child(1)
+{
+    background-color: hsl(0, 0%, 90%);
+}
+
+.amarTedad:nth-child(2)
+{
+    margin: 0 10px;
+    background-color: hsl(352, 100%, 95%);
+}
+
+.amarTedad:nth-child(3)
+{
+    background-color: hsl(148, 64%, 90%);
+}
+
+.amarTedad>.titrAMR, .amarTedad>.meghdarAMR
+{
+    float: none;
+    display: inline-block;
+}

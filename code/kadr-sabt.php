@@ -148,10 +148,6 @@
     </div>
 </div>
 <script>
-    document.getElementById("kadrSBTK").onkeydown = function(e){
-        if (e.keyCode === 13) sabtVarizi(1);
-    };
-    document.getElementById("kadrSBTV").onkeydown = function(e){
-        if (e.keyCode === 13) sabtVarizi(0);
-    };
+    document.getElementById("kadrSBTK").onkeydown = function(e){if (e.keyCode === 13) sabtVarizi(1);};
+    document.getElementById("kadrSBTV").onkeydown = function(e){if (e.keyCode === 13) sabtVarizi(0);};
 </script>

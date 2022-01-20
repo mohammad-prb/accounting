@@ -97,7 +97,7 @@ input, textarea
     direction: ltr;
     width: calc(100% - 22px);
     padding: 4px 10px;
-    background-color: hsl(0, 0%, 97%);
+    background-color: hsl(0, 0%, 100%);
     border: 1px solid hsl(0, 0%, 80%);
     border-radius: 8px;
     font-family: vazir;
