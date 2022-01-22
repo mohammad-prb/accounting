@@ -60,6 +60,7 @@ a#btnFSRT:active
 
 #kadrAmar
 {
+    position: relative;
     float: right;
     width: 100%;
     margin-top: 30px;
@@ -67,10 +68,17 @@ a#btnFSRT:active
     overflow: hidden;
 }
 
+#sotoonRast
+{
+    float: right;
+    width: 340px;
+    margin-left: 20px;
+}
+
 #kadrAmarMablagh
 {
     float: right;
-    width: 300px;
+    width: calc(100% - 40px);
     padding: 10px 20px;
     border-radius: 8px;
     background-color: hsl(39, 100%, 87%);
@@ -103,17 +111,10 @@ a#btnFSRT:active
     text-overflow: ellipsis;
 }
 
-#kadrNemoodarMablagh
-{
-    float: left;
-    width: calc(100% - 360px);
-    padding: 0 20px 0 0;
-}
-
 #kadrAmarTedad
 {
     float: right;
-    width: 340px;
+    width: 100%;
     margin-top: 10px;
 }
 
@@ -121,7 +122,7 @@ a#btnFSRT:active
 {
     float: right;
     width: calc(33.333% - 27px);
-    height: 27px;
+    height: 24px;
     padding: 10px;
     border-radius: 8px;
     text-align: center;
@@ -130,7 +131,7 @@ a#btnFSRT:active
 
 .amarTedad:nth-child(1)
 {
-    background-color: hsl(0, 0%, 90%);
+    background-color: hsl(204, 100%, 90%);
 }
 
 .amarTedad:nth-child(2)
@@ -141,11 +142,156 @@ a#btnFSRT:active
 
 .amarTedad:nth-child(3)
 {
-    background-color: hsl(148, 64%, 90%);
+    background-color: hsl(148, 64%, 86%);
+}
+
+a#btnSoorathesabAMR, a#btnSoorathesabAMR:link, a#btnSoorathesabAMR:visited
+{
+    float: right;
+    width: calc(100% - 20px);
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid hsl(0, 0%, 80%);
+    transition: background-color 0.1s;
+}
+
+a#btnSoorathesabAMR:hover
+{
+    background-color: hsl(0, 0%, 95%);
+}
+
+a#btnSoorathesabAMR:active
+{
+    transition: none;
+    background-color: hsl(0, 0%, 92%);
 }
 
 .amarTedad>.titrAMR, .amarTedad>.meghdarAMR
 {
+    vertical-align: middle;
     float: none;
     display: inline-block;
+}
+
+#kadrListAMR
+{
+    float: right;
+    width: calc(100% - 32px);
+    padding: 12px 15px;
+    margin-top: 10px;
+    border-radius: 8px;
+    background-color: hsl(0, 0%, 97%);
+    border: 1px solid hsl(0, 0%, 80%);
+}
+
+#headerLAMR
+{
+    float: right;
+    width: 100%;
+    padding-bottom: 5px;
+    border-bottom: 1px solid hsl(0, 0%, 80%);
+    margin-bottom: 7px;
+}
+
+a.btnLAMR, a.btnLAMR:link, a.btnLAMR:visited
+{
+    float: right;
+    width: 50%;
+    text-align: center;
+    color: hsl(0, 0%, 20%);
+}
+
+a.btnLAMR:hover
+{
+    color: hsl(0, 0%, 0%);
+}
+
+a.btnLAMR:active
+{
+    color: hsl(0, 0%, 10%);
+}
+
+a.btnLAMR:first-child
+{
+    width: calc(50% - 1px);
+    border-left: 1px solid hsl(0, 0%, 80%);
+}
+
+a.btnLAMR[data-enekhabi="1"]>span.matnTitr
+{
+    color: hsl(0, 0%, 0%);
+    font-weight: bold;
+}
+
+a.btnLAMR>span.icon, a.btnLAMR>span.matnTitr
+{
+    float: none;
+    display: inline-block;
+    font-weight: unset;
+}
+
+.listAMR
+{
+    float: right;
+    width: 100%;
+    overflow: auto;
+}
+
+.itemListAMR
+{
+    float: right;
+    width: 100%;
+    padding: 3px 0;
+}
+
+.tedadEstefadehListAMR
+{
+    float: right;
+    width: 50px;
+    margin-left: 20px;
+    text-align: left;
+}
+
+.onvanListAMR
+{
+    float: right;
+    width: calc(100% - 70px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.onvanListAMR[data-noe="1"]
+{
+    color: hsl(39, 100%, 40%);
+}
+
+.onvanListAMR[data-noe="2"]
+{
+    color: hsl(352, 100%, 40%);
+}
+
+.onvanListAMR[data-noe="3"]
+{
+    color: hsl(148, 64%, 40%);
+}
+
+.onvanListAMR[data-noe="4"]
+{
+    color: hsl(204, 100%, 40%);
+}
+
+#stoonVasat
+{
+    float: left;
+    width: calc(100% - 360px);
+}
+
+.kadrNemoodar
+{
+    float: right;
+    width: 100%;
+    margin-bottom: 30px;
 }

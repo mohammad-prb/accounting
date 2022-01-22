@@ -164,7 +164,6 @@ h2.titr
 
 span.icon
 {
-    float: right;
     margin-left: 7px;
     padding: 5px 0 5px;
     font-family: myIcon;
@@ -174,7 +173,6 @@ span.icon
 
 span.matnTitr
 {
-    float: right;
     font-weight: normal;
 }
 
@@ -249,13 +247,7 @@ a.gozinehENT:active
 
 #CountainerKadrNamayeshPeygham span.icon
 {
-    float: none;
     font-size: 1.5rem;
-}
-
-#CountainerKadrNamayeshPeygham span.matnTitr
-{
-    float: none;
 }
 
 #kadrNamayeshPeygham

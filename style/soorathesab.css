@@ -53,7 +53,7 @@ a#emalFilter:active
 span#kadrVasetEmalFilter
 {
     display: block;
-    width: 94px;
+    width: 98px;
     margin: auto;
 }
 
@@ -502,13 +502,7 @@ a.btnEmkanatSelect:active
 
 #kadrDokmehVSRT span.icon
 {
-    float: none;
     font-size: 1.5rem;
-}
-
-#kadrDokmehVSRT span.matnTitr
-{
-    float: none;
 }
 
 a.dokmehTL, a.dokmehTL:link, a.dokmehTL:visited
