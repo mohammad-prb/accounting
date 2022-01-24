@@ -36,13 +36,13 @@ if ($result !== false && $result->num_rows > 0)
     if ($row = $result->fetch_assoc())
     {
         $mandeh = (float)$row["mablaghTaraz"];
-        $terikhEftetah = $row["mablaghTaraz"];
+        $tarikhEftetah = $row["tarikhEftetah"];
     }
 }
 
 $shomarandehRooz = 1;
 $shomarandehMah = 1;
-$shomarandehSal = (integer)substr($terikhEftetah, 0, 4);
+$shomarandehSal = (integer)substr($tarikhEftetah, 0, 4);
 $mandehGhabli = $mandeh;
 $tarikhGhabli = "";
 $sql = "select khoroojiAst, mablagh, tarikh from tbl_soorathesab where vaziat = 1 and hesabID = " . $hesabID . $sharthMahdoodeh . " order by tarikh";
@@ -142,7 +142,7 @@ if ($result !== false && $result->num_rows > 0)
                 $shomarandehMah++;
             }
         }
-        else
+        elseif ($sal == "" && $mah == "")
         {
             if (substr($tarikhGhabli,0,4) == substr($tarikh,0,4))
             {
@@ -163,11 +163,41 @@ if ($result !== false && $result->num_rows > 0)
     }
 }
 
+if ($sal != "" && $mah != "")
+{
+    $timeStampInAlan = jmktime(0, 0, 0, jdate("m", "", "", "Asia/Tehran", "en"), 1, jdate("Y", "", "", "Asia/Tehran", "en"));
+    $timeStampMahdoode = jmktime(0, 0, 0, $mah, 1, $sal);
+    $tedadRoozMahMahdoode = jdate("t", $timeStampMahdoode, "", "Asia/Tehran", "en");
+
+    if ($timeStampInAlan == $timeStampMahdoode)
+    {
+        while (count($arrMandeh) < jdate("d", "", "", "Asia/Tehran", "en"))
+            array_push($arrMandeh, $mandeh);
+    }
+    elseif ($sal > substr($tarikhEftetah,0,4) || ($sal == substr($tarikhEftetah,0,4) && $mah == substr($tarikhEftetah,5,2)))
+    {
+        while (count($arrMandeh) < $tedadRoozMahMahdoode)
+            array_push($arrMandeh, $mandeh);
+    }
+}
+else if ($sal != "" && $mah == "")
+{
+    if ($sal == jdate("Y", "", "", "Asia/Tehran", "en"))
+    {
+        while (count($arrMandeh) < jdate("m", "", "", "Asia/Tehran", "en"))
+            array_push($arrMandeh, $mandeh);
+    }
+    elseif ($sal >= substr($tarikhEftetah,0,4))
+    {
+        while (count($arrMandeh) < 12)
+            array_push($arrMandeh, $mandeh);
+    }
+}
 
 $arrDasteh = array();
 $sql = @"select tbl_dasteh.id as id, onvan, noe, count(*) as tedad from tbl_dasteh
     inner join tbl_soorathesab on tbl_dasteh.id = dastehID
-    where tbl_soorathesab.vaziat = 1 and tbl_dasteh.vaziat = 1 ". str_replace('<', '', $sharthMahdoodeh) ." and (tbl_dasteh.hesabID = ". $hesabID .@" or tbl_dasteh.hesabID = 0)
+    where tbl_soorathesab.vaziat = 1 and tbl_dasteh.vaziat = 1 and tbl_soorathesab.hesabID = ". $hesabID . str_replace('<', '', $sharthMahdoodeh) ." and (tbl_dasteh.hesabID = ". $hesabID .@" or tbl_dasteh.hesabID = 0)
     group by dastehID order by tedad desc";
 $result = $con->query($sql);
 if ($result !== false && $result->num_rows > 0)
@@ -177,7 +207,7 @@ if ($result !== false && $result->num_rows > 0)
 $arrAfrad = array();
 $sql = @"select tbl_afrad.id as id, nam, noe, count(*) as tedad from tbl_afrad
     inner join tbl_soorathesab on tbl_afrad.id = fardID
-    where tbl_soorathesab.vaziat = 1 and tbl_afrad.vaziat = 1 ". str_replace('<', '', $sharthMahdoodeh) ." and (tbl_afrad.hesabID = ". $hesabID ." or tbl_afrad.hesabID = 0)
+    where tbl_soorathesab.vaziat = 1 and tbl_afrad.vaziat = 1 and tbl_soorathesab.hesabID = ". $hesabID . str_replace('<', '', $sharthMahdoodeh) ." and (tbl_afrad.hesabID = ". $hesabID ." or tbl_afrad.hesabID = 0)
     group by fardID order by tedad desc";
 $result = $con->query($sql);
 if ($result !== false && $result->num_rows > 0)
@@ -193,7 +223,8 @@ $arrNatijeh = array("arrKhorooji"=>$arrKhorooji,
     "meghdarVoroodi"=>$meghdarVoroodi,
     "tedadKhorooji"=>$tedadKhorooji,
     "tedadVoroodi"=>$tedadVoroodi,
-    "mandeh"=>$mandeh);
+    "mandeh"=>$mandeh,
+    "tedadRoozMah"=>(isset($tedadRoozMahMahdoode)?$tedadRoozMahMahdoode:0));
 
 echo json_encode($arrNatijeh);
 $con->close();

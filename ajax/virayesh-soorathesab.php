@@ -34,6 +34,7 @@ if ((integer)$khoroojiAst == 1)
     if (isset($_POST["noeID"])) $noeID = $_POST["noeID"]; else die();
     if (isset($_POST["vasilehID"])) $vasilehID = $_POST["vasilehID"]; else die();
     if (preg_match("/^[1-2]$/", $noeID) !== 1 || preg_match("/^[1-5]$/", $vasilehID) !== 1) die();
+    if ($vasilehID != 3 && $vasilehID != 4) $fard = 0;
 
     $sql = "select mablagh from tbl_soorathesab where vaziat = 1 and id = " . $id;
     $result = $con->query($sql);

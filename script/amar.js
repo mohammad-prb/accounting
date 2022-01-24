@@ -36,6 +36,7 @@ function emalTarikh()
                 document.getElementById("meghdarJamTedad").innerHTML = momayezdar(Number(objNatijeh["tedadKhorooji"]) + Number(objNatijeh["tedadVoroodi"]));
                 document.getElementById("meghdarKhorooji").innerHTML = momayezdar(Number(objNatijeh["tedadKhorooji"]));
                 document.getElementById("meghdarVoroodi").innerHTML = momayezdar(Number(objNatijeh["tedadVoroodi"]));
+                document.getElementById("btnSoorathesabAMR").href = "soorathesab.php?tarikh=" + sal + "/" + mah;
 
                 /*  لیست دسته بندی ها  */
                 var lmnKadr = document.getElementById("listDasteha");
@@ -63,7 +64,7 @@ function emalTarikh()
 
                 /*  نمودار ها  */
                 var arrLabels = [];
-                if (sal !== "" && mah !== "") for (let i=1; i<=tedadRoozMah; i++) arrLabels.push(i);
+                if (sal !== "" && mah !== "") for (let i=1; i<=objNatijeh["tedadRoozMah"]; i++) arrLabels.push(i);
                 else if (sal !== "" && mah === "") arrLabels = [1,2,3,4,5,6,7,8,9,10,11,12];
                 else for (sal in objNatijeh["arrKhorooji"]) arrLabels.push(sal);
 

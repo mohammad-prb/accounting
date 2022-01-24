@@ -63,7 +63,7 @@ if ($result !== false && $result->num_rows > 0)
                 <div class="filterSRT">
                     <div class="titrFSRT"><span class="icon"></span><span class="matnTitr">محدوده زمانی:</span></div>
                     <div id="tarikhFSRT">
-                        <input type="text" class="txtTarikh" name="mah" value="<?php echo jdate("m", "", "", "Asia/Tehran", "en");?>" onfocus="this.select();" oninput="if(this.value.length>1) this.nextElementSibling.focus();" maxlength="2" placeholder="ماه" autocomplete="off"/>
+                        <input type="text" class="txtTarikh" name="mah" value="<?php echo jdate("m", "", "", "Asia/Tehran", "en");?>" onfocus="this.select();" maxlength="2" placeholder="ماه" autocomplete="off"/>
                         <input type="text" class="txtTarikh" name="sal" value="<?php echo jdate("Y", "", "", "Asia/Tehran", "en");?>" onfocus="this.select();" maxlength="4" placeholder="سال" autocomplete="off"/>
                     </div>
                 </div>
@@ -118,9 +118,7 @@ if ($result !== false && $result->num_rows > 0)
                 </div>
                 <div id="stoonVasat">
                     <div class="kadrNemoodar"></div>
-                    <div class="kadrNemoodar">
-                        <canvas class="nemoodar" id="cnvNemoodarMandeh"></canvas>
-                    </div>
+                    <div class="kadrNemoodar"></div>
                 </div>
             </div>
         </div>
@@ -134,7 +132,6 @@ if ($result !== false && $result->num_rows > 0)
 <script src="script/amar.js"></script>
 <script>
     var tkn = "<?php echo $tkn;?>";
-    var tedadRoozMah = <?php echo jdate("t", "", "", "Asia/Tehran", "en");?>;
     Chart.defaults.global.defaultFontColor = "black";
     Chart.defaults.global.defaultFontSize = 16;
     Chart.defaults.global.defaultFontFamily = "vazir";

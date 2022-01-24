@@ -148,24 +148,25 @@ a#btnFSRT:active
 a#btnSoorathesabAMR, a#btnSoorathesabAMR:link, a#btnSoorathesabAMR:visited
 {
     float: right;
-    width: calc(100% - 20px);
-    margin-top: 10px;
+    width: calc(100% - 22px);
+    margin: 20px 0;
     padding: 10px;
     border-radius: 8px;
     text-align: center;
     border: 1px solid hsl(0, 0%, 80%);
+    background-color: hsl(0, 0%, 97%);
     transition: background-color 0.1s;
 }
 
 a#btnSoorathesabAMR:hover
 {
-    background-color: hsl(0, 0%, 95%);
+    background-color: hsl(0, 0%, 92%);
 }
 
 a#btnSoorathesabAMR:active
 {
     transition: none;
-    background-color: hsl(0, 0%, 92%);
+    background-color: hsl(0, 0%, 95%);
 }
 
 .amarTedad>.titrAMR, .amarTedad>.meghdarAMR
@@ -179,10 +180,9 @@ a#btnSoorathesabAMR:active
 {
     float: right;
     width: calc(100% - 32px);
-    padding: 12px 15px;
-    margin-top: 10px;
+    padding: 12px 15px 10px;
     border-radius: 8px;
-    background-color: hsl(0, 0%, 97%);
+    /*background-color: hsl(0, 0%, 97%);*/
     border: 1px solid hsl(0, 0%, 80%);
 }
 
@@ -243,7 +243,15 @@ a.btnLAMR>span.icon, a.btnLAMR>span.matnTitr
 {
     float: right;
     width: 100%;
-    padding: 3px 0;
+    padding: 5px 0;
+    border-width: 0 0 1px 0;
+    border-style: solid;
+    border-image: linear-gradient(to right, hsl(204, 54%, 100%) 0%, hsl(0, 0%, 75%) 77%, hsl(0, 0%, 100%) 100%) 1 round;
+}
+
+.itemListAMR:last-child
+{
+    border-bottom: 0;
 }
 
 .tedadEstefadehListAMR
