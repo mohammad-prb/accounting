@@ -90,11 +90,11 @@ if ($result !== false && $result->num_rows > 0)
                             <div class="meghdarAMR" id="meghdarJamTedad">0</div>
                         </div>
                         <div class="amarTedad" id="khorooji" style="color:hsl(352, 100%, 35%);" title="تعداد خروجی">
-                            <div class="titrAMR"><span class="icon"></span></div>
+                            <div class="titrAMR"><span class="icon"></span></div>
                             <div class="meghdarAMR" id="meghdarKhorooji">0</div>
                         </div>
                         <div class="amarTedad" id="voroodi" style="color:hsl(148, 64%, 35%);" title="تعداد ورودی">
-                            <div class="titrAMR"><span class="icon"></span></div>
+                            <div class="titrAMR"><span class="icon"></span></div>
                             <div class="meghdarAMR" id="meghdarVoroodi">0</div>
                         </div>
                         <a href="javascript:void(0);" id="btnSoorathesabAMR"><span class="icon"></span><span class="matnTitr">نمایش صورتحساب</span></a>

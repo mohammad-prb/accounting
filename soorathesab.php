@@ -39,15 +39,15 @@ if ($result !== false && $result->num_rows > 0)
         <div id="kadrAmarSoorathesab">
             <a onclick="selectAllSRT();" id="btnSelectAll" title="(سلکت / لغو سلکت) همه"></a>
             <div class="amarSRT">
-                <div class="titrAmarSRT"><span class="icon riz"></span><span class="matnTitr riz">تعداد نتایج:</span></div>
+                <div class="titrAmarSRT"><span class="icon riz"></span><span class="matnTitr riz">تعداد نتایج:</span></div>
                 <div class="meghdarAmarSRT" id="tedadNataiejSRT">0</div>
             </div>
             <div class="amarSRT">
-                <div class="titrAmarSRT"><span class="icon riz"></span><span class="matnTitr riz">تعداد خروجی:</span></div>
+                <div class="titrAmarSRT"><span class="icon riz"></span><span class="matnTitr riz">تعداد خروجی:</span></div>
                 <div class="meghdarAmarSRT" id="tedadKhoroojiSRT">0</div>
             </div>
             <div class="amarSRT">
-                <div class="titrAmarSRT"><span class="icon riz"></span><span class="matnTitr riz">تعداد ورودی:</span></div>
+                <div class="titrAmarSRT"><span class="icon riz"></span><span class="matnTitr riz">تعداد ورودی:</span></div>
                 <div class="meghdarAmarSRT" id="tedadVoroodiSRT">0</div>
             </div>
             <div class="amarSRT">
@@ -55,7 +55,7 @@ if ($result !== false && $result->num_rows > 0)
                 <div class="meghdarAmarSRT" id="meghdarKhoroojiSRT">0</div>
             </div>
             <div class="amarSRT">
-                <div class="titrAmarSRT"><span class="icon riz"></span><span class="matnTitr riz">ورودی:</span></div>
+                    <div class="titrAmarSRT"><span class="icon riz"></span><span class="matnTitr riz">ورودی:</span></div>
                 <div class="meghdarAmarSRT" id="meghdarVoroodiSRT">0</div>
             </div>
             <div class="amarSRT">
@@ -70,11 +70,11 @@ if ($result !== false && $result->num_rows > 0)
                 <div class="meghdarSelect" id="tedadSelect">0</div>
             </div>
             <div class="amarSelect tedad">
-                <div class="titrSelect"><span class="icon riz"></span><span class="matnTitr riz">تعداد خروجی:</span></div>
+                <div class="titrSelect"><span class="icon riz"></span><span class="matnTitr riz">تعداد خروجی:</span></div>
                 <div class="meghdarSelect" id="tedadKoroojiSelect">0</div>
             </div>
             <div class="amarSelect tedad">
-                <div class="titrSelect"><span class="icon riz"></span><span class="matnTitr riz">تعداد ورودی:</span></div>
+                <div class="titrSelect"><span class="icon riz"></span><span class="matnTitr riz">تعداد ورودی:</span></div>
                 <div class="meghdarSelect" id="tedadVoroodiSelect">0</div>
             </div>
             <div class="amarSelect mablagh">

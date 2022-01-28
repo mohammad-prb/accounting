@@ -1,0 +1,268 @@
+#kadrTitrAnavin
+{
+    position: relative;
+    float: right;
+    width: 100%;
+}
+
+#kadrAfzoodanDasteh
+{
+    float: right;
+    width: 100%;
+    margin: 20px 0;
+}
+
+.kadrAfzoodanDST
+{
+    float: right;
+    margin-left: 30px;
+}
+
+.afzoodanDST
+{
+    float: right;
+    margin-left: 5px;
+    padding: 7px 0;
+    color: hsla(0, 0%, 0%, 0.7);
+}
+
+input.txtDasteh
+{
+    float: right;
+    width: 200px;
+    margin: 1px 0;
+    direction: rtl;
+}
+
+a#btnAfzoodanDST, a#btnAfzoodanDST:link, a#btnAfzoodanDST:visited
+{
+    float: right;
+    padding: 4px 15px;
+    margin: 3px 0;
+    border-radius: 8px;
+    background-color: hsl(148, 64%, 85%);
+    color: hsl(148, 64%, 30%);
+    transition: background-color 0.1s;
+}
+
+a#btnAfzoodanDST:hover
+{
+    background-color: hsl(148, 64%, 75%);
+    color: hsl(148, 64%, 25%);
+}
+
+a#btnAfzoodanDST:active
+{
+    transition: none;
+    background-color: hsl(148, 64%, 65%);
+    color: hsl(148, 64%, 25%);
+}
+
+
+
+/*  راهنما  */
+
+#kadrRahnama
+{
+    float: right;
+    width: 100%;
+}
+
+#kadrVasetRahnama
+{
+    width: 400px;
+    margin: 10px auto 30px;
+    padding: 10px 10px;
+    border-radius: 8px;
+    background-color: hsl(0, 0%, 95%);
+    border: 1px solid hsl(0, 0%, 80%);
+    overflow: auto;
+}
+
+a.rahnama, a.rahnama:link, a.rahnama:visited
+{
+    float: right;
+    margin: 0 10px;
+    opacity: 0.6;
+    transition: opacity 0.1s;
+}
+
+a.rahnama:hover
+{
+    opacity: 1;
+}
+
+a.rahnama:active
+{
+    transition: none;
+    opacity: 0.9;
+}
+
+a.rahnama:nth-child(1)>span.icon
+{
+    color: hsl(39, 100%, 70%);
+}
+
+a.rahnama:nth-child(2)>span.icon
+{
+    color: hsl(352, 100%, 70%);
+}
+
+a.rahnama:nth-child(3)>span.icon
+{
+    color: hsl(148, 64%, 70%);
+}
+
+a.rahnama:nth-child(4)>span.icon
+{
+    color: hsl(204, 100%, 70%);
+}
+
+
+
+/*  جدول  */
+
+#kadrJadvalDST
+{
+    float: right;
+    width: 100%;
+}
+
+#kadrHeaderJDST
+{
+    float: right;
+    width: 100%;
+    color: hsl(0, 0%, 50%);
+    font-size: 0.875rem;
+}
+
+#kadrHeaderJDST .etelaatJDST
+{
+    padding: 0 10px;
+    background-color: hsl(0, 0%, 100%);
+}
+
+#kadrHeaderJDST .shomJDST
+{
+    padding: 0 0 0 10px;
+}
+
+#jadvalDST
+{
+    float: right;
+    width: 100%;
+}
+
+.itemJDST
+{
+    float: right;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.shomJDST
+{
+    float: right;
+    width: 35px;
+    padding: 10px 0 10px 10px;
+    text-align: left;
+    color: hsl(0, 0%, 50%);
+}
+
+.etelaatJDST
+{
+    float: right;
+    width: calc(100% - 65px);
+    padding: 10px 10px;
+    border-radius: 8px;
+    background-color: hsl(0, 0%, 90%);
+}
+
+.etelaatJDST[data-noe="1"]
+{
+    background-color: hsl(39, 100%, 90%);
+}
+
+.etelaatJDST[data-noe="2"]
+{
+    background-color: hsl(352, 100%, 95%);
+}
+
+.etelaatJDST[data-noe="3"]
+{
+    background-color: hsl(148, 64%, 90%);
+}
+
+.etelaatJDST[data-noe="4"]
+{
+    background-color: hsl(204, 100%, 92%);
+}
+
+.iconJDST
+{
+    float: right;
+    width: 16px;
+    margin-left: 20px;
+    padding: 5px 0;
+    font-family: myIcon;
+}
+
+.onvanJDST
+{
+    float: right;
+    width: calc(46% - 180px);
+    margin-left: 10px;
+}
+
+.tedadMahJDST
+{
+    float: right;
+    width: calc(18% - 10px);
+    margin-left: 10px;
+}
+
+.tedadSalJDST
+{
+    float: right;
+    width: calc(18% - 10px);
+    margin-left: 10px;
+}
+
+.tedadKolJDST
+{
+    float: right;
+    width: calc(18% - 10px);
+    margin-left: 10px;
+}
+
+.emkanatJDST
+{
+    float: right;
+    width: 134px;
+    text-align: center;
+}
+
+a.btnJDST, a.btnJDST:link, a.btnJDST:visited
+{
+    float: left;
+    padding: 5px 5px 4px 5px;
+    border-radius: 50%;
+    background-color: hsla(0, 0%, 0%, 0.1);
+    margin-right: 10px;
+    font-family: myIcon;
+}
+
+a.btnJDST:hover
+{
+
+}
+
+a.btnJDST:active
+{
+
+}
+
+a.btnJDST:last-child
+{
+    margin-right: 0;
+}

@@ -14,7 +14,7 @@
         ?>
     </select>
     <div class="kadrSBT" id="kadrSBTK">
-        <h3 class="titrSBT"><span class="icon"></span><span class="matnTitr">ثبت خروجی</span></h3>
+        <h3 class="titrSBT"><span class="icon"></span><span class="matnTitr">ثبت خروجی</span></h3>
         <a class="btnErsalSBT" href="javascript:void(0);" onclick="sabtVarizi(1);"><span class="icon"></span><span class="matnTitr">ثبت</span></a>
         <div class="kadrEtelaatSBT">
             <div class="etelaatSBT">
@@ -92,7 +92,7 @@
     </div>
 
     <div class="kadrSBT" id="kadrSBTV">
-        <h3 class="titrSBT"><span class="icon"></span><span class="matnTitr">ثبت ورودی</span></h3>
+        <h3 class="titrSBT"><span class="icon"></span><span class="matnTitr">ثبت ورودی</span></h3>
         <a class="btnErsalSBT" href="javascript:void(0);" onclick="sabtVarizi(0);"><span class="icon"></span><span class="matnTitr">ثبت</span></a>
         <div class="kadrEtelaatSBT">
             <div class="etelaatSBT">
