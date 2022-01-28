@@ -331,7 +331,9 @@ function sabtVarizi(noe)
     {
         if (this.readyState === 4 && this.status === 200)
         {
-            bastanLoading(document.getElementById("kadrSBTK"));
+            if (noe === 1) bastanLoading(document.getElementById("kadrSBTK"));
+            else bastanLoading(document.getElementById("kadrSBTV"));
+
             var natijeh = this.responseText;
             if (natijeh === "ok")
             {
@@ -359,7 +361,9 @@ function sabtVarizi(noe)
     xhttp.open("POST", "./ajax/sabt-varizi.php?sid="+Math.random(), true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send(strQ+"&tk="+tkn);
-    namayeshLoading(document.getElementById("kadrSBTK"));
+
+    if (noe === 1) namayeshLoading(document.getElementById("kadrSBTK"));
+    else namayeshLoading(document.getElementById("kadrSBTV"));
 }
 
 /*      تابع گرفتن مانده      */

@@ -4,16 +4,8 @@ date_default_timezone_set("Asia/Tehran");
 include ("code/jdf.php");
 include ("code/lib.php");
 include ("code/etesal-db.php");
+include ("code/tolid-token.php");
 $safheh = "soorathesab";
-
-if (!isset($_SESSION["token"]))
-{
-    if (function_exists('random_bytes'))
-        $_SESSION["token"] = bin2hex(random_bytes(32));
-    else
-        $_SESSION["token"] = bin2hex(mcrypt_create_iv(32, MCRYPT_DEV_URANDOM));
-}
-$tkn = $_SESSION["token"];
 
 $sql = "select * from tbl_hesab where vaziat = 1 order by tartib limit 1";
 $result = $con->query($sql);
