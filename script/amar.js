@@ -129,7 +129,7 @@ function emalTarikh()
                    options:{scales:{yAxes:[{ticks:{beginAtZero: true}}]}}
                 });
             }
-            else namayeshPeygham("دریافت اطلاعات با خطا مواجه شد! لطفا دوباره امتحان کنید.")
+            else namayeshPeygham("دریافت اطلاعات با خطا مواجه شد! لطفا دوباره امتحان کنید.");
         }
     };
     xhttp.open("POST", "./ajax/gereftan-amar.php?sid="+Math.random(), true);

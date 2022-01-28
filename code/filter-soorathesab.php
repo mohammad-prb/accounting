@@ -42,7 +42,7 @@
                 <option value="hameh">-</option>
                 <?php
                 $arrDasteh = array();
-                $sql = "select id, onvan, noe, tartib from tbl_dasteh where (hesabID = ".$hesabID." or hesabID = 0) and vaziat = 1 order by tartib";
+                $sql = "select id, onvan, noe, tartib from tbl_dasteh where (hesabID = ".$hesabID." or hesabID = 0) and vaziat = 1 order by hesabID desc, tartib";
                 $result = $con->query($sql);
                 if ($result !== false && $result->num_rows > 0)
                 {
@@ -62,7 +62,7 @@
                 <option value="hameh">-</option>
                 <?php
                 $arrAfrad = array();
-                $sql = "select id, nam, noe, tartib from tbl_afrad where (hesabID = ".$hesabID." or hesabID = 0) and vaziat = 1 order by tartib";
+                $sql = "select id, nam, noe, tartib from tbl_afrad where (hesabID = ".$hesabID." or hesabID = 0) and vaziat = 1 order by hesabID desc, tartib";
                 $result = $con->query($sql);
                 if ($result !== false && $result->num_rows > 0)
                 {
@@ -81,7 +81,7 @@
             <select name="varizKonandeh" id="varizKonandehSBTV">
                 <option value="hameh">-</option>
                 <?php
-                $sql = "select id, nam, noe, tartib from tbl_afrad where (hesabID = ".$hesabID." or hesabID = 0) and (noe <= 1 or noe = 3) and vaziat = 1 order by tartib";
+                $sql = "select id, nam, noe, tartib from tbl_afrad where (hesabID = ".$hesabID." or hesabID = 0) and (noe <= 1 or noe = 3) and vaziat = 1 order by hesabID desc, tartib";
                 $result = $con->query($sql);
                 if ($result !== false && $result->num_rows > 0)
                 {

@@ -38,7 +38,7 @@
                 <select name="dasteh" id="dastehSBTK">
                     <?php
                     $arrDasteh = array();
-                    $sql = "select id, onvan, noe, tartib from tbl_dasteh where (hesabID = ".$hesabID." or hesabID = 0) and vaziat = 1 order by tartib";
+                    $sql = "select id, onvan, noe, tartib from tbl_dasteh where (hesabID = ".$hesabID." or hesabID = 0) and vaziat = 1 order by hesabID desc, tartib";
                     $result = $con->query($sql);
                     if ($result !== false && $result->num_rows > 0)
                     {
@@ -99,7 +99,7 @@
                 <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">دسته:</span></div>
                 <select name="dasteh" id="dastehSBTV">
                     <?php
-                    $sql = "select id, onvan, noe, tartib from tbl_dasteh where (hesabID = ".$hesabID." or hesabID = 0) and (noe <= 1 or noe = 3) and vaziat = 1 order by tartib";
+                    $sql = "select id, onvan, noe, tartib from tbl_dasteh where (hesabID = ".$hesabID." or hesabID = 0) and (noe <= 1 or noe = 3) and vaziat = 1 order by hesabID desc, tartib";
                     $result = $con->query($sql);
                     if ($result !== false && $result->num_rows > 0)
                     {
@@ -115,7 +115,7 @@
                 <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">واریز کننده:</span></div>
                 <select name="varizKonandeh" id="varizKonandehSBTV">
                     <?php
-                    $sql = "select id, nam, noe, tartib from tbl_afrad where (hesabID = ".$hesabID." or hesabID = 0) and (noe <= 1 or noe = 3) and vaziat = 1 order by tartib";
+                    $sql = "select id, nam, noe, tartib from tbl_afrad where (hesabID = ".$hesabID." or hesabID = 0) and (noe <= 1 or noe = 3) and vaziat = 1 order by hesabID desc, tartib";
                     $result = $con->query($sql);
                     if ($result !== false && $result->num_rows > 0)
                     {

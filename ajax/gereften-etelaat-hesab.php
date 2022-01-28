@@ -12,13 +12,13 @@ if (preg_match("/^[1-9]+[0-9]*$/", $hesabID) !== 1) die();
 
 $arrDasteh = $arrAfrad = array();
 
-$sql = "select id, onvan, noe, tartib from tbl_dasteh where (hesabID = ".$hesabID." or hesabID = 0) and vaziat = 1 order by tartib";
+$sql = "select id, onvan, noe, tartib from tbl_dasteh where (hesabID = ".$hesabID." or hesabID = 0) and vaziat = 1 order by hesabID desc, tartib";
 $result = $con->query($sql);
 if ($result !== false && $result->num_rows > 0)
     while ($row = $result->fetch_assoc())
         array_push($arrDasteh, $row);
 
-$sql = "select id, nam, noe, tartib from tbl_afrad where (hesabID = ".$hesabID." or hesabID = 0) and vaziat = 1 order by tartib";
+$sql = "select id, nam, noe, tartib from tbl_afrad where (hesabID = ".$hesabID." or hesabID = 0) and vaziat = 1 order by hesabID desc, tartib";
 $result = $con->query($sql);
 if ($result !== false && $result->num_rows > 0)
     while ($row = $result->fetch_assoc())

@@ -162,7 +162,7 @@ function taghirVasilehSBT(lmn)
     {
         for (let i=0; i<arrObjDasteh.length; i++)
         {
-            if (Number(arrObjDasteh[i]["noe"]) === 4)
+            if (Number(arrObjDasteh[i]["noe"]) === 4 || Number(arrObjDasteh[i]["noe"]) === 0)
             {
                 let option = document.createElement("option");
                 option.value = arrObjDasteh[i]["id"];

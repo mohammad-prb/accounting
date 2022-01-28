@@ -9,7 +9,9 @@
 {
     float: right;
     width: 100%;
-    margin: 20px 0;
+    margin: 20px 0 10px;
+    padding-top: 30px;
+    border-top: 1px solid hsl(0, 0%, 80%);
 }
 
 .kadrAfzoodanDST
@@ -71,11 +73,10 @@ a#btnAfzoodanDST:active
 #kadrVasetRahnama
 {
     width: 400px;
-    margin: 10px auto 30px;
+    margin: 0 auto 30px;
     padding: 10px 10px;
     border-radius: 8px;
-    background-color: hsl(0, 0%, 95%);
-    border: 1px solid hsl(0, 0%, 80%);
+    border: 1px solid hsl(0, 0%, 85%);
     overflow: auto;
 }
 
@@ -95,27 +96,27 @@ a.rahnama:hover
 a.rahnama:active
 {
     transition: none;
-    opacity: 0.9;
+    opacity: 0.8;
 }
 
 a.rahnama:nth-child(1)>span.icon
 {
-    color: hsl(39, 100%, 70%);
+    color: hsl(39, 100%, 40%);
 }
 
 a.rahnama:nth-child(2)>span.icon
 {
-    color: hsl(352, 100%, 70%);
+    color: hsl(352, 100%, 40%);
 }
 
 a.rahnama:nth-child(3)>span.icon
 {
-    color: hsl(148, 64%, 70%);
+    color: hsl(148, 64%, 40%);
 }
 
 a.rahnama:nth-child(4)>span.icon
 {
-    color: hsl(204, 100%, 70%);
+    color: hsl(204, 100%, 40%);
 }
 
 
@@ -124,8 +125,11 @@ a.rahnama:nth-child(4)>span.icon
 
 #kadrJadvalDST
 {
+    position: relative;
     float: right;
     width: 100%;
+    overflow: hidden;
+    border-radius: 8px;
 }
 
 #kadrHeaderJDST
@@ -163,16 +167,16 @@ a.rahnama:nth-child(4)>span.icon
 .shomJDST
 {
     float: right;
-    width: 35px;
+    width: 27px;
     padding: 10px 0 10px 10px;
-    text-align: left;
+    text-align: center;
     color: hsl(0, 0%, 50%);
 }
 
 .etelaatJDST
 {
     float: right;
-    width: calc(100% - 65px);
+    width: calc(100% - 57px);
     padding: 10px 10px;
     border-radius: 8px;
     background-color: hsl(0, 0%, 90%);
@@ -198,11 +202,18 @@ a.rahnama:nth-child(4)>span.icon
     background-color: hsl(204, 100%, 92%);
 }
 
+.etelaatJDST>div
+{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .iconJDST
 {
     float: right;
     width: 16px;
-    margin-left: 20px;
+    margin: 0 5px 0 15px;
     padding: 5px 0;
     font-family: myIcon;
 }
@@ -250,16 +261,18 @@ a.btnJDST, a.btnJDST:link, a.btnJDST:visited
     background-color: hsla(0, 0%, 0%, 0.1);
     margin-right: 10px;
     font-family: myIcon;
+    transition: background-color 0.1s;
 }
 
 a.btnJDST:hover
 {
-
+    background-color: hsla(0, 0%, 0%, 0.18);
 }
 
 a.btnJDST:active
 {
-
+    transition: none;
+    background-color: hsla(0, 0%, 0%, 0.13);
 }
 
 a.btnJDST:last-child

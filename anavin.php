@@ -27,7 +27,7 @@ if ($result !== false && $result->num_rows > 0)
     <link rel="stylesheet" href="style/main.css"/>
     <link rel="stylesheet" href="style/anavin.css"/>
 </head>
-<body dir="rtl" onload="tanzimSaf();">
+<body dir="rtl" onload="tanzimSaf();gereftanDasteh();">
 <div id="fullCountainer">
 
     <?php require("code/peygham.php");?>
@@ -37,7 +37,7 @@ if ($result !== false && $result->num_rows > 0)
         <?php require("code/navar-bala.php");?>
         <div id="kadrTitrAnavin">
             <h2 class="titr"><span class="icon"></span><span class="matnTitr">دسته بندی ها</span></h2>
-            <select name="hesabha" class="sltHesabha" onchange="taghirHesabANV(this);" title="انتخاب حساب">
+            <select name="hesabha" class="sltHesabha" onchange="gereftanDasteh();" title="انتخاب حساب">
                 <?php
                 $sql = "select * from tbl_hesab where vaziat = 1 order by tartib";
                 $result = $con->query($sql);
@@ -50,6 +50,30 @@ if ($result !== false && $result->num_rows > 0)
                 }
                 ?>
             </select>
+        </div>
+        <div id="kadrRahnama">
+            <div id="kadrVasetRahnama">
+                <a href="javascript:void(0);" onclick="taghirNoeDST(this);" class="rahnama" data-vaziat="1"><span class="icon"></span><span class="matnTitr">خروجی و ورودی</span></a>
+                <a href="javascript:void(0);" onclick="taghirNoeDST(this);" class="rahnama" data-vaziat="1"><span class="icon"></span><span class="matnTitr">خروجی</span></a>
+                <a href="javascript:void(0);" onclick="taghirNoeDST(this);" class="rahnama" data-vaziat="1"><span class="icon"></span><span class="matnTitr">ورودی</span></a>
+                <a href="javascript:void(0);" onclick="taghirNoeDST(this);" class="rahnama" data-vaziat="1"><span class="icon"></span><span class="matnTitr">پرداخت</span></a>
+            </div>
+        </div>
+        <div id="kadrJadvalDST">
+            <div id="kadrHeaderJDST">
+                <div class="itemJDST">
+                    <div class="shomJDST">ردیف</div>
+                    <div class="etelaatJDST">
+                        <div class="iconJDST"></div>
+                        <div class="onvanJDST">عنوان</div>
+                        <div class="tedadMahJDST">تعداد (ماه)</div>
+                        <div class="tedadSalJDST">تعداد (سال)</div>
+                        <div class="tedadKolJDST">تعداد (کل)</div>
+                        <div class="emkanatJDST">امکانات</div>
+                    </div>
+                </div>
+            </div>
+            <div id="jadvalDST"></div>
         </div>
         <div id="kadrAfzoodanDasteh">
             <div class="kadrAfzoodanDST">
@@ -71,58 +95,6 @@ if ($result !== false && $result->num_rows > 0)
         <script>
             document.getElementById("kadrAfzoodanDasteh").onkeydown = function(e){if (e.keyCode === 13) sabtDasteh();};
         </script>
-        <div id="kadrRahnama">
-            <div id="kadrVasetRahnama">
-                <a href="javascript:void(0);" onclick="" class="rahnama"><span class="icon"></span><span class="matnTitr">خروجی و ورودی</span></a>
-                <a href="javascript:void(0);" onclick="" class="rahnama"><span class="icon"></span><span class="matnTitr">خروجی</span></a>
-                <a href="javascript:void(0);" onclick="" class="rahnama"><span class="icon"></span><span class="matnTitr">ورودی</span></a>
-                <a href="javascript:void(0);" onclick="" class="rahnama"><span class="icon"></span><span class="matnTitr">پرداخت</span></a>
-            </div>
-        </div>
-        <div id="kadrJadvalDST">
-            <div id="kadrHeaderJDST">
-                <div class="itemJDST">
-                    <div class="shomJDST">ردیف</div>
-                    <div class="etelaatJDST">
-                        <div class="iconJDST"></div>
-                        <div class="onvanJDST">عنوان</div>
-                        <div class="tedadMahJDST">تعداد (ماه)</div>
-                        <div class="tedadSalJDST">تعداد (سال)</div>
-                        <div class="tedadKolJDST">تعداد (کل)</div>
-                        <div class="emkanatJDST">امکانات</div>
-                    </div>
-                </div>
-            </div>
-            <div id="jadvalDST">
-                <?php
-                $i = 1;
-                $sql = "select * from tbl_dasteh where vaziat = 1 and (hesabID = ". $hesabID ." or hesabID = 0) order by tartib";
-                $result = $con->query($sql);
-                if ($result !== false && $result->num_rows > 0)
-                {
-                    while ($row = $result->fetch_assoc())
-                    {
-                        echo '<div class="itemJDST">
-                                <div class="shomJDST">'. $i++ .'</div>
-                                <div class="etelaatJDST" data-noe="'. $row["noe"] .'">
-                                    <div class="iconJDST"></div>
-                                    <div class="onvanJDST">'. $row["onvan"] .'</div>
-                                    <div class="tedadMahJDST">354</div>
-                                    <div class="tedadSalJDST">1,456</div>
-                                    <div class="tedadKolJDST">12,456</div>
-                                    <div class="emkanatJDST">
-                                        <a href="javascript:void(0);" class="btnJDST btnHazfJDST" onclick="" title="حذف"></a>
-                                        <a href="javascript:void(0);" class="btnJDST btnVirayeshJDST" onclick="" title="ویرایش"></a>
-                                        <a href="javascript:void(0);" class="btnJDST btnBalaJDST" onclick="" title="جابجایی"></a>
-                                        <a href="javascript:void(0);" class="btnJDST btnPaeenJDST" onclick="" title="جابجایی"></a>
-                                    </div>
-                                </div>
-                            </div>';
-                    }
-                }
-                ?>
-            </div>
-        </div>
     </div>
 
 </div>
