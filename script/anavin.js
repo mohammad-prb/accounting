@@ -113,7 +113,79 @@ function hazfDST(shom)
 /*      ویرایش دسته ها      */
 function virayeshDST(lmn)
 {
+    var onvan = lmn.parentElement.parentElement.getElementsByClassName("onvanJDST")[0].innerHTML.trim();
+    var noe = Number(lmn.parentElement.parentElement.dataset.noe);
+    var id = Number(lmn.parentElement.parentElement.parentElement.dataset.id);
+    var lmnKadr = document.createElement("div");
+    lmnKadr.setAttribute("id", "CountainerKadrViraieshDST");
+    lmnKadr.innerHTML = '<div id="kadrNamayeshVDST">\n' +
+        '            <a id="kadrPoshtVDST" href="javascript:void(0);" onclick="this.parentElement.parentElement.remove();"></a>\n' +
+        '            <div id="kadrVDST">\n' +
+        '                <div>\n' +
+        '                    <div id="titrVDST"><span class="icon"></span><span class="matnTitr">ویرایش دسته</span></div>\n' +
+        '                    <div class="etelaatVDST">\n' +
+        '                        <div class="etelaatSBT">\n' +
+        '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">نام دسته:</span></div>\n' +
+        '                            <input type="text" class="txtDasteh" id="dastehVDST" name="dasteh" value="'+ onvan +'" autocomplete="off">\n' +
+        '                        </div>\n' +
+        '                        <div class="etelaatSBT">\n' +
+        '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">نوع:</span></div>\n' +
+        '                            <div class="kadrENT" id="noeVDST">\n' +
+        '                                <span class="kadrPoshtENT"></span>\n' +
+        '                                <a class="gozinehENT" onclick="taghirENT(this);" data-value="1" href="javascript:void(0);">خروجی و ورودی</a>\n' +
+        '                                <a class="gozinehENT" onclick="taghirENT(this);" data-value="2" href="javascript:void(0);">خروجی</a>\n' +
+        '                                <a class="gozinehENT" onclick="taghirENT(this);" data-value="3" href="javascript:void(0);">ورودی</a>\n' +
+        '                                <a class="gozinehENT" onclick="taghirENT(this);" data-value="4" href="javascript:void(0);">پرداخت</a>\n' +
+        '                            </div>\n' +
+        '                        </div>\n' +
+        '                    </div>\n' +
+        '                    <span id="kadrDokmehVDST">\n' +
+        '                        <a class="dokmehTL dokmehTaeed" onclick="sabtVirayeshDST('+ id +');" href="javascript:void (0);"><span class="icon"></span><span class="matnTitr">تایید</span></a>\n' +
+        '                        <a class="dokmehTL dokmehLaghv" onclick="this.parentElement.parentElement.parentElement.parentElement.parentElement.remove();" href="javascript:void (0);"><span class="icon"></span><span class="matnTitr">انصراف</span></a>\n' +
+        '                    </span>\n' +
+        '                </div>\n' +
+        '            </div>\n' +
+        '        </div>';
+    document.body.appendChild(lmnKadr);
+    taghirENT(lmnKadr.getElementsByClassName("gozinehENT")[noe-1]);
+    document.getElementById("dastehVDST").select();
+}
 
+/*      ثبت ویرایش دسته      */
+function sabtVirayeshDST(id)
+{
+    var hesabID = Number(document.getElementsByClassName("sltHesabha")[0].value);
+    var onvan = document.getElementById("dastehVDST").value.trim().replace(/(<([^>]+)>)/ig, '');
+    var noe = document.getElementById("noeVDST").dataset.value;
+
+    if (onvan.length < 1) {
+        namayeshPeygham("لطفا نام دسته را پر کنید.");
+        return;
+    }
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function ()
+    {
+        if (this.readyState === 4 && this.status === 200)
+        {
+            bastanLoading(document.getElementById("CountainerKadrViraieshDST"));
+            if (this.responseText === "ok")
+            {
+                document.getElementById("CountainerKadrViraieshDST").remove();
+                var lmn = document.querySelector(".itemJDST[data-id='"+id+"']");
+                lmn.getElementsByClassName("etelaatJDST")[0].dataset.noe = noe;
+                lmn.getElementsByClassName("onvanJDST")[0].innerHTML = onvan;
+            }
+            else if (this.responseText === "er:noe") namayeshPeygham("تغییر نوع غیر مجاز میباشد! برای این تغییر، باید دسته بندی تمام واریز هایی که قبلا از این دسته استفاده کرده اند تغییر دهید.");
+            else if (this.responseText === "er:khorooji") namayeshPeygham("تغییر نوع غیر مجاز میباشد! برای این تغییر، باید دسته بندی تمام واریز های ورودی که قبلا از این دسته استفاده کرده اند تغییر دهید.");
+            else if (this.responseText === "er:voroodi") namayeshPeygham("تغییر نوع غیر مجاز میباشد! برای این تغییر، باید دسته بندی تمام واریز های خروجی که قبلا از این دسته استفاده کرده اند تغییر دهید.");
+            else namayeshPeygham("ویرایش با خطا مواجه شد! لطفا دوباره امتحان کنید.");
+        }
+    };
+    xhttp.open("POST", "./ajax/virayesh-dasteh.php?sid="+Math.random(), true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("hesabID="+hesabID+"&id="+id+"&onvan="+onvan+"&noe="+noe+"&tk="+tkn);
+    namayeshLoading(document.getElementById("CountainerKadrViraieshDST"));
 }
 
 /*      جا به جایی دسته ها      */

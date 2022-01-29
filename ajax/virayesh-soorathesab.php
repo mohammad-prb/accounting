@@ -45,15 +45,15 @@ if ((integer)$khoroojiAst == 1)
     include ("../code/mohasebeh-mandeh.php");
     if (($mandeh + $mablaghGhabli - $mablagh) < 0) die("er:mandeh");
 
-    $sql = "update tbl_soorathesab set noeID=?, vasilehID=?, dastehID=?, fardID=?, mablagh=?, tarikh=?, tozih=? where id=? and khoroojiAst=1 and vaziat=1";
+    $sql = "update tbl_soorathesab set noeID=?, vasilehID=?, dastehID=?, fardID=?, mablagh=?, tarikh=?, tozih=? where id=? and hesabID=? and khoroojiAst=1 and vaziat=1";
     $stmt = $con->prepare($sql);
-    $stmt->bind_param("iiiiissi", $noeID, $vasilehID, $dastehID, $fard, $mablagh, $tarikh, $tozih, $id);
+    $stmt->bind_param("iiiiissii", $noeID, $vasilehID, $dastehID, $fard, $mablagh, $tarikh, $tozih, $id, $hesabID);
 }
 else
 {
-    $sql = "update tbl_soorathesab set dastehID=?, fardID=?, mablagh=?, tarikh=?, tozih=? where id=? and khoroojiAst=0 and vaziat=1";
+    $sql = "update tbl_soorathesab set dastehID=?, fardID=?, mablagh=?, tarikh=?, tozih=? where id=? and hesabID=? and khoroojiAst=0 and vaziat=1";
     $stmt = $con->prepare($sql);
-    $stmt->bind_param("iiissi", $dastehID, $fard, $mablagh, $tarikh, $tozih, $id);
+    $stmt->bind_param("iiissii", $dastehID, $fard, $mablagh, $tarikh, $tozih, $id, $hesabID);
 }
 if ($stmt->execute() == true) echo "ok";
 $stmt->close();
