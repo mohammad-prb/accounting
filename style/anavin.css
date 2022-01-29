@@ -287,3 +287,27 @@ a.btnJDST:last-child
 {
     margin-right: 0;
 }
+
+
+
+/*  کادر تایید جا به جایی ها  */
+
+#kadrTaeedJabejaei
+{
+    position: fixed;
+    bottom: -81px;
+    left: 20px;
+    z-index: 900;
+    width: 370px;
+    padding: 15px;
+    background-color: hsl(0, 0%, 98%);
+    box-shadow: 0 0 5px hsl(0, 0%, 60%);
+    border-radius: 8px;
+    transition: bottom 0.2s;
+}
+
+#kadrTaeedJabejaei>a
+{
+    margin-top: 0;
+    cursor: pointer;
+}

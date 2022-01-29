@@ -90,11 +90,15 @@ if ($result !== false && $result->num_rows > 0)
                     <a class="gozinehENT" onclick="taghirENT(this);" data-value="4" href="javascript:void(0);">پرداخت</a>
                 </div>
             </div>
-            <a href="javascript:void(0);" onclick="sabtDasteh();" id="btnAfzoodanDST"><span class="icon"></span><span class="matnTitr">افزودن</span></a>
+            <a href="javascript:void(0);" onclick="sabtDasteh();" id="btnAfzoodanDST"><span class="icon"></span><span class="matnTitr">افزودن</span></a>
         </div>
         <script>
             document.getElementById("kadrAfzoodanDasteh").onkeydown = function(e){if (e.keyCode === 13) sabtDasteh();};
         </script>
+        <div id="kadrTaeedJabejaei">
+            <a class="dokmehTL dokmehTaeed" id="btnZakhirehJabejaei" onclick="sabtJabejaei();"><span class="icon"></span><span class="matnTitr">ثبت جا به جایی ها</span></a>
+            <a class="dokmehTL dokmehLaghv" id="btnLaghvJabejaei" onclick="gereftanDasteh();"><span class="icon"></span><span class="matnTitr">لغو جا به جایی ها</span></a>
+        </div>
     </div>
 
 </div>
