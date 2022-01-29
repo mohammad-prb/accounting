@@ -505,52 +505,12 @@ a.btnEmkanatSelect:active
     font-size: 1.5rem;
 }
 
-a.dokmehTL, a.dokmehTL:link, a.dokmehTL:visited
-{
-    float: right;
-    width: calc(50% - 25px);
-    padding: 10px;
-    text-align: center;
-    border-radius: 8px;
-    transition: color 0.1s, background-color 0.1s;
-}
-
-a.dokmehTaeed, a.dokmehTaeed:link, a.dokmehTaeed:visited
+#kadrVSRT a.dokmehTaeed
 {
     margin: 0 0 0 5px;
-    background-color: hsl(148, 64%, 85%);
-    color: hsl(148, 64%, 30%);
 }
 
-a.dokmehTaeed:hover
-{
-    background-color: hsl(148, 64%, 75%);
-    color: hsl(148, 64%, 25%);
-}
-
-a.dokmehTaeed:active
-{
-    transition: none;
-    background-color: hsl(148, 64%, 65%);
-    color: hsl(148, 64%, 25%);
-}
-
-a.dokmehLaghv, a.dokmehLaghv:link, a.dokmehLaghv:visited
+#kadrVSRT a.dokmehLaghv
 {
     margin: 0 5px 0 0;
-    background-color: hsl(0, 84%, 92%);
-    color: hsl(0, 84%, 50%);
-}
-
-a.dokmehLaghv:hover
-{
-    background-color: hsl(0, 84%, 87%);
-    color: hsl(0, 84%, 45%);
-}
-
-a.dokmehLaghv:active
-{
-    transition: none;
-    background-color: hsl(0, 84%, 85%);
-    color: hsl(0, 84%, 40%);
 }

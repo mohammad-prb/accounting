@@ -20,7 +20,7 @@ if ($result !== false && $result->num_rows > 0)
         array_push($arrNatijeh, array("dastehID"=>$row["id"], "onvan"=>$row["onvan"], "noe"=>$row["noe"], "tartib"=>$row["tartib"], "tedadKol"=>0, "tedadSal"=>0, "tedadMah"=>0));
 
 $i = 0;
-$sql = @"select dastehID, tarikh, onvan, noe, tartib from tbl_dasteh
+$sql = @"select dastehID, tarikh from tbl_dasteh
         left join tbl_soorathesab on tbl_dasteh.id = dastehID
         where tbl_soorathesab.vaziat = 1 and tbl_dasteh.vaziat = 1 and (tbl_soorathesab.hesabID = ". $hesabID ." or tbl_soorathesab.hesabID = 0) order by tbl_dasteh.hesabID desc, tartib, tarikh";
 $result = $con->query($sql);

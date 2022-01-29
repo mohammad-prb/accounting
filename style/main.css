@@ -324,7 +324,7 @@ a.dokmehTL, a.dokmehTL:link, a.dokmehTL:visited
 
 a.dokmehTaeed, a.dokmehTaeed:link, a.dokmehTaeed:visited
 {
-    margin: 15px 0 0 5px;
+    margin: 10px 0 0 5px;
     background-color: hsl(148, 64%, 85%);
     color: hsl(148, 64%, 30%);
 }
@@ -344,7 +344,7 @@ a.dokmehTaeed:active
 
 a.dokmehLaghv, a.dokmehLaghv:link, a.dokmehLaghv:visited
 {
-    margin: 15px 5px 0 0;
+    margin: 10px 5px 0 0;
     background-color: hsl(0, 84%, 92%);
     color: hsl(0, 84%, 50%);
 }
