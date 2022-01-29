@@ -169,7 +169,7 @@ a.rahnama:nth-child(4)>span.icon
 {
     float: right;
     width: 27px;
-    padding: 5px 0 5px 10px;
+    padding: 6px 0 5px 10px;
     text-align: center;
     color: hsl(0, 0%, 50%);
 }

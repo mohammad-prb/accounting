@@ -272,7 +272,7 @@ function sabtVarizi(noe)
         var mah = document.querySelectorAll("#tarikhSBTK>input.txtTarikh")[1].value.toString();
         var sal = document.querySelectorAll("#tarikhSBTK>input.txtTarikh")[2].value.toString();
         var mablagh = document.getElementById("mablaghSBTK").value.toString();
-        var tozih = document.getElementById("tozihSBTK").value.toString();
+        var tozih = document.getElementById("tozihSBTK").value.toString().replace(/(<([^>]+)>)/ig, '');
 
         if (!check(noeID, "^[1-2]$") || !check(vasilehID, "^[1-5]$")) {
             namayeshPeygham("لطفا فیلد هارا برسی کرده، و مجددا تلاش کنید.");
@@ -288,7 +288,7 @@ function sabtVarizi(noe)
         var mah = document.querySelectorAll("#tarikhSBTV>input.txtTarikh")[1].value.toString();
         var sal = document.querySelectorAll("#tarikhSBTV>input.txtTarikh")[2].value.toString();
         var mablagh = document.getElementById("mablaghSBTV").value.toString();
-        var tozih = document.getElementById("tozihSBTV").value.toString();
+        var tozih = document.getElementById("tozihSBTV").value.toString().replace(/(<([^>]+)>)/ig, '');
     }
     else return;
 

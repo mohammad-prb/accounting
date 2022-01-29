@@ -16,7 +16,7 @@ if (isset($_POST["rooz"])) $rooz = htmlspecialchars(stripcslashes(trim($_POST["r
 if (isset($_POST["mah"])) $mah = htmlspecialchars(stripcslashes(trim($_POST["mah"]))); else die();
 if (isset($_POST["sal"])) $sal = htmlspecialchars(stripcslashes(trim($_POST["sal"]))); else die();
 if (isset($_POST["mablagh"])) $mablagh = htmlspecialchars(stripcslashes(trim($_POST["mablagh"]))); else die();
-if (isset($_POST["tozih"])) $tozih = htmlspecialchars(stripcslashes(trim($_POST["tozih"]))); else die();
+if (isset($_POST["tozih"])) $tozih = htmlspecialchars(filter_var(stripcslashes(trim($_POST["tozih"])), FILTER_SANITIZE_STRING)); else die();
 
 if (preg_match("/^[1-9]+[0-9]*$/", $id) !== 1) die();
 if (preg_match("/^[0-1]$/", $khoroojiAst) !== 1) die();

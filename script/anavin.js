@@ -23,9 +23,9 @@ function gereftanDasteh()
                         '<div class="etelaatJDST" data-noe="'+ arrObjNatijeh[i]["noe"] +'">\n' +
                         '    <div class="iconJDST"></div>\n' +
                         '    <div class="onvanJDST" title="">'+ arrObjNatijeh[i]["onvan"] +'</div>\n' +
-                        '    <div class="tedadMahJDST" title="">'+ momayezdar(arrObjNatijeh[i]["tedadMah"]) +'</div>\n' +
-                        '    <div class="tedadSalJDST" title="">'+ momayezdar(arrObjNatijeh[i]["tedadSal"]) +'</div>\n' +
-                        '    <div class="tedadKolJDST" title="">'+ momayezdar(arrObjNatijeh[i]["tedadKol"]) +'</div>\n' +
+                        '    <div class="tedadMahJDST" title="تعداد استفاده این ماه">'+ momayezdar(arrObjNatijeh[i]["tedadMah"]) +'</div>\n' +
+                        '    <div class="tedadSalJDST" title="تعداد استفاده این سال">'+ momayezdar(arrObjNatijeh[i]["tedadSal"]) +'</div>\n' +
+                        '    <div class="tedadKolJDST" title="تعداد استفاده کل">'+ momayezdar(arrObjNatijeh[i]["tedadKol"]) +'</div>\n' +
                         '    <div class="emkanatJDST">\n' +
                         (Number(arrObjNatijeh[i]["noe"]) > 0 ? '<a href="javascript:void(0);" class="btnJDST btnHazfJDST" onclick="namayeshPeygham(\'آیا برای حذف اطمینان دارید؟\', 1, \'hazfDST('+i+');\')" title="حذف"></a>\n' +
                             '<a href="javascript:void(0);" class="btnJDST btnVirayeshJDST" onclick="virayeshDST(this);" title="ویرایش"></a>\n' +
@@ -36,6 +36,7 @@ function gereftanDasteh()
                     lmnKadr.appendChild(lmnDasteh);
                 }
                 taghirNoeDST();
+                shomarehBandiDST();
             }
             else namayeshPeygham("دریافت اطلاعات با خطا مواجه شد! لطفا دوباره امتحان کنید.");
         }
@@ -78,8 +79,6 @@ function taghirNoeDST(lmn)
         else
             arrLmnEtelaat[i].parentElement.style.display = "none";
     }
-
-    shomarehBandiDST();
 }
 
 /*      حذف دسته      */
@@ -125,20 +124,56 @@ function jabejaeiDST(lmn, balaAst)
 function sabtDasteh()
 {
     var hesabID = Number(document.getElementsByClassName("sltHesabha")[0].value);
-    var onvan = document.getElementById("dastehDST").value.trim();
+    var onvan = document.getElementById("dastehDST").value.trim().replace(/(<([^>]+)>)/ig, '');
     var noe = document.getElementById("noeDST").dataset.value;
+    var arrLmn = document.getElementsByClassName("itemJDST");
+    var tartib = 1;
+
+    if (onvan.length < 1) {
+        namayeshPeygham("لطفا نام دسته را پر کنید.");
+        return;
+    }
+
+    if (arrLmn.length > 1)
+        tartib = Number(arrLmn[arrLmn.length-2].dataset.tartib) + 1;
 
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function ()
     {
         if (this.readyState === 4 && this.status === 200)
         {
-            
+            bastanLoading(document.getElementById("kadrJadvalDST"));
+            if (this.responseText.substr(0,2) === "ok")
+            {
+                document.getElementById("dastehDST").value = "";
+                let lmnDasteh = document.createElement("div");
+                lmnDasteh.setAttribute("class", "itemJDST");
+                lmnDasteh.dataset.id = this.responseText.split(":")[1];
+                lmnDasteh.dataset.tartib = tartib;
+                lmnDasteh.innerHTML = '<div class="shomJDST"></div>\n' +
+                    '<div class="etelaatJDST" data-noe="'+ noe +'">\n' +
+                    '    <div class="iconJDST"></div>\n' +
+                    '    <div class="onvanJDST" title="">'+ onvan +'</div>\n' +
+                    '    <div class="tedadMahJDST" title="تعداد استفاده این ماه">0</div>\n' +
+                    '    <div class="tedadSalJDST" title="تعداد استفاده این سال">0</div>\n' +
+                    '    <div class="tedadKolJDST" title="تعداد استفاده کل">0</div>\n' +
+                    '    <div class="emkanatJDST">\n' +
+                    '        <a href="javascript:void(0);" class="btnJDST btnHazfJDST" onclick="namayeshPeygham(\'آیا برای حذف اطمینان دارید؟\', 1, \'hazfDST('+(arrLmn.length-2)+');\')" title="حذف"></a>\n' +
+                    '        <a href="javascript:void(0);" class="btnJDST btnVirayeshJDST" onclick="virayeshDST(this);" title="ویرایش"></a>\n' +
+                    '        <a href="javascript:void(0);" class="btnJDST btnBalaJDST" onclick="jabejaeiDST(this, 0);" title="جابجایی"></a>\n' +
+                    '        <a href="javascript:void(0);" class="btnJDST btnPaeenJDST" onclick="jabejaeiDST(this, 1);" title="جابجایی"></a>\n' +
+                    '    </div>\n' +
+                    '</div>';
+                arrLmn[1].parentElement.insertBefore(lmnDasteh, arrLmn[(arrLmn.length-1)]);
+                shomarehBandiDST();
+            }
+            else namayeshPeygham("ثبت اطلاعات با خطا مواجه شد! لطفا دوباره امتحان کنید.");
         }
     };
     xhttp.open("POST", "./ajax/sabt-dasteh.php?sid="+Math.random(), true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("hesabID="+hesabID+"&onvan="+onvan+"&noe="+noe+"&tk="+tkn);
+    xhttp.send("hesabID="+hesabID+"&onvan="+onvan+"&noe="+noe+"&tartib="+tartib+"&tk="+tkn);
+    namayeshLoading(document.getElementById("kadrJadvalDST"));
 }
 
 /*      شماره بندی دسته ها      */
