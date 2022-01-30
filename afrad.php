@@ -100,7 +100,7 @@ if ($result !== false && $result->num_rows > 0)
         </script>
         <div id="kadrTaeedJabejaei">
             <a class="dokmehTL dokmehTaeed" id="btnZakhirehJabejaei" onclick="sabtJabejaei();"><span class="icon"></span><span class="matnTitr">ثبت جا به جایی ها</span></a>
-            <a class="dokmehTL dokmehLaghv" id="btnLaghvJabejaei" onclick="gereftanDasteh();"><span class="icon"></span><span class="matnTitr">لغو جا به جایی ها</span></a>
+            <a class="dokmehTL dokmehLaghv" id="btnLaghvJabejaei" onclick="gereftanAfrad();"><span class="icon"></span><span class="matnTitr">لغو جا به جایی ها</span></a>
         </div>
     </div>
 

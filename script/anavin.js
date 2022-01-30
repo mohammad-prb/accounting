@@ -1,6 +1,7 @@
 /*      گرفتن دسته بندی ها      */
 function gereftanDasteh()
 {
+    var arrIconNamayesh = ["",""];
     var hesabID = Number(document.getElementsByClassName("sltHesabha")[0].value);
     document.getElementById("kadrTaeedJabejaei").style.bottom = "-81px";
     var xhttp = new XMLHttpRequest();
@@ -22,6 +23,7 @@ function gereftanDasteh()
                     lmnDasteh.setAttribute("class", "itemJDST");
                     lmnDasteh.dataset.id = arrObjNatijeh[i]["dastehID"];
                     lmnDasteh.dataset.tartib = arrObjNatijeh[i]["tartib"];
+                    lmnDasteh.dataset.namayesh = arrObjNatijeh[i]["namayesh"];
                     lmnDasteh.innerHTML = '<div class="shomJDST"></div>\n' +
                         '<div class="etelaatJDST" data-noe="'+ arrObjNatijeh[i]["noe"] +'">\n' +
                         '    <div class="iconJDST"></div>\n' +
@@ -33,7 +35,8 @@ function gereftanDasteh()
                         (Number(arrObjNatijeh[i]["noe"]) > 0 ? '<a href="javascript:void(0);" class="btnJDST btnHazfJDST" title="حذف"></a>\n' +
                             '<a href="javascript:void(0);" class="btnJDST btnVirayeshJDST" onclick="virayeshDST(this);" title="ویرایش"></a>\n' +
                             '<a href="javascript:void(0);" class="btnJDST btnBalaJDST" onclick="jabejaeiDST(this.parentElement.parentElement.parentElement, false);" title="جابجایی"></a>\n' +
-                            '<a href="javascript:void(0);" class="btnJDST btnPaeenJDST" onclick="jabejaeiDST(this.parentElement.parentElement.parentElement, true);" title="جابجایی"></a>\n' : "") +
+                            '<a href="javascript:void(0);" class="btnJDST btnPaeenJDST" onclick="jabejaeiDST(this.parentElement.parentElement.parentElement, true);" title="جابجایی"></a>\n' +
+                            '<a href="javascript:void(0);" class="btnJDST btnBalaJDST" onclick="taghirVaziatNamayeshDST(this);" title="تغییر وضعیت نمایش">'+ arrIconNamayesh[Number(arrObjNatijeh[i]["namayesh"])] +'</a>\n' : "") +
                         '    </div>\n' +
                         '</div>';
                     lmnKadr.appendChild(lmnDasteh);
@@ -86,6 +89,39 @@ function taghirNoeDST(lmn)
         else
             arrLmnEtelaat[i].parentElement.style.display = "none";
     }
+}
+
+/*      تغییر وضعیت نمایش دسته ها      */
+function taghirVaziatNamayeshDST(lmn)
+{
+    var arrIconNamayesh = ["",""];
+    var hesabID = Number(document.getElementsByClassName("sltHesabha")[0].value);
+    var lmnKadr = lmn.parentElement.parentElement.parentElement;
+    var id = Number(lmnKadr.dataset.id);
+    var vaziatJadid, vaziat = Number(lmnKadr.dataset.namayesh);
+
+    if (vaziat === 1) vaziatJadid = 0;
+    else vaziatJadid = 1;
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function ()
+    {
+        if (this.readyState === 4 && this.status === 200)
+        {
+            if (this.responseText === "ok")
+            {
+                bastanLoading(document.getElementById("kadrJadvalDST"));
+                flash("تغییر وضعیت موفقیت آمیز بود.");
+                lmnKadr.dataset.namayesh = vaziatJadid;
+                lmn.innerHTML = arrIconNamayesh[vaziatJadid];
+            }
+            else namayeshPeygham("تغییر وضعیت با خطا مواجه شد! لطفا دوباره امتحان کنید.");
+        }
+    };
+    xhttp.open("POST", "./ajax/taghir-vaziat-namayesh-dasteh.php?sid="+Math.random(), true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("hesabID="+hesabID+"&id="+id+"&vaziat="+vaziatJadid+"&tk="+tkn);
+    namayeshLoading(document.getElementById("kadrJadvalDST"));
 }
 
 /*      حذف دسته      */
@@ -282,6 +318,7 @@ function sabtDasteh()
                 lmnDasteh.setAttribute("class", "itemJDST");
                 lmnDasteh.dataset.id = this.responseText.split(":")[1];
                 lmnDasteh.dataset.tartib = tartib;
+                lmnDasteh.dataset.namayesh = "1";
                 lmnDasteh.innerHTML = '<div class="shomJDST"></div>\n' +
                     '<div class="etelaatJDST" data-noe="'+ noe +'">\n' +
                     '    <div class="iconJDST"></div>\n' +
@@ -294,6 +331,7 @@ function sabtDasteh()
                     '        <a href="javascript:void(0);" class="btnJDST btnVirayeshJDST" onclick="virayeshDST(this);" title="ویرایش"></a>\n' +
                     '        <a href="javascript:void(0);" class="btnJDST btnBalaJDST" onclick="jabejaeiDST(this.parentElement.parentElement.parentElement, false);" title="جابجایی"></a>\n' +
                     '        <a href="javascript:void(0);" class="btnJDST btnPaeenJDST" onclick="jabejaeiDST(this.parentElement.parentElement.parentElement, true);" title="جابجایی"></a>\n' +
+                    '        <a href="javascript:void(0);" class="btnJDST btnBalaJDST" onclick="taghirVaziatNamayeshDST(this);" title="تغییر وضعیت نمایش"></a>' +
                     '    </div>\n' +
                     '</div>';
                 arrLmn[1].parentElement.insertBefore(lmnDasteh, arrLmn[(arrLmn.length-1)]);

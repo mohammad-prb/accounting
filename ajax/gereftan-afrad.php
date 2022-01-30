@@ -13,11 +13,11 @@ $tarikhAlan = jdate("Y/m", "", "", "Asia/Tehran", "en");
 
 $arrNatijeh = array();
 
-$sql = "select id, nam, noe, tartib from tbl_afrad where vaziat = 1 and (hesabID = ". $hesabID ." or hesabID = 0) order by hesabID desc, tartib";
+$sql = "select id, nam, noe, tartib, namayesh from tbl_afrad where vaziat = 1 and (hesabID = ". $hesabID ." or hesabID = 0) order by hesabID desc, tartib";
 $result = $con->query($sql);
 if ($result !== false && $result->num_rows > 0)
     while ($row = $result->fetch_assoc())
-        array_push($arrNatijeh, array("fardID"=>$row["id"], "nam"=>$row["nam"], "noe"=>$row["noe"], "tartib"=>$row["tartib"], "tedadKol"=>0, "tedadSal"=>0, "tedadMah"=>0));
+        array_push($arrNatijeh, array("fardID"=>$row["id"], "nam"=>$row["nam"], "noe"=>$row["noe"], "tartib"=>$row["tartib"], "namayesh"=>$row["namayesh"], "tedadKol"=>0, "tedadSal"=>0, "tedadMah"=>0));
 
 $i = 0;
 $sql = @"select fardID, tarikh from tbl_afrad

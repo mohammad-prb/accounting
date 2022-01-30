@@ -282,7 +282,7 @@ a.rahnama:nth-child(4)>span.icon
 .onvanJDST
 {
     float: right;
-    width: calc(46% - 180px);
+    width: calc(46% - 216px);
     margin-left: 10px;
 }
 
@@ -313,7 +313,7 @@ a.rahnama:nth-child(4)>span.icon
 .emkanatJDST
 {
     float: right;
-    width: 134px;
+    width: 170px;
     text-align: center;
 }
 
@@ -342,6 +342,11 @@ a.btnJDST:active
 a.btnJDST:last-child
 {
     margin-right: 0;
+}
+
+.itemJDST[data-namayesh="0"] a.btnJDST:last-child
+{
+    color: hsl(352, 100%, 40%);
 }
 
 
