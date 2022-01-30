@@ -73,8 +73,7 @@ a#btnAfzoodanDST:active
 #kadrVasetRahnama
 {
     float: right;
-    /*width: 400px;*/
-    margin: 0 auto 20px;
+    margin: 0 0 20px 20px;
     padding: 10px 10px;
     border-radius: 8px;
     border: 1px solid hsl(0, 0%, 85%);
@@ -118,6 +117,63 @@ a.rahnama:nth-child(3)>span.icon
 a.rahnama:nth-child(4)>span.icon
 {
     color: hsl(204, 100%, 40%);
+}
+
+#kadrTedadDST
+{
+    float: right;
+    margin: 6px 0;
+}
+
+.tedadDST
+{
+    float: right;
+    padding: 5px 15px;
+    border-radius: 8px;
+    margin-left: 10px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tedadDST:last-child
+{
+    margin: 0;
+}
+
+.tedadDST:nth-child(1)
+{
+    background-color: hsl(39, 100%, 90%);
+    color: hsl(39, 100%, 35%);
+}
+
+.tedadDST:nth-child(2)
+{
+    background-color: hsl(352, 100%, 95%);
+    color: hsl(352, 100%, 40%);
+}
+
+.tedadDST:nth-child(3)
+{
+    background-color: hsl(148, 64%, 87%);
+    color: hsl(148, 100%, 30%);
+}
+
+.tedadDST:nth-child(4)
+{
+    background-color: hsl(204, 100%, 90%);
+    color: hsl(204, 100%, 30%);
+}
+
+.tedadDST>span
+{
+    float: right;
+}
+
+.tedadDST>span.icon
+{
+    padding: 4px 0 5px;
 }
 
 

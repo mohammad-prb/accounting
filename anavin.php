@@ -58,6 +58,12 @@ if ($result !== false && $result->num_rows > 0)
                 <a href="javascript:void(0);" onclick="taghirNoeDST(this);" class="rahnama" data-vaziat="1"><span class="icon"></span><span class="matnTitr">ورودی</span></a>
                 <a href="javascript:void(0);" onclick="taghirNoeDST(this);" class="rahnama" data-vaziat="1"><span class="icon"></span><span class="matnTitr">پرداخت</span></a>
             </div>
+            <div id="kadrTedadDST">
+                <div class="tedadDST"><span class="icon"></span><span class="matnTitr"></span></div>
+                <div class="tedadDST"><span class="icon"></span><span class="matnTitr"></span></div>
+                <div class="tedadDST"><span class="icon"></span><span class="matnTitr"></span></div>
+                <div class="tedadDST"><span class="icon"></span><span class="matnTitr"></span></div>
+            </div>
         </div>
         <div id="kadrJadvalDST">
             <div id="kadrHeaderJDST">

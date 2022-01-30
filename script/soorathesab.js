@@ -463,7 +463,7 @@ function selectAllSRT()
 {
     var arrLmn = document.querySelectorAll("a.btnSelectSTB[data-vaziat='0']");
     if (arrLmn.length === 0) laghvSelect();
-    else for (let i=0; arrLmn.length; i++) entekhabSTB(arrLmn[i]);
+    else for (let i=0; i<arrLmn.length; i++) entekhabSTB(arrLmn[i]);
 }
 
 /*      حذف صورتحساب های سلکت شده      */

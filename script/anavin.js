@@ -12,10 +12,12 @@ function gereftanDasteh()
             if (jsonMotabarAst(this.responseText))
             {
                 var arrObjNatijeh = JSON.parse(this.responseText);
+                var arrTedad = [0,0,0,0];
                 var lmnKadr = document.getElementById("jadvalDST");
                 lmnKadr.innerHTML = "";
                 for (let i=0; i<arrObjNatijeh.length; i++)
                 {
+                    arrTedad[Number(arrObjNatijeh[i]["noe"])-1]++;
                     let lmnDasteh = document.createElement("div");
                     lmnDasteh.setAttribute("class", "itemJDST");
                     lmnDasteh.dataset.id = arrObjNatijeh[i]["dastehID"];
@@ -36,6 +38,10 @@ function gereftanDasteh()
                         '</div>';
                     lmnKadr.appendChild(lmnDasteh);
                 }
+
+                var arrLmnTedad = document.querySelectorAll(".tedadDST>span.matnTitr");
+                for (let i=0; i<arrLmnTedad.length; i++) arrLmnTedad[i].innerHTML = arrTedad[i];
+
                 taghirNoeDST();
                 shomarehBandiDST();
             }
@@ -89,6 +95,7 @@ function hazfDST(shom)
     var hesabID = Number(document.getElementsByClassName("sltHesabha")[0].value);
     var lmn = document.getElementsByClassName("itemJDST")[shom+1]; // بخاطر رد شدن از هدر جدول بعلاوه 1 میشود
     var id = Number(lmn.dataset.id);
+    var noe = Number(lmn.getElementsByClassName("etelaatJDST")[0].dataset.noe);
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function ()
     {
@@ -100,6 +107,8 @@ function hazfDST(shom)
                 flash("دسته با موفقیت حذف شد.");
                 lmn.remove();
                 shomarehBandiDST();
+                var lmnTedad = document.querySelectorAll(".tedadDST>span.matnTitr")[noe-1];
+                lmnTedad.innerHTML = Number(lmnTedad.innerHTML) - 1;
             }
             else namayeshPeygham("حذف با خطا مواجه شد! لطفا دوباره امتحان کنید.");
         }
@@ -157,6 +166,7 @@ function sabtVirayeshDST(id)
     var hesabID = Number(document.getElementsByClassName("sltHesabha")[0].value);
     var onvan = document.getElementById("dastehVDST").value.trim().replace(/(<([^>]+)>)/ig, '');
     var noe = document.getElementById("noeVDST").dataset.value;
+    var noeGhabli = Number(document.querySelectorAll(".itemJDST[data-id='"+id+"']>.etelaatJDST")[0].dataset.noe);
 
     if (onvan.length < 1) {
         namayeshPeygham("لطفا نام دسته را پر کنید.");
@@ -175,6 +185,11 @@ function sabtVirayeshDST(id)
                 var lmn = document.querySelector(".itemJDST[data-id='"+id+"']");
                 lmn.getElementsByClassName("etelaatJDST")[0].dataset.noe = noe;
                 lmn.getElementsByClassName("onvanJDST")[0].innerHTML = onvan;
+
+                var lmnTedadGhabli = document.querySelectorAll(".tedadDST>span.matnTitr")[noeGhabli-1];
+                var lmnTedad = document.querySelectorAll(".tedadDST>span.matnTitr")[noe-1];
+                lmnTedadGhabli.innerHTML = Number(lmnTedadGhabli.innerHTML) - 1;
+                lmnTedad.innerHTML = Number(lmnTedad.innerHTML) + 1;
             }
             else if (this.responseText === "er:noe") namayeshPeygham("تغییر نوع غیر مجاز میباشد! برای این تغییر، باید دسته بندی تمام واریز هایی که قبلا از این دسته استفاده کرده اند تغییر دهید.");
             else if (this.responseText === "er:khorooji") namayeshPeygham("تغییر نوع غیر مجاز میباشد! برای این تغییر، باید دسته بندی تمام واریز های ورودی که قبلا از این دسته استفاده کرده اند تغییر دهید.");
@@ -276,12 +291,14 @@ function sabtDasteh()
                     '    <div class="emkanatJDST">\n' +
                     '        <a href="javascript:void(0);" class="btnJDST btnHazfJDST" onclick="namayeshPeygham(\'آیا برای حذف اطمینان دارید؟\', 1, \'hazfDST('+(arrLmn.length-2)+');\')" title="حذف"></a>\n' +
                     '        <a href="javascript:void(0);" class="btnJDST btnVirayeshJDST" onclick="virayeshDST(this);" title="ویرایش"></a>\n' +
-                    '        <a href="javascript:void(0);" class="btnJDST btnBalaJDST" onclick="jabejaeiDST(this, false);" title="جابجایی"></a>\n' +
-                    '        <a href="javascript:void(0);" class="btnJDST btnPaeenJDST" onclick="jabejaeiDST(this, true);" title="جابجایی"></a>\n' +
+                    '        <a href="javascript:void(0);" class="btnJDST btnBalaJDST" onclick="jabejaeiDST(this.parentElement.parentElement.parentElement, false);" title="جابجایی"></a>\n' +
+                    '        <a href="javascript:void(0);" class="btnJDST btnPaeenJDST" onclick="jabejaeiDST(this.parentElement.parentElement.parentElement, true);" title="جابجایی"></a>\n' +
                     '    </div>\n' +
                     '</div>';
                 arrLmn[1].parentElement.insertBefore(lmnDasteh, arrLmn[(arrLmn.length-1)]);
                 shomarehBandiDST();
+                var lmnTedad = document.querySelectorAll(".tedadDST>span.matnTitr")[noe-1];
+                lmnTedad.innerHTML = Number(lmnTedad.innerHTML) + 1;
             }
             else namayeshPeygham("ثبت اطلاعات با خطا مواجه شد! لطفا دوباره امتحان کنید.");
         }
