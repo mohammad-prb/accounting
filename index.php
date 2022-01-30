@@ -10,12 +10,8 @@ $safheh = "index";
 $sql = "select * from tbl_hesab where vaziat = 1 order by tartib limit 1";
 $result = $con->query($sql);
 if ($result !== false && $result->num_rows > 0)
-{
     if ($row = $result->fetch_assoc())
-    {
         $hesabID = $row["id"];
-    }
-}
 ?>
 <!DOCTYPE html>
 <html lang="fa-ir">

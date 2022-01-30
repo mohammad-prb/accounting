@@ -7,14 +7,26 @@ include ("code/etesal-db.php");
 include ("code/tolid-token.php");
 $safheh = "soorathesab";
 
-$sql = "select * from tbl_hesab where vaziat = 1 order by tartib limit 1";
-$result = $con->query($sql);
-if ($result !== false && $result->num_rows > 0)
+$hesabAmadehAst = false;
+if (isset($_GET["hesabID"]) && preg_match("/^[1-9]+[0-9]*$/", $_GET["hesabID"]) === 1)
 {
-    if ($row = $result->fetch_assoc())
-    {
-        $hesabID = $row["id"];
-    }
+    $idHesab = (integer)$_GET["hesabID"];
+    $sql = "select id from tbl_hesab where id = ? and vaziat = 1";
+    $stmt = $con->prepare($sql);
+    $stmt->bind_param("i", $idHesab);
+    $stmt->execute();
+    $stmt->bind_result($hesabID);
+    if ($stmt->fetch()) $hesabAmadehAst = true;
+    else die("کوئری اشتباه است");
+    $stmt->close();
+}
+else
+{
+    $sql = "select * from tbl_hesab where vaziat = 1 order by tartib limit 1";
+    $result = $con->query($sql);
+    if ($result !== false && $result->num_rows > 0)
+        if ($row = $result->fetch_assoc())
+            $hesabID = $row["id"];
 }
 ?>
 <!DOCTYPE html>

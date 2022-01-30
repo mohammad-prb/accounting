@@ -5,12 +5,8 @@
         $sql = "select * from tbl_hesab where vaziat = 1 order by tartib";
         $result = $con->query($sql);
         if ($result !== false && $result->num_rows > 0)
-        {
             while ($row = $result->fetch_assoc())
-            {
-                echo '<option value="'. $row["id"] .'">'. $row["nam"] .' ('. substr($row["shomKart"], 12, 4) .')</option>';
-            }
-        }
+                echo '<option value="'. $row["id"] .'"'. ($hesabAmadehAst && $row["id"] == $hesabID ? " selected" : "") .'>'. $row["nam"] .' ('. substr($row["shomKart"], 12, 4) .')</option>';
         ?>
     </select>
     <div id="kadrFilterSRT">

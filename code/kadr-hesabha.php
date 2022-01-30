@@ -26,12 +26,10 @@
                                     <div title="'. $row["shomHesab"] .'" class="shomKartHSB">'. $row["shomHesab"] .@'</div>
                                 </div>
                                 <div class="kadrEmkanatHSB">
-                                    <a href="javascript:void(0);" title="حذف" class="emkanatHSB" onclick=""></a>
-                                    <a href="javascript:void(0);" title="ویرایش" class="emkanatHSB" onclick=""></a>
-                                    <a href="javascript:void(0);" title="صورتحساب" class="emkanatHSB" onclick=""></a>
-                                    <a href="javascript:void(0);" title="آمار حساب" class="emkanatHSB" onclick=""></a>
-                                    <a href="javascript:void(0);" title="افراد" class="emkanatHSB" onclick=""></a>
-                                    <a href="javascript:void(0);" title="دسته بندی ها" class="emkanatHSB" onclick=""></a>
+                                    <a href="soorathesab.php?hesabID='. $hesabID .@'" title="صورتحساب" class="emkanatHSB"></a>
+                                    <a href="amar.php?hesabID='. $hesabID .@'" title="آمار حساب" class="emkanatHSB"></a>
+                                    <a href="anavin.php?hesabID='. $hesabID .@'" title="دسته بندی ها" class="emkanatHSB"></a>
+                                    <a href="afrad.php?hesabID='. $hesabID .@'" title="افراد" class="emkanatHSB"></a>
                                     <a href="javascript:void(0);" title="بروزرسانی مانده" class="emkanatHSB" onclick="gereftanMandeh('. $row["id"] .@', this.parentElement.parentElement.getElementsByClassName(\'mandehHSB\')[0]);"></a>
                                 </div>
                             </div>';
