@@ -1,0 +1,241 @@
+#kadrTitrTanzimat
+{
+    float: right;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+#kadrHesabhaTNZ
+{
+    float: right;
+    width: 100%;
+}
+
+#kadrHeaderJTNZ
+{
+    float: right;
+    width: 100%;
+    color: hsl(0, 0%, 50%);
+    font-size: 0.875rem;
+}
+
+#kadrHeaderJTNZ .etelaatJTNZ
+{
+    padding: 0 8px;
+    background-color: hsl(0, 0%, 100%);
+}
+
+#kadrHeaderJTNZ .shomJTNZ
+{
+    padding: 0 0 0 10px;
+}
+
+#jadvalTNZ
+{
+    float: right;
+    width: 100%;
+}
+
+.itemJTNZ
+{
+    float: right;
+    width: 100%;
+    margin-bottom: 3px;
+}
+
+.shomJTNZ
+{
+    float: right;
+    width: 27px;
+    padding: 6px 0 5px 10px;
+    text-align: center;
+    color: hsl(0, 0%, 50%);
+}
+
+.etelaatJTNZ
+{
+    float: right;
+    width: calc(100% - 55px);
+    padding: 5px 8px;
+    border-radius: 8px;
+    background-color: hsl(0, 0%, 90%);
+}
+
+.etelaatJTNZ>div
+{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.bankJTNZ
+{
+    float: right;
+    width: 16px;
+    margin: 0 5px 0 15px;
+    padding: 5px 0;
+}
+
+img.aksBankJTNZ
+{
+    float: right;
+    width: 100%;
+}
+
+.onvanJTNZ
+{
+    float: right;
+    width: calc(29% - 180px);
+    margin-left: 10px;
+}
+
+.shomHesabJTNZ
+{
+    float: right;
+    width: calc(18% - 10px);
+    margin-left: 10px;
+    text-align: center;
+}
+
+.shomKartJTNZ
+{
+    float: right;
+    width: calc(22% - 10px);
+    margin-left: 10px;
+    text-align: center;
+}
+
+.eftetahJTNZ
+{
+    float: right;
+    width: calc(13% - 10px);
+    margin-left: 10px;
+    text-align: center;
+}
+
+.mandehTarazJTNZ
+{
+    float: right;
+    width: calc(18% - 10px);
+    margin-left: 10px;
+    text-align: center;
+}
+
+.emkanatJTNZ
+{
+    float: right;
+    width: 134px;
+    text-align: center;
+}
+
+a.btnJTNZ, a.btnJTNZ:link, a.btnJTNZ:visited
+{
+    float: left;
+    padding: 5px 5px 4px 5px;
+    border-radius: 50%;
+    background-color: hsla(0, 0%, 0%, 0.1);
+    margin-right: 10px;
+    font-family: myIcon;
+    transition: background-color 0.1s;
+}
+
+a.btnJTNZ:hover
+{
+    background-color: hsla(0, 0%, 0%, 0.18);
+}
+
+a.btnJTNZ:active
+{
+    transition: none;
+    background-color: hsla(0, 0%, 0%, 0.13);
+}
+
+a.btnJTNZ:last-child
+{
+    margin-right: 0;
+}
+
+
+
+/*  کادر افزودن حساب  */
+
+#kadrAfzoodanHesab
+{
+    float: right;
+    width: 100%;
+    margin: 20px 0 10px;
+    padding-top: 30px;
+    border-top: 1px solid hsl(0, 0%, 80%);
+}
+
+h3.titrAfzoodanHesab
+{
+    float: right;
+    width: 100%;
+    margin: 0 0 10px 0;
+    padding: 0;
+    font-size: 1.25rem;
+}
+
+.kadrAfzoodanTNZ
+{
+    float: right;
+    margin: 0 0 10px 30px;
+}
+
+input#namATNZ
+{
+    float: right;
+    width: 150px;
+    direction: rtl;
+}
+
+input#shomHesabATNZ
+{
+    float: right;
+    width: 120px;
+}
+
+input#shomKartATNZ
+{
+    float: right;
+    width: 150px;
+}
+
+input#mandehATNZ
+{
+    float: right;
+    width: 100px;
+}
+
+.afzoodanTNZ
+{
+    float: right;
+    margin-left: 5px;
+    padding: 5px 0;
+    color: hsla(0, 0%, 0%, 0.7);
+}
+
+a#btnAfzoodanTNZ, a#btnAfzoodanTNZ:link, a#btnAfzoodanTNZ:visited
+{
+    float: right;
+    padding: 4px 15px;
+    margin: 3px 0;
+    border-radius: 8px;
+    background-color: hsl(148, 64%, 85%);
+    color: hsl(148, 64%, 30%);
+    transition: background-color 0.1s;
+}
+
+a#btnAfzoodanTNZ:hover
+{
+    background-color: hsl(148, 64%, 75%);
+    color: hsl(148, 64%, 25%);
+}
+
+a#btnAfzoodanTNZ:active
+{
+    transition: none;
+    background-color: hsl(148, 64%, 65%);
+    color: hsl(148, 64%, 25%);
+}
