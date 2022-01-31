@@ -27,6 +27,11 @@ $safheh = "tanzimat";
         <?php require("code/navar-bala.php");?>
         <div id="kadrTitrTanzimat">
             <h2 class="titr"><span class="icon"></span><span class="matnTitr">تنظیمات</span></h2>
+            <div class="kadrENT" id="theme">
+                <span class="kadrPoshtENT"></span>
+                <a class="gozinehENT" onclick="taghirENT(this);" data-value="0" href="javascript:void(0);">تم روشن</a>
+                <a class="gozinehENT" onclick="taghirENT(this);" data-value="1" href="javascript:void(0);">تم تاریک</a>
+            </div>
         </div>
         <div id="kadrHesabhaTNZ">
             <div id="kadrHeaderJTNZ">
@@ -45,15 +50,14 @@ $safheh = "tanzimat";
             </div>
             <div id="jadvalTNZ">
                 <?php
-                $i = 1;
                 $sql = "select * from tbl_hesab where vaziat = 1 order by tartib";
                 $result = $con->query($sql);
                 if ($result !== false && $result->num_rows > 0)
                 {
                     while ($row = $result->fetch_assoc())
                     {
-                        echo @'<div class="itemJTNZ">
-                                <div class="shomJTNZ">'. $i++ .@'</div>
+                        echo @'<div class="itemJTNZ" data-id="'. $row["id"] .'" data-bank="'. $row["bankID"] .'" data-tartib="'. $row["tartib"] .@'">
+                                <div class="shomJTNZ"></div>
                                 <div class="etelaatJTNZ">
                                     <div class="bankJTNZ"><img src="pic/bank/'. $row["bankID"] .@'.png" alt="bank" class="aksBankJTNZ"/></div>
                                     <div class="onvanJTNZ">'. $row["nam"] .@'</div>
@@ -62,10 +66,10 @@ $safheh = "tanzimat";
                                     <div class="eftetahJTNZ">'. $row["tarikhEftetah"] .@'</div>
                                     <div class="mandehTarazJTNZ">'. momayezdar($row["mablaghTaraz"]) .@'</div>
                                     <div class="emkanatJTNZ">
-                                        <a href="javascript:void(0);" class="btnJTNZ" onclick="" title="حذف"></a>
-                                        <a href="javascript:void(0);" class="btnJTNZ" onclick="" title="ویرایش"></a>
-                                        <a href="javascript:void(0);" class="btnJTNZ" onclick="" title="جا به جایی"></a>
-                                        <a href="javascript:void(0);" class="btnJTNZ" onclick="" title="جا به جایی"></a>
+                                        <a href="javascript:void(0);" class="btnJTNZ btnHazfJTNZ" title="حذف"></a>
+                                        <a href="javascript:void(0);" class="btnJTNZ btnVirayeshJTNZ" onclick="virayeshHSB(this)" title="ویرایش"></a>
+                                        <a href="javascript:void(0);" class="btnJTNZ btnPaeenJTNZ" onclick="jabejaeiHSB(this.parentElement.parentElement.parentElement, false);" title="جا به جایی"></a>
+                                        <a href="javascript:void(0);" class="btnJTNZ btnBalaJTNZ" onclick="jabejaeiHSB(this.parentElement.parentElement.parentElement, true);" title="جا به جایی"></a>
                                     </div>
                                 </div>
                             </div>';
@@ -74,8 +78,12 @@ $safheh = "tanzimat";
                 ?>
             </div>
         </div>
+        <div id="kadrTaeedJabejaei">
+            <a class="dokmehTL dokmehTaeed" id="btnZakhirehJabejaei" onclick="sabtJabejaei();"><span class="icon"></span><span class="matnTitr">ثبت جا به جایی ها</span></a>
+            <a class="dokmehTL dokmehLaghv" id="btnLaghvJabejaei" onclick="location.assign('tanzimat.php')"><span class="icon"></span><span class="matnTitr">لغو جا به جایی ها</span></a>
+        </div>
         <div id="kadrAfzoodanHesab">
-            <h3 class="titrAfzoodanHesab"><span class="icon"></span><span class="matnTitr">افزودن حساب</span></h3>
+            <h3 class="titrAfzoodanHesab"><span class="icon"></span><span class="matnTitr">افزودن حساب</span></h3>
             <div class="kadrAfzoodanTNZ">
                 <div class="afzoodanTNZ"><span class="icon"></span><span class="matnTitr">نام:</span></div>
                 <input type="text" id="namATNZ" name="nam" maxlength="30" autocomplete="off"/>
@@ -84,11 +92,17 @@ $safheh = "tanzimat";
                 <div class="afzoodanTNZ"><span class="icon"></span><span class="matnTitr">بانک:</span></div>
                 <select name="bank" id="bankATNZ">
                     <?php
+                    $arrBank = array();
                     $sql = "select * from tbl_bank order by nam";
                     $result = $con->query($sql);
                     if ($result !== false && $result->num_rows > 0)
+                    {
                         while ($row = $result->fetch_assoc())
+                        {
+                            array_push($arrBank, $row);
                             echo '<option value="'. $row["id"] .'">'. $row["nam"] .'</option>';
+                        }
+                    }
                     ?>
                 </select>
             </div>
@@ -114,9 +128,11 @@ $safheh = "tanzimat";
 </div>
 <script src="script/lib.js"></script>
 <script src="script/main.js"></script>
-<script src="script/anavin.js"></script>
+<script src="script/tanzimat.js"></script>
 <script>
+    shomarehBandiHSB();
     var tkn = "<?php echo $tkn;?>";
+    var arrBank = <?php echo json_encode($arrBank);?>;
 </script>
 </body>
 </html>

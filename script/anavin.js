@@ -218,6 +218,7 @@ function sabtVirayeshDST(id)
             bastanLoading(document.getElementById("CountainerKadrViraieshDST"));
             if (this.responseText === "ok")
             {
+                flash("ویرایش موفقیت آمیز بود.");
                 document.getElementById("CountainerKadrViraieshDST").remove();
                 var lmn = document.querySelector(".itemJDST[data-id='"+id+"']");
                 lmn.getElementsByClassName("etelaatJDST")[0].dataset.noe = noe;
