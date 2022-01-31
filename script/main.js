@@ -345,6 +345,12 @@ function sabtVarizi(noe)
                     document.getElementById("tozihSBTK").value = "";
                     document.getElementById("mablaghSBTK").parentElement.getElementsByClassName("mablaghSBT")[0].innerHTML = "";
                     lmnMandeh.innerHTML = momayezdar(hazfMomayez(lmnMandeh.innerHTML) - Number(mablagh));
+                    document.getElementById("mablaghSBTK").select();
+
+                    var lmnDasteh = document.getElementById("dastehSBTK");
+                    document.getElementsByClassName("etelaatAKV")[1].innerHTML = momayezdar(mablagh);
+                    document.getElementsByClassName("etelaatAKV")[2].innerHTML = lmnDasteh.options[lmnDasteh.selectedIndex].text;
+                    document.getElementsByClassName("etelaatAKV")[3].innerHTML = tarikhKon(sal, mah, rooz);
                 }
                 else
                 {
@@ -352,6 +358,12 @@ function sabtVarizi(noe)
                     document.getElementById("tozihSBTV").value = "";
                     document.getElementById("mablaghSBTV").parentElement.getElementsByClassName("mablaghSBT")[0].innerHTML = "";
                     lmnMandeh.innerHTML = momayezdar(hazfMomayez(lmnMandeh.innerHTML) + Number(mablagh));
+                    document.getElementById("mablaghSBTV").select();
+
+                    var lmnDasteh = document.getElementById("dastehSBTV");
+                    document.getElementsByClassName("etelaatAKV")[5].innerHTML = momayezdar(mablagh);
+                    document.getElementsByClassName("etelaatAKV")[6].innerHTML = lmnDasteh.options[lmnDasteh.selectedIndex].text;
+                    document.getElementsByClassName("etelaatAKV")[7].innerHTML = tarikhKon(sal, mah, rooz);
                 }
             }
             else if (natijeh === "er:mandeh") namayeshPeygham("مبلغ وارد شده اشتباه است. این مبلغ بیشتر از مانده حساب شماست.");

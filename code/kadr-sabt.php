@@ -146,6 +146,44 @@
             </div>
         </div>
     </div>
+    <div class="kadrAkharinVariz">
+        <div class="kadrVasetAKV">
+            <div class="etelaatAKV"><span class="icon"></span><span class="matnTitr">آخرین ثبت خروجی:</span></div>
+            <?php
+            $sql = @"select mablagh, tarikh, onvan, tozih from tbl_soorathesab
+                    inner join tbl_dasteh on tbl_dasteh.id = dastehID
+                    where tbl_soorathesab.vaziat = 1 and khoroojiAst = 1 and tbl_soorathesab.hesabID = ". $hesabID ." order by tbl_soorathesab.id desc limit 1";
+            $result = $con->query($sql);
+            if ($result !== false && $result->num_rows > 0)
+            {
+                if ($row = $result->fetch_assoc())
+                {
+                    echo '<div class="etelaatAKV">'. momayezdar($row["mablagh"]) .'</div>';
+                    echo '<div class="etelaatAKV">'. $row["onvan"] .'</div>';
+                    echo '<div class="etelaatAKV">'. $row["tarikh"] .'</div>';
+                }
+            }
+            ?>
+        </div>
+        <div class="kadrVasetAKV">
+            <div class="etelaatAKV"><span class="icon"></span><span class="matnTitr">آخرین ثبت ورودی:</span></div>
+            <?php
+            $sql = @"select mablagh, tarikh, onvan, tozih from tbl_soorathesab
+                    inner join tbl_dasteh on tbl_dasteh.id = dastehID
+                    where tbl_soorathesab.vaziat = 1 and khoroojiAst = 0 and tbl_soorathesab.hesabID = ". $hesabID ." order by tbl_soorathesab.id desc limit 1";
+            $result = $con->query($sql);
+            if ($result !== false && $result->num_rows > 0)
+            {
+                if ($row = $result->fetch_assoc())
+                {
+                    echo '<div class="etelaatAKV">'. momayezdar($row["mablagh"]) .'</div>';
+                    echo '<div class="etelaatAKV">'. $row["onvan"] .'</div>';
+                    echo '<div class="etelaatAKV">'. $row["tarikh"] .'</div>';
+                }
+            }
+            ?>
+        </div>
+    </div>
 </div>
 <script>
     document.getElementById("kadrSBTK").onkeydown = function(e){if (e.keyCode === 13) sabtVarizi(1);};

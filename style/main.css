@@ -596,7 +596,7 @@ span.matnItemMNU
     min-width: 376px;
     margin: 10px;
     padding: 15px 0;
-    border-radius: 10px;
+    border-radius: 8px;
     overflow: auto;
     background-color: hsl(39, 100%, 87%);
 }
@@ -862,6 +862,33 @@ input.txtTozih
     float: right;
     width: calc(100% - 115px);
     direction: rtl;
+}
+
+.kadrAkharinVariz
+{
+    float: right;
+    width: 100%;
+    border-radius: 8px;
+}
+
+.kadrVasetAKV
+{
+    float: right;
+    width: calc(50% - 40px);
+    margin: 0 10px;
+    padding: 0 10px;
+    border-radius: 8px;
+}
+
+.etelaatAKV
+{
+    float: right;
+    margin-left: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.875rem;
+    color: hsla(0, 0%, 0%, 0.7);
 }
 
 @media only screen and (max-width: 767px)

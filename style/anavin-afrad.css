@@ -187,6 +187,7 @@ a.rahnama:nth-child(4)>span.icon
     width: 100%;
     overflow: hidden;
     border-radius: 8px;
+    min-height: 70px;
 }
 
 #kadrHeaderJDST
