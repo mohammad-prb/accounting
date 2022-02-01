@@ -1,3 +1,18 @@
+html
+{
+    transition: background-color 0.3s, color 0.3s;
+}
+
+select, input
+{
+    transition: background-color 0.3s, color 0.3s;
+}
+
+h1#titrHDR
+{
+    transition: color 0.3s;
+}
+
 #kadrTitrTanzimat
 {
     position: relative;
@@ -35,6 +50,7 @@
 {
     padding: 0 8px;
     background-color: hsl(0, 0%, 100%);
+    transition: background-color 0.3s;
 }
 
 #kadrHeaderJTNZ .shomJTNZ
@@ -71,6 +87,7 @@
     padding: 5px 8px;
     border-radius: 8px;
     background-color: hsl(0, 0%, 90%);
+    transition: background-color 0.3s;
 }
 
 .etelaatJTNZ>div
@@ -178,6 +195,7 @@ a.btnJTNZ:last-child
     margin: 20px 0 10px;
     padding-top: 30px;
     border-top: 1px solid hsl(0, 0%, 80%);
+    transition: border 0.3s;
 }
 
 h3.titrAfzoodanHesab
@@ -226,6 +244,7 @@ input#mandehATNZ
     margin-left: 5px;
     padding: 5px 0;
     color: hsla(0, 0%, 0%, 0.7);
+    transition: color 0.3s;
 }
 
 a#btnAfzoodanTNZ, a#btnAfzoodanTNZ:link, a#btnAfzoodanTNZ:visited
@@ -236,7 +255,7 @@ a#btnAfzoodanTNZ, a#btnAfzoodanTNZ:link, a#btnAfzoodanTNZ:visited
     border-radius: 8px;
     background-color: hsl(148, 64%, 85%);
     color: hsl(148, 64%, 30%);
-    transition: background-color 0.1s;
+    transition: background-color 0.1s, color 0.1s;
 }
 
 a#btnAfzoodanTNZ:hover
@@ -267,7 +286,7 @@ a#btnAfzoodanTNZ:active
     background-color: hsl(0, 0%, 98%);
     box-shadow: 0 0 5px hsl(0, 0%, 60%);
     border-radius: 8px;
-    transition: bottom 0.2s;
+    transition: bottom 0.2s, background-color 0.3s, box-shadow 0.3s;
 }
 
 #kadrTaeedJabejaei>a
@@ -292,6 +311,7 @@ a#btnAfzoodanTNZ:active
     background-color: hsla(0, 0%, 13%, 0.5);
     animation: aniFade 0.1s;
     animation-fill-mode: both;
+    transition: background-color 0.3s;
 }
 
 #kadrNamayeshVTNZ
@@ -325,6 +345,7 @@ a#btnAfzoodanTNZ:active
     animation-fill-mode: forwards;
     background-color: white;
     border-radius: 10px;
+    transition: background-color 0.3s;
 }
 
 #kadrVTNZ>div:first-child
@@ -353,6 +374,7 @@ a#btnAfzoodanTNZ:active
     padding-top: 20px;
     color: hsl(0, 0%, 40%);
     border-top: 1px solid hsl(0, 0%, 80%);
+    transition: color 0.3s;
 }
 
 .etelaatSBT

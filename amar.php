@@ -39,6 +39,10 @@ else
     <link rel="stylesheet" href="style/main.css"/>
     <link rel="stylesheet" href="style/amar.css"/>
     <link rel="stylesheet" href="script/chartjs/chart.css"/>
+    <script>
+        if (localStorage.getItem("darkmode") === null) localStorage.setItem("darkmode", 0);
+        else if (Number(localStorage.getItem("darkmode")) === 1) document.write('<link rel="stylesheet" href="style/dark-mode.css"/>');
+    </script>
 </head>
 <body dir="rtl" onload="tanzimSaf();emalTarikh();">
 <div id="fullCountainer">
@@ -132,9 +136,17 @@ else
 <script src="script/amar.js"></script>
 <script>
     var tkn = "<?php echo $tkn;?>";
-    Chart.defaults.global.defaultFontColor = "black";
     Chart.defaults.global.defaultFontSize = 16;
     Chart.defaults.global.defaultFontFamily = "vazir";
+    if (Number(localStorage.getItem("darkmode")) === 1)
+    {
+        Chart.defaults.global.defaultFontColor = "white";
+        Chart.defaults.scale.gridLines.color = "hsl(0, 0%, 12%)";
+    }
+    else
+    {
+        Chart.defaults.global.defaultFontColor = "black";
+    }
 </script>
 </body>
 </html>

@@ -38,6 +38,10 @@ else
     <link rel="shortcut icon" href="pic/logo.png"/>
     <link rel="stylesheet" href="style/main.css"/>
     <link rel="stylesheet" href="style/soorathesab.css"/>
+    <script>
+        if (localStorage.getItem("darkmode") === null) localStorage.setItem("darkmode", 0);
+        else if (Number(localStorage.getItem("darkmode")) === 1) document.write('<link rel="stylesheet" href="style/dark-mode.css"/>');
+    </script>
 </head>
 <body dir="rtl" onload="tanzimSaf();emalFilterSRT();">
 <div id="fullCountainer">

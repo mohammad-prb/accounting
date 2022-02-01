@@ -16,8 +16,12 @@ $safheh = "tanzimat";
     <link rel="shortcut icon" href="pic/logo.png"/>
     <link rel="stylesheet" href="style/main.css"/>
     <link rel="stylesheet" href="style/tanzimat.css"/>
+    <script>
+        if (localStorage.getItem("darkmode") === null) localStorage.setItem("darkmode", 0);
+        else if (Number(localStorage.getItem("darkmode")) === 1) document.write('<link rel="stylesheet" href="style/dark-mode.css"/>');
+    </script>
 </head>
-<body dir="rtl" onload="tanzimSaf();">
+<body dir="rtl" onload="taghirENT(document.getElementsByClassName('gozinehENT')[Number(localStorage.getItem('darkmode'))]);">
 <div id="fullCountainer">
 
     <?php require("code/peygham.php");?>
@@ -29,8 +33,8 @@ $safheh = "tanzimat";
             <h2 class="titr"><span class="icon"></span><span class="matnTitr">تنظیمات</span></h2>
             <div class="kadrENT" id="theme">
                 <span class="kadrPoshtENT"></span>
-                <a class="gozinehENT" onclick="taghirENT(this);" data-value="0" href="javascript:void(0);">تم روشن</a>
-                <a class="gozinehENT" onclick="taghirENT(this);" data-value="1" href="javascript:void(0);">تم تاریک</a>
+                <a class="gozinehENT" onclick="taghirENT(this);taghirTheme(0);" data-value="0" href="javascript:void(0);">تم روشن</a>
+                <a class="gozinehENT" onclick="taghirENT(this);taghirTheme(1);" data-value="1" href="javascript:void(0);">تم تاریک</a>
             </div>
         </div>
         <div id="kadrHesabhaTNZ">

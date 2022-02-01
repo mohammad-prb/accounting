@@ -44,28 +44,26 @@
 }
 
 /* width */
-body *:not(.scrollAdi)::-webkit-scrollbar
+body::-webkit-scrollbar
 {
-    width: 4px;
+    width: 10px;
     height: 100%;
 }
 
 /* Track */
-body *:not(.scrollAdi)::-webkit-scrollbar-track
+body::-webkit-scrollbar-track
 {
     background: hsl(0, 0%, 85%);
-    border-radius: 5px;
 }
 
 /* Handle */
-body *:not(.scrollAdi)::-webkit-scrollbar-thumb
+body::-webkit-scrollbar-thumb
 {
     background: hsl(0, 0%, 60%);
-    border-radius: 5px;
 }
 
 /* Handle on hover */
-body *:not(.scrollAdi)::-webkit-scrollbar-thumb:hover
+body::-webkit-scrollbar-thumb:hover
 {
     background: hsl(0, 0%, 40%);
 }
@@ -82,6 +80,7 @@ body
     margin: auto;
     padding: 0;
     min-width: 320px;
+    max-width: 2000px;
     font-family: vazir;
     font-size: 1rem;
 }
@@ -453,7 +452,7 @@ img.loading
     height: 100%;
     overflow: auto;
     background-color: white;
-    transition: right 0.3s;
+    transition: right 0.3s, background-color 0.3s;
 }
 
 img#aksHDR
@@ -509,7 +508,7 @@ a.itemMNU, a.itemMNU:link, a.itemMNU:visited
     padding: 8px 25px 8px 0;
     overflow: auto;
     border-radius: 21px 0 0 21px;
-    transition: background-color 0.1s;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 a.itemMNU:hover
@@ -574,6 +573,7 @@ span.matnItemMNU
     margin-bottom: 20px;
     overflow: auto;
     color: hsl(0, 0%, 30%);
+    transition: border-bottom-color 0.3s;
 }
 
 .tarikhNVB

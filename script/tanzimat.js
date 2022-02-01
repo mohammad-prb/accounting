@@ -270,3 +270,20 @@ function sabtHesab()
     xhttp.send("nam="+nam+"&bank="+bank+"&shomHesab="+shomHesab+"&shomKart="+shomKart+"&taraz="+taraz+"&tk="+tkn);
     namayeshLoading(document.getElementById("kadrHesabhaTNZ"));
 }
+
+/*      تغییر تم      */
+function taghirTheme(darkModeAst)
+{
+    localStorage.setItem("darkmode", darkModeAst);
+    if (darkModeAst === 1 && document.querySelector('link[href="style/dark-mode.css"]') === null)
+    {
+        var lmn = document.createElement("link");
+        lmn.rel = "stylesheet";
+        lmn.href = "style/dark-mode.css";
+        document.head.appendChild(lmn);
+    }
+    else if (darkModeAst === 0 && document.querySelector('link[href="style/dark-mode.css"]'))
+    {
+        document.querySelector('link[href="style/dark-mode.css"]').remove();
+    }
+}

@@ -1,0 +1,800 @@
+html
+{
+    background-color: hsl(0, 0%, 4%);
+    color: hsl(0, 0%, 90%);
+}
+
+/* Track */
+body::-webkit-scrollbar-track
+{
+    background: hsl(0, 0%, 10%);
+}
+
+/* Handle */
+body::-webkit-scrollbar-thumb
+{
+    background: hsl(0, 0%, 25%);
+}
+
+/* Handle on hover */
+body::-webkit-scrollbar-thumb:hover
+{
+    background: hsl(0, 0%, 40%);
+}
+
+input, textarea
+{
+    background-color: hsl(0, 0%, 0%);
+    border: 1px solid hsl(0, 0%, 20%);
+    color: hsl(0, 0%, 90%);
+}
+
+select
+{
+    border: 1px solid hsl(0, 0%, 20%);
+    background-color: hsl(0, 0%, 3%);
+    color: hsl(0, 0%, 90%);
+}
+
+option
+{
+    background-color: hsl(0, 0%, 3%);
+}
+
+a, a:link, a:visited
+{
+    color: hsl(0, 0%, 90%);
+}
+
+::selection
+{
+    background-color: hsl(204, 100%, 15%);
+}
+
+.kadrKolLoading
+{
+    background-color: hsla(0, 0%, 0%, 0.8);
+}
+
+.kadrLoading
+{
+    background-color: hsl(204, 100%, 40%);
+}
+
+.kadrFlash
+{
+    background-color: hsl(204, 100%, 15%);
+    box-shadow: 1px 1px 3px hsl(0, 0%, 0%);
+}
+
+#CountainerKadrNamayeshPeygham
+{
+    background-color: hsla(0, 0%, 13%, 0.7);
+}
+
+#kadrPeygham
+{
+    background-color: hsl(0, 0%, 3%);
+}
+
+#titrPeygham
+{
+    border-bottom: 1px solid hsl(0, 0%, 20%);
+}
+
+#matnPeygham
+{
+    color: hsl(0, 0%, 60%);
+}
+
+a.dokmehTaeed, a.dokmehTaeed:link, a.dokmehTaeed:visited
+{
+    background-color: hsl(148, 64%, 8%);
+    color: hsl(148, 64%, 70%);
+}
+
+a.dokmehTaeed:hover
+{
+    background-color: hsl(148, 64%, 11%);
+    color: hsl(148, 64%, 75%);
+}
+
+a.dokmehTaeed:active
+{
+    background-color: hsl(148, 64%, 14%);
+    color: hsl(148, 64%, 75%);
+}
+
+a.dokmehLaghv, a.dokmehLaghv:link, a.dokmehLaghv:visited
+{
+    background-color: hsl(0, 84%, 12%);
+    color: hsl(0, 84%, 70%);
+}
+
+a.dokmehLaghv:hover
+{
+    background-color: hsl(0, 84%, 15%);
+    color: hsl(0, 84%, 75%);
+}
+
+a.dokmehLaghv:active
+{
+    background-color: hsl(0, 84%, 18%);
+    color: hsl(0, 84%, 75%);
+}
+
+#navarRast
+{
+    background-color: hsl(0, 0%, 4%);
+    color: hsl(0, 0%, 90%);
+}
+
+a.itemMNU:hover
+{
+    background-color: hsl(0, 0%, 10%);
+}
+
+a.itemMNU:active
+{
+    transition: none;
+    background-color: hsl(0, 0%, 7%);
+}
+
+a.itemMNU[data-enekhabi]
+{
+    background-color: hsl(204, 100%, 10%);
+    color: hsl(204, 100%, 70%);
+}
+
+#kadrMeshkiMNU
+{
+    background-color: hsla(0, 0%, 0%, 0.7);
+}
+
+#kadrTarikh
+{
+    border-bottom: 1px solid hsl(0, 0%, 20%);
+    color: hsl(0, 0%, 70%);
+}
+
+#kadrSBTK
+{
+    background-color: hsl(352, 100%, 8%);
+}
+
+#kadrSBTV
+{
+    background-color: hsl(148, 64%, 7%);
+}
+
+#kadrSBTK h3.titrSBT
+{
+    border-bottom: 1px solid hsl(352, 100%, 20%);
+}
+
+#kadrSBTV h3.titrSBT
+{
+    border-bottom: 1px solid hsl(148, 64%, 20%);
+}
+
+.iconEtelaatSBT
+{
+    color: hsla(0, 0%, 100%, 0.7);
+}
+
+.etelaatSBT select, .etelaatSBT input
+{
+    background-color: hsla(0, 0%, 0%, 0.5);
+}
+
+.etelaatSBT input:focus
+{
+    background-color: hsla(0, 0%, 0%, 1);
+}
+
+.kadrENT
+{
+    background-color: hsla(0, 0%, 30%, 0.5);
+}
+
+span.kadrPoshtENT
+{
+    background-color: hsla(0, 0%, 0%, 0.5);
+}
+
+a.gozinehENT, a.gozinehENT:link, a.gozinehENT:visited
+{
+    color: hsl(0, 0%, 60%);
+}
+
+#kadrSBTK > a.btnErsalSBT
+{
+    background-color: hsl(352, 100%, 15%);
+}
+
+#kadrSBTK > a.btnErsalSBT:hover
+{
+    background-color: hsl(352, 100%, 20%);
+}
+
+#kadrSBTK > a.btnErsalSBT:active
+{
+    transition: none;
+    background-color: hsl(352, 100%, 17%);
+}
+
+#kadrSBTV > a.btnErsalSBT
+{
+    background-color: hsl(148, 64%, 15%);
+}
+
+#kadrSBTV > a.btnErsalSBT:hover
+{
+    background-color: hsl(148, 64%, 20%);
+}
+
+#kadrSBTV > a.btnErsalSBT:active
+{
+    transition: none;
+    background-color: hsl(148, 64%, 17%);
+}
+
+#kadrSabt
+{
+    border-bottom: 1px solid hsl(0, 0%, 15%);
+}
+
+.etelaatAKV
+{
+    color: hsla(0, 0%, 100%, 0.7);
+}
+
+.hesab
+{
+    background-color: hsl(39, 100%, 7%);
+}
+
+.titrHSB
+{
+    border-bottom: 1px solid hsl(39, 100%, 20%);
+}
+
+.kadrShomKartHSB
+{
+    color: hsl(0, 0%, 60%);
+}
+
+a.emkanatHSB, a.emkanatHSB:link, a.emkanatHSB:visited
+{
+    color: hsl(0, 0%, 80%);
+}
+
+a.emkanatHSB:hover
+{
+    color: hsl(39, 100%, 30%);
+}
+
+a.emkanatHSB:active
+{
+    transition: none;
+    color: hsl(39, 100%, 20%);
+}
+
+
+/*  صورتحساب  */
+
+.iconEtelaatSBT
+{
+    color: hsla(0, 0%, 100%, 0.7);
+}
+
+a#emalFilter, a#emalFilter:link, a#emalFilter:visited
+{
+    color: hsl(39, 100%, 80%);
+    background-color: hsl(39, 100%, 13%);
+}
+
+a#emalFilter:hover
+{
+    background-color: hsl(39, 100%, 15%);
+}
+
+a#emalFilter:active
+{
+    transition: none;
+    background-color: hsl(39, 100%, 14%);
+}
+
+.titrAmarSRT
+{
+    color: hsl(0, 0%, 60%);
+}
+
+a#btnSelectAll, a#btnSelectAll:link, a#btnSelectAll:visited
+{
+    color: hsl(0, 0%, 70%);
+}
+
+a#btnSelectAll:hover
+{
+    color: hsl(0, 0%, 100%);
+}
+
+a#btnSelectAll:active
+{
+    color: hsl(0, 0%, 80%);
+}
+
+.kadrSTB.khorooji
+{
+    background-color: hsl(352, 100%, 7%);
+}
+
+.kadrSTB.khorooji .kadrTozihSTB
+{
+    border-top: 1px solid hsl(352, 100%, 20%);
+}
+
+.kadrSTB.voroodi
+{
+    background-color: hsl(148, 64%, 7%);
+}
+
+.kadrSTB.voroodi .kadrTozihSTB
+{
+    border-top: 1px solid hsl(148, 64%, 20%);
+}
+
+.onvanEtelaatSTB
+{
+    color: hsl(0, 0%, 60%);
+}
+
+.kadrSTB.khorooji .mablaghSTB
+{
+    color: hsl(352, 100%, 60%);
+}
+
+.kadrSTB.voroodi .mablaghSTB
+{
+    color: hsl(148, 64%, 60%);
+}
+
+.dastehSTB
+{
+    color: hsl(39, 100%, 65%);
+}
+
+.fardSTB
+{
+    color: hsl(301, 36%, 50%);
+}
+
+.tozihSTB
+{
+    color: hsl(204, 100%, 65%);
+}
+
+a.emkanatSTB, a.emkanatSTB:link, a.emkanatSTB:visited
+{
+    color: hsl(0, 0%, 70%);
+}
+
+a.emkanatSTB:hover
+{
+    color: hsl(0, 0%, 100%);
+}
+
+a.emkanatSTB:active
+{
+    color: hsl(0, 0%, 80%);
+}
+
+a.btnSelectSTB[data-vaziat="1"]
+{
+    color: hsl(204, 100%, 60%);
+}
+
+.kadrSatrTarikh
+{
+    border-top: 1px solid hsl(0, 0%, 20%);
+}
+
+a.satrTarikh, a.satrTarikh:link, a.satrTarikh:visited
+{
+    color: hsl(0, 0%, 50%);
+    background-color: hsl(0, 0%, 4%);
+}
+
+a.satrTarikh:hover
+{
+    color: hsl(0, 0%, 70%);
+}
+
+a.satrTarikh:active
+{
+    color: hsl(0, 0%, 60%);
+}
+
+#kadrAmarSelect
+{
+    background-color: hsl(39, 100%, 8%);
+    border: 1px solid hsl(39, 100%, 20%);
+    box-shadow: 0 0 5px hsl(0, 0%, 0%);
+}
+
+.titrSelect
+{
+    color: hsl(0, 0%, 60%);
+}
+
+.meghdarSelect.khorooji
+{
+    color: hsl(352, 100%, 65%);
+}
+
+.meghdarSelect.voroodi
+{
+    color: hsl(148, 64%, 60%);
+}
+
+.meghdarSelect.taraz
+{
+    color: hsl(39, 100%, 65%);
+}
+
+a.btnEmkanatSelect:hover
+{
+    color: hsl(39, 100%, 50%);
+}
+
+a.btnEmkanatSelect:active
+{
+    color: hsl(39, 100%, 40%);
+}
+
+#kadrVSRT
+{
+    background-color: hsl(0, 0%, 4%);
+}
+
+.etelaatVSRT
+{
+    color: hsl(0, 0%, 60%);
+    border-top: 1px solid hsl(0, 0%, 20%);
+}
+
+
+/*  آمار حساب  */
+
+#kadrFilterAMR
+{
+    background-color: hsl(0, 0%, 7%);
+    border: solid hsl(0, 0%, 10%);
+    border-width: 1px 0;
+}
+
+.titrFSRT
+{
+    color: hsl(0, 0%, 80%);
+}
+
+a#btnFSRT, a#btnFSRT:link, a#btnFSRT:visited
+{
+    background-color: hsl(148, 64%, 8%);
+    color: hsl(148, 64%, 70%);
+}
+
+a#btnFSRT:hover
+{
+    background-color: hsl(148, 64%, 11%);
+    color: hsl(148, 64%, 75%);
+}
+
+a#btnFSRT:active
+{
+    background-color: hsl(148, 64%, 14%);
+    color: hsl(148, 64%, 75%);
+}
+
+#kadrAmarMablagh
+{
+    background-color: hsl(39, 100%, 6%);
+}
+
+#mandeh
+{
+    border-bottom: 1px solid hsl(39, 100%, 20%);
+}
+
+.amarTedad:nth-child(1)
+{
+    background-color: hsl(204, 100%, 10%);
+}
+
+.amarTedad:nth-child(2)
+{
+    background-color: hsl(352, 100%, 10%);
+    color: hsl(352, 100%, 70%) !important;
+}
+
+.amarTedad:nth-child(3)
+{
+    background-color: hsl(148, 64%, 10%);
+    color: hsl(148, 64%, 70%) !important;
+}
+
+a#btnSoorathesabAMR, a#btnSoorathesabAMR:link, a#btnSoorathesabAMR:visited
+{
+    border: 1px solid hsl(0, 0%, 20%);
+    background-color: hsl(0, 0%, 7%);
+}
+
+a#btnSoorathesabAMR:hover
+{
+    background-color: hsl(0, 0%, 10%);
+}
+
+a#btnSoorathesabAMR:active
+{
+    background-color: hsl(0, 0%, 8%);
+}
+
+#kadrListAMR
+{
+    border: 1px solid hsl(0, 0%, 20%);
+}
+
+#headerLAMR
+{
+    border-bottom: 1px solid hsl(0, 0%, 20%);
+}
+
+a.btnLAMR:first-child
+{
+    border-left: 1px solid hsl(0, 0%, 20%);
+}
+
+.itemListAMR
+{
+    border-image: linear-gradient(to right, hsl(0, 0%, 4%) 0%, hsl(0, 0%, 25%) 77%, hsl(0, 0%, 4%) 100%) 1 round;
+}
+
+a.btnLAMR, a.btnLAMR:link, a.btnLAMR:visited
+{
+    color: hsl(0, 0%, 80%);
+}
+
+a.btnLAMR:hover
+{
+    color: hsl(0, 0%, 100%);
+}
+
+a.btnLAMR:active
+{
+    color: hsl(0, 0%, 90%);
+}
+
+a.btnLAMR[data-enekhabi="1"] > span.matnTitr
+{
+    color: hsl(0, 0%, 100%);
+}
+
+.onvanListAMR[data-noe="1"]
+{
+    color: hsl(39, 100%, 50%);
+}
+
+.onvanListAMR[data-noe="2"]
+{
+    color: hsl(352, 100%, 40%);
+}
+
+.onvanListAMR[data-noe="3"]
+{
+    color: hsl(148, 64%, 50%);
+}
+
+.onvanListAMR[data-noe="4"]
+{
+    color: hsl(204, 100%, 50%);
+}
+
+
+/*  دسته ها و افراد  */
+
+#kadrVasetRahnama
+{
+    border: 1px solid hsl(0, 0%, 15%);
+}
+
+.tedadDST:nth-child(1)
+{
+    background-color: hsl(39, 100%, 7%);
+    color: hsl(39, 100%, 70%);
+}
+
+.tedadDST:nth-child(2)
+{
+    background-color: hsl(352, 100%, 7%);
+    color: hsl(352, 100%, 70%);
+}
+
+.tedadDST:nth-child(3)
+{
+    background-color: hsl(148, 64%, 7%);
+    color: hsl(148, 100%, 70%);
+}
+
+.tedadDST:nth-child(4)
+{
+    background-color: hsl(204, 100%, 10%);
+    color: hsl(204, 100%, 70%);
+}
+
+#kadrHeaderJDST .etelaatJDST
+{
+    background-color: hsl(0, 0%, 4%);
+}
+
+.etelaatJDST
+{
+    background-color: hsl(0, 0%, 10%);
+}
+
+.etelaatJDST[data-noe="1"]
+{
+    background-color: hsl(39, 100%, 7%);
+    color: hsl(39, 100%, 60%);
+}
+
+.etelaatJDST[data-noe="2"]
+{
+    background-color: hsl(352, 100%, 7%);;
+    color: hsl(352, 100%, 60%);
+}
+
+.etelaatJDST[data-noe="3"]
+{
+    background-color: hsl(148, 64%, 7%);;
+    color: hsl(148, 100%, 60%);
+}
+
+.etelaatJDST[data-noe="4"]
+{
+    background-color: hsl(204, 100%, 7%);;
+    color: hsl(204, 100%, 60%);
+}
+
+a.btnJDST, a.btnJDST:link, a.btnJDST:visited
+{
+    background-color: hsla(0, 0%, 90%, 0.1);
+}
+
+a.btnJDST:hover
+{
+    background-color: hsla(0, 0%, 90%, 0.18);
+}
+
+a.btnJDST:active
+{
+    background-color: hsla(0, 0%, 90%, 0.13);
+}
+
+#kadrAfzoodanDasteh
+{
+    border-top: 1px solid hsl(0, 0%, 20%);
+}
+
+.afzoodanDST
+{
+    color: hsla(0, 0%, 100%, 0.7);
+}
+
+a#btnAfzoodanDST, a#btnAfzoodanDST:link, a#btnAfzoodanDST:visited
+{
+    background-color: hsl(148, 64%, 8%);
+    color: hsl(148, 64%, 70%);
+}
+
+a#btnAfzoodanDST:hover
+{
+    background-color: hsl(148, 64%, 11%);
+    color: hsl(148, 64%, 75%);
+}
+
+a#btnAfzoodanDST:active
+{
+    background-color: hsl(148, 64%, 14%);
+    color: hsl(148, 64%, 75%);
+}
+
+#kadrVDST
+{
+    background-color: hsl(0, 0%, 3%);
+}
+
+.etelaatVDST
+{
+    color: hsl(0, 0%, 60%);
+    border-top: 1px solid hsl(0, 0%, 20%);
+}
+
+#kadrTaeedJabejaei
+{
+    background-color: hsl(0, 0%, 6%);
+    box-shadow: 0 0 5px hsl(0, 0%, 0%);
+}
+
+.itemJDST[data-namayesh="0"] a.btnJDST:last-child
+{
+    color: hsl(352, 100%, 60%);
+}
+
+
+/*  تنظیمات  */
+
+#kadrHeaderJTNZ .etelaatJTNZ
+{
+    background-color: hsl(0, 0%, 4%);
+}
+
+.etelaatJTNZ
+{
+    background-color: hsl(0, 0%, 10%);
+}
+
+a.btnJTNZ, a.btnJTNZ:link, a.btnJTNZ:visited
+{
+    background-color: hsla(0, 0%, 90%, 0.1);
+}
+
+a.btnJTNZ:hover
+{
+    background-color: hsla(0, 0%, 90%, 0.18);
+}
+
+a.btnJTNZ:active
+{
+    background-color: hsla(0, 0%, 90%, 0.13);
+}
+
+#kadrAfzoodanHesab
+{
+    border-top: 1px solid hsl(0, 0%, 20%);
+}
+
+.afzoodanTNZ
+{
+    color: hsla(0, 0%, 100%, 0.7);
+}
+
+a#btnAfzoodanTNZ, a#btnAfzoodanTNZ:link, a#btnAfzoodanTNZ:visited
+{
+
+    background-color: hsl(148, 64%, 8%);
+    color: hsl(148, 64%, 70%);
+}
+
+a#btnAfzoodanTNZ:hover
+{
+    background-color: hsl(148, 64%, 11%);
+    color: hsl(148, 64%, 75%);
+}
+
+a#btnAfzoodanTNZ:active
+{
+    background-color: hsl(148, 64%, 14%);
+    color: hsl(148, 64%, 75%);
+}
+
+#kadrVTNZ
+{
+    background-color: hsl(0, 0%, 3%);
+}
+
+.etelaatVTNZ
+{
+    color: hsl(0, 0%, 60%);
+    border-top: 1px solid hsl(0, 0%, 20%);
+}
