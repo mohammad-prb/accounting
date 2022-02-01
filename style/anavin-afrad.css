@@ -128,7 +128,7 @@ a.rahnama:nth-child(4)>span.icon
 .tedadDST
 {
     float: right;
-    padding: 5px 15px;
+    padding: 6px 15px 4px;
     border-radius: 8px;
     margin-left: 10px;
     text-align: center;
@@ -491,7 +491,6 @@ input#dastehVDST
 {
     #kadrVasetRahnama
     {
-        width: calc(100% - 10px);
         margin: 0;
         padding: 10px 5px;
     }

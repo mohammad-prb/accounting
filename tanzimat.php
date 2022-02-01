@@ -134,6 +134,7 @@ $safheh = "tanzimat";
 <script src="script/main.js"></script>
 <script src="script/tanzimat.js"></script>
 <script>
+    <?php if (isset($_GET["p"])) echo 'namayeshPeygham("برای شروع به کار، ابتدا یک حساب باز کنید.");';?>
     shomarehBandiHSB();
     var tkn = "<?php echo $tkn;?>";
     var arrBank = <?php echo json_encode($arrBank);?>;
