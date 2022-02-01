@@ -68,8 +68,8 @@ $safheh = "tanzimat";
                                     <div class="emkanatJTNZ">
                                         <a href="javascript:void(0);" class="btnJTNZ btnHazfJTNZ" title="حذف"></a>
                                         <a href="javascript:void(0);" class="btnJTNZ btnVirayeshJTNZ" onclick="virayeshHSB(this)" title="ویرایش"></a>
-                                        <a href="javascript:void(0);" class="btnJTNZ btnPaeenJTNZ" onclick="jabejaeiHSB(this.parentElement.parentElement.parentElement, false);" title="جا به جایی"></a>
-                                        <a href="javascript:void(0);" class="btnJTNZ btnBalaJTNZ" onclick="jabejaeiHSB(this.parentElement.parentElement.parentElement, true);" title="جا به جایی"></a>
+                                        <a href="javascript:void(0);" class="btnJTNZ btnPaeenJTNZ" onclick="jabejaeiHSB(this.parentElement.parentElement.parentElement, false);" title="جابجایی"></a>
+                                        <a href="javascript:void(0);" class="btnJTNZ btnBalaJTNZ" onclick="jabejaeiHSB(this.parentElement.parentElement.parentElement, true);" title="جابجایی"></a>
                                     </div>
                                 </div>
                             </div>';

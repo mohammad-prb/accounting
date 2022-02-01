@@ -238,7 +238,7 @@ function sabtVirayeshAFD(id)
     namayeshLoading(document.getElementById("CountainerKadrViraieshDST"));
 }
 
-/*      جا به جایی افراد      */
+/*      جابجایی افراد      */
 function jabejaeiAFD(lmn, balaAst)
 {
     if (balaAst)
@@ -246,7 +246,7 @@ function jabejaeiAFD(lmn, balaAst)
         if (lmn.previousElementSibling)
         {
             var lmnJadid = document.createElement("div");
-            lmn.parentElement.insertBefore(lmnJadid, lmn.previousSibling);
+            lmn.parentElement.insertBefore(lmnJadid, lmn.previousElementSibling);
             lmn.parentElement.replaceChild(lmn, lmnJadid);
             shomarehBandiAFD();
             document.getElementById("kadrTaeedJabejaei").style.bottom = "20px";
@@ -256,7 +256,7 @@ function jabejaeiAFD(lmn, balaAst)
         jabejaeiAFD(lmn.nextElementSibling, true);
 }
 
-/*      تایید جا به جایی      */
+/*      تایید جابجایی      */
 function sabtJabejaei()
 {
     document.getElementById("kadrTaeedJabejaei").style.bottom = "-81px";
@@ -273,10 +273,10 @@ function sabtJabejaei()
             if (this.responseText === "ok")
             {
                 bastanLoading(document.getElementById("kadrJadvalDST"));
-                flash("جا به جایی ها با موفقیت ثبت شد.");
+                flash("تغییرات با موفقیت ثبت شد.");
                 for (let i=0; i<arrLmn.length-1; i++) arrLmn[i].dataset.tartib = (i+1);
             }
-            else namayeshPeygham("جا به جایی با خطا مواجه شد! لطفا دوباره امتحان کنید.");
+            else namayeshPeygham("تغییرات با خطا مواجه شد! لطفا دوباره امتحان کنید.");
         }
     };
     xhttp.open("POST", "./ajax/taghir-tartib-afrad.php?sid="+Math.random(), true);

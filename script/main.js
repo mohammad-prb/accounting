@@ -248,6 +248,33 @@ function taghirHesabSBT(lmn)
                     lmnSelectSBTV.appendChild(option);
                 }
             }
+
+            /* اخرین ثبت ها */
+            if (objNatijeh["khorooji"] !== undefined)
+            {
+                document.getElementById("mablaghAKVK").innerHTML = momayezdar(objNatijeh["khorooji"]["mablagh"]);
+                document.getElementById("onvanAKVK").innerHTML = objNatijeh["khorooji"]["onvan"];
+                document.getElementById("tarikhAKVK").innerHTML = objNatijeh["khorooji"]["tarikh"];
+            }
+            else
+            {
+                document.getElementById("mablaghAKVK").innerHTML = "";
+                document.getElementById("onvanAKVK").innerHTML = "";
+                document.getElementById("tarikhAKVK").innerHTML = "";
+            }
+
+            if (objNatijeh["voroodi"] !== undefined)
+            {
+                document.getElementById("mablaghAKVV").innerHTML = momayezdar(objNatijeh["voroodi"]["mablagh"]);
+                document.getElementById("onvanAKVV").innerHTML = objNatijeh["voroodi"]["onvan"];
+                document.getElementById("tarikhAKVV").innerHTML = objNatijeh["voroodi"]["tarikh"];
+            }
+            else
+            {
+                document.getElementById("mablaghAKVV").innerHTML = "";
+                document.getElementById("onvanAKVV").innerHTML = "";
+                document.getElementById("tarikhAKVV").innerHTML = "";
+            }
         }
     };
     xhttp.open("POST", "./ajax/gereften-etelaat-hesab.php?sid="+Math.random(), true);
@@ -348,9 +375,9 @@ function sabtVarizi(noe)
                     document.getElementById("mablaghSBTK").select();
 
                     var lmnDasteh = document.getElementById("dastehSBTK");
-                    document.getElementsByClassName("etelaatAKV")[1].innerHTML = momayezdar(mablagh);
-                    document.getElementsByClassName("etelaatAKV")[2].innerHTML = lmnDasteh.options[lmnDasteh.selectedIndex].text;
-                    document.getElementsByClassName("etelaatAKV")[3].innerHTML = tarikhKon(sal, mah, rooz);
+                    document.getElementById("mablaghAKVK").innerHTML = momayezdar(mablagh);
+                    document.getElementById("onvanAKVK").innerHTML = lmnDasteh.options[lmnDasteh.selectedIndex].text;
+                    document.getElementById("tarikhAKVK").innerHTML = tarikhKon(sal, mah, rooz);
                 }
                 else
                 {
@@ -361,9 +388,9 @@ function sabtVarizi(noe)
                     document.getElementById("mablaghSBTV").select();
 
                     var lmnDasteh = document.getElementById("dastehSBTV");
-                    document.getElementsByClassName("etelaatAKV")[5].innerHTML = momayezdar(mablagh);
-                    document.getElementsByClassName("etelaatAKV")[6].innerHTML = lmnDasteh.options[lmnDasteh.selectedIndex].text;
-                    document.getElementsByClassName("etelaatAKV")[7].innerHTML = tarikhKon(sal, mah, rooz);
+                    document.getElementById("mablaghAKVV").innerHTML = momayezdar(mablagh);
+                    document.getElementById("onvanAKVV").innerHTML = lmnDasteh.options[lmnDasteh.selectedIndex].text;
+                    document.getElementById("tarikhAKVV").innerHTML = tarikhKon(sal, mah, rooz);
                 }
             }
             else if (natijeh === "er:mandeh") namayeshPeygham("مبلغ وارد شده اشتباه است. این مبلغ بیشتر از مانده حساب شماست.");

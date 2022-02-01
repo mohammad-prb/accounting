@@ -26,7 +26,7 @@ function hazfHSB(shom)
             {
                 flash("حساب با موفقیت حذف شد.");
                 lmn.remove();
-                shomarehBandiDST();
+                shomarehBandiHSB();
             }
             else namayeshPeygham("حذف با خطا مواجه شد! لطفا دوباره امتحان کنید.");
         }
@@ -37,7 +37,7 @@ function hazfHSB(shom)
     namayeshLoading(document.getElementById("kadrHesabhaTNZ"));
 }
 
-/*      جا به جایی دسته ها      */
+/*      جابجایی حساب ها      */
 function jabejaeiHSB(lmn, balaAst)
 {
     if (balaAst)
@@ -45,7 +45,7 @@ function jabejaeiHSB(lmn, balaAst)
         if (lmn.previousElementSibling)
         {
             var lmnJadid = document.createElement("div");
-            lmn.parentElement.insertBefore(lmnJadid, lmn.previousSibling);
+            lmn.parentElement.insertBefore(lmnJadid, lmn.previousElementSibling);
             lmn.parentElement.replaceChild(lmn, lmnJadid);
             shomarehBandiHSB();
             document.getElementById("kadrTaeedJabejaei").style.bottom = "20px";
@@ -55,7 +55,7 @@ function jabejaeiHSB(lmn, balaAst)
         jabejaeiHSB(lmn.nextElementSibling, true);
 }
 
-/*      تایید جا به جایی      */
+/*      تایید جابجایی      */
 function sabtJabejaei()
 {
     document.getElementById("kadrTaeedJabejaei").style.bottom = "-81px";
@@ -71,10 +71,10 @@ function sabtJabejaei()
             bastanLoading(document.getElementById("kadrHesabhaTNZ"));
             if (this.responseText === "ok")
             {
-                flash("جا به جایی ها با موفقیت ثبت شد.");
+                flash("جابجایی ها با موفقیت ثبت شد.");
                 for (let i=0; i<arrLmn.length-1; i++) arrLmn[i].dataset.tartib = (i+1);
             }
-            else namayeshPeygham("جا به جایی با خطا مواجه شد! لطفا دوباره امتحان کنید.");
+            else namayeshPeygham("جابجایی با خطا مواجه شد! لطفا دوباره امتحان کنید.");
         }
     };
     xhttp.open("POST", "./ajax/taghir-tartib-hesabha.php?sid="+Math.random(), true);
@@ -83,7 +83,7 @@ function sabtJabejaei()
     namayeshLoading(document.getElementById("kadrHesabhaTNZ"));
 }
 
-/*      ویرایش دسته ها      */
+/*      ویرایش حساب ها      */
 function virayeshHSB(lmn)
 {
     var nam = lmn.parentElement.parentElement.getElementsByClassName("onvanJTNZ")[0].innerHTML.trim();
@@ -140,7 +140,7 @@ function virayeshHSB(lmn)
     lmnKadr.onkeydown = function(e){if (e.keyCode === 13) sabtVirayeshHSB(id);};
 }
 
-/*      ثبت ویرایش دسته      */
+/*      ثبت ویرایش حساب      */
 function sabtVirayeshHSB(id)
 {
     var nam = document.getElementById("namVTNZ").value.trim().replace(/(<([^>]+)>)/ig, '');
@@ -164,7 +164,7 @@ function sabtVirayeshHSB(id)
         return;
     }
 
-    if (!check(mandehTaraz, "^[1-9][0-9]*$")) {
+    if (!check(mandehTaraz, "^(0|[1-9][0-9]*)$")) {
         namayeshPeygham("مانده تراز اشتباه است.");
         return;
     }
@@ -194,4 +194,79 @@ function sabtVirayeshHSB(id)
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("id="+id+"&nam="+nam+"&shomHesab="+shomHesab+"&shomKart="+shomKart+"&mandehTaraz="+mandehTaraz+"&bankID="+bankID+"&tk="+tkn);
     namayeshLoading(document.getElementById("CountainerKadrViraieshTNZ"));
+}
+
+/*      افزودن حساب      */
+function sabtHesab()
+{
+    var nam = document.getElementById("namATNZ").value.trim().replace(/(<([^>]+)>)/ig, '');
+    var bank = document.getElementById("bankATNZ").value.trim();
+    var shomHesab = document.getElementById("shomHesabATNZ").value.trim();
+    var shomKart = document.getElementById("shomKartATNZ").value.trim();
+    var taraz = document.getElementById("mandehATNZ").value.trim();
+
+    if (!check(nam, "^.{1,30}$")) {
+        namayeshPeygham("نام اشتباه است.");
+        return;
+    }
+
+    if (!check(shomHesab, "^[0-9]{1,100}$")) {
+        namayeshPeygham("شماره حساب اشتباه است.");
+        return;
+    }
+
+    if (!check(shomKart, "^[0-9]{16}$")) {
+        namayeshPeygham("شماره کارت اشتباه است.");
+        return;
+    }
+
+    if (!check(taraz, "^(0|[1-9][0-9]*)$")) {
+        namayeshPeygham("مانده تراز اشتباه است.");
+        return;
+    }
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function ()
+    {
+        if (this.readyState === 4 && this.status === 200)
+        {
+            bastanLoading(document.getElementById("kadrHesabhaTNZ"));
+            if (this.responseText.substr(0,2) === "ok")
+            {
+                flash("حساب با موفقیت اضافه شد.");
+                document.getElementById("namATNZ").value = "";
+                document.getElementById("shomHesabATNZ").value = "";
+                document.getElementById("shomKartATNZ").value = "";
+                document.getElementById("mandehATNZ").value = "";
+
+                let lmnHesab = document.createElement("div");
+                lmnHesab.setAttribute("class", "itemJTNZ");
+                lmnHesab.dataset.id = this.responseText.split(":")[1];
+                lmnHesab.dataset.bank = bank;
+                lmnHesab.dataset.tartib = this.responseText.split(":")[2];
+                lmnHesab.innerHTML = '<div class="shomJTNZ"></div>\n' +
+                    '<div class="etelaatJTNZ">\n' +
+                    '    <div class="bankJTNZ"><img src="pic/bank/'+ bank +'.png" alt="bank" class="aksBankJTNZ"/></div>\n' +
+                    '    <div class="onvanJTNZ" title="">'+ nam +'</div>\n' +
+                    '    <div class="shomHesabJTNZ">'+ shomHesab +'</div>\n' +
+                    '    <div class="shomKartJTNZ">'+ shomKart +'</div>\n' +
+                    '    <div class="eftetahJTNZ">'+ this.responseText.split(":")[3] +'</div>\n' +
+                    '    <div class="mandehTarazJTNZ">'+ momayezdar(taraz) +'</div>\n' +
+                    '    <div class="emkanatJTNZ">\n' +
+                    '        <a href="javascript:void(0);" class="btnJTNZ btnHazfJTNZ" title="حذف"></a>\n' +
+                    '        <a href="javascript:void(0);" class="btnJTNZ btnVirayeshJTNZ" onclick="virayeshHSB(this);" title="ویرایش"></a>\n' +
+                    '        <a href="javascript:void(0);" class="btnJTNZ btnBalaJTNZ" onclick="jabejaeiHSB(this.parentElement.parentElement.parentElement, false);" title="جابجایی"></a>\n' +
+                    '        <a href="javascript:void(0);" class="btnJTNZ btnPaeenJTNZ" onclick="jabejaeiHSB(this.parentElement.parentElement.parentElement, true);" title="جابجایی"></a>\n' +
+                    '    </div>\n' +
+                    '</div>';
+                document.getElementById("jadvalTNZ").appendChild(lmnHesab);
+                shomarehBandiHSB();
+            }
+            else namayeshPeygham("ثبت اطلاعات با خطا مواجه شد! لطفا دوباره امتحان کنید.");
+        }
+    };
+    xhttp.open("POST", "./ajax/sabt-hesab.php?sid="+Math.random(), true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("nam="+nam+"&bank="+bank+"&shomHesab="+shomHesab+"&shomKart="+shomKart+"&taraz="+taraz+"&tk="+tkn);
+    namayeshLoading(document.getElementById("kadrHesabhaTNZ"));
 }

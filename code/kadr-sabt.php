@@ -158,9 +158,9 @@
             {
                 if ($row = $result->fetch_assoc())
                 {
-                    echo '<div class="etelaatAKV">'. momayezdar($row["mablagh"]) .'</div>';
-                    echo '<div class="etelaatAKV">'. $row["onvan"] .'</div>';
-                    echo '<div class="etelaatAKV">'. $row["tarikh"] .'</div>';
+                    echo '<div class="etelaatAKV" id="mablaghAKVK">'. momayezdar($row["mablagh"]) .'</div>';
+                    echo '<div class="etelaatAKV" id="onvanAKVK">'. $row["onvan"] .'</div>';
+                    echo '<div class="etelaatAKV" id="tarikhAKVK">'. $row["tarikh"] .'</div>';
                 }
             }
             ?>
@@ -176,9 +176,9 @@
             {
                 if ($row = $result->fetch_assoc())
                 {
-                    echo '<div class="etelaatAKV">'. momayezdar($row["mablagh"]) .'</div>';
-                    echo '<div class="etelaatAKV">'. $row["onvan"] .'</div>';
-                    echo '<div class="etelaatAKV">'. $row["tarikh"] .'</div>';
+                    echo '<div class="etelaatAKV" id="mablaghAKVV">'. momayezdar($row["mablagh"]) .'</div>';
+                    echo '<div class="etelaatAKV" id="onvanAKVV">'. $row["onvan"] .'</div>';
+                    echo '<div class="etelaatAKV" id="tarikhAKVV">'. $row["tarikh"] .'</div>';
                 }
             }
             ?>

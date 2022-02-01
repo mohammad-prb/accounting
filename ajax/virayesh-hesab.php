@@ -18,7 +18,7 @@ if (preg_match("/^[1-9]+[0-9]*$/", $id) !== 1) die();
 if (preg_match("/^.{1,30}$/", $nam) !== 1) die();
 if (preg_match("/^[0-9]{1,100}$/", $shomHesab) !== 1) die();
 if (preg_match("/^[0-9]{16}$/", $shomKart) !== 1) die();
-if (preg_match("/^[1-9][0-9]*$/", $mandehTaraz) !== 1) die();
+if (preg_match("/^(0|[1-9][0-9]*)$/", $mandehTaraz) !== 1) die();
 if (preg_match("/^[1-9]+[0-9]*$/", $bankID) !== 1) die();
 
 $sql = "update tbl_hesab set nam = ?, shomHesab = ?, shomKart = ?, mablaghTaraz = ?, bankID = ? where id = ? and vaziat = 1";

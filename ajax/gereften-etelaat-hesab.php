@@ -25,5 +25,25 @@ if ($result !== false && $result->num_rows > 0)
         array_push($arrAfrad, $row);
 
 $arrNatijeh = array("dasteh"=>$arrDasteh, "afrad"=>$arrAfrad);
+
+$sql = @"(select mablagh, tarikh, onvan, khoroojiAst from tbl_soorathesab
+        inner join tbl_dasteh on tbl_dasteh.id = dastehID
+        where tbl_soorathesab.vaziat = 1 and tbl_soorathesab.hesabID = ". $hesabID .@" and khoroojiAst = 1
+        order by tbl_soorathesab.id desc limit 1)
+        union
+        (select mablagh, tarikh, onvan, khoroojiAst from tbl_soorathesab
+        inner join tbl_dasteh on tbl_dasteh.id = dastehID
+        where tbl_soorathesab.vaziat = 1 and tbl_soorathesab.hesabID = ". $hesabID .@" and khoroojiAst = 0
+        order by tbl_soorathesab.id desc limit 1)";
+$result = $con->query($sql);
+if ($result !== false && $result->num_rows > 0)
+{
+    while ($row = $result->fetch_assoc())
+    {
+        if ($row["khoroojiAst"] == 1) $arrNatijeh["khorooji"] = $row;
+        else $arrNatijeh["voroodi"] = $row;
+    }
+}
+
 echo json_encode($arrNatijeh);
 $con->close();
