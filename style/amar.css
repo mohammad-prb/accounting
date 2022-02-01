@@ -303,3 +303,39 @@ a.btnLAMR>span.icon, a.btnLAMR>span.matnTitr
     width: 100%;
     margin-bottom: 30px;
 }
+
+@media only screen and (max-width: 1000px)
+{
+    #kadrFilterAMR
+    {
+        width: calc(100% - 20px);
+        padding: 10px;
+        margin: 0;
+    }
+
+    .filterSRT
+    {
+        margin-left: 10px;
+    }
+
+    .filterSRT span.matnTitr
+    {
+        display: none;
+    }
+
+    #kadrAmar
+    {
+        margin-top: 20px;
+    }
+
+    #sotoonRast
+    {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    #stoonVasat
+    {
+        width: 100%;
+    }
+}

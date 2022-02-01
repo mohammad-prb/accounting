@@ -40,10 +40,10 @@ $safheh = "tanzimat";
                     <div class="etelaatJTNZ">
                         <div class="bankJTNZ"></div>
                         <div class="onvanJTNZ">نام</div>
-                        <div class="shomHesabJTNZ">شماره حساب</div>
-                        <div class="shomKartJTNZ">شماره کارت</div>
-                        <div class="eftetahJTNZ">تاریخ افتتاح</div>
-                        <div class="mandehTarazJTNZ">مانده تراز</div>
+                        <div class="shomHesabJTNZ makhfiDarMobile">شماره حساب</div>
+                        <div class="shomKartJTNZ makhfiDarMobile">شماره کارت</div>
+                        <div class="eftetahJTNZ makhfiDarMobile">تاریخ افتتاح</div>
+                        <div class="mandehTarazJTNZ makhfiDarMobile">مانده تراز</div>
                         <div class="emkanatJTNZ">امکانات</div>
                     </div>
                 </div>
@@ -61,10 +61,10 @@ $safheh = "tanzimat";
                                 <div class="etelaatJTNZ">
                                     <div class="bankJTNZ"><img src="pic/bank/'. $row["bankID"] .@'.png" alt="bank" class="aksBankJTNZ"/></div>
                                     <div class="onvanJTNZ">'. $row["nam"] .@'</div>
-                                    <div class="shomHesabJTNZ">'. $row["shomHesab"] .@'</div>
-                                    <div class="shomKartJTNZ">'. $row["shomKart"] .@'</div>
-                                    <div class="eftetahJTNZ">'. $row["tarikhEftetah"] .@'</div>
-                                    <div class="mandehTarazJTNZ">'. momayezdar($row["mablaghTaraz"]) .@'</div>
+                                    <div class="shomHesabJTNZ makhfiDarMobile">'. $row["shomHesab"] .@'</div>
+                                    <div class="shomKartJTNZ makhfiDarMobile">'. $row["shomKart"] .@'</div>
+                                    <div class="eftetahJTNZ makhfiDarMobile">'. $row["tarikhEftetah"] .@'</div>
+                                    <div class="mandehTarazJTNZ makhfiDarMobile">'. momayezdar($row["mablaghTaraz"]) .@'</div>
                                     <div class="emkanatJTNZ">
                                         <a href="javascript:void(0);" class="btnJTNZ btnHazfJTNZ" title="حذف"></a>
                                         <a href="javascript:void(0);" class="btnJTNZ btnVirayeshJTNZ" onclick="virayeshHSB(this)" title="ویرایش"></a>

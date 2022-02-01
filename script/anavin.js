@@ -28,9 +28,9 @@ function gereftanDasteh()
                         '<div class="etelaatJDST" data-noe="'+ arrObjNatijeh[i]["noe"] +'">\n' +
                         '    <div class="iconJDST"></div>\n' +
                         '    <div class="onvanJDST" title="">'+ arrObjNatijeh[i]["onvan"] +'</div>\n' +
-                        '    <div class="tedadMahJDST">'+ momayezdar(arrObjNatijeh[i]["tedadMah"]) +'</div>\n' +
-                        '    <div class="tedadSalJDST">'+ momayezdar(arrObjNatijeh[i]["tedadSal"]) +'</div>\n' +
-                        '    <div class="tedadKolJDST">'+ momayezdar(arrObjNatijeh[i]["tedadKol"]) +'</div>\n' +
+                        '    <div class="tedadMahJDST makhfiDarMobile">'+ momayezdar(arrObjNatijeh[i]["tedadMah"]) +'</div>\n' +
+                        '    <div class="tedadSalJDST makhfiDarMobile">'+ momayezdar(arrObjNatijeh[i]["tedadSal"]) +'</div>\n' +
+                        '    <div class="tedadKolJDST makhfiDarMobile">'+ momayezdar(arrObjNatijeh[i]["tedadKol"]) +'</div>\n' +
                         '    <div class="emkanatJDST">\n' +
                         (Number(arrObjNatijeh[i]["noe"]) > 0 ? '<a href="javascript:void(0);" class="btnJDST btnHazfJDST" title="حذف"></a>\n' +
                             '<a href="javascript:void(0);" class="btnJDST btnVirayeshJDST" onclick="virayeshDST(this);" title="ویرایش"></a>\n' +

@@ -393,6 +393,10 @@ a.dokmehLaghv:active
 .matnFlash
 {
     float: right;
+    width: calc(100% - 34px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 
@@ -578,6 +582,11 @@ span.matnItemMNU
     color: hsl(0, 0%, 40%);
 }
 
+a.btnMNU, a.btnMNU:link, a.btnMNU:visited
+{
+    display: none;
+}
+
 
 /*  کادر حساب ها  */
 
@@ -593,9 +602,8 @@ span.matnItemMNU
 {
     float: right;
     width: calc(33.333% - 20px);
-    min-width: 376px;
     margin: 10px;
-    padding: 15px 0;
+    padding: 15px 0 10px;
     border-radius: 8px;
     overflow: auto;
     background-color: hsl(39, 100%, 87%);
@@ -615,7 +623,7 @@ span.matnItemMNU
 .namHSB
 {
     float: right;
-    width: calc(100% - 130px);
+    width: calc(50% - 0px);
 }
 
 img.bankHSB
@@ -637,7 +645,7 @@ span.matnTitrHSB
 .mandehHSB
 {
     float: left;
-    width: 130px;
+    width: 50%;
     text-align: left;
     white-space: nowrap;
     overflow: hidden;
@@ -667,6 +675,9 @@ span.matnTitrHSB
     width: calc(100% - 90px);
     text-align: left;
     direction: ltr;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .kadrEmkanatHSB
@@ -891,7 +902,170 @@ input.txtTozih
     color: hsla(0, 0%, 0%, 0.7);
 }
 
-@media only screen and (max-width: 767px)
+@media only screen and (max-width: 1000px)
 {
+    .makhfiDarMobile
+    {
+        display: none;
+    }
 
+    #kadrPeygham
+    {
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        right: 0;
+        width: calc(100% - 20px);
+        max-width: 400px;
+    }
+
+    .kadrFlash
+    {
+        max-width: calc(100% - 70px);
+        bottom: 10px;
+    }
+
+    .iconFlash
+    {
+        margin-left: 5px;
+    }
+
+    .matnFlash
+    {
+        width: calc(100% - 29px);
+    }
+
+    #navarRast
+    {
+        width: 220px;
+        right: -220px;
+    }
+
+    #navarRast[data-vaziat="1"]
+    {
+        right: 0;
+    }
+
+    .kadrMenu
+    {
+        width: calc(100% - 10px);
+        margin: 0 0 0 10px;
+    }
+
+    #kadrMenuAfrad
+    {
+        height: auto;
+        margin: 7px 0 0 10px;
+    }
+
+    a.itemMNU, a.itemMNU:link, a.itemMNU:visited
+    {
+        width: calc(100% - 15px);
+        padding: 8px 15px 8px 0;
+    }
+
+    #kadrMeshkiMNU
+    {
+        display: none;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        right: 0;
+        z-index: 799;
+        background-color: hsla(0, 0%, 0%, 0.5);
+        transition: opacity 0.3s;
+    }
+
+    #sotoonChap
+    {
+        width: calc(100% - 30px);
+        padding: 15px;
+    }
+
+    #kadrTarikh
+    {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .tarikhNVB
+    {
+        float: left;
+    }
+
+    a.btnMNU, a.btnMNU:link, a.btnMNU:visited
+    {
+        display: block;
+        float: right;
+        text-align: center;
+        margin-left: 10px;
+        font-family: myIcon;
+        font-size: 1.625rem;
+    }
+
+    select.sltHesabha
+    {
+        max-width: 125px;
+    }
+
+    #kadrSabt
+    {
+        padding-bottom: 10px;
+    }
+
+    .kadrSBT
+    {
+        width: 100%;
+        margin: 0 0 10px 0;
+        padding: 10px 0 0;
+    }
+
+    h3.titrSBT
+    {
+        width: calc(100% - 20px);
+        margin: 0 10px 5px;
+        padding: 0 0 8px 0;
+    }
+
+    a.btnErsalSBT, a.btnErsalSBT:link, a.btnErsalSBT:visited
+    {
+        top: 10px;
+        left: 10px;
+    }
+
+    .kadrEtelaatSBT
+    {
+        width: calc(100% - 20px);
+        margin: 5px 10px 0;
+    }
+
+    .etelaatSBT
+    {
+        float: right;
+        margin: 0 0 5px 20px;
+    }
+
+    .kadrVasetAKV
+    {
+        width: 100%;
+        margin: 5px 0;
+        padding: 0;
+    }
+
+    .etelaatAKV
+    {
+        margin-left: 5px;
+    }
+
+    #kadrHesabha
+    {
+        margin-top: 10px;
+    }
+
+    .hesab
+    {
+        width: calc(100% - 0px);
+        margin: 0 0 10px 0;
+    }
 }

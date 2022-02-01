@@ -9,7 +9,7 @@
 {
     float: right;
     width: 100%;
-    margin: 20px 0 10px;
+    margin: 20px 0 0;
     padding-top: 30px;
     border-top: 1px solid hsl(0, 0%, 80%);
 }
@@ -17,7 +17,7 @@
 .kadrAfzoodanDST
 {
     float: right;
-    margin-left: 30px;
+    margin: 0 0 10px 30px;
 }
 
 .afzoodanDST
@@ -485,4 +485,112 @@ input#dastehVDST
 #kadrVDST a.dokmehLaghv
 {
     margin: 0 5px 0 0;
+}
+
+@media only screen and (max-width: 1000px)
+{
+    #kadrVasetRahnama
+    {
+        width: calc(100% - 10px);
+        margin: 0;
+        padding: 10px 5px;
+    }
+
+    #kadrTedadDST
+    {
+        width: 100%;
+        margin: 20px 0;
+    }
+
+    .shomJDST
+    {
+        width: 20px;
+        font-size: 0.875rem;
+        padding: 6px 0 5px 5px;
+    }
+
+    #kadrHeaderJDST .shomJDST
+    {
+        padding: 0 0 0 5px;
+        opacity: 0;
+    }
+
+    .etelaatJDST
+    {
+        width: calc(100% - 41px);
+    }
+
+    .iconJDST
+    {
+        display: none;
+    }
+
+    .onvanJDST
+    {
+        width: calc(100% - 155px);
+        margin: 0;
+    }
+
+    .emkanatJDST
+    {
+        width: 155px;
+    }
+
+    a.btnJDST, a.btnJDST:link, a.btnJDST:visited
+    {
+        margin-right: 5px;
+    }
+
+    #kadrAfzoodanDasteh
+    {
+        padding-top: 15px;
+    }
+
+    #kadrVDST
+    {
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        right: 0;
+        width: calc(100% - 20px);
+    }
+
+    .etelaatVDST span.matnTitr
+    {
+        display: none;
+    }
+
+    .etelaatVDST>.etelaatSBT:nth-child(2)>.iconEtelaatSBT
+    {
+        display: none;
+    }
+
+    input#dastehVDST
+    {
+        width: calc(100% - 50px);
+    }
+
+    #kadrTaeedJabejaei
+    {
+        left: 10px;
+        width: calc(100% - 30px);
+        padding: 5px;
+    }
+
+    #kadrTaeedJabejaei>a
+    {
+        font-size: 0.875rem;
+        width: calc(50% - 18px);
+        padding: 10px 8px;
+    }
+
+    #kadrTaeedJabejaei>a.dokmehTaeed
+    {
+        margin-left: 2px;
+    }
+
+    #kadrTaeedJabejaei>a.dokmehLaghv
+    {
+        margin-right: 2px;
+    }
 }

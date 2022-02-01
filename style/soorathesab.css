@@ -64,6 +64,7 @@ span#kadrVasetEmalFilter
 
 #kadrAmarSoorathesab
 {
+    position: relative;
     float: right;
     width: 100%;
     margin: 30px 0;
@@ -71,7 +72,9 @@ span#kadrVasetEmalFilter
 
 a#btnSelectAll, a#btnSelectAll:link, a#btnSelectAll:visited
 {
-    float: left;
+    position: absolute;
+    left: 0;
+    bottom: -30px;
     padding: 1px;
     cursor: pointer;
     color: hsl(0, 0%, 30%);
@@ -93,6 +96,7 @@ a#btnSelectAll:active
 {
     float: right;
     margin-left: 30px;
+    height: 25px;
 }
 
 .titrAmarSRT
@@ -333,20 +337,25 @@ a.satrTarikh:active
 {
     float: right;
     text-align: center;
+    height: 26px;
+    overflow: hidden;
 }
 
 .amarSelect.tedad
 {
     width: calc(15% - 9px);
+    /*min-width: 140px;*/
 }
 
 .amarSelect.mablagh
 {
     width: calc(18.333% - 9px);
+    /*min-width: 165px;*/
 }
 
 .amarSelect.dokmeh
 {
+    float: left;
     width: 52px;
 }
 
@@ -519,4 +528,73 @@ a.btnEmkanatSelect:active
 #kadrVSRT a.dokmehLaghv
 {
     margin: 0 5px 0 0;
+}
+
+@media only screen and (max-width: 1000px)
+{
+    #kadrAmarSoorathesab
+    {
+        margin: 20px 0;
+    }
+
+    a#btnSelectAll, a#btnSelectAll:link, a#btnSelectAll:visited
+    {
+        bottom: -25px;
+    }
+
+    .amarSRT
+    {
+        margin-left: 20px;
+    }
+
+    .etelaatSTB
+    {
+        margin: 0 0 5px 10px;
+    }
+
+    .kadrDorSTB[data-vaziat="1"]>.kadrSTB
+    {
+        transform: scale(0.85);
+    }
+
+    .amarSelect.tedad
+    {
+        width: calc(40% - 26px);
+    }
+
+    .amarSelect.mablagh
+    {
+        width: calc(60% - 26px);
+    }
+
+    .amarSelect span.matnTitr
+    {
+        display: none;
+    }
+
+    .amarSelect span.icon
+    {
+        margin-left: 0;
+    }
+
+    #kadrVSRT
+    {
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        right: 0;
+        width: calc(100% - 20px);
+    }
+
+    .etelaatVSRT
+    {
+        width: 100%;
+        margin: 10px 0 5px 0;
+        padding-top: 10px;
+    }
+
+    .etelaatVSRT span.matnTitr
+    {
+        display: none;
+    }
 }

@@ -391,3 +391,119 @@ input#namVTNZ
 {
     margin: 0 5px 0 0;
 }
+
+@media only screen and (max-width: 1000px)
+{
+    .shomJTNZ
+    {
+        width: 20px;
+        font-size: 0.875rem;
+        padding: 6px 0 5px 5px;
+    }
+
+    #kadrHeaderJTNZ .shomJTNZ
+    {
+        padding: 0 0 0 5px;
+        opacity: 0;
+    }
+
+    .etelaatJTNZ
+    {
+        width: calc(100% - 41px);
+    }
+
+    .iconJTNZ
+    {
+        display: none;
+    }
+
+    .bankJTNZ
+    {
+        margin: 0 0 0 5px;
+    }
+
+    .onvanJTNZ
+    {
+        width: calc(100% - 145px);
+        margin: 0;
+    }
+
+    .emkanatJTNZ
+    {
+        width: 124px;
+    }
+
+    a.btnJTNZ, a.btnJTNZ:link, a.btnJTNZ:visited
+    {
+        margin-right: 5px;
+    }
+
+    #kadrAfzoodanHesab
+    {
+        padding-top: 15px;
+    }
+
+    #kadrVTNZ
+    {
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        right: 0;
+        width: calc(100% - 20px);
+    }
+
+    .etelaatVTNZ
+    {
+        padding-top: 10px;
+    }
+
+    .etelaatSBT
+    {
+        width: 100%;
+        margin: 0 0 5px 0;
+    }
+
+    .etelaatVTNZ span.matnTitr
+    {
+        display: none;
+    }
+
+    .etelaatVTNZ input
+    {
+        width: calc(100% - 50px);
+    }
+
+    .etelaatVTNZ select
+    {
+        width: calc(100% - 28px);
+    }
+
+    #kadrTaeedJabejaei
+    {
+        left: 10px;
+        width: calc(100% - 30px);
+        padding: 5px;
+    }
+
+    #kadrTaeedJabejaei>a
+    {
+        font-size: 0.875rem;
+        width: calc(50% - 18px);
+        padding: 10px 8px;
+    }
+
+    #kadrTaeedJabejaei>a.dokmehTaeed
+    {
+        margin-left: 2px;
+    }
+
+    #kadrTaeedJabejaei>a.dokmehLaghv
+    {
+        margin-right: 2px;
+    }
+
+    .kadrAfzoodanTNZ
+    {
+        margin: 0 0 10px 15px;
+    }
+}

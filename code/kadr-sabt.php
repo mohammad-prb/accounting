@@ -8,7 +8,7 @@
             {
                 while ($row = $result->fetch_assoc())
                 {
-                    echo '<option value="'. $row["id"] .'">'. $row["nam"] .' ('. substr($row["shomKart"], 12, 4) .')</option>';
+                    echo '<option value="'. $row["id"] .'">'. $row["nam"] .'</option>';
                 }
             }
         ?>

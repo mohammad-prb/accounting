@@ -55,7 +55,7 @@ else
                 $result = $con->query($sql);
                 if ($result !== false && $result->num_rows > 0)
                     while ($row = $result->fetch_assoc())
-                        echo '<option value="'. $row["id"] .'"'. ($hesabAmadehAst && $row["id"] == $hesabID ? " selected" : "") .'>'. $row["nam"] .' ('. substr($row["shomKart"], 12, 4) .')</option>';
+                        echo '<option value="'. $row["id"] .'"'. ($hesabAmadehAst && $row["id"] == $hesabID ? " selected" : "") .'>'. $row["nam"] .'</option>';
                 ?>
             </select>
         </div>
@@ -76,11 +76,11 @@ else
                 <div class="itemJDST">
                     <div class="shomJDST">ردیف</div>
                     <div class="etelaatJDST">
-                        <div class="iconJDST"></div>
+                        <div class="iconJDST makhfiDarMobile"></div>
                         <div class="onvanJDST">نام فرد</div>
-                        <div class="tedadMahJDST">تعداد (ماه)</div>
-                        <div class="tedadSalJDST">تعداد (سال)</div>
-                        <div class="tedadKolJDST">تعداد (کل)</div>
+                        <div class="tedadMahJDST makhfiDarMobile">تعداد (ماه)</div>
+                        <div class="tedadSalJDST makhfiDarMobile">تعداد (سال)</div>
+                        <div class="tedadKolJDST makhfiDarMobile">تعداد (کل)</div>
                         <div class="emkanatJDST">امکانات</div>
                     </div>
                 </div>

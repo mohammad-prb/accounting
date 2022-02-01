@@ -7,6 +7,44 @@ function tanzimSaf()
             taghirENT(lmnENT[i].getElementsByClassName("gozinehENT")[0]);
 }
 
+/*      باز و بست منو      */
+function bazobastMNU(vaziat)
+{
+    var menu = document.getElementById("navarRast");
+    var kadrPosht = document.getElementById("kadrMeshkiMNU");
+
+    if (vaziat === undefined)
+    {
+        if (menu.dataset.vaziat === "1")
+        {
+            menu.dataset.vaziat = "0";
+            kadrPosht.style.display = "none";
+            kadrPosht.style.opacity = 0;
+        }
+        else
+        {
+            menu.dataset.vaziat = "1";
+            kadrPosht.style.display = "block";
+            kadrPosht.style.opacity = 1;
+        }
+    }
+    else
+    {
+        menu.dataset.vaziat = vaziat;
+
+        if (vaziat === 1)
+        {
+            kadrPosht.style.display = "block";
+            kadrPosht.style.opacity = 1;
+        }
+        else
+        {
+            kadrPosht.style.display = "none";
+            kadrPosht.style.opacity = 0;
+        }
+    }
+}
+
 /*      بستن کادر پیغام      */
 function bastanPeygham()
 {
@@ -50,56 +88,6 @@ function namayeshLoading(lmn)
     loading.setAttribute("class", "kadrKolLoading");
     loading.innerHTML = '<div class="kadrLoading"><img src="pic/loading.png" class="loading"></div>';
     lmn.appendChild(loading);
-}
-
-/*      عوض کردن وضعیت توگل      */
-function togel(lmn, vaziat)
-{
-    if (vaziat === undefined)
-    {
-        if (lmn.dataset.vaziat === "1")
-        {
-            lmn.dataset.vaziat = 0;
-            lmn.innerHTML = "";
-        }
-        else
-        {
-            lmn.dataset.vaziat = 1;
-            lmn.innerHTML = "";
-        }
-    }
-    else
-    {
-        lmn.dataset.vaziat = vaziat;
-
-        if (vaziat === 1) lmn.innerHTML = "";
-        else lmn.innerHTML = "";
-    }
-}
-
-/*      عوض کردن وضعیت چک باکس      */
-function checkbax(lmn, vaziat)
-{
-    if (vaziat === undefined)
-    {
-        if (lmn.dataset.vaziat === "1")
-        {
-            lmn.dataset.vaziat = 0;
-            lmn.getElementsByClassName("icon")[0].innerHTML = "";
-        }
-        else
-        {
-            lmn.dataset.vaziat = 1;
-            lmn.getElementsByClassName("icon")[0].innerHTML = "";
-        }
-    }
-    else
-    {
-        lmn.dataset.vaziat = vaziat;
-
-        if (vaziat === 1) lmn.getElementsByClassName("icon")[0].innerHTML = "";
-        else lmn.getElementsByClassName("icon")[0].innerHTML = "";
-    }
 }
 
 /*      عوض کردن ورودی و خروجی در ثبت واریزی      */

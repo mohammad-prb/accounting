@@ -211,6 +211,7 @@ function emalFilterSRT()
     }
 
     strQ += "&dastehID=" + dastehID + "&rooz=" + rooz + "&mah=" + mah + "&sal=" + sal + "&mablagh=" + mablagh + "&tozih=" + tozih;
+    laghvSelect();
 
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function ()
