@@ -283,7 +283,7 @@ a.rahnama:nth-child(4)>span.icon
 .onvanJDST
 {
     float: right;
-    width: calc(46% - 216px);
+    width: calc(46% - 201px);
     margin-left: 10px;
 }
 
@@ -314,7 +314,7 @@ a.rahnama:nth-child(4)>span.icon
 .emkanatJDST
 {
     float: right;
-    width: 170px;
+    width: 155px;
     text-align: center;
 }
 
@@ -324,7 +324,7 @@ a.btnJDST, a.btnJDST:link, a.btnJDST:visited
     padding: 5px 5px 4px 5px;
     border-radius: 50%;
     background-color: hsla(0, 0%, 0%, 0.1);
-    margin-right: 10px;
+    margin-right: 5px;
     font-family: myIcon;
     transition: background-color 0.1s;
 }
@@ -526,18 +526,8 @@ input#dastehVDST
 
     .onvanJDST
     {
-        width: calc(100% - 155px);
+        width: calc(100% - 160px);
         margin: 0;
-    }
-
-    .emkanatJDST
-    {
-        width: 155px;
-    }
-
-    a.btnJDST, a.btnJDST:link, a.btnJDST:visited
-    {
-        margin-right: 5px;
     }
 
     #kadrAfzoodanDasteh

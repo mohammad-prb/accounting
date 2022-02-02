@@ -52,8 +52,8 @@
                 ?>
             </select>
         </div>
-        <div class="etelaatSBT" style="display:none;">
-            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">واریز به:</span></div>
+        <div class="etelaatSBT">
+            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">فرد:</span></div>
             <select name="varizBe" id="varizBeSBTK">
                 <option value="hameh">-</option>
                 <?php
@@ -65,25 +65,8 @@
                     while ($row = $result->fetch_assoc())
                     {
                         array_push($arrAfrad, $row);
-                        if ($row["noe"] <= 2)
+                        if ($row["noe"] == 1)
                             echo '<option value="'. $row["id"] .'">'. $row["nam"] .'</option>';
-                    }
-                }
-                ?>
-            </select>
-        </div>
-        <div class="etelaatSBT" style="display:none;">
-            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">واریز کننده:</span></div>
-            <select name="varizKonandeh" id="varizKonandehSBTV">
-                <option value="hameh">-</option>
-                <?php
-                $sql = "select id, nam, noe, tartib from tbl_afrad where (hesabID = ".$hesabID." or hesabID = 0) and (noe <= 1 or noe = 3) and vaziat = 1 order by hesabID desc, tartib";
-                $result = $con->query($sql);
-                if ($result !== false && $result->num_rows > 0)
-                {
-                    while ($row = $result->fetch_assoc())
-                    {
-                        echo '<option value="'. $row["id"] .'">'. $row["nam"] .'</option>';
                     }
                 }
                 ?>

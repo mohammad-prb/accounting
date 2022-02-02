@@ -30,7 +30,7 @@ input.txtMablagh
 
 input.txtTozih
 {
-    width: 183px;
+    width: 300px;
 }
 
 a#emalFilter, a#emalFilter:link, a#emalFilter:visited
@@ -533,6 +533,11 @@ a.btnEmkanatSelect:active
 
 @media only screen and (max-width: 1000px)
 {
+    input.txtTozih
+    {
+        width: 183px;
+    }
+
     #kadrAmarSoorathesab
     {
         margin: 20px 0;

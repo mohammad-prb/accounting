@@ -114,7 +114,7 @@ img.aksBankJTNZ
 .onvanJTNZ
 {
     float: right;
-    width: calc(29% - 180px);
+    width: calc(29% - 165px);
     margin-left: 10px;
 }
 
@@ -153,7 +153,7 @@ img.aksBankJTNZ
 .emkanatJTNZ
 {
     float: right;
-    width: 134px;
+    width: 119px;
     text-align: center;
 }
 
@@ -163,7 +163,7 @@ a.btnJTNZ, a.btnJTNZ:link, a.btnJTNZ:visited
     padding: 5px 5px 4px 5px;
     border-radius: 50%;
     background-color: hsla(0, 0%, 0%, 0.1);
-    margin-right: 10px;
+    margin-right: 5px;
     font-family: myIcon;
     transition: background-color 0.1s;
 }
@@ -448,16 +448,6 @@ input#namVTNZ
     {
         width: calc(100% - 145px);
         margin: 0;
-    }
-
-    .emkanatJTNZ
-    {
-        width: 124px;
-    }
-
-    a.btnJTNZ, a.btnJTNZ:link, a.btnJTNZ:visited
-    {
-        margin-right: 5px;
     }
 
     #kadrAfzoodanHesab

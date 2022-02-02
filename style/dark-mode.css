@@ -157,6 +157,11 @@ a.itemMNU[data-enekhabi]
     color: hsl(0, 0%, 70%);
 }
 
+.tarikhNVB
+{
+    color: hsl(0, 0%, 60%);
+}
+
 #kadrSBTK
 {
     background-color: hsl(352, 100%, 8%);

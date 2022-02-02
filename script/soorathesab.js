@@ -16,6 +16,24 @@ function taghirDastehFSRT(...noe)
     }
 }
 
+/*      تابع تغییر فرد، در فیلتر صورتحساب      */
+function taghirFardFSRT(...noe)
+{
+    var lmnSelect = document.getElementById("varizBeSBTK");
+    lmnSelect.innerHTML = "<option value='hameh'>-</option>";
+
+    for (let i=0; i<arrObjAfrad.length; i++)
+    {
+        if (Number(arrObjAfrad[i]["noe"]) === 0 || noe.indexOf(Number(arrObjAfrad[i]["noe"])) >= 0)
+        {
+            let option = document.createElement("option");
+            option.value = arrObjAfrad[i]["id"];
+            option.innerHTML = arrObjAfrad[i]["nam"];
+            lmnSelect.appendChild(option);
+        }
+    }
+}
+
 var khorojiAst = "hameh";  // پیشفرض: همه
 /*      تغییر خروجی و ورودی، در فیلتر صورتحساب      */
 function taghirKVFSRT(lmn)
@@ -26,32 +44,30 @@ function taghirKVFSRT(lmn)
 
     var lmnNoe = document.getElementById("noeSBTK").parentElement;
     var lmnVasileh = document.getElementById("vasilehSBTK").parentElement;
-    var lmnVarizKonandeh = document.getElementById("varizKonandehSBTV").parentElement;
     var lmnVarizBe = document.getElementById("varizBeSBTK").parentElement;
+    lmnVarizBe.style.display = "block";
 
     if (noe === "hameh")
     {
         lmnNoe.style.display = "none";
         lmnVasileh.style.display = "none";
-        lmnVarizKonandeh.style.display = "none";
-        lmnVarizBe.style.display = "none";
         taghirDastehFSRT(1);
+        taghirFardFSRT(1);
     }
     else if (Number(noe) === 1)
     {
         lmnNoe.style.display = "block";
         taghirENT(lmnNoe.getElementsByClassName("gozinehENT")[0]);
         taghirNoeFSRT(lmnNoe.getElementsByClassName("gozinehENT")[0]);
-        lmnVarizKonandeh.style.display = "none";
         taghirDastehFSRT(1,2);
+        taghirFardFSRT(1,2);
     }
     else if (Number(noe) === 0)
     {
         lmnNoe.style.display = "none";
         lmnVasileh.style.display = "none";
-        lmnVarizKonandeh.style.display = "block";
-        lmnVarizBe.style.display = "none";
         taghirDastehFSRT(1,3);
+        taghirFardFSRT(1,3);
     }
 }
 
@@ -66,13 +82,11 @@ function taghirNoeFSRT(lmn)
     if (Number(noeFSRT) === 1)
     {
         lmnVasileh.innerHTML = '<span class="kadrPoshtENT"></span>\n' +
-            '<a class="gozinehENT" onclick="taghirENT(this);" data-value="hameh" href="javascript:void(0);">همه</a>\n' +
-            '<a class="gozinehENT" onclick="taghirENT(this);" data-value="1" href="javascript:void(0);">کارتخوان</a>\n' +
-            '<a class="gozinehENT" onclick="taghirENT(this);" data-value="2" href="javascript:void(0);">عابر بانک</a>';
+            '<a class="gozinehENT" onclick="taghirENT(this);taghirVasilehFSRT(this);" data-value="hameh" href="javascript:void(0);">همه</a>\n' +
+            '<a class="gozinehENT" onclick="taghirENT(this);taghirVasilehFSRT(this);" data-value="1" href="javascript:void(0);">کارتخوان</a>\n' +
+            '<a class="gozinehENT" onclick="taghirENT(this);taghirVasilehFSRT(this);" data-value="2" href="javascript:void(0);">عابر بانک</a>';
 
         lmnVasileh.parentElement.style.display = "block";
-        taghirENT(lmnVasileh.getElementsByClassName("gozinehENT")[0]);
-        taghirVasilehFSRT(lmnVasileh.getElementsByClassName("gozinehENT")[0]);
     }
     else if (Number(noeFSRT) === 2)
     {
@@ -83,10 +97,14 @@ function taghirNoeFSRT(lmn)
             '<a class="gozinehENT" onclick="taghirENT(this);taghirVasilehFSRT(this);" data-value="5" href="javascript:void(0);">پرداخت</a>';
 
         lmnVasileh.parentElement.style.display = "block";
-        taghirENT(lmnVasileh.getElementsByClassName("gozinehENT")[0]);
-        taghirVasilehFSRT(lmnVasileh.getElementsByClassName("gozinehENT")[0]);
     }
-    else lmnVasileh.parentElement.style.display = "none";
+    else
+    {
+        lmnVasileh.parentElement.style.display = "none";
+        taghirDastehFSRT(1,2);
+    }
+    taghirENT(lmnVasileh.getElementsByClassName("gozinehENT")[0]);
+    taghirVasilehFSRT(lmnVasileh.getElementsByClassName("gozinehENT")[0]);
 }
 
 var vasilehFSRT = "hameh";  // پیشفرض: همه
@@ -99,7 +117,7 @@ function taghirVasilehFSRT(lmn)
     if (Number(vasilehFSRT) === 5) taghirDastehFSRT(4);
     else taghirDastehFSRT(1,2);
 
-    if (Number(vasilehFSRT) === 3 || Number(vasilehFSRT) === 4) document.getElementById("varizBeSBTK").parentElement.style.display = "block";
+    if (Number(vasilehFSRT) !== 5) document.getElementById("varizBeSBTK").parentElement.style.display = "block";
     else document.getElementById("varizBeSBTK").parentElement.style.display = "none";
 }
 
@@ -121,28 +139,14 @@ function tavizHesabSRT(lmn)
             taghirENT(document.querySelector("#khoroojiAstSBTK .gozinehENT"));
             taghirKVFSRT(document.querySelector("#khoroojiAstSBTK .gozinehENT"));
 
-            /* واریز کننده ها */
-            var option, lmnSelect = document.getElementById("varizKonandehSBTV");
-            lmnSelect.innerHTML = "<option value='hameh'>-</option>";
-            for (let i=0; i<arrAfrad.length; i++)
-            {
-                if (Number(arrAfrad[i]["noe"]) <= 1 || Number(arrAfrad[i]["noe"]) === 3)
-                {
-                    option = document.createElement("option");
-                    option.value = arrAfrad[i]["id"];
-                    option.innerHTML = arrAfrad[i]["nam"];
-                    lmnSelect.appendChild(option);
-                }
-            }
-
             /* واریز به ها */
-            lmnSelect = document.getElementById("varizBeSBTK");
+            var lmnSelect = document.getElementById("varizBeSBTK");
             lmnSelect.innerHTML = "<option value='hameh'>-</option>";
             for (let i=0; i<arrAfrad.length; i++)
             {
                 if (Number(arrAfrad[i]["noe"]) <= 2)
                 {
-                    option = document.createElement("option");
+                    var option = document.createElement("option");
                     option.value = arrAfrad[i]["id"];
                     option.innerHTML = arrAfrad[i]["nam"];
                     lmnSelect.appendChild(option);
@@ -161,7 +165,7 @@ function tavizHesabSRT(lmn)
 /*      تابع اعمال فیلتر صورتحساب      */
 function emalFilterSRT()
 {
-    var fard, noeVariz = document.getElementById("khoroojiAstSBTK").dataset.value.trim().toString();
+    var noeVariz = document.getElementById("khoroojiAstSBTK").dataset.value.trim().toString();
     var hesabID = Number(document.getElementsByClassName("sltHesabha")[0].value);
     var strQ = "noeVariz=" + noeVariz + "&hesabID=" + hesabID;
 
@@ -174,16 +178,12 @@ function emalFilterSRT()
         {
             var vasileh = document.getElementById("vasilehSBTK").dataset.value.trim().toString();
             strQ += "&vasileh=" + vasileh;
-            if (Number(vasileh) === 3 || Number(vasileh) === 4)
-            {
-                fard = document.getElementById("varizBeSBTK").value.trim().toString();
-                strQ += "&fard=" + fard;
-            }
         }
     }
-    else if (Number(noeVariz) === 0)
+
+    if (vasileh !== "5")
     {
-        fard = document.getElementById("varizKonandehSBTV").value.trim().toString();
+        var fard = document.getElementById("varizBeSBTK").value.trim().toString();
         strQ += "&fard=" + fard;
     }
 
