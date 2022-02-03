@@ -93,7 +93,7 @@ else
         <div id="kadrAfzoodanDasteh">
             <div class="kadrAfzoodanDST">
                 <div class="afzoodanDST"><span class="icon"></span><span class="matnTitr">افزودن فرد:</span></div>
-                <input type="text" class="txtDasteh" id="namDST" name="dasteh" maxlength="30" placeholder="نام دسته" autocomplete="off"/>
+                <input type="text" class="txtDasteh" id="namDST" name="dasteh" maxlength="30" placeholder="نام فرد" autocomplete="off"/>
             </div>
             <div class="kadrAfzoodanDST">
                 <div class="afzoodanDST"><span class="icon"></span><span class="matnTitr">نوع:</span></div>

@@ -5,7 +5,7 @@ html
 
 select, input
 {
-    transition: background-color 0.3s, color 0.3s;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
 h1#titrHDR
@@ -173,7 +173,7 @@ a.btnJTNZ, a.btnJTNZ:link, a.btnJTNZ:visited
     background-color: hsla(0, 0%, 0%, 0.1);
     margin-right: 5px;
     font-family: myIcon;
-    transition: background-color 0.1s;
+    transition: background-color 0.1s, color 0.3s;
 }
 
 a.btnJTNZ:hover
@@ -454,7 +454,7 @@ input#namVTNZ
 
     .onvanJTNZ
     {
-        width: calc(100% - 145px);
+        width: calc(100% - 140px);
         margin: 0;
     }
 

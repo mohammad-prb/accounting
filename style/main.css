@@ -384,6 +384,8 @@ a.dokmehLaghv:active
 .iconFlash
 {
     float: right;
+    width: 24px;
+    height: 26px;
     font-family: myIcon;
     font-size: 1.5rem;
     margin-left: 10px;

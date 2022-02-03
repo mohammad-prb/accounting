@@ -238,13 +238,15 @@ function sabtVirayeshAFD(id)
     namayeshLoading(document.getElementById("CountainerKadrViraieshDST"));
 }
 
+var darHalJabejaeiAst = false;
 /*      جابجایی افراد      */
 function jabejaeiAFD(lmn, balaAst)
 {
-    if (balaAst)
+    if (balaAst && !darHalJabejaeiAst)
     {
         if (lmn.previousElementSibling)
         {
+            darHalJabejaeiAst = true;
             lmn.setAttribute("class", "itemJDST");
             lmn.previousElementSibling.setAttribute("class", "itemJDST");
             lmn.style.top = "-40px";
@@ -258,6 +260,7 @@ function jabejaeiAFD(lmn, balaAst)
                 lmn.parentElement.insertBefore(lmnJadid, lmn.previousElementSibling);
                 lmn.parentElement.replaceChild(lmn, lmnJadid);
                 shomarehBandiAFD();
+                darHalJabejaeiAst = false;
             }, 200);
             document.getElementById("kadrTaeedJabejaei").style.bottom = "20px";
         }

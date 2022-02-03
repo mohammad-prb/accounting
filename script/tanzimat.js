@@ -37,31 +37,31 @@ function hazfHSB(shom)
     namayeshLoading(document.getElementById("kadrHesabhaTNZ"));
 }
 
+var darHalJabejaeiAst = false;
 /*      جابجایی حساب ها      */
 function jabejaeiHSB(lmn, balaAst)
 {
-    if (balaAst)
+    if (balaAst && !darHalJabejaeiAst)
     {
         if (lmn.previousElementSibling)
         {
-            if (lmn.previousElementSibling)
+            darHalJabejaeiAst = true;
+            lmn.setAttribute("class", "itemJTNZ");
+            lmn.previousElementSibling.setAttribute("class", "itemJTNZ");
+            lmn.style.top = "-40px";
+            lmn.previousElementSibling.style.top = "40px";
+            setTimeout(function ()
             {
-                lmn.setAttribute("class", "itemJTNZ");
-                lmn.previousElementSibling.setAttribute("class", "itemJTNZ");
-                lmn.style.top = "-40px";
-                lmn.previousElementSibling.style.top = "40px";
-                setTimeout(function ()
-                {
-                    lmn.previousElementSibling.setAttribute("class", "itemJTNZ itemJabejaeiJTNZ");
-                    lmn.style.top = "0";
-                    lmn.previousElementSibling.style.top = "0";
-                    var lmnJadid = document.createElement("div");
-                    lmn.parentElement.insertBefore(lmnJadid, lmn.previousElementSibling);
-                    lmn.parentElement.replaceChild(lmn, lmnJadid);
-                    shomarehBandiHSB();
-                }, 200);
-                document.getElementById("kadrTaeedJabejaei").style.bottom = "20px";
-            }
+                lmn.previousElementSibling.setAttribute("class", "itemJTNZ itemJabejaeiJTNZ");
+                lmn.style.top = "0";
+                lmn.previousElementSibling.style.top = "0";
+                var lmnJadid = document.createElement("div");
+                lmn.parentElement.insertBefore(lmnJadid, lmn.previousElementSibling);
+                lmn.parentElement.replaceChild(lmn, lmnJadid);
+                shomarehBandiHSB();
+                darHalJabejaeiAst = false;
+            }, 200);
+            document.getElementById("kadrTaeedJabejaei").style.bottom = "20px";
         }
     }
     else if (lmn.nextElementSibling)
