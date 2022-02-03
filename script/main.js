@@ -272,9 +272,89 @@ function taghirHesabSBT(lmn)
     namayeshLoading(document.getElementById("kadrSBTV"));
 }
 
+/*      وارد کردن توضیحات و تغییر کادر پیشنهاد زیرش      */
+function taghirPishnahad(lmn)
+{
+    var hesabID = Number(document.getElementsByClassName("sltHesabha")[0].value);
+    var ebarat = lmn.value.trim().toString();
+    var khoroojiAst = Number(lmn.dataset.khoroojiAst);
+    var lmnKadr = lmn.nextElementSibling;
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function ()
+    {
+        if (this.readyState === 4 && this.status === 200)
+        {
+            if (!jsonMotabarAst(this.responseText)) return;
+            lmnKadr.innerHTML = "";
+            var arrObjNatijeh = JSON.parse(this.responseText);
+            for (let i=0; i<arrObjNatijeh.length; i++)
+            {
+                var lmnPishnahad = document.createElement("a");
+                lmnPishnahad.href = "javascript:void(0);";
+                lmnPishnahad.setAttribute("class", "itemPishnahad");
+                lmnPishnahad.addEventListener("click", function (){entekhabPishnahad(lmn, i)});
+                lmnPishnahad.innerHTML = '<span class="titrPishnahad">'+ arrObjNatijeh[i]["tozih"] +'</span><span class="meghdarPishnahad">'+ arrObjNatijeh[i]["tedad"] +'</span>';
+                lmnKadr.appendChild(lmnPishnahad);
+            }
+        }
+    };
+    xhttp.open("POST", "./ajax/gereftan-pishnahad.php?sid="+Math.random(), true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("hesabID="+hesabID+"&ebarat="+ebarat+"&khoroojiAst="+khoroojiAst+"&tk="+tkn);
+}
+
+/*      پیمایش پیشنهادها      */
+function peymayeshPishnahadha(balaAst)
+{
+    var lmnFaal = document.querySelector("a.itemPishnahad[data-entekhabi]");
+    if (lmnFaal !== null)
+    {
+        if (balaAst && lmnFaal.previousElementSibling)
+        {
+            document.querySelector("a.itemPishnahad[data-entekhabi]").removeAttribute("data-entekhabi");
+            lmnFaal.previousElementSibling.dataset.entekhabi = "";
+        }
+        else if (balaAst)
+        {
+            document.querySelector("a.itemPishnahad[data-entekhabi]").removeAttribute("data-entekhabi");
+        }
+        else if (!balaAst && lmnFaal.nextElementSibling)
+        {
+            document.querySelector("a.itemPishnahad[data-entekhabi]").removeAttribute("data-entekhabi");
+            lmnFaal.nextElementSibling.dataset.entekhabi = "";
+        }
+    }
+    else if (!balaAst)
+    {
+        document.getElementsByClassName("itemPishnahad")[0].dataset.entekhabi = "";
+    }
+}
+
+/*      انتخاب پیشنهاد      */
+function entekhabPishnahad(lmn, shom)
+{
+    lmn.focus();
+    if (shom === undefined)
+        document.activeElement.value = document.querySelector("a.itemPishnahad[data-entekhabi]>span.titrPishnahad").innerHTML.trim();
+    else
+        lmn.value = document.getElementsByClassName("titrPishnahad")[shom].innerHTML.trim();
+    taghirPishnahad(lmn);
+}
+
+/*      قطع پیشنهاد ها      */
+function ghatePishnahad(lmn)
+{
+    setTimeout(function ()
+    {
+        if (document.activeElement.getAttribute("class") !== "itemPishnahad") lmn.nextElementSibling.innerHTML = "";
+    },1)
+}
+
 /*      ثبت واریزی      */
 function sabtVarizi(noe)
 {
+    if (document.querySelector("a.itemPishnahad[data-entekhabi]")) return;
     var strQ = "khoroojiAst=" + noe;
 
     if (noe === 1)

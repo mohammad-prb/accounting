@@ -86,7 +86,8 @@
             </div>
             <div class="etelaatSBT tamamSafheh">
                 <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">توضیخات:</span></div>
-                <input type="text" class="txtTozih" id="tozihSBTK" name="tozih" placeholder="اختیاری"/>
+                <input type="text" class="txtTozih" id="tozihSBTK" name="tozih" data-khorooji-ast="1" oninput="taghirPishnahad(this);" onfocus="taghirPishnahad(this);" onblur="ghatePishnahad(this);" placeholder="اختیاری"/>
+                <div class="kadrPishnahad" id="kadrPishnahadKhorooji"></div>
             </div>
         </div>
     </div>
@@ -142,7 +143,8 @@
             </div>
             <div class="etelaatSBT tamamSafheh">
                 <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">توضیخات:</span></div>
-                <input type="text" class="txtTozih" id="tozihSBTV" name="tozih" placeholder="اختیاری"/>
+                <input type="text" class="txtTozih" id="tozihSBTV" name="tozih" data-khorooji-ast="0" oninput="taghirPishnahad(this);" onfocus="taghirPishnahad(this);" onblur="ghatePishnahad(this);" placeholder="اختیاری"/>
+                <div class="kadrPishnahad" id="kadrPishnahadVoroodi"></div>
             </div>
         </div>
     </div>
@@ -188,4 +190,26 @@
 <script>
     document.getElementById("kadrSBTK").onkeydown = function(e){if (e.keyCode === 13) sabtVarizi(1);};
     document.getElementById("kadrSBTV").onkeydown = function(e){if (e.keyCode === 13) sabtVarizi(0);};
+    document.getElementById("tozihSBTK").onkeydown = function(e){
+        if (e.keyCode === 13) entekhabPishnahad(document.getElementById("tozihSBTK"));
+        else if (e.keyCode === 38) {
+            event.preventDefault();
+            peymayeshPishnahadha(true);
+        }
+        else if (e.keyCode === 40) {
+            event.preventDefault();
+            peymayeshPishnahadha(false);
+        }
+    };
+    document.getElementById("tozihSBTV").onkeydown = function(e){
+        if (e.keyCode === 13) entekhabPishnahad(document.getElementById("tozihSBTV"));
+        else if (e.keyCode === 38) {
+            event.preventDefault();
+            peymayeshPishnahadha(true);
+        }
+        else if (e.keyCode === 40) {
+            event.preventDefault();
+            peymayeshPishnahadha(false);
+        }
+    };
 </script>
