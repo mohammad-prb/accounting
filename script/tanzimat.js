@@ -44,11 +44,24 @@ function jabejaeiHSB(lmn, balaAst)
     {
         if (lmn.previousElementSibling)
         {
-            var lmnJadid = document.createElement("div");
-            lmn.parentElement.insertBefore(lmnJadid, lmn.previousElementSibling);
-            lmn.parentElement.replaceChild(lmn, lmnJadid);
-            shomarehBandiHSB();
-            document.getElementById("kadrTaeedJabejaei").style.bottom = "20px";
+            if (lmn.previousElementSibling)
+            {
+                lmn.setAttribute("class", "itemJTNZ");
+                lmn.previousElementSibling.setAttribute("class", "itemJTNZ");
+                lmn.style.top = "-40px";
+                lmn.previousElementSibling.style.top = "40px";
+                setTimeout(function ()
+                {
+                    lmn.previousElementSibling.setAttribute("class", "itemJTNZ itemJabejaeiJTNZ");
+                    lmn.style.top = "0";
+                    lmn.previousElementSibling.style.top = "0";
+                    var lmnJadid = document.createElement("div");
+                    lmn.parentElement.insertBefore(lmnJadid, lmn.previousElementSibling);
+                    lmn.parentElement.replaceChild(lmn, lmnJadid);
+                    shomarehBandiHSB();
+                }, 200);
+                document.getElementById("kadrTaeedJabejaei").style.bottom = "20px";
+            }
         }
     }
     else if (lmn.nextElementSibling)
@@ -281,9 +294,15 @@ function taghirTheme(darkModeAst)
         lmn.rel = "stylesheet";
         lmn.href = "style/dark-mode.css";
         document.head.appendChild(lmn);
+
+        lmn = document.createElement("meta");
+        lmn.name = "theme-color";
+        lmn.content = "#1a1a1a";
+        document.head.appendChild(lmn);
     }
     else if (darkModeAst === 0 && document.querySelector('link[href="style/dark-mode.css"]'))
     {
         document.querySelector('link[href="style/dark-mode.css"]').remove();
+        document.querySelector('meta[name="theme-color"]').remove();
     }
 }

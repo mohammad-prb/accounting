@@ -245,10 +245,20 @@ function jabejaeiAFD(lmn, balaAst)
     {
         if (lmn.previousElementSibling)
         {
-            var lmnJadid = document.createElement("div");
-            lmn.parentElement.insertBefore(lmnJadid, lmn.previousElementSibling);
-            lmn.parentElement.replaceChild(lmn, lmnJadid);
-            shomarehBandiAFD();
+            lmn.setAttribute("class", "itemJDST");
+            lmn.previousElementSibling.setAttribute("class", "itemJDST");
+            lmn.style.top = "-40px";
+            lmn.previousElementSibling.style.top = "40px";
+            setTimeout(function ()
+            {
+                lmn.previousElementSibling.setAttribute("class", "itemJDST itemJabejaeiJDST");
+                lmn.style.top = "0";
+                lmn.previousElementSibling.style.top = "0";
+                var lmnJadid = document.createElement("div");
+                lmn.parentElement.insertBefore(lmnJadid, lmn.previousElementSibling);
+                lmn.parentElement.replaceChild(lmn, lmnJadid);
+                shomarehBandiAFD();
+            }, 200);
             document.getElementById("kadrTaeedJabejaei").style.bottom = "20px";
         }
     }

@@ -38,16 +38,10 @@ else
 <html lang="fa-ir">
 <head>
     <title>آمار حساب</title>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="shortcut icon" href="pic/logo.png"/>
     <link rel="stylesheet" href="style/main.css"/>
     <link rel="stylesheet" href="style/amar.css"/>
     <link rel="stylesheet" href="script/chartjs/chart.css"/>
-    <script>
-        if (localStorage.getItem("darkmode") === null) localStorage.setItem("darkmode", 0);
-        else if (Number(localStorage.getItem("darkmode")) === 1) document.write('<link rel="stylesheet" href="style/dark-mode.css"/>');
-    </script>
+    <?php include ("code/head.php");?>
 </head>
 <body dir="rtl" onload="tanzimSaf();emalTarikh();">
 <div id="fullCountainer">

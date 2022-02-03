@@ -65,7 +65,7 @@
                     while ($row = $result->fetch_assoc())
                     {
                         array_push($arrAfrad, $row);
-                        if ($row["noe"] == 1)
+                        if ($row["noe"] <= 1)
                             echo '<option value="'. $row["id"] .'">'. $row["nam"] .'</option>';
                     }
                 }

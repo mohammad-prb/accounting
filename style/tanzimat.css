@@ -66,9 +66,17 @@ h1#titrHDR
 
 .itemJTNZ
 {
+    position: relative;
+    top: 0;
     float: right;
     width: 100%;
     margin-bottom: 3px;
+    transition: top 0.2s;
+}
+
+.itemJabejaeiJTNZ
+{
+    transition: none;
 }
 
 .shomJTNZ
