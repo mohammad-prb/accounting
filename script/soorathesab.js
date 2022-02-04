@@ -253,7 +253,7 @@ function emalFilterSRT()
                     tedadKhorooji++;
                     meghdarKhorooji += Number(arrObjEtelaat[i]["mablagh"]);
                     strHTML += '<div class="etelaatSTB">\n' +
-                        '    <div class="onvanEtelaatSTB"><span class="icon riz"></span><span class="matnTitr riz">نوع:</span></div>\n' +
+                        '    <div class="onvanEtelaatSTB"><span class="icon riz"></span><span class="matnTitr riz">نوع:</span></div>\n' +
                         '    <div class="meghdarEtelaatSTB">'+ (Number(arrObjEtelaat[i]["noeID"]) === 1 ? "برداشت با کارت" : "اینترنتی") +'</div>\n' +
                         '</div>\n' +
                         '<div class="etelaatSTB">\n' +
@@ -647,7 +647,7 @@ function virayeshSRT(lmn)
     {
         strHTML += '<div class="etelaatVSRT" id="khoroojiVSRT">\n' +
             '                    <div class="etelaatSBT">\n' +
-            '                        <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">نوع:</span></div>\n' +
+            '                        <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">نوع:</span></div>\n' +
             '                        <div class="kadrENT" id="noeVSRT">\n' +
             '                            <span class="kadrPoshtENT"></span>\n' +
             '                            <a class="gozinehENT" onclick="taghirENT(this);taghirNoeVSRT(this);" data-value="1" href="javascript:void(0);">برداشت با کارت</a>\n' +

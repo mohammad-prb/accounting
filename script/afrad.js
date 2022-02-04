@@ -242,6 +242,16 @@ var darHalJabejaeiAst = false;
 /*      جابجایی افراد      */
 function jabejaeiAFD(lmn, balaAst)
 {
+    var lmnRahnama = document.getElementsByClassName("rahnama");
+    for (let i=0; i<lmnRahnama.length; i++)
+    {
+        if (Number(lmnRahnama[i].dataset.vaziat) === 0)
+        {
+            namayeshPeygham("برای انجام جابجایی باید فیلتر همه انواع را باز کنید.");
+            return;
+        }
+    }
+
     if (balaAst && !darHalJabejaeiAst)
     {
         if (lmn.previousElementSibling)

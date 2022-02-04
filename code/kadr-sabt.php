@@ -18,7 +18,7 @@
         <a class="btnErsalSBT" href="javascript:void(0);" onclick="sabtVarizi(1);"><span class="icon"></span><span class="matnTitr">ثبت</span></a>
         <div class="kadrEtelaatSBT">
             <div class="etelaatSBT">
-                <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">نوع:</span></div>
+                <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">نوع:</span></div>
                 <div class="kadrENT" id="noeSBTK">
                     <span class="kadrPoshtENT"></span>
                     <a class="gozinehENT" onclick="taghirENT(this);taghirNoeSBT(this);" data-value="1" href="javascript:void(0);">برداشت با کارت</a>

@@ -359,6 +359,7 @@ function sabtVarizi(noe)
 
     if (noe === 1)
     {
+        ghatePishnahad(document.getElementById("tozihSBTK"));
         var noeID = document.getElementById("noeSBTK").dataset.value.toString();
         var vasilehID = document.getElementById("vasilehSBTK").dataset.value.toString();
         var dastehID = document.getElementById("dastehSBTK").value.toString();
@@ -377,6 +378,7 @@ function sabtVarizi(noe)
     }
     else if (noe === 0)
     {
+        ghatePishnahad(document.getElementById("tozihSBTV"));
         var dastehID = document.getElementById("dastehSBTV").value.toString();
         var fard = document.getElementById("varizKonandehSBTV").value.toString();
         var rooz = document.querySelectorAll("#tarikhSBTV>input.txtTarikh")[0].value.toString();
