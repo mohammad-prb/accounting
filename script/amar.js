@@ -4,6 +4,7 @@ function emalTarikh()
     var hesabID = Number(document.getElementsByClassName("sltHesabha")[0].value);
     var mah = document.querySelectorAll("#tarikhFSRT>input.txtTarikh")[0].value.toString().trim();
     var sal = document.querySelectorAll("#tarikhFSRT>input.txtTarikh")[1].value.toString().trim();
+    var bazeh;
 
     if (sal === "" && mah !== "") {
         namayeshPeygham("خطا. زمانی میتوانید ماه را وارد کنید که سال را هم وارد کنید.");
@@ -19,6 +20,10 @@ function emalTarikh()
         namayeshPeygham("ماه اشتباه است.");
         return;
     }
+
+    if (sal !== "" && mah !== "") bazeh = "روز";
+    else if (sal !== "") bazeh = "ماه";
+    else bazeh = "سال";
 
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function ()
@@ -98,8 +103,8 @@ function emalTarikh()
                        },{
                            label: 'ورودی',
                            data: arrDataVoroodi,
-                           backgroundColor: 'rgba(41, 188, 110, 0.5)',
-                           borderColor: 'rgba(41, 188, 110, 1)',
+                           backgroundColor: 'hsla(148, 64%, 45%, 0.5)',
+                           borderColor: 'hsl(148, 64%, 45%)',
                            borderWidth: 1,
                            fill: 'transparent'
                        }]
@@ -117,11 +122,27 @@ function emalTarikh()
                    data: {
                        labels: arrLabels,
                        datasets: [{
-                           label: 'مانده حساب',
+                           label: 'مانده آخر '+bazeh,
                            data: objNatijeh["arrMandeh"],
                            backgroundColor: 'hsla(39, 100%, 40%, 0.5)',
                            borderColor: 'hsla(39, 100%, 40%, 1)',
                            pointBackgroundColor : 'hsla(39, 100%, 40%, 1)',
+                           borderWidth: 1,
+                           fill: 'transparent'
+                       },{
+                           label: 'کمترین مانده '+bazeh,
+                           data: objNatijeh["arrMin"],
+                           backgroundColor: 'hsla(352, 100%, 35%, 0.5)',
+                           borderColor: 'hsla(352, 100%, 35%, 1)',
+                           pointBackgroundColor : 'hsla(352, 100%, 35%, 1)',
+                           borderWidth: 1,
+                           fill: 'transparent'
+                       },{
+                           label: 'بیشترین مانده '+bazeh,
+                           data: objNatijeh["arrMax"],
+                           backgroundColor: 'hsla(148, 64%, 45%, 0.5)',
+                           borderColor: 'hsl(148, 64%, 45%)',
+                           pointBackgroundColor : 'hsla(148, 64%, 45%, 1)',
                            borderWidth: 1,
                            fill: 'transparent'
                        }]

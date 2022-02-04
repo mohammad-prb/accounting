@@ -141,6 +141,7 @@ else
     {
         Chart.defaults.global.defaultFontColor = "white";
         Chart.defaults.scale.gridLines.color = "hsl(0, 0%, 12%)";
+        Chart.defaults.scale.gridLines.zeroLineColor = "hsl(0, 0%, 20%)";
     }
     else
     {

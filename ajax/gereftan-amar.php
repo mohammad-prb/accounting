@@ -21,13 +21,8 @@ if ($sal != "" && $mah != "") $sharthMahdoodeh = " and substr(tarikh,1,8) <= '" 
 elseif ($sal != "" && $mah == "") $sharthMahdoodeh = " and substr(tarikh,1,5) <= '" . $sal."/'";
 else $sharthMahdoodeh = "";
 
-$arrKhorooji = array();
-$arrVoroodi = array();
-$arrMandeh = array();
-$meghdarKhorooji = 0;
-$meghdarVoroodi = 0;
-$tedadKhorooji = 0;
-$tedadVoroodi = 0;
+$arrMax = $arrMin = $arrKhorooji = $arrVoroodi = $arrMandeh = array();
+$meghdarKhorooji = $meghdarVoroodi = $tedadKhorooji = $tedadVoroodi = 0;
 
 $sql = "select mablaghTaraz, tarikhEftetah from tbl_hesab where vaziat = 1 and id = " . $hesabID;
 $result = $con->query($sql);
@@ -45,7 +40,7 @@ $shomarandehMah = 1;
 $shomarandehSal = (integer)substr($tarikhEftetah, 0, 4);
 $mandehGhabli = $mandeh;
 $tarikhGhabli = "";
-$sql = "select khoroojiAst, mablagh, tarikh from tbl_soorathesab where vaziat = 1 and hesabID = " . $hesabID . $sharthMahdoodeh . " order by tarikh";
+$sql = "select khoroojiAst, mablagh, tarikh from tbl_soorathesab where vaziat = 1 and hesabID = " . $hesabID . $sharthMahdoodeh . " order by tarikh, id";
 $result = $con->query($sql);
 if ($result !== false && $result->num_rows > 0)
 {
@@ -55,6 +50,7 @@ if ($result !== false && $result->num_rows > 0)
         $mablagh = (float)$row["mablagh"];
         $tarikh = $row["tarikh"];
 
+        /*  پر کردن آرایه مقدار خروجی و ورودی  */
         if ($khoroojiAst == 1)
         {
             $mandeh -= $mablagh;
@@ -112,6 +108,7 @@ if ($result !== false && $result->num_rows > 0)
             }
         }
 
+        /*  پر کردن آرایه مانده و ماکزیمم، مینیمم مانده  */
         if ($sal != "" && $mah != "" && substr($tarikh,0,8) == $sal."/".$mah."/")
         {
             if ($tarikhGhabli == $tarikh)
@@ -122,8 +119,21 @@ if ($result !== false && $result->num_rows > 0)
 
             while ((integer)substr($tarikh,8,2) >= $shomarandehRooz)
             {
-                if ((integer)substr($tarikh,8,2) == $shomarandehRooz) array_push($arrMandeh, $mandeh);
-                else array_push($arrMandeh, $mandehGhabli);
+                if ((integer)substr($tarikh,8,2) == $shomarandehRooz)
+                {
+                    array_push($arrMandeh, $mandeh);
+                    if (count($arrMandeh) > count($arrMax)) array_push($arrMax, $mandehGhabli);
+                    if (count($arrMandeh) > count($arrMin)) array_push($arrMin, $mandehGhabli);
+
+                    if ($mandeh > $arrMax[count($arrMax)-1]) $arrMax[count($arrMax)-1] = $mandeh;
+                    if ($mandeh < $arrMin[count($arrMin)-1]) $arrMin[count($arrMin)-1] = $mandeh;
+                }
+                else
+                {
+                    array_push($arrMandeh, $mandehGhabli);
+                    array_push($arrMax, $mandehGhabli);
+                    array_push($arrMin, $mandehGhabli);
+                }
                 $shomarandehRooz++;
             }
         }
@@ -137,8 +147,21 @@ if ($result !== false && $result->num_rows > 0)
 
             while ((integer)substr($tarikh,5,2) >= $shomarandehMah)
             {
-                if ((integer)substr($tarikh,5,2) == $shomarandehMah) array_push($arrMandeh, $mandeh);
-                else array_push($arrMandeh, $mandehGhabli);
+                if ((integer)substr($tarikh,5,2) == $shomarandehMah)
+                {
+                    array_push($arrMandeh, $mandeh);
+                    if (count($arrMandeh) > count($arrMax)) array_push($arrMax, $mandehGhabli);
+                    if (count($arrMandeh) > count($arrMin)) array_push($arrMin, $mandehGhabli);
+
+                    if ($mandeh > $arrMax[count($arrMax)-1]) $arrMax[count($arrMax)-1] = $mandeh;
+                    if ($mandeh < $arrMin[count($arrMin)-1]) $arrMin[count($arrMin)-1] = $mandeh;
+                }
+                else
+                {
+                    array_push($arrMandeh, $mandehGhabli);
+                    array_push($arrMax, $mandehGhabli);
+                    array_push($arrMin, $mandehGhabli);
+                }
                 $shomarandehMah++;
             }
         }
@@ -152,8 +175,21 @@ if ($result !== false && $result->num_rows > 0)
 
             while ((integer)substr($tarikh,0,4) >= $shomarandehSal)
             {
-                if ((integer)substr($tarikh,0,4) == $shomarandehSal) array_push($arrMandeh, $mandeh);
-                else array_push($arrMandeh, $mandehGhabli);
+                if ((integer)substr($tarikh,0,4) == $shomarandehSal)
+                {
+                    array_push($arrMandeh, $mandeh);
+                    if (count($arrMandeh) > count($arrMax)) array_push($arrMax, $mandehGhabli);
+                    if (count($arrMandeh) > count($arrMin)) array_push($arrMin, $mandehGhabli);
+
+                    if ($mandeh > $arrMax[count($arrMax)-1]) $arrMax[count($arrMax)-1] = $mandeh;
+                    if ($mandeh < $arrMin[count($arrMin)-1]) $arrMin[count($arrMin)-1] = $mandeh;
+                }
+                else
+                {
+                    array_push($arrMandeh, $mandehGhabli);
+                    array_push($arrMax, $mandehGhabli);
+                    array_push($arrMin, $mandehGhabli);
+                }
                 $shomarandehSal++;
             }
         }
@@ -217,6 +253,8 @@ if ($result !== false && $result->num_rows > 0)
 $arrNatijeh = array("arrKhorooji"=>$arrKhorooji,
     "arrVoroodi"=>$arrVoroodi,
     "arrMandeh"=>$arrMandeh,
+    "arrMax"=>$arrMax,
+    "arrMin"=>$arrMin,
     "arrDasteh"=>$arrDasteh,
     "arrAfrad"=>$arrAfrad,
     "meghdarKhorooji"=>$meghdarKhorooji,
