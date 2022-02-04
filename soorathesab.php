@@ -33,6 +33,16 @@ else
     }
     else header("location:tanzimat.php?p");
 }
+
+$sal = jdate("Y", "", "", "Asia/Tehran", "en");
+$mah = jdate("m", "", "", "Asia/Tehran", "en");
+if (isset($_GET["tarikh"]) && strpos($_GET["tarikh"], "/") !== false)
+{
+    $sal = (integer)explode("/", $_GET["tarikh"])[0];
+    $mah = (integer)explode("/", $_GET["tarikh"])[1];
+    if ($sal == 0) $sal = "";
+    if ($mah == 0) $mah = "";
+}
 ?>
 <!DOCTYPE html>
 <html lang="fa-ir">

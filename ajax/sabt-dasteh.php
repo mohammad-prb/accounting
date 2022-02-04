@@ -7,6 +7,7 @@ include ("../code/lib.php");
 include ("../code/jdf.php");
 include ("../code/etesal-db.php");
 
+// نوع = 1:خروجی و ورودی - 2:خروجی - 3:ورودی - 4:پرداخت
 if (isset($_POST["hesabID"])) $hesabID = htmlspecialchars(stripcslashes(trim($_POST["hesabID"]))); else die();
 if (isset($_POST["onvan"])) $onvan = htmlspecialchars(filter_var(stripcslashes(trim($_POST["onvan"])), FILTER_SANITIZE_STRING)); else die();
 if (isset($_POST["noe"])) $noe = htmlspecialchars(stripcslashes(trim($_POST["noe"]))); else die();
