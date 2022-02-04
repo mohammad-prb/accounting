@@ -199,6 +199,7 @@ if ($result !== false && $result->num_rows > 0)
     }
 }
 
+// اضافه شدن مانده و ماکزیمم و مینیمم برای زمانی که در چند روز (یا ماه یا سال) اخیر واریز ثبت نشده
 if ($sal != "" && $mah != "")
 {
     $timeStampInAlan = jmktime(0, 0, 0, jdate("m", "", "", "Asia/Tehran", "en"), 1, jdate("Y", "", "", "Asia/Tehran", "en"));
@@ -208,12 +209,20 @@ if ($sal != "" && $mah != "")
     if ($timeStampInAlan == $timeStampMahdoode)
     {
         while (count($arrMandeh) < jdate("d", "", "", "Asia/Tehran", "en"))
+        {
             array_push($arrMandeh, $mandeh);
+            array_push($arrMax, $mandeh);
+            array_push($arrMin, $mandeh);
+        }
     }
     elseif ($sal > substr($tarikhEftetah,0,4) || ($sal == substr($tarikhEftetah,0,4) && $mah == substr($tarikhEftetah,5,2)))
     {
         while (count($arrMandeh) < $tedadRoozMahMahdoode)
+        {
             array_push($arrMandeh, $mandeh);
+            array_push($arrMax, $mandeh);
+            array_push($arrMin, $mandeh);
+        }
     }
 }
 else if ($sal != "" && $mah == "")
@@ -221,12 +230,20 @@ else if ($sal != "" && $mah == "")
     if ($sal == jdate("Y", "", "", "Asia/Tehran", "en"))
     {
         while (count($arrMandeh) < jdate("m", "", "", "Asia/Tehran", "en"))
+        {
             array_push($arrMandeh, $mandeh);
+            array_push($arrMax, $mandeh);
+            array_push($arrMin, $mandeh);
+        }
     }
     elseif ($sal >= substr($tarikhEftetah,0,4))
     {
         while (count($arrMandeh) < 12)
+        {
             array_push($arrMandeh, $mandeh);
+            array_push($arrMax, $mandeh);
+            array_push($arrMin, $mandeh);
+        }
     }
 }
 
