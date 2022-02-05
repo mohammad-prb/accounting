@@ -1,3 +1,11 @@
+/*      تنظیم صفحه تنظیمات      */
+function tanzimSafTanzimat()
+{
+    taghirENT(document.querySelectorAll('#theme>.gozinehENT')[Number(localStorage.getItem('darkmode'))]);
+    taghirENT(document.querySelectorAll('#pishfarzSoorathesab>.gozinehENT')[(localStorage.getItem('pishfarzSoorathesab')==="mah"?0:1)]);
+    taghirENT(document.querySelectorAll('#pishfarzAmar>.gozinehENT')[(localStorage.getItem('pishfarzAmar')==="mah"?0:1)]);
+}
+
 /*      شماره بندی حساب ها      */
 function shomarehBandiHSB()
 {
@@ -113,7 +121,7 @@ function virayeshHSB(lmn)
         '                    <div class="etelaatVTNZ">\n' +
         '                        <div class="etelaatSBT">\n' +
         '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">نام:</span></div>\n' +
-        '                            <input type="text" id="namVTNZ" name="nam" value="'+ nam +'" autocomplete="off">\n' +
+        '                            <input type="text" id="namVTNZ" name="nam" value="'+ nam +'" autocomplete="off" placeholder="نام حساب">\n' +
         '                        </div>\n' +
         '                        <div class="etelaatSBT">\n' +
         '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">بانک:</span></div>\n' +
@@ -126,15 +134,15 @@ function virayeshHSB(lmn)
         '                        </div>\n' +
         '                        <div class="etelaatSBT">\n' +
         '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">شماره حساب:</span></div>\n' +
-        '                            <input type="text" id="shomHesabVTNZ" name="shomHesab" value="'+ shomHesab +'" autocomplete="off">\n' +
+        '                            <input type="text" id="shomHesabVTNZ" name="shomHesab" value="'+ shomHesab +'" autocomplete="off" placeholder="شماره حساب">\n' +
         '                        </div>\n' +
         '                        <div class="etelaatSBT">\n' +
         '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">شماره کارت:</span></div>\n' +
-        '                            <input type="text" id="shomKartVTNZ" name="shomKart" value="'+ shomKart +'" autocomplete="off">\n' +
+        '                            <input type="text" id="shomKartVTNZ" name="shomKart" value="'+ shomKart +'" autocomplete="off" placeholder="شماره کارت">\n' +
         '                        </div>\n' +
         '                        <div class="etelaatSBT">\n' +
         '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">مانده تراز:</span></div>\n' +
-        '                            <input type="text" id="mandehVTNZ" name="mandeh" value="'+ mandehTaraz +'" autocomplete="off">\n' +
+        '                            <input type="text" id="mandehVTNZ" name="mandeh" value="'+ mandehTaraz +'" autocomplete="off" placeholder="مانده فعلی">\n' +
         '                        </div>\n' +
         '                    </div>\n' +
         '                    <span id="kadrDokmehVTNZ">\n' +
@@ -305,4 +313,18 @@ function taghirTheme(darkModeAst)
         document.querySelector('link[href="style/dark-mode.css"]').remove();
         document.querySelector('meta[name="theme-color"]').remove();
     }
+}
+
+/*      تغییر پیشفرض صورتحساب      */
+function taghirPishfarzSRT(lmn)
+{
+    var meghdar = lmn.parentElement.dataset.value;
+    localStorage.setItem("pishfarzSoorathesab", meghdar);
+}
+
+/*      تغییر پیشفرض آمار      */
+function taghirPishfarzAMR(lmn)
+{
+    var meghdar = lmn.parentElement.dataset.value;
+    localStorage.setItem("pishfarzAmar", meghdar);
 }

@@ -36,8 +36,10 @@ else
 
 $sal = jdate("Y", "", "", "Asia/Tehran", "en");
 $mah = jdate("m", "", "", "Asia/Tehran", "en");
+$tarikhAmadehAst = false;
 if (isset($_GET["tarikh"]) && strpos($_GET["tarikh"], "/") !== false)
 {
+    $tarikhAmadehAst = true;
     $sal = (integer)explode("/", $_GET["tarikh"])[0];
     $mah = (integer)explode("/", $_GET["tarikh"])[1];
     if ($sal == 0) $sal = "";

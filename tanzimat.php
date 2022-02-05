@@ -15,7 +15,7 @@ $safheh = "tanzimat";
     <link rel="stylesheet" href="style/tanzimat.css"/>
     <?php include ("code/head.php");?>
 </head>
-<body dir="rtl" onload="taghirENT(document.getElementsByClassName('gozinehENT')[Number(localStorage.getItem('darkmode'))]);">
+<body dir="rtl" onload="tanzimSafTanzimat();">
 <div id="fullCountainer">
 
     <?php require("code/peygham.php");?>
@@ -25,11 +25,6 @@ $safheh = "tanzimat";
         <?php require("code/navar-bala.php");?>
         <div id="kadrTitrTanzimat">
             <h2 class="titr"><span class="icon"></span><span class="matnTitr">تنظیمات</span></h2>
-            <div class="kadrENT" id="theme">
-                <span class="kadrPoshtENT"></span>
-                <a class="gozinehENT" onclick="taghirENT(this);taghirTheme(0);" data-value="0" href="javascript:void(0);">تم روشن</a>
-                <a class="gozinehENT" onclick="taghirENT(this);taghirTheme(1);" data-value="1" href="javascript:void(0);">تم تاریک</a>
-            </div>
         </div>
         <div id="kadrHesabhaTNZ">
             <div id="kadrHeaderJTNZ">
@@ -81,7 +76,7 @@ $safheh = "tanzimat";
             <a class="dokmehTL dokmehLaghv" id="btnLaghvJabejaei" onclick="location.assign('tanzimat.php')"><span class="icon"></span><span class="matnTitr">لغو جا به جایی ها</span></a>
         </div>
         <div id="kadrAfzoodanHesab">
-            <h3 class="titrAfzoodanHesab"><span class="icon"></span><span class="matnTitr">افزودن حساب</span></h3>
+            <h2 class="titrTNZ"><span class="icon"></span><span class="matnTitr">افزودن حساب</span></h2>
             <div class="kadrAfzoodanTNZ">
                 <div class="afzoodanTNZ"><span class="icon"></span><span class="matnTitr">نام:</span></div>
                 <input type="text" id="namATNZ" name="nam" maxlength="30" autocomplete="off"/>
@@ -121,6 +116,33 @@ $safheh = "tanzimat";
         <script>
             document.getElementById("kadrAfzoodanHesab").onkeydown = function(e){if (e.keyCode === 13) sabtHesab();};
         </script>
+        <div id="kadrPishfarzha">
+            <h2 class="titrTNZ"><span class="icon"></span><span class="matnTitr">پیشفرض ها</span></h2>
+            <div class="kadrPSH">
+                <div class="titrPSH"><span class="icon"></span><span class="matnTitr">تم برنامه:</span></div>
+                <div class="kadrENT" id="theme">
+                    <span class="kadrPoshtENT"></span>
+                    <a class="gozinehENT" onclick="taghirENT(this);taghirTheme(0);" data-value="0" href="javascript:void(0);">تم روشن</a>
+                    <a class="gozinehENT" onclick="taghirENT(this);taghirTheme(1);" data-value="1" href="javascript:void(0);">تم تاریک</a>
+                </div>
+            </div>
+            <div class="kadrPSH">
+                <div class="titrPSH"><span class="icon"></span><span class="matnTitr">بازه صورتحساب:</span></div>
+                <div class="kadrENT" id="pishfarzSoorathesab">
+                    <span class="kadrPoshtENT"></span>
+                    <a class="gozinehENT" onclick="taghirENT(this);taghirPishfarzSRT(this);" data-value="mah" href="javascript:void(0);">ماه</a>
+                    <a class="gozinehENT" onclick="taghirENT(this);taghirPishfarzSRT(this);" data-value="sal" href="javascript:void(0);">سال</a>
+                </div>
+            </div>
+            <div class="kadrPSH">
+                <div class="titrPSH"><span class="icon"></span><span class="matnTitr">بازه آمار:</span></div>
+                <div class="kadrENT" id="pishfarzAmar">
+                    <span class="kadrPoshtENT"></span>
+                    <a class="gozinehENT" onclick="taghirENT(this);taghirPishfarzAMR(this);" data-value="mah" href="javascript:void(0);">ماه</a>
+                    <a class="gozinehENT" onclick="taghirENT(this);taghirPishfarzAMR(this);" data-value="sal" href="javascript:void(0);">سال</a>
+                </div>
+            </div>
+        </div>
     </div>
 
 </div>

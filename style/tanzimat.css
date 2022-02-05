@@ -8,6 +8,21 @@ select, input
     transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
+.kadrENT
+{
+    transition: background-color 0.3s;
+}
+
+span.kadrPoshtENT
+{
+    transition: left 0.2s, top 0.2s, width 0.2s, background-color 0.3s;
+}
+
+a.gozinehENT, a.gozinehENT:link, a.gozinehENT:visited
+{
+    transition: color 0.3s;
+}
+
 h1#titrHDR
 {
     transition: color 0.3s;
@@ -18,14 +33,15 @@ h1#titrHDR
     position: relative;
     float: right;
     width: 100%;
-    margin-bottom: 10px;
 }
 
-#theme
+h2.titrTNZ
 {
-    position: absolute;
-    top: 0;
-    left: 0;
+    float: right;
+    width: 100%;
+    margin: 0 0 20px 0;
+    padding: 0;
+    font-size: 1.325rem
 }
 
 #kadrHesabhaTNZ
@@ -198,21 +214,13 @@ a.btnJTNZ:last-child
 
 #kadrAfzoodanHesab
 {
+    position: relative;
     float: right;
     width: 100%;
-    margin: 20px 0 10px;
-    padding-top: 30px;
+    margin: 20px 0 0;
+    padding-top: 25px;
     border-top: 1px solid hsl(0, 0%, 80%);
     transition: border 0.3s;
-}
-
-h3.titrAfzoodanHesab
-{
-    float: right;
-    width: 100%;
-    margin: 0 0 10px 0;
-    padding: 0;
-    font-size: 1.25rem;
 }
 
 .kadrAfzoodanTNZ
@@ -257,6 +265,9 @@ input#mandehATNZ
 
 a#btnAfzoodanTNZ, a#btnAfzoodanTNZ:link, a#btnAfzoodanTNZ:visited
 {
+    position: absolute;
+    top: 20px;
+    left: 0;
     float: right;
     padding: 4px 15px;
     margin: 3px 0;
@@ -422,6 +433,35 @@ input#namVTNZ
     margin: 0 5px 0 0;
 }
 
+
+
+/*  کادر پیشفرض ها  */
+
+#kadrPishfarzha
+{
+    float: right;
+    width: 100%;
+    margin-top: 20px;
+    padding-top: 25px;
+    border-top: 1px solid hsl(0, 0%, 80%);
+    transition: border 0.3s;
+}
+
+.kadrPSH
+{
+    float: right;
+    margin: 0 0 10px 30px;
+}
+
+.titrPSH
+{
+    float: right;
+    margin-left: 5px;
+    padding: 7px 0;
+    color: hsla(0, 0%, 0%, 0.7);
+    transition: color 0.3s;
+}
+
 @media only screen and (max-width: 1000px)
 {
     .shomJTNZ
@@ -456,11 +496,6 @@ input#namVTNZ
     {
         width: calc(100% - 140px);
         margin: 0;
-    }
-
-    #kadrAfzoodanHesab
-    {
-        padding-top: 15px;
     }
 
     #kadrVTNZ
@@ -525,5 +560,15 @@ input#namVTNZ
     .kadrAfzoodanTNZ
     {
         margin: 0 0 10px 15px;
+    }
+
+    #kadrAfzoodanHesab
+    {
+        padding-top: 20px;
+    }
+
+    #kadrPishfarzha
+    {
+        padding-top: 20px;
     }
 }

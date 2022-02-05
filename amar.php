@@ -66,13 +66,22 @@ else
                 <div class="filterSRT">
                     <div class="titrFSRT"><span class="icon"></span><span class="matnTitr">محدوده زمانی:</span></div>
                     <div id="tarikhFSRT">
-                        <input type="text" class="txtTarikh" name="mah" value="<?php echo jdate("m", "", "", "Asia/Tehran", "en");?>" onfocus="this.select();" maxlength="2" placeholder="ماه" autocomplete="off"/>
-                        <input type="text" class="txtTarikh" name="sal" value="<?php echo jdate("Y", "", "", "Asia/Tehran", "en");?>" onfocus="this.select();" maxlength="4" placeholder="سال" autocomplete="off"/>
+                        <input type="text" class="txtTarikh" name="mah" onfocus="this.select();" maxlength="2" placeholder="ماه" autocomplete="off"/>
+                        <input type="text" class="txtTarikh" name="sal" onfocus="this.select();" maxlength="4" placeholder="سال" autocomplete="off"/>
                     </div>
                 </div>
                 <a id="btnFSRT" href="javascript:void(0);" onclick="emalTarikh();"><span class="icon"></span><span class="matnTitr">اعمال</span></a>
                 <script>
                     document.getElementById("kadrFilterAMR").onkeydown = function(e){if (e.keyCode === 13) emalTarikh();};
+                    if (localStorage.getItem("pishfarzAmar") === "mah")
+                    {
+                        document.getElementsByClassName("txtTarikh")[0].value = <?php echo jdate("m", "", "", "Asia/Tehran", "en");?>;
+                        document.getElementsByClassName("txtTarikh")[1].value = <?php echo jdate("Y", "", "", "Asia/Tehran", "en");?>;
+                    }
+                    else if (localStorage.getItem("pishfarzAmar") === "sal")
+                    {
+                        document.getElementsByClassName("txtTarikh")[1].value = <?php echo jdate("Y", "", "", "Asia/Tehran", "en");?>;
+                    }
                 </script>
             </div>
             <div id="kadrAmar">
