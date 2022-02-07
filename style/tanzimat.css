@@ -226,13 +226,18 @@ a.btnJTNZ:last-child
 .kadrAfzoodanTNZ
 {
     float: right;
-    margin: 0 0 10px 30px;
+    margin: 0 0 10px 20px;
+}
+
+.kadrAfzoodanTNZ:last-child
+{
+    margin: 0 0 10px 0;
 }
 
 input#namATNZ
 {
     float: right;
-    width: 150px;
+    width: 149px;
     direction: rtl;
 }
 
@@ -258,7 +263,8 @@ input#mandehATNZ
 {
     float: right;
     margin-left: 5px;
-    padding: 5px 0;
+    padding: 9px 0 8px;
+    font-size: 0.75rem;
     color: hsla(0, 0%, 0%, 0.7);
     transition: color 0.3s;
 }
@@ -266,11 +272,10 @@ input#mandehATNZ
 a#btnAfzoodanTNZ, a#btnAfzoodanTNZ:link, a#btnAfzoodanTNZ:visited
 {
     position: absolute;
-    top: 20px;
+    top: 25px;
     left: 0;
     float: right;
     padding: 4px 15px;
-    margin: 3px 0;
     border-radius: 8px;
     background-color: hsl(148, 64%, 85%);
     color: hsl(148, 64%, 30%);
@@ -399,7 +404,7 @@ a#btnAfzoodanTNZ:active
 .etelaatSBT
 {
     float: right;
-    margin: 0 0 15px 30px;
+    margin: 0 0 15px 20px;
 }
 
 .etelaatSBT>input
@@ -457,7 +462,8 @@ input#namVTNZ
 {
     float: right;
     margin-left: 5px;
-    padding: 7px 0;
+    padding: 9px 0 8px;
+    font-size: 0.75rem;
     color: hsla(0, 0%, 0%, 0.7);
     transition: color 0.3s;
 }
@@ -557,14 +563,36 @@ input#namVTNZ
         margin-right: 2px;
     }
 
-    .kadrAfzoodanTNZ
-    {
-        margin: 0 0 10px 15px;
-    }
-
     #kadrAfzoodanHesab
     {
         padding-top: 20px;
+    }
+
+    .kadrAfzoodanTNZ
+    {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .afzoodanTNZ
+    {
+        width: 72px;
+        text-align: left;
+    }
+
+    .kadrAfzoodanTNZ>select:nth-child(2)
+    {
+        width: calc(100% - 77px);
+    }
+
+    .kadrAfzoodanTNZ>input:nth-child(2)
+    {
+        width: calc(100% - 99px) !important;
+    }
+
+    a#btnAfzoodanTNZ, a#btnAfzoodanTNZ:link, a#btnAfzoodanTNZ:visited
+    {
+        top: 20px;
     }
 
     #kadrPishfarzha
@@ -574,6 +602,12 @@ input#namVTNZ
 
     .kadrPSH
     {
-        margin: 0 0 10px 15px;
+        width: 100%;
+        margin: 0 0 10px 0;
+    }
+
+    .kadrENT
+    {
+        float: left;
     }
 }

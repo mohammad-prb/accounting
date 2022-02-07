@@ -133,11 +133,11 @@ function virayeshHSB(lmn)
     strHTML += '</select>\n' +
         '                        </div>\n' +
         '                        <div class="etelaatSBT">\n' +
-        '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">شماره حساب:</span></div>\n' +
+        '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">ش حساب:</span></div>\n' +
         '                            <input type="text" id="shomHesabVTNZ" name="shomHesab" value="'+ shomHesab +'" autocomplete="off" placeholder="شماره حساب">\n' +
         '                        </div>\n' +
         '                        <div class="etelaatSBT">\n' +
-        '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">شماره کارت:</span></div>\n' +
+        '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">ش کارت:</span></div>\n' +
         '                            <input type="text" id="shomKartVTNZ" name="shomKart" value="'+ shomKart +'" autocomplete="off" placeholder="شماره کارت">\n' +
         '                        </div>\n' +
         '                        <div class="etelaatSBT">\n' +

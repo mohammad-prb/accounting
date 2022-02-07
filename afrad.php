@@ -92,11 +92,10 @@ else
         </div>
         <div id="kadrAfzoodanDasteh">
             <div class="kadrAfzoodanDST">
-                <div class="afzoodanDST"><span class="icon"></span><span class="matnTitr">افزودن فرد:</span></div>
+                <div class="afzoodanDST"><span class="icon"></span><span class="matnTitr">افزودن:</span></div>
                 <input type="text" class="txtDasteh" id="namDST" name="dasteh" maxlength="30" placeholder="نام فرد" autocomplete="off"/>
             </div>
             <div class="kadrAfzoodanDST">
-                <div class="afzoodanDST"><span class="icon"></span><span class="matnTitr">نوع:</span></div>
                 <div class="kadrENT" id="noeDST">
                     <span class="kadrPoshtENT"></span>
                     <a class="gozinehENT" onclick="taghirENT(this);" data-value="1" href="javascript:void(0);">خروجی و ورودی</a>

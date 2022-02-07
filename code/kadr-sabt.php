@@ -113,7 +113,7 @@
                 </select>
             </div>
             <div class="etelaatSBT">
-                <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">واریز کننده:</span></div>
+                <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">واریز از:</span></div>
                 <select name="varizKonandeh" id="varizKonandehSBTV">
                     <?php
                     $sql = "select id, nam, noe, tartib from tbl_afrad where (hesabID = ".$hesabID." or hesabID = 0) and (noe <= 1 or noe = 3) and vaziat = 1 and namayesh = 1 order by hesabID desc, tartib";

@@ -533,9 +533,9 @@ a.btnEmkanatSelect:active
 
 @media only screen and (max-width: 1000px)
 {
-    input.txtTozih
+    a#emalFilter, a#emalFilter:link, a#emalFilter:visited
     {
-        width: 183px;
+        margin-top: 10px;
     }
 
     #kadrAmarSoorathesab
@@ -597,10 +597,5 @@ a.btnEmkanatSelect:active
         width: 100%;
         margin: 10px 0 5px 0;
         padding-top: 10px;
-    }
-
-    .etelaatVSRT span.matnTitr
-    {
-        display: none;
     }
 }

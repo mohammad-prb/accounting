@@ -144,7 +144,7 @@ else
 <script src="script/amar.js"></script>
 <script>
     var tkn = "<?php echo $tkn;?>";
-    Chart.defaults.global.defaultFontSize = 16;
+    Chart.defaults.global.defaultFontSize = 14;
     Chart.defaults.global.defaultFontFamily = "vazir";
     if (Number(localStorage.getItem("darkmode")) === 1)
     {

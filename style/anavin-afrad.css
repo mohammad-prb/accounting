@@ -24,7 +24,8 @@
 {
     float: right;
     margin-left: 5px;
-    padding: 7px 0;
+    padding: 9px 0 8px;
+    font-size: 0.75rem;
     color: hsla(0, 0%, 0%, 0.7);
 }
 
@@ -32,7 +33,6 @@ input.txtDasteh
 {
     float: right;
     width: 200px;
-    margin: 1px 0;
     direction: rtl;
 }
 
@@ -471,7 +471,7 @@ a.btnJDST:last-child
 
 input#dastehVDST
 {
-    width: 258px;
+    width: 263px;
 }
 
 #kadrDokmehVDST
@@ -557,7 +557,7 @@ input#dastehVDST
         display: none;
     }
 
-    .etelaatVDST>.etelaatSBT:nth-child(2)>.iconEtelaatSBT
+    .etelaatVDST > .etelaatSBT:nth-child(2) > .iconEtelaatSBT
     {
         display: none;
     }
@@ -574,20 +574,26 @@ input#dastehVDST
         padding: 5px;
     }
 
-    #kadrTaeedJabejaei>a
+    #kadrTaeedJabejaei > a
     {
         font-size: 0.875rem;
         width: calc(50% - 18px);
         padding: 10px 8px;
     }
 
-    #kadrTaeedJabejaei>a.dokmehTaeed
+    #kadrTaeedJabejaei > a.dokmehTaeed
     {
         margin-left: 2px;
     }
 
-    #kadrTaeedJabejaei>a.dokmehLaghv
+    #kadrTaeedJabejaei > a.dokmehLaghv
     {
         margin-right: 2px;
+    }
+
+    .kadrAfzoodanDST
+    {
+        width: 100%;
+        margin: 0 0 10px 0;
     }
 }

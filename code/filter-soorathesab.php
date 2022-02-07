@@ -101,11 +101,11 @@
     var tarikhAmadehAst = <?php echo ($tarikhAmadehAst ? 'true' : 'false')?>;
     if (tarikhAmadehAst || localStorage.getItem("pishfarzSoorathesab") === "mah")
     {
-        document.getElementsByClassName("txtTarikh")[1].value = <?php echo $mah;?>;
-        document.getElementsByClassName("txtTarikh")[2].value = <?php echo $sal;?>;
+        document.getElementsByClassName("txtTarikh")[1].value = "<?php echo $mah;?>";
+        document.getElementsByClassName("txtTarikh")[2].value = "<?php echo $sal;?>";
     }
     else if (!tarikhAmadehAst || localStorage.getItem("pishfarzSoorathesab") === "sal")
     {
-            document.getElementsByClassName("txtTarikh")[2].value = <?php echo $sal;?>;
+            document.getElementsByClassName("txtTarikh")[2].value = "<?php echo $sal;?>";
     }
 </script>

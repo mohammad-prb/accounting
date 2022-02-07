@@ -274,7 +274,7 @@ function emalFilterSRT()
                     tedadVoroodi++;
                     meghdarVoroodi += Number(arrObjEtelaat[i]["mablagh"]);
                     strHTML += '<div class="etelaatSTB">\n' +
-                        '    <div class="onvanEtelaatSTB"><span class="icon riz"></span><span class="matnTitr riz">واریز کننده:</span></div>\n' +
+                        '    <div class="onvanEtelaatSTB"><span class="icon riz"></span><span class="matnTitr riz">واریز از:</span></div>\n' +
                         '    <div class="meghdarEtelaatSTB fardSTB">'+ arrObjEtelaat[i]["nam"] +'</div>\n' +
                         '</div>';
                 }
@@ -678,7 +678,7 @@ function virayeshSRT(lmn)
     {
         strHTML += '<div class="etelaatVSRT" id="voroodiVSRT">' +
             '    <div class="etelaatSBT">\n' +
-            '        <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">واریز کننده:</span></div>\n' +
+            '        <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">واریز از:</span></div>\n' +
             '        <select name="varizKonandeh" id="varizKonandehVSRT">';
 
         for (let i=0; i<arrObjAfrad.length; i++)
@@ -862,7 +862,7 @@ function sabtVirayeshSRT(id)
 
                     var lmnVarizKonandeh = document.getElementById("varizKonandehVSRT");
                     strHTML += '<div class="etelaatSTB">\n' +
-                        '                    <div class="onvanEtelaatSTB"><span class="icon riz"></span><span class="matnTitr riz">واریز کننده:</span></div>\n' +
+                        '                    <div class="onvanEtelaatSTB"><span class="icon riz"></span><span class="matnTitr riz">واریز از:</span></div>\n' +
                         '                    <div class="meghdarEtelaatSTB fardSTB">'+ lmnVarizKonandeh.options[lmnVarizKonandeh.selectedIndex].text +'</div>\n' +
                         '                </div>';
                 }

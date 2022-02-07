@@ -53,11 +53,11 @@ $safheh = "tanzimat";
                                 <div class="shomJTNZ"></div>
                                 <div class="etelaatJTNZ">
                                     <div class="bankJTNZ"><img src="pic/bank/'. $row["bankID"] .@'.png" alt="bank" class="aksBankJTNZ"/></div>
-                                    <div class="onvanJTNZ">'. $row["nam"] .@'</div>
+                                    <div class="onvanJTNZ" onclick="namayeshPeygham(\''. $row["nam"] .'\');">'. $row["nam"] .@'</div>
                                     <div class="shomHesabJTNZ makhfiDarMobile">'. $row["shomHesab"] .@'</div>
                                     <div class="shomKartJTNZ makhfiDarMobile">'. $row["shomKart"] .@'</div>
                                     <div class="eftetahJTNZ makhfiDarMobile">'. $row["tarikhEftetah"] .@'</div>
-                                    <div class="mandehTarazJTNZ makhfiDarMobile">'. momayezdar($row["mablaghTaraz"]) .@'</div>
+                                    <div class="mandehTarazJTNZ makhfiDarMobile" onclick="namayeshPeygham(\''. momayezdar($row["mablaghTaraz"]) .'\');">'. momayezdar($row["mablaghTaraz"]) .@'</div>
                                     <div class="emkanatJTNZ">
                                         <a href="javascript:void(0);" class="btnJTNZ btnHazfJTNZ" title="حذف"></a>
                                         <a href="javascript:void(0);" class="btnJTNZ btnVirayeshJTNZ" onclick="virayeshHSB(this)" title="ویرایش"></a>
@@ -77,6 +77,7 @@ $safheh = "tanzimat";
         </div>
         <div id="kadrAfzoodanHesab">
             <h2 class="titrTNZ"><span class="icon"></span><span class="matnTitr">افزودن حساب</span></h2>
+            <a href="javascript:void(0);" onclick="sabtHesab();" id="btnAfzoodanTNZ"><span class="icon"></span><span class="matnTitr">افزودن</span></a>
             <div class="kadrAfzoodanTNZ">
                 <div class="afzoodanTNZ"><span class="icon"></span><span class="matnTitr">نام:</span></div>
                 <input type="text" id="namATNZ" name="nam" maxlength="30" autocomplete="off"/>
@@ -100,18 +101,17 @@ $safheh = "tanzimat";
                 </select>
             </div>
             <div class="kadrAfzoodanTNZ">
-                <div class="afzoodanTNZ"><span class="icon"></span><span class="matnTitr">شماره حساب:</span></div>
+                <div class="afzoodanTNZ"><span class="icon"></span><span class="matnTitr">ش حساب:</span></div>
                 <input type="text" id="shomHesabATNZ" name="shomHesab" maxlength="100" autocomplete="off"/>
             </div>
             <div class="kadrAfzoodanTNZ">
-                <div class="afzoodanTNZ"><span class="icon"></span><span class="matnTitr">شماره کارت:</span></div>
+                <div class="afzoodanTNZ"><span class="icon"></span><span class="matnTitr">ش کارت:</span></div>
                 <input type="text" id="shomKartATNZ" name="shomKart" maxlength="16" autocomplete="off"/>
             </div>
             <div class="kadrAfzoodanTNZ">
                 <div class="afzoodanTNZ"><span class="icon"></span><span class="matnTitr">مانده تراز:</span></div>
                 <input type="text" id="mandehATNZ" name="mandeh" maxlength="20" placeholder="مانده فعلی" autocomplete="off"/>
             </div>
-            <a href="javascript:void(0);" onclick="sabtHesab();" id="btnAfzoodanTNZ"><span class="icon"></span><span class="matnTitr">افزودن</span></a>
         </div>
         <script>
             document.getElementById("kadrAfzoodanHesab").onkeydown = function(e){if (e.keyCode === 13) sabtHesab();};

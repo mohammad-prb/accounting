@@ -71,7 +71,7 @@ a#btnFSRT:active
 #sotoonRast
 {
     float: right;
-    width: 340px;
+    width: 320px;
     margin-left: 20px;
 }
 
@@ -294,7 +294,7 @@ a.btnLAMR>span.icon, a.btnLAMR>span.matnTitr
 #stoonVasat
 {
     float: left;
-    width: calc(100% - 360px);
+    width: calc(100% - 340px);
 }
 
 .kadrNemoodar
@@ -321,6 +321,16 @@ a.btnLAMR>span.icon, a.btnLAMR>span.matnTitr
     .filterSRT span.matnTitr
     {
         display: none;
+    }
+
+    input.txtTarikh
+    {
+        width: 20px !important;
+    }
+
+    input.txtTarikh:last-child
+    {
+        width: 40px !important;;
     }
 
     #kadrAmar
