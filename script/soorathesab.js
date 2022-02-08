@@ -55,11 +55,9 @@ function taghirKVFSRT(lmn)
     else if (Number(noe) === 1)
     {
         lmnVasileh.style.display = "block";
+        taghirENT(lmnVasileh.getElementsByClassName("gozinehENT")[0]);
         taghirDastehFSRT(1,2);
         taghirFardFSRT(1,2);
-
-        taghirENT(lmnVasileh.getElementsByClassName("gozinehENT")[0]);
-        taghirVasilehFSRT(lmnVasileh.getElementsByClassName("gozinehENT")[0]);
     }
     else if (Number(noe) === 0)
     {
@@ -67,17 +65,6 @@ function taghirKVFSRT(lmn)
         taghirDastehFSRT(1,3);
         taghirFardFSRT(1,3);
     }
-}
-
-var vasilehFSRT = "hameh";  // پیشفرض: همه
-/*      تغییر وسیله پرداخت      */
-function taghirVasilehFSRT(lmn)
-{
-    if (vasilehFSRT === lmn.parentElement.dataset.value) return;
-    vasilehFSRT = lmn.parentElement.dataset.value;
-
-    if (Number(vasilehFSRT) === 3) document.getElementById("varizBeSBTK").parentElement.style.display = "block";
-    else document.getElementById("varizBeSBTK").parentElement.style.display = "none";
 }
 
 /*      تغییر دادن حساب در صورتحساب      */
@@ -134,13 +121,8 @@ function emalFilterSRT()
         strQ += "&vasileh=" + vasileh;
     }
 
-    if (vasileh !== "4")
-    {
-        var fard = document.getElementById("varizBeSBTK").value.trim().toString();
-        strQ += "&fard=" + fard;
-    }
-
     var dastehID = document.getElementById("dastehSBTK").value.trim().toString();
+    var fard = document.getElementById("varizBeSBTK").value.trim().toString();
     var rooz = document.querySelectorAll("#tarikhSBTK>input")[0].value.trim().toString();
     var mah = document.querySelectorAll("#tarikhSBTK>input")[1].value.trim().toString();
     var sal = document.querySelectorAll("#tarikhSBTK>input")[2].value.trim().toString();
@@ -163,7 +145,7 @@ function emalFilterSRT()
         namayeshPeygham("مبلغ اشتباه است.");
     }
 
-    strQ += "&dastehID=" + dastehID + "&rooz=" + rooz + "&mah=" + mah + "&sal=" + sal + "&mablagh=" + mablagh + "&tozih=" + tozih;
+    strQ += "&dastehID=" + dastehID + "&fard=" + fard + "&rooz=" + rooz + "&mah=" + mah + "&sal=" + sal + "&mablagh=" + mablagh + "&tozih=" + tozih;
     laghvSelect();
 
     var xhttp = new XMLHttpRequest();
