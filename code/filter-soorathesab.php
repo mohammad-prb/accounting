@@ -20,17 +20,16 @@
             </div>
         </div>
         <div class="etelaatSBT" style="display:none;">
-            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">نوع:</span></div>
-            <div class="kadrENT" id="noeSBTK">
-                <span class="kadrPoshtENT"></span>
-                <a class="gozinehENT" onclick="taghirENT(this);taghirNoeFSRT(this);" data-value="hameh" href="javascript:void(0);">همه</a>
-                <a class="gozinehENT" onclick="taghirENT(this);taghirNoeFSRT(this);" data-value="1" href="javascript:void(0);">برداشت با کارت</a>
-                <a class="gozinehENT" onclick="taghirENT(this);taghirNoeFSRT(this);" data-value="2" href="javascript:void(0);">اینترنتی</a>
-            </div>
-        </div>
-        <div class="etelaatSBT" style="display:none;">
             <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">وسیله:</span></div>
-            <div class="kadrENT" id="vasilehSBTK"></div>
+            <div class="kadrENT" id="vasilehSBTK">
+                <span class="kadrPoshtENT"></span>
+                <a class="gozinehENT" onclick="taghirENT(this);taghirVasilehFSRT(this);" data-value="hameh" href="javascript:void(0);">همه</a>
+                <a class="gozinehENT" onclick="taghirENT(this);taghirVasilehFSRT(this);" data-value="1" href="javascript:void(0);">کارتخوان</a>
+                <a class="gozinehENT" onclick="taghirENT(this);taghirVasilehFSRT(this);" data-value="2" href="javascript:void(0);">عابر بانک</a>
+                <a class="gozinehENT" onclick="taghirENT(this);taghirVasilehFSRT(this);" data-value="3" href="javascript:void(0);">انتقال</a>
+                <a class="gozinehENT" onclick="taghirENT(this);taghirVasilehFSRT(this);" data-value="4" href="javascript:void(0);">پرداخت</a>
+                <a class="gozinehENT" onclick="taghirENT(this);taghirVasilehFSRT(this);" data-value="5" href="javascript:void(0);">چک</a>
+            </div>
         </div>
         <div class="etelaatSBT">
             <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">دسته:</span></div>

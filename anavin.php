@@ -67,13 +67,11 @@ else
                 <a href="javascript:void(0);" onclick="taghirNoeDST(this);" class="rahnama" data-vaziat="1"><span class="icon"></span><span class="matnTitr">خروجی و ورودی</span></a>
                 <a href="javascript:void(0);" onclick="taghirNoeDST(this);" class="rahnama" data-vaziat="1"><span class="icon"></span><span class="matnTitr">خروجی</span></a>
                 <a href="javascript:void(0);" onclick="taghirNoeDST(this);" class="rahnama" data-vaziat="1"><span class="icon"></span><span class="matnTitr">ورودی</span></a>
-                <a href="javascript:void(0);" onclick="taghirNoeDST(this);" class="rahnama" data-vaziat="1"><span class="icon"></span><span class="matnTitr">پرداخت</span></a>
             </div>
             <div id="kadrTedadDST">
                 <div class="tedadDST"><span class="icon"></span><span class="matnTitr"></span></div>
                 <div class="tedadDST"><span class="icon"></span><span class="matnTitr"></span></div>
                 <div class="tedadDST"><span class="icon"></span><span class="matnTitr"></span></div>
-                <div class="tedadDST"><span class="icon"></span><span class="matnTitr"></span></div>
             </div>
         </div>
         <div id="kadrJadvalDST">
@@ -103,7 +101,6 @@ else
                     <a class="gozinehENT" onclick="taghirENT(this);" data-value="1" href="javascript:void(0);">خروجی و ورودی</a>
                     <a class="gozinehENT" onclick="taghirENT(this);" data-value="2" href="javascript:void(0);">خروجی</a>
                     <a class="gozinehENT" onclick="taghirENT(this);" data-value="3" href="javascript:void(0);">ورودی</a>
-                    <a class="gozinehENT" onclick="taghirENT(this);" data-value="4" href="javascript:void(0);">پرداخت</a>
                 </div>
             </div>
             <a href="javascript:void(0);" onclick="sabtDasteh();" id="btnAfzoodanDST"><span class="icon"></span><span class="matnTitr">افزودن</span></a>

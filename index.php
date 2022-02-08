@@ -40,11 +40,7 @@ else header("location:tanzimat.php?p");
 </div>
 <script src="script/lib.js"></script>
 <script src="script/main.js"></script>
-<script>
-    var arrObjDasteh = <?php echo json_encode($arrDasteh);?>;
-    var arrObjAfrad = <?php echo json_encode($arrAfrad);?>;
-    var tkn = "<?php echo $tkn;?>";
-</script>
+<script>var tkn = "<?php echo $tkn;?>";</script>
 </body>
 </html>
 <?php $con->close();?>

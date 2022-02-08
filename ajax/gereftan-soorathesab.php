@@ -27,17 +27,11 @@ if (preg_match("/^(|[1-9][0-9]*)$/", $mablagh) !== 1) die();
 $vasilehID = 0;
 if ((integer)$noeVariz == 1)
 {
-    if (isset($_POST["noe"])) $noeID = $_POST["noe"]; else die();
-    if (preg_match("/^(hameh|[1-2])$/", $noeID) !== 1) die();
-
-    if ($noeID != "hameh")
-    {
-        if (isset($_POST["vasileh"])) $vasilehID = $_POST["vasileh"]; else die();
-        if (preg_match("/^(hameh|[1-6])$/", $vasilehID) !== 1) die();
-    }
+    if (isset($_POST["vasileh"])) $vasilehID = $_POST["vasileh"]; else die();
+    if (preg_match("/^(hameh|[1-5])$/", $vasilehID) !== 1) die();
 }
 
-if ($vasilehID != 5)
+if ($vasilehID == 3)
 {
     if (isset($_POST["fard"])) $fard = htmlspecialchars(stripcslashes(trim($_POST["fard"]))); else die();
     if (preg_match("/^(hameh|[1-9]+[0-9]*)$/", $fard) !== 1) die();
@@ -45,7 +39,7 @@ if ($vasilehID != 5)
 else $fard = 0;
 
 $arrNatijeh = array();
-$sql = @"select tbl_soorathesab.id as id, khoroojiAst, noeID, tbl_vasileh.nam as vasileh, vasilehID, dastehID, onvan, fardID, tbl_afrad.nam as nam, mablagh, tarikh, tozih from tbl_soorathesab
+$sql = @"select tbl_soorathesab.id as id, khoroojiAst, tbl_vasileh.nam as vasileh, vasilehID, dastehID, onvan, fardID, tbl_afrad.nam as nam, mablagh, tarikh, tozih from tbl_soorathesab
         inner join tbl_dasteh on tbl_dasteh.id = dastehID
         left join tbl_vasileh on tbl_vasileh.id = vasilehID
         left join tbl_afrad on tbl_afrad.id = fardID
@@ -56,17 +50,10 @@ if ($mablagh != "") $sql .= " and mablagh = " . $mablagh;
 if ($noeVariz != "hameh")
 {
     $sql .= " and khoroojiAst = " . $noeVariz;
-    if ($noeVariz == 1)
-    {
-        if ($noeID != "hameh")
-        {
-            $sql .= " and noeID = " . $noeID;
-            if ($vasilehID != "hameh") $sql .= " and vasilehID = " . $vasilehID;
-        }
-    }
+    if ($noeVariz == 1 && $vasilehID != "hameh") $sql .= " and vasilehID = " . $vasilehID;
 }
 
-if ($vasilehID != 5 && $fard != "hameh") $sql .= " and fardID = " . $fard;
+if (($vasilehID == 3 || $vasilehID == 0) && $fard != "hameh") $sql .= " and fardID = " . $fard;
 
 if (strlen($mah) == 1) $mah = "0".$mah;
 if (strlen($rooz) == 1) $rooz = "0".$rooz;

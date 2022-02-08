@@ -109,71 +109,14 @@ function namayeshMablaghSBT(lmn)
     else lmn.parentElement.getElementsByClassName("mablaghSBT")[0].innerHTML = momayezdar(meghdar) + " ریال";
 }
 
-var noe = 1;  // پیشفرض: برداشت با کارت
-/*      تغییر نوع واریزی      */
-function taghirNoeSBT(lmn)
-{
-    if (noe === Number(lmn.parentElement.dataset.value)) return;
-
-    noe = Number(lmn.parentElement.dataset.value);
-    var lmnVasileh = document.getElementById("vasilehSBTK");
-
-    if (noe === 1)
-    {
-        lmnVasileh.innerHTML = '<span class="kadrPoshtENT"></span>\n' +
-            '<a class="gozinehENT" onclick="taghirENT(this);" data-value="1" href="javascript:void(0);">کارتخوان</a>\n' +
-            '<a class="gozinehENT" onclick="taghirENT(this);" data-value="2" href="javascript:void(0);">عابر بانک</a>';
-    }
-    else if (noe === 2)
-    {
-        lmnVasileh.innerHTML = '<span class="kadrPoshtENT"></span>\n' +
-            '<a class="gozinehENT" onclick="taghirENT(this);taghirVasilehSBT(this);" data-value="3" href="javascript:void(0);">کارت</a>\n' +
-            '<a class="gozinehENT" onclick="taghirENT(this);taghirVasilehSBT(this);" data-value="4" href="javascript:void(0);">حساب</a>\n' +
-            '<a class="gozinehENT" onclick="taghirENT(this);taghirVasilehSBT(this);" data-value="5" href="javascript:void(0);">پرداخت</a>';
-    }
-
-    taghirENT(lmnVasileh.getElementsByClassName("gozinehENT")[0]);
-    taghirVasilehSBT(lmnVasileh.getElementsByClassName("gozinehENT")[0]);
-}
-
-var vasileh = 2;  // پیشفرض: کارتخوان
+var vasileh = 1;  // پیشفرض: کارتخوان
 /*      تغییر وسیله پرداخت      */
 function taghirVasilehSBT(lmn)
 {
     if (vasileh === Number(lmn.parentElement.dataset.value)) return;
-
     vasileh = Number(lmn.parentElement.dataset.value);
-    var lmnDasteh = document.getElementById("dastehSBTK");
-    lmnDasteh.innerHTML = "";
 
-    if (vasileh === 5)
-    {
-        for (let i=0; i<arrObjDasteh.length; i++)
-        {
-            if (Number(arrObjDasteh[i]["noe"]) === 4 || Number(arrObjDasteh[i]["noe"]) === 0)
-            {
-                let option = document.createElement("option");
-                option.value = arrObjDasteh[i]["id"];
-                option.innerHTML = arrObjDasteh[i]["onvan"];
-                lmnDasteh.appendChild(option);
-            }
-        }
-    }
-    else
-    {
-        for (let i=0; i<arrObjDasteh.length; i++)
-        {
-            if (Number(arrObjDasteh[i]["noe"]) <= 2)
-            {
-                let option = document.createElement("option");
-                option.value = arrObjDasteh[i]["id"];
-                option.innerHTML = arrObjDasteh[i]["onvan"];
-                lmnDasteh.appendChild(option);
-            }
-        }
-    }
-
-    if (vasileh === 3 || vasileh === 4) document.getElementById("varizBeSBTK").parentElement.style.display = "block";
+    if (vasileh === 3) document.getElementById("varizBeSBTK").parentElement.style.display = "block";
     else document.getElementById("varizBeSBTK").parentElement.style.display = "none";
 }
 
@@ -190,13 +133,27 @@ function taghirHesabSBT(lmn)
             bastanLoading(document.getElementById("kadrSBTV"));
 
             var objNatijeh = JSON.parse(this.responseText);
-            arrObjAfrad = objNatijeh["afrad"];
-            arrObjDasteh = objNatijeh["dasteh"];
+            var arrObjAfrad = objNatijeh["afrad"];
+            var arrObjDasteh = objNatijeh["dasteh"];
             vasileh = 0; // برای اینکه تابع "تغییر وسیله" در صورت تغییر این متغیر کار میکند
             taghirVasilehSBT(document.querySelector("#vasilehSBTK .gozinehENT"));
 
+            /* دسته بندی ثبت خروجی */
+            var lmnSelectDastehBandi = document.getElementById("dastehSBTK");
+            lmnSelectDastehBandi.innerHTML = "";
+            for (let i=0; i<arrObjDasteh.length; i++)
+            {
+                if (Number(arrObjDasteh[i]["noe"]) <= 2)
+                {
+                    var option = document.createElement("option");
+                    option.value = arrObjDasteh[i]["id"];
+                    option.innerHTML = arrObjDasteh[i]["onvan"];
+                    lmnSelectDastehBandi.appendChild(option);
+                }
+            }
+
             /* دسته بندی ثبت ورودی */
-            var lmnSelectDastehBandi = document.getElementById("dastehSBTV");
+            lmnSelectDastehBandi = document.getElementById("dastehSBTV");
             lmnSelectDastehBandi.innerHTML = "";
             for (let i=0; i<arrObjDasteh.length; i++)
             {
@@ -360,7 +317,6 @@ function sabtVarizi(noe)
     if (noe === 1)
     {
         ghatePishnahad(document.getElementById("tozihSBTK"));
-        var noeID = document.getElementById("noeSBTK").dataset.value.toString();
         var vasilehID = document.getElementById("vasilehSBTK").dataset.value.toString();
         var dastehID = document.getElementById("dastehSBTK").value.toString();
         var fard = document.getElementById("varizBeSBTK").value.toString();
@@ -369,12 +325,7 @@ function sabtVarizi(noe)
         var sal = document.querySelectorAll("#tarikhSBTK>input.txtTarikh")[2].value.toString();
         var mablagh = document.getElementById("mablaghSBTK").value.toString();
         var tozih = document.getElementById("tozihSBTK").value.toString().replace(/(<([^>]+)>)/ig, '');
-
-        if (!check(noeID, "^[1-2]$") || !check(vasilehID, "^[1-5]$")) {
-            namayeshPeygham("لطفا فیلد هارا برسی کرده، و مجددا تلاش کنید.");
-            return;
-        }
-        strQ += "&noeID=" + noeID + "&vasilehID=" + vasilehID;
+        strQ += "&vasilehID=" + vasilehID;
     }
     else if (noe === 0)
     {

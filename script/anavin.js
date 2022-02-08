@@ -79,8 +79,7 @@ function taghirNoeDST(lmn)
     var arrNoeha = [1,
         Number(arrLmnNoeha[0].dataset.vaziat),
         Number(arrLmnNoeha[1].dataset.vaziat),
-        Number(arrLmnNoeha[2].dataset.vaziat),
-        Number(arrLmnNoeha[3].dataset.vaziat)];
+        Number(arrLmnNoeha[2].dataset.vaziat)];
 
     for (let i=1; i<arrLmnEtelaat.length; i++)
     {
@@ -180,7 +179,6 @@ function virayeshDST(lmn)
         '                                <a class="gozinehENT" onclick="taghirENT(this);" data-value="1" href="javascript:void(0);">خروجی و ورودی</a>\n' +
         '                                <a class="gozinehENT" onclick="taghirENT(this);" data-value="2" href="javascript:void(0);">خروجی</a>\n' +
         '                                <a class="gozinehENT" onclick="taghirENT(this);" data-value="3" href="javascript:void(0);">ورودی</a>\n' +
-        '                                <a class="gozinehENT" onclick="taghirENT(this);" data-value="4" href="javascript:void(0);">پرداخت</a>\n' +
         '                            </div>\n' +
         '                        </div>\n' +
         '                    </div>\n' +

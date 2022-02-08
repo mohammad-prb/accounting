@@ -7,7 +7,7 @@ include ("../code/lib.php");
 include ("../code/jdf.php");
 include ("../code/etesal-db.php");
 
-// نوع = 1:خروجی و ورودی - 2:خروجی - 3:ورودی - 4:پرداخت
+// نوع = 1:خروجی و ورودی - 2:خروجی - 3:ورودی
 if (isset($_POST["id"])) $id = htmlspecialchars(stripcslashes(trim($_POST["id"]))); else die();
 if (isset($_POST["hesabID"])) $hesabID = htmlspecialchars(stripcslashes(trim($_POST["hesabID"]))); else die();
 if (isset($_POST["onvan"])) $onvan = htmlspecialchars(filter_var(stripcslashes(trim($_POST["onvan"])), FILTER_SANITIZE_STRING)); else die();
@@ -16,7 +16,7 @@ if (isset($_POST["noe"])) $noe = htmlspecialchars(stripcslashes(trim($_POST["noe
 if (preg_match("/^[1-9]+[0-9]*$/", $id) !== 1) die();
 if (preg_match("/^[1-9]+[0-9]*$/", $hesabID) !== 1) die();
 if (preg_match("/^.{1,30}$/", $onvan) !== 1) die();
-if (preg_match("/^[1-4]$/", $noe) !== 1) die();
+if (preg_match("/^[1-3]$/", $noe) !== 1) die();
 
 $sql = "select noe from tbl_dasteh where id = ? and hesabID = ?";
 $stmt = $con->prepare($sql);
@@ -35,9 +35,8 @@ if ($stmt->fetch())
         $stmt->bind_result($tedad);
         if ($stmt->fetch())
         {
-            if ($noeGhabli == 2 && $noe > 2 && $tedad > 0) die("er:noe");
-            if ($noeGhabli == 3 && ($noe == 2 || $noe == 4) && $tedad > 0) die("er:noe");
-            if ($noeGhabli == 4 && $noe != 4 && $tedad > 0) die("er:noe");
+            if ($noeGhabli == 2 && $noe == 3 && $tedad > 0) die("er:noe");
+            if ($noeGhabli == 3 && $noe == 2 && $tedad > 0) die("er:noe");
         }
         $stmt->close();
     }
@@ -61,7 +60,6 @@ if ($stmt->fetch())
         if ($stmt->fetch()) if ($tedad > 0) die("er:voroodi");
         $stmt->close();
     }
-    elseif ($noe == 4) die("er:noe");
 }
 else die();
 

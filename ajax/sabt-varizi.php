@@ -37,22 +37,21 @@ if ($result !== false && $result->num_rows > 0)
 
 if ((integer)$khoroojiAst == 1)
 {
-    if (isset($_POST["noeID"])) $noeID = $_POST["noeID"]; else die();
     if (isset($_POST["vasilehID"])) $vasilehID = $_POST["vasilehID"]; else die();
-    if (preg_match("/^[1-2]$/", $noeID) !== 1 || preg_match("/^[1-5]$/", $vasilehID) !== 1) die();
-    if ($vasilehID != 3 && $vasilehID != 4) $fard = 0;
+    if (preg_match("/^[1-5]$/", $vasilehID) !== 1) die();
+    if ($vasilehID != 3) $fard = 0;
 
     include ("../code/mohasebeh-mandeh.php");
     if ($mandeh - $mablagh < 0) die("er:mandeh");
 }
 else
 {
-    $noeID = $vasilehID = 0;
+    $vasilehID = 0;
 }
 
-$sql = "insert into tbl_soorathesab (hesabID, khoroojiAst, noeID, vasilehID, dastehID, fardID, mablagh, tarikh, tozih, zamanSabt) values (?,?,?,?,?,?,?,?,?,?)";
+$sql = "insert into tbl_soorathesab (hesabID, khoroojiAst, vasilehID, dastehID, fardID, mablagh, tarikh, tozih, zamanSabt) values (?,?,?,?,?,?,?,?,?)";
 $stmt = $con->prepare($sql);
-$stmt->bind_param("iiiiiiisss", $hesabID, $khoroojiAst, $noeID, $vasilehID, $dastehID, $fard, $mablagh, $tarikh, $tozih, $zamanSabt);
+$stmt->bind_param("iiiiiisss", $hesabID, $khoroojiAst, $vasilehID, $dastehID, $fard, $mablagh, $tarikh, $tozih, $zamanSabt);
 if ($stmt->execute() == true) echo "ok";
 $stmt->close();
 $con->close();
