@@ -94,14 +94,14 @@ function emalTarikh()
                    data: {
                        labels: arrLabels,
                        datasets: [{
-                           label: 'خروجی',
+                           label: 'خروجی ' + bazeh,
                            data: arrDataKhorooji,
                            backgroundColor: 'hsla(352, 100%, 35%, 0.5)',
                            borderColor: 'hsla(352, 100%, 35%, 1)',
                            borderWidth: 1,
                            fill: 'transparent'
                        },{
-                           label: 'ورودی',
+                           label: 'ورودی ' + bazeh,
                            data: arrDataVoroodi,
                            backgroundColor: 'hsla(148, 64%, 45%, 0.5)',
                            borderColor: 'hsl(148, 64%, 45%)',

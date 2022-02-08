@@ -69,7 +69,22 @@ a, a:link, a:visited
 
 #CountainerKadrNamayeshPeygham
 {
-    background-color: hsla(0, 0%, 13%, 0.7);
+    background-color: hsla(0, 0%, 50%, 0.5);
+}
+
+#CountainerKadrViraieshSRT
+{
+    background-color: hsla(0, 0%, 50%, 0.5);
+}
+
+#CountainerKadrViraieshDST
+{
+    background-color: hsla(0, 0%, 50%, 0.5);
+}
+
+#CountainerKadrViraieshTNZ
+{
+    background-color: hsla(0, 0%, 50%, 0.5);
 }
 
 #kadrPeygham

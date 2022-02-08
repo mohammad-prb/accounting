@@ -407,7 +407,7 @@ a.btnJDST:last-child
 {
     position: relative;
     display: block;
-    width: 400px;
+    width: 320px;
     margin: 0 auto;
     overflow: hidden;
     animation: aniFade 0.2s;
@@ -454,7 +454,7 @@ a.btnJDST:last-child
 
 input#dastehVDST
 {
-    width: 263px;
+    width: 197px;
 }
 
 #kadrDokmehVDST
