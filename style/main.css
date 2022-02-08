@@ -726,11 +726,22 @@ a.emkanatHSB:active
     border-bottom: 1px solid hsl(0, 0%, 85%);
 }
 
+.kadrVasetSBT
+{
+    float: right;
+    width: calc(50% - 10px);
+}
+
+.kadrVasetSBT:last-child
+{
+    margin-right: 20px;
+}
+
 .kadrSBT
 {
     position: relative;
     float: right;
-    width: calc(50% - 10px);
+    width: 100%;
     padding: 15px 0 5px;
     margin-bottom: 10px;
     border-radius: 10px;
@@ -739,7 +750,6 @@ a.emkanatHSB:active
 #kadrSBTK
 {
     background-color: hsl(352, 100%, 95%);
-    margin-left: 20px;
 }
 
 #kadrSBTV
@@ -942,7 +952,7 @@ span.meghdarPishnahad
 .kadrVasetAKV
 {
     float: right;
-    width: calc(50% - 40px);
+    width: calc(100% - 40px);
     margin: 0 10px;
     padding: 0 10px;
     border-radius: 8px;
@@ -1068,7 +1078,13 @@ span.meghdarPishnahad
 
     #kadrSabt
     {
-        padding-bottom: 10px;
+        padding: 0;
+    }
+
+    .kadrVasetSBT
+    {
+        width: 100%;
+        margin: 0 0 10px 0 !important;
     }
 
     .kadrSBT
@@ -1138,7 +1154,7 @@ span.meghdarPishnahad
     .kadrVasetAKV
     {
         width: 100%;
-        margin: 5px 0;
+        margin: 0 0 5px 0;
         padding: 0;
     }
 
