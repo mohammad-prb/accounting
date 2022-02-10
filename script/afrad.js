@@ -139,12 +139,13 @@ function hazfAFD(shom)
             bastanLoading(document.getElementById("kadrJadvalDST"));
             if (this.responseText === "ok")
             {
-                flash("فرد با موفقیت حذف شد.");
+                flash("مخاطب با موفقیت حذف شد.");
                 lmn.remove();
                 shomarehBandiAFD();
                 var lmnTedad = document.querySelectorAll(".tedadDST>span.matnTitr")[noe-1];
                 lmnTedad.innerHTML = Number(lmnTedad.innerHTML) - 1;
             }
+            else if (this.responseText === "er:tedad") namayeshPeygham("خطا! این مخاطب قبلا استفاده شده است. برای حذف این مخاطب، ابتدا باید مخاطب تمام واریز هایی که از این مخاطب استفاده کرده اند را تغییر دهید. و یا میتوانید بجای حذف، صرفا وضعیت نمایش را غیر فعال کنید.");
             else namayeshPeygham("حذف با خطا مواجه شد! لطفا دوباره امتحان کنید.");
         }
     };
@@ -166,7 +167,7 @@ function virayeshAFD(lmn)
         '            <a id="kadrPoshtVDST" href="javascript:void(0);" onclick="this.parentElement.parentElement.remove();"></a>\n' +
         '            <div id="kadrVDST">\n' +
         '                <div>\n' +
-        '                    <div id="titrVDST"><span class="icon"></span><span class="matnTitr">ویرایش فرد</span></div>\n' +
+        '                    <div id="titrVDST"><span class="icon"></span><span class="matnTitr">ویرایش مخاطب</span></div>\n' +
         '                    <div class="etelaatVDST">\n' +
         '                        <div class="etelaatSBT">\n' +
         '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">نام فرد:</span></div>\n' +
@@ -226,9 +227,9 @@ function sabtVirayeshAFD(id)
                 lmnTedadGhabli.innerHTML = Number(lmnTedadGhabli.innerHTML) - 1;
                 lmnTedad.innerHTML = Number(lmnTedad.innerHTML) + 1;
             }
-            else if (this.responseText === "er:noe") namayeshPeygham("تغییر نوع غیر مجاز میباشد! برای این تغییر، باید فرد تمام واریز هایی که قبلا از این فرد استفاده کرده اند تغییر دهید.");
-            else if (this.responseText === "er:khorooji") namayeshPeygham("تغییر نوع غیر مجاز میباشد! برای این تغییر، باید فرد تمام واریز های ورودی که قبلا از این فرد استفاده کرده اند تغییر دهید.");
-            else if (this.responseText === "er:voroodi") namayeshPeygham("تغییر نوع غیر مجاز میباشد! برای این تغییر، باید فرد تمام واریز های خروجی که قبلا از این فرد استفاده کرده اند تغییر دهید.");
+            else if (this.responseText === "er:noe") namayeshPeygham("تغییر نوع غیر مجاز میباشد! برای این تغییر، باید مخاطب تمام واریز هایی که قبلا از این مخاطب استفاده کرده اند تغییر دهید.");
+            else if (this.responseText === "er:khorooji") namayeshPeygham("تغییر نوع غیر مجاز میباشد! برای این تغییر، باید مخاطب تمام واریز های ورودی که قبلا از این مخاطب استفاده کرده اند تغییر دهید.");
+            else if (this.responseText === "er:voroodi") namayeshPeygham("تغییر نوع غیر مجاز میباشد! برای این تغییر، باید مخاطب تمام واریز های خروجی که قبلا از این مخاطب استفاده کرده اند تغییر دهید.");
             else namayeshPeygham("ویرایش با خطا مواجه شد! لطفا دوباره امتحان کنید.");
         }
     };
@@ -333,7 +334,7 @@ function sabtFard()
             bastanLoading(document.getElementById("kadrJadvalDST"));
             if (this.responseText.substr(0,2) === "ok")
             {
-                flash("فرد با موفقیت اضافه شد.");
+                flash("مخاطب با موفقیت اضافه شد.");
                 document.getElementById("namDST").value = "";
                 let lmnDasteh = document.createElement("div");
                 lmnDasteh.setAttribute("class", "itemJDST");

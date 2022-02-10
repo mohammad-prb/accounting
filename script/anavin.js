@@ -145,6 +145,7 @@ function hazfDST(shom)
                 var lmnTedad = document.querySelectorAll(".tedadDST>span.matnTitr")[noe-1];
                 lmnTedad.innerHTML = Number(lmnTedad.innerHTML) - 1;
             }
+            else if (this.responseText === "er:tedad") namayeshPeygham("خطا! این دسته قبلا استفاده شده است. برای حذف این دسته، ابتدا باید دسته بندی تمام واریز هایی که از این دسته استفاده کرده اند را تغییر دهید. و یا میتوانید بجای حذف، صرفا وضعیت نمایش را غیر فعال کنید.");
             else namayeshPeygham("حذف با خطا مواجه شد! لطفا دوباره امتحان کنید.");
         }
     };

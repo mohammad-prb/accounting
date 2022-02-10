@@ -20,7 +20,7 @@
             </div>
         </div>
         <div class="etelaatSBT" style="display:none;">
-            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">وسیله:</span></div>
+            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">وسیله:</span></div>
             <div class="kadrENT" id="vasilehSBTK">
                 <span class="kadrPoshtENT"></span>
                 <a class="gozinehENT" onclick="taghirENT(this);taghirVasilehFSRT(this);" data-value="hameh" href="javascript:void(0);">همه</a>

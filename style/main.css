@@ -306,8 +306,9 @@ a.gozinehENT:active
 #matnPeygham
 {
     float: right;
-    width: calc(100% - 15px);
-    margin: 0 15px 10px 0;
+    width: calc(100% - 30px);
+    margin: 0 15px 10px;
+    text-align: justify;
     color: hsl(0, 0%, 40%);
 }
 

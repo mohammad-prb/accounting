@@ -35,6 +35,11 @@ h1#titrHDR
     width: 100%;
 }
 
+h2.titr
+{
+    transition: color 0.3s;
+}
+
 h2.titrTNZ
 {
     float: right;

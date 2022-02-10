@@ -19,7 +19,7 @@
             <a class="btnErsalSBT" href="javascript:void(0);" onclick="sabtVarizi(1);"><span class="icon"></span><span class="matnTitr">ثبت</span></a>
             <div class="kadrEtelaatSBT">
                 <div class="etelaatSBT">
-                    <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">وسیله:</span></div>
+                    <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">وسیله:</span></div>
                     <div class="kadrENT" id="vasilehSBTK">
                         <span class="kadrPoshtENT"></span>
                         <a class="gozinehENT" onclick="taghirENT(this);taghirVasilehSBT(this);" data-value="1" href="javascript:void(0);">کارتخوان</a>
@@ -53,7 +53,7 @@
                     <select name="varizBe" id="varizBeSBTK">
                         <?php
                         $arrAfrad = array();
-                        $sql = "select id, nam, noe, tartib from tbl_afrad where (hesabID = ".$hesabID." or hesabID = 0) and vaziat = 1 and namayesh = 1 order by tartib";
+                        $sql = "select id, nam, noe, tartib from tbl_afrad where (hesabID = ".$hesabID." or hesabID = 0) and vaziat = 1 and namayesh = 1 order by hesabID desc, tartib";
                         $result = $con->query($sql);
                         if ($result !== false && $result->num_rows > 0)
                         {

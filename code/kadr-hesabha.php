@@ -29,7 +29,7 @@
                                     <a href="soorathesab.php?hesabID='. $hesabID .@'" title="صورتحساب" class="emkanatHSB"></a>
                                     <a href="amar.php?hesabID='. $hesabID .@'" title="آمار حساب" class="emkanatHSB"></a>
                                     <a href="anavin.php?hesabID='. $hesabID .@'" title="دسته بندی ها" class="emkanatHSB"></a>
-                                    <a href="afrad.php?hesabID='. $hesabID .@'" title="افراد" class="emkanatHSB"></a>
+                                    <a href="afrad.php?hesabID='. $hesabID .@'" title="مخاطبین" class="emkanatHSB"></a>
                                     <a href="javascript:void(0);" title="بروزرسانی مانده" class="emkanatHSB" onclick="gereftanMandeh('. $row["id"] .@', this.parentElement.parentElement.getElementsByClassName(\'mandehHSB\')[0]);"></a>
                                 </div>
                             </div>';

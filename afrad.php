@@ -37,7 +37,7 @@ else
 <!DOCTYPE html>
 <html lang="fa-ir">
 <head>
-    <title>افراد</title>
+    <title>مخاطبین</title>
     <link rel="stylesheet" href="style/main.css"/>
     <link rel="stylesheet" href="style/anavin-afrad.css"/>
     <?php include ("code/head.php");?>
@@ -51,7 +51,7 @@ else
     <div id="sotoonChap">
         <?php require("code/navar-bala.php");?>
         <div id="kadrTitrAnavin">
-            <h2 class="titr"><span class="icon"></span><span class="matnTitr">افراد</span></h2>
+            <h2 class="titr"><span class="icon"></span><span class="matnTitr">مخاطبین</span></h2>
             <select name="hesabha" class="sltHesabha" onchange="gereftanAfrad();" title="انتخاب حساب">
                 <?php
                 $sql = "select * from tbl_hesab where vaziat = 1 order by tartib";
