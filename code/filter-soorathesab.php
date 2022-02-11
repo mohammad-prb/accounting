@@ -97,14 +97,10 @@
 </div>
 <script>
     document.getElementById("kadrFilterSoorathesab").onkeydown = function(e){if (e.keyCode === 13) emalFilterSRT();};
+    document.getElementsByClassName("txtTarikh")[1].value = "<?php echo $mah;?>";
+    document.getElementsByClassName("txtTarikh")[2].value = "<?php echo $sal;?>";
+
     var tarikhAmadehAst = <?php echo ($tarikhAmadehAst ? 'true' : 'false')?>;
-    if (tarikhAmadehAst || localStorage.getItem("pishfarzSoorathesab") === "mah")
-    {
-        document.getElementsByClassName("txtTarikh")[1].value = "<?php echo $mah;?>";
-        document.getElementsByClassName("txtTarikh")[2].value = "<?php echo $sal;?>";
-    }
-    else if (!tarikhAmadehAst || localStorage.getItem("pishfarzSoorathesab") === "sal")
-    {
-            document.getElementsByClassName("txtTarikh")[2].value = "<?php echo $sal;?>";
-    }
+    if (!tarikhAmadehAst && localStorage.getItem("pishfarzSoorathesab") === "rooz")
+            document.getElementsByClassName("txtTarikh")[0].value = "<?php echo $rooz;?>";
 </script>

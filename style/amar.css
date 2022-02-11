@@ -149,7 +149,7 @@ a#btnSoorathesabAMR, a#btnSoorathesabAMR:link, a#btnSoorathesabAMR:visited
 {
     float: right;
     width: calc(100% - 22px);
-    margin: 20px 0;
+    margin: 20px 0 0;
     padding: 10px;
     border-radius: 8px;
     text-align: center;
@@ -180,9 +180,9 @@ a#btnSoorathesabAMR:active
 {
     float: right;
     width: calc(100% - 32px);
+    margin: 20px 0 0;
     padding: 12px 15px 10px;
     border-radius: 8px;
-    /*background-color: hsl(0, 0%, 97%);*/
     border: 1px solid hsl(0, 0%, 80%);
 }
 

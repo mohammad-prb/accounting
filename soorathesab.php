@@ -36,6 +36,7 @@ else
 
 $sal = jdate("Y", "", "", "Asia/Tehran", "en");
 $mah = jdate("m", "", "", "Asia/Tehran", "en");
+$rooz = jdate("d", "", "", "Asia/Tehran", "en");
 $tarikhAmadehAst = false;
 if (isset($_GET["tarikh"]) && strpos($_GET["tarikh"], "/") !== false)
 {

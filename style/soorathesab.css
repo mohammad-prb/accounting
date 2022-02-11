@@ -488,6 +488,7 @@ a.btnEmkanatSelect:active
     float: left;
     font-size: 1.25rem;
     padding: 0 0 0 10px;
+    cursor: pointer;
 }
 
 #noeVarizVSRT[data-khorooji-ast="1"]

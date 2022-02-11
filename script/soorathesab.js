@@ -133,7 +133,7 @@ function emalFilterSRT()
         namayeshPeygham("روز اشتباه است.");
     }
 
-    if (!check(mah, "^(|0?[1-9]|1[0-2])$")) {
+    if (!check(mah, "^(0?[1-9]|1[0-2])$")) {
         namayeshPeygham("ماه اشتباه است.");
     }
 
@@ -513,7 +513,7 @@ function virayeshSRT(lmn)
         '        <div id="kadrVSRT">\n' +
         '            <div>\n' +
         '                <div id="titrVSRT"><span class="icon"></span><span class="matnTitr">ویرایش صورتحساب</span></div>\n' +
-        '                <div id="noeVarizVSRT" data-khorooji-ast="'+ khoroojiAst +'">'+ (khoroojiAst===1?"خروجی":"ورودی") +'</div>\n';
+        '                <div id="noeVarizVSRT" data-khorooji-ast="'+ khoroojiAst +'" onclick="namayeshPeygham(\'تغییر نوع امکان پذیر نیست. درصورت تمایل این واریز را حذف کنید و واریز دیگری ثبت کنید.\')">'+ (khoroojiAst===1?"خروجی":"ورودی") +'</div>\n';
 
     if (khoroojiAst === 1)
     {
@@ -678,6 +678,7 @@ function sabtVirayeshSRT(id)
 
                 if (khoroojiAst === 1)
                 {
+                    lmn.dataset.vasilehId = vasilehID;
                     var lmnKhorooji = document.getElementById("meghdarKhoroojiSRT");
                     lmnKhorooji.innerHTML = momayezdar(hazfMomayez(lmnKhorooji.innerHTML) - mablaghGhabli + Number(mablagh));
                     lmnTaraz.innerHTML = momayezdar(hazfMomayez(lmnTaraz.innerHTML) + mablaghGhabli - Number(mablagh));
@@ -691,6 +692,7 @@ function sabtVirayeshSRT(id)
 
                     if (Number(vasilehID) === 3)
                     {
+                        lmn.dataset.fardId = fard;
                         var lmnVarizBe = document.getElementById("varizBeVSRT");
                         strHTML += '<div class="etelaatSTB">\n' +
                             '                    <div class="onvanEtelaatSTB"><span class="icon riz"></span><span class="matnTitr riz">واریز به:</span></div>\n' +
@@ -704,6 +706,7 @@ function sabtVirayeshSRT(id)
                     lmnVoroodi.innerHTML = momayezdar(hazfMomayez(lmnVoroodi.innerHTML) - mablaghGhabli + Number(mablagh));
                     lmnTaraz.innerHTML = momayezdar(hazfMomayez(lmnTaraz.innerHTML) - mablaghGhabli + Number(mablagh));
 
+                    lmn.dataset.fardId = fard;
                     var lmnVarizKonandeh = document.getElementById("varizKonandehVSRT");
                     strHTML += '<div class="etelaatSTB">\n' +
                         '                    <div class="onvanEtelaatSTB"><span class="icon riz"></span><span class="matnTitr riz">واریز از:</span></div>\n' +
@@ -711,6 +714,7 @@ function sabtVirayeshSRT(id)
                         '                </div>';
                 }
 
+                lmn.dataset.dastehId = dastehID;
                 var lmnDasteh = document.getElementById("dastehVSRT");
                 strHTML += '<div class="etelaatSTB">\n' +
                     '                    <div class="onvanEtelaatSTB"><span class="icon riz"></span><span class="matnTitr riz">دسته:</span></div>\n' +

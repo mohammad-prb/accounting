@@ -2,7 +2,7 @@
 function tanzimSafTanzimat()
 {
     taghirENT(document.querySelectorAll('#theme>.gozinehENT')[Number(localStorage.getItem('darkmode'))]);
-    taghirENT(document.querySelectorAll('#pishfarzSoorathesab>.gozinehENT')[(localStorage.getItem('pishfarzSoorathesab')==="mah"?0:1)]);
+    taghirENT(document.querySelectorAll('#pishfarzSoorathesab>.gozinehENT')[(localStorage.getItem('pishfarzSoorathesab')==="rooz"?0:1)]);
     taghirENT(document.querySelectorAll('#pishfarzAmar>.gozinehENT')[(localStorage.getItem('pishfarzAmar')==="mah"?0:1)]);
 }
 

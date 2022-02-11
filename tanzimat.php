@@ -130,8 +130,8 @@ $safheh = "tanzimat";
                 <div class="titrPSH"><span class="icon"></span><span class="matnTitr">بازه صورتحساب:</span></div>
                 <div class="kadrENT" id="pishfarzSoorathesab">
                     <span class="kadrPoshtENT"></span>
+                    <a class="gozinehENT" onclick="taghirENT(this);taghirPishfarzSRT(this);" data-value="rooz" href="javascript:void(0);">روز جاری</a>
                     <a class="gozinehENT" onclick="taghirENT(this);taghirPishfarzSRT(this);" data-value="mah" href="javascript:void(0);">ماه جاری</a>
-                    <a class="gozinehENT" onclick="taghirENT(this);taghirPishfarzSRT(this);" data-value="sal" href="javascript:void(0);">سال جاری</a>
                 </div>
             </div>
             <div class="kadrPSH">

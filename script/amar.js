@@ -41,7 +41,13 @@ function emalTarikh()
                 document.getElementById("meghdarJamTedad").innerHTML = momayezdar(Number(objNatijeh["tedadKhorooji"]) + Number(objNatijeh["tedadVoroodi"]));
                 document.getElementById("meghdarKhorooji").innerHTML = momayezdar(Number(objNatijeh["tedadKhorooji"]));
                 document.getElementById("meghdarVoroodi").innerHTML = momayezdar(Number(objNatijeh["tedadVoroodi"]));
-                document.getElementById("btnSoorathesabAMR").href = "soorathesab.php?hesabID="+ hesabID +"&tarikh=" + sal + "/" + mah;
+
+                if (mah !== "")
+                {
+                    document.getElementById("btnSoorathesabAMR").style.display = "block";
+                    document.getElementById("btnSoorathesabAMR").href = "soorathesab.php?hesabID="+ hesabID +"&tarikh=" + sal + "/" + mah;
+                }
+                else document.getElementById("btnSoorathesabAMR").style.display = "none";
 
                 /*  لیست دسته بندی ها  */
                 var lmnKadr = document.getElementById("listDasteha");
