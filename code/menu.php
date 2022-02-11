@@ -13,3 +13,4 @@
     </div>
 </div>
 <div id="kadrMeshkiMNU" onclick="bazobastMNU(0);"></div>
+<a href="#" id="btnBoroBala"></a>

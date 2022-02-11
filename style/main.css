@@ -562,6 +562,37 @@ span.matnItemMNU
     display: none;
 }
 
+a#btnBoroBala, a#btnBoroBala:link, a#btnBoroBala:visited
+{
+    position: fixed;
+    top: -45px;
+    left: 0;
+    right: 0;
+    z-index: 5;
+    width: 24px;
+    height: 24px;
+    padding: 8px;
+    margin: auto;
+    border-radius: 50%;
+    background-color: hsl(0, 0%, 100%);
+    box-shadow: 0 0 5px hsl(0, 0%, 80%);
+    text-align: center;
+    font-family: myIcon;
+    font-size: 1.5rem;
+    transition: background-color 0.1s, top 0.2s;
+}
+
+a#btnBoroBala:hover
+{
+    background-color: hsl(0, 0%, 95%);
+}
+
+a#btnBoroBala:active
+{
+    transition: none;
+    background-color: hsl(0, 0%, 97%);
+}
+
 
 /*  ستون چپ  */
 

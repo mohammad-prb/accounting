@@ -445,3 +445,10 @@ function gereftanMandeh(hesabID, lmn)
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("hesabID="+hesabID+"&tk="+tkn);
 }
+
+/*  آمدن و رفتن دکمه برو بالا  */
+window.addEventListener("scroll", function ()
+{
+    if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) document.getElementById("btnBoroBala").style.top = "20px";
+    else document.getElementById("btnBoroBala").style.top = "-45px";
+});
