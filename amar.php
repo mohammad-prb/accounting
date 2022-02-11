@@ -33,6 +33,23 @@ else
     }
     else header("location:tanzimat.php?p");
 }
+
+$sal = jdate("Y", "", "", "Asia/Tehran", "en");
+$mah = jdate("m", "", "", "Asia/Tehran", "en");
+$tarikhAmadehAst = false;
+if (isset($_GET["tarikh"]) && strpos($_GET["tarikh"], "/") !== false)
+{
+    $tarikhAmadehAst = true;
+    $sal = (integer)explode("/", $_GET["tarikh"])[0];
+    $mah = (integer)explode("/", $_GET["tarikh"])[1];
+
+    if ($mah == 0 || $sal == 0)
+    {
+        $tarikhAmadehAst = false;
+        $sal = jdate("Y", "", "", "Asia/Tehran", "en");
+        $mah = jdate("m", "", "", "Asia/Tehran", "en");
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="fa-ir">
@@ -73,15 +90,11 @@ else
                 <a id="btnFSRT" href="javascript:void(0);" onclick="emalTarikh();"><span class="icon"></span><span class="matnTitr">اعمال</span></a>
                 <script>
                     document.getElementById("kadrFilterAMR").onkeydown = function(e){if (e.keyCode === 13) emalTarikh();};
-                    if (localStorage.getItem("pishfarzAmar") === "mah")
-                    {
-                        document.getElementsByClassName("txtTarikh")[0].value = <?php echo jdate("m", "", "", "Asia/Tehran", "en");?>;
-                        document.getElementsByClassName("txtTarikh")[1].value = <?php echo jdate("Y", "", "", "Asia/Tehran", "en");?>;
-                    }
-                    else if (localStorage.getItem("pishfarzAmar") === "sal")
-                    {
-                        document.getElementsByClassName("txtTarikh")[1].value = <?php echo jdate("Y", "", "", "Asia/Tehran", "en");?>;
-                    }
+                    document.getElementsByClassName("txtTarikh")[1].value = <?php echo $sal;?>;
+
+                    var tarikhAmadehAst = <?php echo ($tarikhAmadehAst ? 'true' : 'false')?>;
+                    if (tarikhAmadehAst || localStorage.getItem("pishfarzAmar") === "mah")
+                        document.getElementsByClassName("txtTarikh")[0].value = "<?php echo $mah;?>";
                 </script>
             </div>
             <div id="kadrAmar">

@@ -36,8 +36,9 @@ input.txtTozih
 a#emalFilter, a#emalFilter:link, a#emalFilter:visited
 {
     float: right;
-    width: 100%;
+    width: calc(100% - 49px);
     padding: 8px 0;
+    margin-left: 5px;
     border-radius: 8px;
     text-align: center;
     color: hsl(39, 100%, 20%);
@@ -53,7 +54,7 @@ a#emalFilter:hover
 a#emalFilter:active
 {
     transition: none;
-    background-color: hsl(39, 100%, 75%);
+    background-color: hsl(39, 100%, 83%);
 }
 
 span#kadrVasetEmalFilter
@@ -61,6 +62,32 @@ span#kadrVasetEmalFilter
     display: block;
     width: 98px;
     margin: auto;
+}
+
+a#btnAmaSRT, a#btnAmaSRT:link, a#btnAmaSRT:visited
+{
+    float: left;
+    width: 26px;
+    height: 26px;
+    padding: 8px;
+    border-radius: 8px;
+    text-align: center;
+    background-color: hsl(204, 100%, 90%);
+    color: hsl(204, 100%, 30%);
+    font-family: myIcon;
+    font-size: 1.5rem;
+    transition: background-color 0.1s;
+}
+
+a#btnAmaSRT:hover
+{
+    background-color: hsl(204, 100%, 83%);
+}
+
+a#btnAmaSRT:active
+{
+    transition: none;
+    background-color: hsl(204, 100%, 86%);
 }
 
 #kadrAmarSoorathesab
@@ -137,6 +164,7 @@ a#btnSelectAll:active
 .kadrDorSTB[data-vaziat="1"]>.kadrSTB
 {
     transform: scale(0.93);
+    outline: 2px solid hsl(204, 100%, 50%);
     pointer-events: none;
 }
 
@@ -535,6 +563,11 @@ a.btnEmkanatSelect:active
 @media only screen and (max-width: 1000px)
 {
     a#emalFilter, a#emalFilter:link, a#emalFilter:visited
+    {
+        margin-top: 10px;
+    }
+
+    a#btnAmaSRT, a#btnAmaSRT:link, a#btnAmaSRT:visited
     {
         margin-top: 10px;
     }

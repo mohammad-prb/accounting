@@ -137,6 +137,7 @@ function emalFilterSRT()
 
     if (errorDarad) return;
     strQ += "&dastehID=" + dastehID + "&fard=" + fard + "&rooz=" + rooz + "&mah=" + mah + "&sal=" + sal + "&mablagh=" + mablagh + "&tozih=" + tozih;
+    document.getElementById("btnAmaSRT").href = "amar.php?hesabID=" + hesabID + "&tarikh=" + sal + "/" + mah;
     laghvSelect();
 
     var xhttp = new XMLHttpRequest();

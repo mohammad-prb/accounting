@@ -93,6 +93,7 @@
                 <span class="matnTitr">اعمال فیلتر</span>
             </span>
         </a>
+        <a id="btnAmaSRT" href="amar.php" title="آمار"></a>
     </div>
 </div>
 <script>
