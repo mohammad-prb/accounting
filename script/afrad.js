@@ -199,15 +199,14 @@ function virayeshAFD(lmn)
 /*      ثبت ویرایش فرد      */
 function sabtVirayeshAFD(id)
 {
+    errorDarad = false;
     var hesabID = Number(document.getElementsByClassName("sltHesabha")[0].value);
     var nam = document.getElementById("fardVDST").value.trim().replace(/(<([^>]+)>)/ig, '');
     var noe = document.getElementById("noeVDST").dataset.value;
     var noeGhabli = Number(document.querySelectorAll(".itemJDST[data-id='"+id+"']>.etelaatJDST")[0].dataset.noe);
 
-    if (nam.length < 1) {
-        namayeshPeygham("لطفا نام فرد را پر کنید.");
-        return;
-    }
+    if (nam.length < 1) errorInput(document.getElementById("fardVDST"));
+    if (errorDarad) return;
 
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function ()
@@ -312,16 +311,15 @@ function sabtJabejaei()
 /*      افزودن فرد      */
 function sabtFard()
 {
+    errorDarad = false;
     var hesabID = Number(document.getElementsByClassName("sltHesabha")[0].value);
     var nam = document.getElementById("namDST").value.trim().replace(/(<([^>]+)>)/ig, '');
     var noe = document.getElementById("noeDST").dataset.value;
     var arrLmn = document.getElementsByClassName("itemJDST");
     var tartib = 1;
 
-    if (nam.length < 1) {
-        namayeshPeygham("لطفا نام فرد را پر کنید.");
-        return;
-    }
+    if (nam.length < 1) errorInput(document.getElementById("namDST"));
+    if (errorDarad) return;
 
     if (arrLmn.length > 1)
         tartib = Number(arrLmn[arrLmn.length-2].dataset.tartib) + 1;

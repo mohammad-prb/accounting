@@ -292,11 +292,15 @@ function peymayeshPishnahadha(balaAst)
 function entekhabPishnahad(lmn, shom)
 {
     lmn.focus();
-    if (shom === undefined)
-        document.activeElement.value = document.querySelector("a.itemPishnahad[data-entekhabi]>span.titrPishnahad").innerHTML.trim();
-    else
-        lmn.value = document.getElementsByClassName("titrPishnahad")[shom].innerHTML.trim();
-    taghirPishnahad(lmn);
+    var lmnPishnehad = document.querySelector("a.itemPishnahad[data-entekhabi]>span.titrPishnahad");
+    if (lmnPishnehad)
+    {
+        if (shom === undefined)
+            document.activeElement.value = lmnPishnehad.innerHTML.trim();
+        else
+            lmn.value = document.getElementsByClassName("titrPishnahad")[shom].innerHTML.trim();
+        taghirPishnahad(lmn);
+    }
 }
 
 /*      قطع پیشنهاد ها      */
@@ -308,10 +312,26 @@ function ghatePishnahad(lmn)
     },1)
 }
 
+var errorDarad;
+/*      ارور اینپوت ها      */
+function errorInput(lmn)
+{
+    errorDarad = true;
+    if (lmn.getAttribute("data-error") !== null) return;
+    lmn.dataset.error = "";
+    var fnc = () => {
+        lmn.removeAttribute("data-error");
+        lmn.removeEventListener("click", fnc);
+    };
+    lmn.addEventListener("click", fnc);
+}
+
 /*      ثبت واریزی      */
 function sabtVarizi(noe)
 {
     if (document.querySelector("a.itemPishnahad[data-entekhabi]")) return;
+    errorDarad = false;
+    var hesabID = Number(document.getElementsByClassName("sltHesabha")[0].value);
     var strQ = "khoroojiAst=" + noe;
 
     if (noe === 1)
@@ -326,6 +346,11 @@ function sabtVarizi(noe)
         var mablagh = document.getElementById("mablaghSBTK").value.toString();
         var tozih = document.getElementById("tozihSBTK").value.toString().replace(/(<([^>]+)>)/ig, '');
         strQ += "&vasilehID=" + vasilehID;
+
+        if (!check(rooz, "^(0?[1-9]|[1-2][0-9]|3[0-1])$")) errorInput(document.querySelectorAll("#tarikhSBTK>input.txtTarikh")[0]);
+        if (!check(mah, "^(0?[1-9]|1[0-2])$")) errorInput(document.querySelectorAll("#tarikhSBTK>input.txtTarikh")[1]);
+        if (!check(sal, "^[1-9][0-9]{3}$")) errorInput(document.querySelectorAll("#tarikhSBTK>input.txtTarikh")[2]);
+        if (!check(mablagh, "^[1-9][0-9]*$")) errorInput(document.getElementById("mablaghSBTK"));
     }
     else if (noe === 0)
     {
@@ -337,42 +362,16 @@ function sabtVarizi(noe)
         var sal = document.querySelectorAll("#tarikhSBTV>input.txtTarikh")[2].value.toString();
         var mablagh = document.getElementById("mablaghSBTV").value.toString();
         var tozih = document.getElementById("tozihSBTV").value.toString().replace(/(<([^>]+)>)/ig, '');
+
+        if (!check(rooz, "^(0?[1-9]|[1-2][0-9]|3[0-1])$")) errorInput(document.querySelectorAll("#tarikhSBTV>input.txtTarikh")[0]);
+        if (!check(mah, "^(0?[1-9]|1[0-2])$")) errorInput(document.querySelectorAll("#tarikhSBTV>input.txtTarikh")[1]);
+        if (!check(sal, "^[1-9][0-9]{3}$")) errorInput(document.querySelectorAll("#tarikhSBTV>input.txtTarikh")[2]);
+        if (!check(mablagh, "^[1-9][0-9]*$")) errorInput(document.getElementById("mablaghSBTV"));
     }
     else return;
 
-    var hesabID = Number(document.getElementsByClassName("sltHesabha")[0].value);
-    strQ += "&hesabID=" + hesabID;
-
-    if (!check(dastehID, "^[1-9]+[0-9]*$") || !check(fard, "^[1-9]+[0-9]*$")) {
-        namayeshPeygham("لطفا فیلد هارا برسی کرده، و مجددا تلاش کنید.");
-        return;
-    }
-    strQ += "&dastehID=" + dastehID + "&fard=" + fard;
-
-    if (!check(rooz, "^(0?[1-9]|[1-2][0-9]|3[0-1])$")) {
-        namayeshPeygham("روز اشتباه است.");
-        return;
-    }
-    strQ += "&rooz=" + rooz;
-
-    if (!check(mah, "^(0?[1-9]|1[0-2])$")) {
-        namayeshPeygham("ماه اشتباه است.");
-        return;
-    }
-    strQ += "&mah=" + mah;
-
-    if (!check(sal, "^[1-9][0-9]{3}$")) {
-        namayeshPeygham("سال اشتباه است.");
-        return;
-    }
-    strQ += "&sal=" + sal;
-
-    if (!check(mablagh, "^[1-9][0-9]*$")) {
-        namayeshPeygham("مبلغ اشتباه است.");
-        return;
-    }
-    strQ += "&mablagh=" + mablagh;
-    strQ += "&tozih=" + tozih;
+    if (errorDarad) return;
+    strQ += "&hesabID=" + hesabID + "&dastehID=" + dastehID + "&fard=" + fard + "&rooz=" + rooz + "&mah=" + mah + "&sal=" + sal + "&mablagh=" + mablagh + "&tozih=" + tozih;
 
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function ()

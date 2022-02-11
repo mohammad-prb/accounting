@@ -1,26 +1,20 @@
 /*      اعمال تاریخ در آمار حساب      */
 function emalTarikh()
 {
+    errorDarad = false;
     var hesabID = Number(document.getElementsByClassName("sltHesabha")[0].value);
     var mah = document.querySelectorAll("#tarikhFSRT>input.txtTarikh")[0].value.toString().trim();
     var sal = document.querySelectorAll("#tarikhFSRT>input.txtTarikh")[1].value.toString().trim();
     var bazeh;
 
+    if (!check(mah, "^(|0?[1-9]|1[0-2])$")) errorInput(document.querySelectorAll("#tarikhFSRT>input.txtTarikh")[0]);
+    if (!check(sal, "^(|[1-9][0-9]{3})$")) errorInput(document.querySelectorAll("#tarikhFSRT>input.txtTarikh")[1]);
     if (sal === "" && mah !== "") {
+        errorInput(document.querySelectorAll("#tarikhFSRT>input.txtTarikh")[1]);
         namayeshPeygham("خطا. زمانی میتوانید ماه را وارد کنید که سال را هم وارد کنید.");
-        return;
     }
 
-    if (!check(sal, "^(|[1-9][0-9]{3})$")) {
-        namayeshPeygham("سال اشتباه است.");
-        return;
-    }
-
-    if (!check(mah, "^(|0?[1-9]|1[0-2])$")) {
-        namayeshPeygham("ماه اشتباه است.");
-        return;
-    }
-
+    if (errorDarad) return;
     if (sal !== "" && mah !== "") bazeh = "روز";
     else if (sal !== "") bazeh = "ماه";
     else bazeh = "سال";

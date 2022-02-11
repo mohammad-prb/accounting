@@ -36,6 +36,11 @@ select
     color: hsl(0, 0%, 90%);
 }
 
+input[data-error], textarea[data-error], select[data-error]
+{
+    background-color: hsl(0, 84%, 10%) !important;
+}
+
 option
 {
     background-color: hsl(0, 0%, 3%);

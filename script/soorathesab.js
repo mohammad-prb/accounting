@@ -111,6 +111,7 @@ function tavizHesabSRT(lmn)
 /*      تابع اعمال فیلتر صورتحساب      */
 function emalFilterSRT()
 {
+    errorDarad = false;
     var noeVariz = document.getElementById("khoroojiAstSBTK").dataset.value.trim().toString();
     var hesabID = Number(document.getElementsByClassName("sltHesabha")[0].value);
     var strQ = "noeVariz=" + noeVariz + "&hesabID=" + hesabID;
@@ -129,22 +130,12 @@ function emalFilterSRT()
     var mablagh = document.getElementById("mablaghSBTK").value.trim().toString();
     var tozih = document.getElementById("tozihSBTK").value.trim().toString();
 
-    if (!check(rooz, "^(|0?[1-9]|[1-2][0-9]|3[0-1])$")) {
-        namayeshPeygham("روز اشتباه است.");
-    }
+    if (!check(rooz, "^(|0?[1-9]|[1-2][0-9]|3[0-1])$")) errorInput(document.querySelectorAll("#tarikhSBTK>input")[0]);
+    if (!check(mah, "^(0?[1-9]|1[0-2])$")) errorInput(document.querySelectorAll("#tarikhSBTK>input")[1]);
+    if (!check(sal, "^[1-9][0-9]{3}$")) errorInput(document.querySelectorAll("#tarikhSBTK>input")[2]);
+    if (!check(mablagh, "^(|[1-9][0-9]*)$")) errorInput(document.getElementById("mablaghSBTK"));
 
-    if (!check(mah, "^(0?[1-9]|1[0-2])$")) {
-        namayeshPeygham("ماه اشتباه است.");
-    }
-
-    if (!check(sal, "^[1-9][0-9]{3}$")) {
-        namayeshPeygham("سال اشتباه است. (سال باید یک عدد 4 رقمی باشد)");
-    }
-
-    if (!check(mablagh, "^(|[1-9][0-9]*)$")) {
-        namayeshPeygham("مبلغ اشتباه است.");
-    }
-
+    if (errorDarad) return;
     strQ += "&dastehID=" + dastehID + "&fard=" + fard + "&rooz=" + rooz + "&mah=" + mah + "&sal=" + sal + "&mablagh=" + mablagh + "&tozih=" + tozih;
     laghvSelect();
 
@@ -610,6 +601,7 @@ function virayeshSRT(lmn)
 /*      ثبت ویرایش صورتحساب      */
 function sabtVirayeshSRT(id)
 {
+    errorDarad = false;
     var khoroojiAst = Number(document.getElementById("noeVarizVSRT").dataset.khoroojiAst);
     var hesabID = Number(document.getElementsByClassName("sltHesabha")[0].value);
     var strQ = "id=" + id + "&khoroojiAst=" + khoroojiAst + "&hesabID=" + hesabID;
@@ -630,36 +622,13 @@ function sabtVirayeshSRT(id)
     var mablagh = document.getElementById("mablaghVSRT").value.toString();
     var tozih = document.getElementById("tozihVSRT").value.toString().replace(/(<([^>]+)>)/ig, '');
 
-    if (!check(dastehID, "^[1-9]+[0-9]*$") || !check(fard, "^[1-9]+[0-9]*$")) {
-        namayeshPeygham("لطفا فیلد هارا برسی کرده، و مجددا تلاش کنید.");
-        return;
-    }
-    strQ += "&dastehID=" + dastehID + "&fard=" + fard;
+    if (!check(rooz, "^(0?[1-9]|[1-2][0-9]|3[0-1])$")) errorInput(document.querySelectorAll("#tarikhVSRT>input.txtTarikh")[0]);
+    if (!check(mah, "^(0?[1-9]|1[0-2])$")) errorInput(document.querySelectorAll("#tarikhVSRT>input.txtTarikh")[1]);
+    if (!check(sal, "^[1-9][0-9]{3}$")) errorInput(document.querySelectorAll("#tarikhVSRT>input.txtTarikh")[2]);
+    if (!check(mablagh, "^[1-9][0-9]*$")) errorInput(document.getElementById("mablaghVSRT"));
 
-    if (!check(rooz, "^(0?[1-9]|[1-2][0-9]|3[0-1])$")) {
-        namayeshPeygham("روز اشتباه است.");
-        return;
-    }
-    strQ += "&rooz=" + rooz;
-
-    if (!check(mah, "^(0?[1-9]|1[0-2])$")) {
-        namayeshPeygham("ماه اشتباه است.");
-        return;
-    }
-    strQ += "&mah=" + mah;
-
-    if (!check(sal, "^[1-9][0-9]{3}$")) {
-        namayeshPeygham("سال اشتباه است.");
-        return;
-    }
-    strQ += "&sal=" + sal;
-
-    if (!check(mablagh, "^[1-9][0-9]*$")) {
-        namayeshPeygham("مبلغ اشتباه است.");
-        return;
-    }
-    strQ += "&mablagh=" + mablagh;
-    strQ += "&tozih=" + tozih;
+    if (errorDarad) return;
+    strQ += "&dastehID=" + dastehID + "&fard=" + fard + "&rooz=" + rooz + "&mah=" + mah + "&sal=" + sal + "&mablagh=" + mablagh + "&tozih=" + tozih;
 
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function ()

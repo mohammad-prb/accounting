@@ -101,7 +101,7 @@ input, textarea
     border-radius: 8px;
     font-family: vazir;
     font-size: 1rem;
-    transition: background-color 0.2s;
+    transition: background-color 0.1s, border-color 0.1s;
 }
 
 input:focus, textarea:focus
@@ -122,6 +122,12 @@ select
 select:focus
 {
     outline: 0;
+}
+
+input[data-error], textarea[data-error], select[data-error]
+{
+    border-color: hsl(0, 84%, 50%) !important;
+    background-color: hsl(0, 84%, 92%) !important;
 }
 
 a.togel, a.togel:link, a.togel:visited
@@ -455,7 +461,7 @@ img.loading
     height: 100%;
     overflow: auto;
     background-color: white;
-    transition: right 0.3s, background-color 0.3s;
+    transition: right 0.3s, background-color 0.1s;
 }
 
 img#aksHDR
@@ -512,7 +518,7 @@ a.itemMNU, a.itemMNU:link, a.itemMNU:visited
     padding: 8px 25px 8px 0;
     overflow: auto;
     border-radius: 21px 0 0 21px;
-    transition: background-color 0.3s, color 0.3s;
+    transition: background-color 0.1s, color 0.1s;
 }
 
 a.itemMNU:hover
@@ -577,7 +583,7 @@ span.matnItemMNU
     margin-bottom: 20px;
     overflow: auto;
     color: hsl(0, 0%, 30%);
-    transition: border-bottom-color 0.3s;
+    transition: border-bottom-color 0.1s;
 }
 
 .tarikhNVB

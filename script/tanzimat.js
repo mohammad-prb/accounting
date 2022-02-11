@@ -164,31 +164,18 @@ function virayeshHSB(lmn)
 /*      ثبت ویرایش حساب      */
 function sabtVirayeshHSB(id)
 {
+    errorDarad = false;
     var nam = document.getElementById("namVTNZ").value.trim().replace(/(<([^>]+)>)/ig, '');
     var shomHesab = document.getElementById("shomHesabVTNZ").value.trim();
     var shomKart = document.getElementById("shomKartVTNZ").value.trim();
     var mandehTaraz = document.getElementById("mandehVTNZ").value.trim();
     var bankID = document.getElementById("bankVTNZ").value.trim();
 
-    if (!check(nam, "^.{1,30}$")) {
-        namayeshPeygham("نام اشتباه است.");
-        return;
-    }
-
-    if (!check(shomHesab, "^[0-9]{1,100}$")) {
-        namayeshPeygham("شماره حساب اشتباه است.");
-        return;
-    }
-
-    if (!check(shomKart, "^[0-9]{16}$")) {
-        namayeshPeygham("شماره کارت اشتباه است.");
-        return;
-    }
-
-    if (!check(mandehTaraz, "^(0|[1-9][0-9]*)$")) {
-        namayeshPeygham("مانده تراز اشتباه است.");
-        return;
-    }
+    if (!check(nam, "^.{1,30}$")) errorInput(document.getElementById("namVTNZ"));
+    if (!check(shomHesab, "^[0-9]{1,100}$")) errorInput(document.getElementById("shomHesabVTNZ"));
+    if (!check(shomKart, "^[0-9]{16}$")) errorInput(document.getElementById("shomKartVTNZ"));
+    if (!check(mandehTaraz, "^(0|[1-9][0-9]*)$")) errorInput(document.getElementById("mandehVTNZ"));
+    if (errorDarad) return;
 
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function ()
@@ -220,31 +207,18 @@ function sabtVirayeshHSB(id)
 /*      افزودن حساب      */
 function sabtHesab()
 {
+    errorDarad = false;
     var nam = document.getElementById("namATNZ").value.trim().replace(/(<([^>]+)>)/ig, '');
     var bank = document.getElementById("bankATNZ").value.trim();
     var shomHesab = document.getElementById("shomHesabATNZ").value.trim();
     var shomKart = document.getElementById("shomKartATNZ").value.trim();
     var taraz = document.getElementById("mandehATNZ").value.trim();
 
-    if (!check(nam, "^.{1,30}$")) {
-        namayeshPeygham("نام اشتباه است.");
-        return;
-    }
-
-    if (!check(shomHesab, "^[0-9]{1,100}$")) {
-        namayeshPeygham("شماره حساب اشتباه است.");
-        return;
-    }
-
-    if (!check(shomKart, "^[0-9]{16}$")) {
-        namayeshPeygham("شماره کارت اشتباه است.");
-        return;
-    }
-
-    if (!check(taraz, "^(0|[1-9][0-9]*)$")) {
-        namayeshPeygham("مانده تراز اشتباه است.");
-        return;
-    }
+    if (!check(nam, "^.{1,30}$")) errorInput(document.getElementById("namATNZ"));
+    if (!check(shomHesab, "^[0-9]{1,100}$")) errorInput(document.getElementById("shomHesabATNZ"));
+    if (!check(shomKart, "^[0-9]{16}$")) errorInput(document.getElementById("shomKartATNZ"));
+    if (!check(taraz, "^(0|[1-9][0-9]*)$")) errorInput(document.getElementById("mandehATNZ"));
+    if (errorDarad) return;
 
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function ()

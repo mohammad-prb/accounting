@@ -199,15 +199,14 @@ function virayeshDST(lmn)
 /*      ثبت ویرایش دسته      */
 function sabtVirayeshDST(id)
 {
+    errorDarad = false;
     var hesabID = Number(document.getElementsByClassName("sltHesabha")[0].value);
     var onvan = document.getElementById("dastehVDST").value.trim().replace(/(<([^>]+)>)/ig, '');
     var noe = document.getElementById("noeVDST").dataset.value;
     var noeGhabli = Number(document.querySelectorAll(".itemJDST[data-id='"+id+"']>.etelaatJDST")[0].dataset.noe);
 
-    if (onvan.length < 1) {
-        namayeshPeygham("لطفا نام دسته را پر کنید.");
-        return;
-    }
+    if (onvan.length < 1) errorInput(document.getElementById("dastehVDST"));
+    if (errorDarad) return;
 
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function ()
@@ -313,16 +312,15 @@ function sabtJabejaei()
 /*      افزودن دسته      */
 function sabtDasteh()
 {
+    errorDarad = false;
     var hesabID = Number(document.getElementsByClassName("sltHesabha")[0].value);
     var onvan = document.getElementById("dastehDST").value.trim().replace(/(<([^>]+)>)/ig, '');
     var noe = document.getElementById("noeDST").dataset.value;
     var arrLmn = document.getElementsByClassName("itemJDST");
     var tartib = 1;
 
-    if (onvan.length < 1) {
-        namayeshPeygham("لطفا نام دسته را پر کنید.");
-        return;
-    }
+    if (onvan.length < 1) errorInput(document.getElementById("dastehDST"));
+    if (errorDarad) return;
 
     if (arrLmn.length > 1)
         tartib = Number(arrLmn[arrLmn.length-2].dataset.tartib) + 1;
