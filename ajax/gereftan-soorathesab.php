@@ -23,7 +23,7 @@ if (preg_match("/^(hameh|[1-9]+[0-9]*)$/", $dastehID) !== 1) die();
 if (preg_match("/^(hameh|[1-9]+[0-9]*)$/", $fard) !== 1) die();
 if (preg_match("/^(|0?[1-9]|[1-2][0-9]|3[0-1])$/", $rooz) !== 1) die();
 if (preg_match("/^(|0?[1-9]|1[0-2])$/", $mah) !== 1) die();
-if (preg_match("/^(|[1-9][0-9]{3})$/", $sal) !== 1) die();
+if (preg_match("/^[1-9][0-9]{3}$/", $sal) !== 1) die();
 if (preg_match("/^(|[1-9][0-9]*)$/", $mablagh) !== 1) die();
 
 $vasilehID = 0;
@@ -52,8 +52,7 @@ if ($fard != "hameh") $sql .= " and fardID = " . $fard;
 if (strlen($mah) == 1) $mah = "0".$mah;
 if (strlen($rooz) == 1) $rooz = "0".$rooz;
 
-if ($sal == "") $strTarikh = "____/";
-else $strTarikh = $sal . "/";
+$strTarikh = $sal . "/";
 if ($mah == "") $strTarikh .= "__/";
 else $strTarikh .= $mah . "/";
 if ($rooz == "") $strTarikh .= "__";

@@ -29,6 +29,14 @@ if (preg_match("/^[1-9][0-9]{3}$/", $sal) !== 1) die();
 if (preg_match("/^[1-9][0-9]*$/", $mablagh) !== 1) die();
 $tarikh = tarikhKon($sal, $mah, $rooz);
 
+if (jmktime(0,0,0, $mah, $rooz, $sal) > time()) die("er:ayandeh");
+
+$sql = "select tarikhEftetah from tbl_hesab where vaziat = 1 and id = " . $hesabID;
+$result = $con->query($sql);
+if ($result !== false && $result->num_rows > 0)
+    if ($row = $result->fetch_assoc())
+        if ($tarikh < $row["tarikhEftetah"]) die("er:tarikh:" . $row["tarikhEftetah"]);
+
 if ((integer)$khoroojiAst == 1)
 {
     if (isset($_POST["vasilehID"])) $vasilehID = $_POST["vasilehID"]; else die();

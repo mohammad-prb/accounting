@@ -137,8 +137,8 @@ function emalFilterSRT()
         namayeshPeygham("ماه اشتباه است.");
     }
 
-    if (!check(sal, "^(|[1-9][0-9]{3})$")) {
-        namayeshPeygham("سال اشتباه است.");
+    if (!check(sal, "^[1-9][0-9]{3}$")) {
+        namayeshPeygham("سال اشتباه است. (سال باید یک عدد 4 رقمی باشد)");
     }
 
     if (!check(mablagh, "^(|[1-9][0-9]*)$")) {
@@ -730,6 +730,8 @@ function sabtVirayeshSRT(id)
                 document.getElementById("CountainerKadrViraieshSRT").remove();
             }
             else if (natijeh === "er:mandeh") namayeshPeygham("مبلغ وارد شده اشتباه است. این مبلغ بیشتر از مانده حساب شماست.");
+            else if (natijeh === "er:ayandeh") namayeshPeygham("تاریخ وارد شده نمی تواند در آینده باشد.");
+            else if (natijeh.substr(0, 10) === "er:tarikh:") namayeshPeygham("تاریخ وارد شده اشتباه است. این تاریخ قبل از افتتاح حساب شما ("+ natijeh.substr(10, 10) +") است.");
             else namayeshPeygham("ویرایش با خطا مواجه شد، لطفا پس از بررسی فیلد ها مجددا تلاش کنید.");
         }
     };
