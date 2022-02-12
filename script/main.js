@@ -321,9 +321,9 @@ function errorInput(lmn)
     lmn.dataset.error = "";
     var fnc = () => {
         lmn.removeAttribute("data-error");
-        lmn.removeEventListener("click", fnc);
+        lmn.removeEventListener("focus", fnc);
     };
-    lmn.addEventListener("click", fnc);
+    lmn.addEventListener("focus", fnc);
 }
 
 /*      ثبت واریزی      */

@@ -98,6 +98,18 @@
 </div>
 <script>
     document.getElementById("kadrFilterSoorathesab").onkeydown = function(e){if (e.keyCode === 13) emalFilterSRT();};
+    document.getElementById("mablaghSBTK").onkeydown = function(e){
+        if (e.keyCode === 107) { // +
+            event.preventDefault();
+            if (this.value.length < 7) this.value += "0000";
+        }
+        else if (e.keyCode === 109) { // -
+            event.preventDefault();
+            if (this.value.length < 8) this.value += "000";
+        }
+        namayeshMablaghSBT(this);
+    };
+
     document.getElementsByClassName("txtTarikh")[1].value = "<?php echo $mah;?>";
     document.getElementsByClassName("txtTarikh")[2].value = "<?php echo $sal;?>";
 

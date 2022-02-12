@@ -185,26 +185,54 @@
     </div>
 </div>
 <script>
-    document.getElementById("kadrSBTK").onkeydown = function(e){if (e.keyCode === 13) sabtVarizi(1);};
-    document.getElementById("kadrSBTV").onkeydown = function(e){if (e.keyCode === 13) sabtVarizi(0);};
+    document.getElementById("kadrSBTK").onkeydown = function(e){if (e.keyCode === 13) sabtVarizi(1);}; // enter
+    document.getElementById("kadrSBTV").onkeydown = function(e){if (e.keyCode === 13) sabtVarizi(0);}; // enter
+
+    /*  مبالغ  */
+    document.getElementById("mablaghSBTK").onkeydown = function(e){
+        if (e.keyCode === 107) { // +
+            event.preventDefault();
+            if (this.value.length < 7) this.value += "0000";
+        }
+        else if (e.keyCode === 109) { // -
+            event.preventDefault();
+            if (this.value.length < 8) this.value += "000";
+        }
+        namayeshMablaghSBT(this);
+    };
+    document.getElementById("mablaghSBTV").onkeydown = function(e){
+        if (e.keyCode === 107) { // +
+            event.preventDefault();
+            if (this.value.length < 7) this.value += "0000";
+        }
+        else if (e.keyCode === 109) { // -
+            event.preventDefault();
+            if (this.value.length < 8) this.value += "000";
+        }
+        namayeshMablaghSBT(this);
+    };
+
+    /*  کادر پیشنهاد توضیحات  */
     document.getElementById("tozihSBTK").onkeydown = function(e){
-        if (e.keyCode === 13) entekhabPishnahad(document.getElementById("tozihSBTK"));
-        else if (e.keyCode === 38) {
+        if (e.keyCode === 13) // enter
+            entekhabPishnahad(this);
+        else if (e.keyCode === 38) { // jahat bala
             event.preventDefault();
             peymayeshPishnahadha(true);
         }
-        else if (e.keyCode === 40) {
+        else if (e.keyCode === 40) { // jahat paeen
             event.preventDefault();
             peymayeshPishnahadha(false);
         }
     };
     document.getElementById("tozihSBTV").onkeydown = function(e){
-        if (e.keyCode === 13) entekhabPishnahad(document.getElementById("tozihSBTV"));
-        else if (e.keyCode === 38) {
+        if (e.keyCode === 13) // enter
+            entekhabPishnahad(this);
+        else if (e.keyCode === 38) { // jahat bala
             event.preventDefault();
             peymayeshPishnahadha(true);
         }
-        else if (e.keyCode === 40) {
+        else if (e.keyCode === 40) { // jahat paeen
             event.preventDefault();
             peymayeshPishnahadha(false);
         }

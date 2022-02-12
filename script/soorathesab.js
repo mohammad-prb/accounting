@@ -589,6 +589,17 @@ function virayeshSRT(lmn)
     lmnVirayesh.innerHTML = strHTML;
     document.body.appendChild(lmnVirayesh);
     lmnVirayesh.onkeydown = function(e){if (e.keyCode === 13) sabtVirayeshSRT(id);};
+    document.getElementById("mablaghVSRT").onkeydown = function(e){
+        if (e.keyCode === 107) { // +
+            event.preventDefault();
+            if (this.value.length < 7) this.value += "0000";
+        }
+        else if (e.keyCode === 109) { // -
+            event.preventDefault();
+            if (this.value.length < 8) this.value += "000";
+        }
+        namayeshMablaghSBT(this);
+    };
 
     if (khoroojiAst === 1)
     {
