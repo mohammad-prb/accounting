@@ -40,6 +40,7 @@ else header("location:tanzimat.php?p");
 </div>
 <script src="script/lib.js"></script>
 <script src="script/main.js"></script>
+<script src="script/barnameh.js"></script>
 <script>var tkn = "<?php echo $tkn;?>";</script>
 </body>
 </html>
