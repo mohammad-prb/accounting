@@ -62,6 +62,42 @@ else
                 ?>
             </select>
             <?php require("code/filter-barnameh.php");?>
+            <div id="kadrAmarBarnameh">
+                <div class="amarBRN">
+                    <div class="titrAmarBRN"><span class="icon riz"></span><span class="matnTitr riz">تعداد نتایج:</span></div>
+                    <div class="meghdarAmarBRN" id="tedadNataiejBRN">0</div>
+                </div>
+                <div class="amarBRN">
+                    <div class="titrAmarBRN"><span class="icon riz"></span><span class="matnTitr riz">تعداد خروجی:</span></div>
+                    <div class="meghdarAmarBRN" id="tedadKhoroojiBRN">0</div>
+                </div>
+                <div class="amarBRN">
+                    <div class="titrAmarBRN"><span class="icon riz"></span><span class="matnTitr riz">تعداد ورودی:</span></div>
+                    <div class="meghdarAmarBRN" id="tedadVoroodiBRN">0</div>
+                </div>
+            </div>
+            <div id="kadrBarnameh">
+                <div class="kadrBRN" data-khorooji-ast="1">
+                    <div class="kadrVasetBRN">
+                        <div class="kadrOnvan"><span class="icon"></span><span class="matnTitr">عنوان برنامه</span></div>
+                        <div class="kadrEmkanat">
+                            <a href="javascript:void(0);" class="emkanatBRN btnHazfBRN"></a>
+                            <a href="javascript:void(0);" onclick="virayeshBRN(this);" class="emkanatBRN btnVirayeshBRN"></a>
+                        </div>
+                    </div>
+                    <div class="kadrEtelaatBRN kadrTarikhShoroo"><span class="icon"></span><span class="matnTitr">شروع:</span><span class="meghdarBRN">1400/10/24</span></div>
+                    <div class="kadrEtelaatBRN kadrNoe"><span class="icon"></span><span class="matnTitr">نوع:</span><span class="meghdarBRN">ماهانه</span></div>
+                    <div class="kadrEtelaatBRN kadrTedad"><span class="icon"></span><span class="matnTitr">تعداد:</span><span class="meghdarBRN">324</span></div>
+                    <div class="kadrEtelaatBRN kadrTedadPardakht"><span class="icon"></span><span class="matnTitr">پرداختی:</span><span class="meghdarBRN">124</span></div>
+                    <div class="kadrEtelaatBRN kadrTedadMandeh"><span class="icon"></span><span class="matnTitr">مانده:</span><span class="meghdarBRN">334</span></div>
+                    <div class="kadrEtelaatBRN kadrMablagh"><span class="icon"></span><span class="matnTitr">کل مبلغ:</span><span class="meghdarBRN">233,530,000</span></div>
+                    <div class="kadrEtelaatBRN kadrMablaghMandeh"><span class="icon"></span><span class="matnTitr">مانده:</span><span class="meghdarBRN">546,330,000</span></div>
+                    <div class="kadrEtelaatBRN kadrTarikh"><span class="icon"></span><span class="matnTitr">تاریخ بعدی:</span><span class="meghdarBRN">1400/12/23</span></div>
+                    <div class="kadrEtelaatBRN kadrMablaghGhest"><span class="icon"></span><span class="matnTitr">مبلغ:</span><span class="meghdarBRN">540,000</span></div>
+                    <a href="javascript:void(0);" class="btnBRN" onclick=""><span class="icon"></span><span class="matnTitr">پرداخت</span></a>
+                </div>
+
+            </div>
         </div>
     </div>
 

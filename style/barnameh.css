@@ -62,3 +62,172 @@ a#emalFilter:active
     transition: none;
     background-color: hsl(39, 100%, 83%);
 }
+
+#kadrAmarBarnameh
+{
+    position: relative;
+    float: right;
+    width: 100%;
+    margin: 30px 0;
+}
+
+.amarBRN
+{
+    float: right;
+    margin-left: 30px;
+    height: 25px;
+}
+
+.titrAmarBRN
+{
+    float: right;
+    color: hsl(0, 0%, 40%);
+    margin-left: 3pt;
+    font-size: 0.875rem;
+}
+
+.meghdarAmarBRN
+{
+    float: right;
+    direction: ltr;
+}
+
+#kadrBarnameh
+{
+    position: relative;
+    float: right;
+    width: 100%;
+    min-height: 100px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.kadrBRN
+{
+    float: right;
+    width: calc(33.333% - 10px);
+    margin: 5px;
+    padding: 15px 0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.kadrBRN[data-khorooji-ast="0"]
+{
+    background-color: hsl(148, 64%, 90%);
+}
+
+.kadrBRN[data-khorooji-ast="1"]
+{
+    background-color: hsl(352, 100%, 95%);
+}
+
+.kadrVasetBRN
+{
+    float: right;
+    width: calc(100% - 40px);
+    margin: 0 20px 5px;
+}
+
+.kadrBRN[data-khorooji-ast="0"]>.kadrVasetBRN
+{
+    border-bottom: 1px solid hsl(148, 64%, 60%);
+}
+
+.kadrBRN[data-khorooji-ast="1"]>.kadrVasetBRN
+{
+    border-bottom: 1px solid hsl(352, 100%, 85%);
+}
+
+.kadrEtelaatBRN
+{
+    float: right;
+    padding: 5px 0;
+    text-align: center;
+}
+
+.kadrOnvan
+{
+    float: right;
+    padding: 5px 0 10px;
+    width: calc(100% - 65px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.kadrEmkanat
+{
+    float: left;
+    width: 65px;
+}
+
+a.emkanatBRN, a.emkanatBRN:link, a.emkanatBRN:visited
+{
+    float: right;
+    font-family: myIcon;
+    padding: 3px;
+    margin-right: 5px;
+    font-size: 1.325rem;
+    color: hsl(0, 0%, 30%);
+}
+
+a.emkanatBRN:hover
+{
+    color: hsl(0, 0%, 0%);
+}
+
+a.emkanatBRN:active
+{
+    color: hsl(0, 0%, 10%);
+}
+
+.kadrTarikhShoroo, .kadrNoe, .kadrMablagh, .kadrMablaghMandeh, .kadrTarikh, .kadrMablaghGhest
+{
+    width: 50%;
+}
+
+.kadrTedad, .kadrTedadPardakht, .kadrTedadMandeh
+{
+    width: 33.333%;
+}
+
+.kadrEtelaatBRN>span.icon
+{
+    margin-left: 5px;
+    padding: 9px 0 8px;
+    font-size: 0.75rem;
+    color: hsla(0, 0%, 0%, 0.7);
+}
+
+.kadrEtelaatBRN>span.matnTitr
+{
+    margin-left: 5px;
+    padding: 4px 0 3px;
+    font-size: 0.75rem;
+    vertical-align: middle;
+    color: hsla(0, 0%, 0%, 0.7);
+}
+
+a.btnBRN, a.btnBRN:link, a.btnBRN:visited
+{
+    float: right;
+    width: calc(100% - 30px);
+    margin: 10px 15px 0;
+    padding: 8px 0;
+    text-align: center;
+    border-radius: 8px;
+    background-color: hsla(0, 0%, 0%, 0.1);
+    transition: background-color 0.1s;
+}
+
+a.btnBRN:hover
+{
+    background-color: hsla(0, 0%, 0%, 0.2);
+}
+
+a.btnBRN:active
+{
+    transition: none;
+    background-color: hsla(0, 0%, 0%, 0.15);
+}
