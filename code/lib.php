@@ -345,3 +345,50 @@ function decodeTarikhVaSaatVaCode($reshteh)
 
     return "t:" . (string)$arrAdad[2] . (string)$arrAdad[5] . (string)$arrAdad[7] . (string)$arrAdad[3] . "/" . (string)$arrAdad[9] . (string)$arrAdad[0] . "/" . (string)$arrAdad[6] . (string)$arrAdad[11] . " - z:". (string)$arrAdad[1] . (string)$arrAdad[10] . ":" . (string)$arrAdad[8] . (string)$arrAdad[4] . " - c:" . substr((string)$reshteh, 12, strlen((string)$reshteh) - 12);
 }
+
+/*      گرفتن تاریخ بعدی یک رویداد، نسبت به یک تاریخ دیگر (با گرفتن تاریخ شروع رویداد و فاصله گام های رویداد و تاریخ مبنا)      */
+function gereftanTarikhBadi($tarikhShoroo, $gam, $tarikhMabna = "alan")
+{
+    /*  گام میتواند تعداد روز یا کلمات کلیدی mah یا sal باشد.  */
+    if ($tarikhMabna == "alan") $tarikhMabna = jdate("Y/m/d", "", "", "Asia/Tehran", "en");
+    if (preg_match("/^[1-9][0-9]{3}\/(0[1-9]|1[0-2])\/(0[1-9]|[1-2][0-9]|3[0-1])$/", $tarikhShoroo) !== 1) return false;
+    if (preg_match("/^[1-9][0-9]{3}\/(0[1-9]|1[0-2])\/(0[1-9]|[1-2][0-9]|3[0-1])$/", $tarikhMabna) !== 1) return false;
+    if ($tarikhShoroo > $tarikhMabna) return false;
+    $arrTarikhShoroo = explode("/", $tarikhShoroo);
+    $arrTarikhMabna = explode("/", $tarikhMabna);
+
+    if ((integer)$gam > 0)
+    {
+        $saniehRooz = 24 * 60 * 60;
+        $timeStampShoroo = jmktime(0,0,0, (integer)$arrTarikhShoroo[1], (integer)$arrTarikhShoroo[2], (integer)$arrTarikhShoroo[0]);
+        $timeStampMabna = jmktime(0,0,0, (integer)$arrTarikhMabna[1], (integer)$arrTarikhMabna[2], (integer)$arrTarikhMabna[0]);
+        $tedadRoozMandeh = $gam - ((($timeStampMabna - $timeStampShoroo) / $saniehRooz) % $gam);
+        $natijeh = jdate("Y/m/d", time()+($tedadRoozMandeh*$saniehRooz), "", "Asia/Tehran", "en");
+    }
+    elseif ($gam == "mah")
+    {
+        if ($arrTarikhShoroo[2] > $arrTarikhMabna[2])
+            $timeStamp = jmktime(0,0,0, (integer)$arrTarikhMabna[1], (integer)$arrTarikhShoroo[2], (integer)$arrTarikhMabna[0]);
+        else
+            $timeStamp = jmktime(0,0,0, (integer)$arrTarikhMabna[1]+1, (integer)$arrTarikhShoroo[2], (integer)$arrTarikhMabna[0]);
+        $natijeh = jdate("Y/m/d", $timeStamp, "", "Asia/Tehran", "en");
+    }
+    elseif ($gam == "sal")
+    {
+        if ($arrTarikhShoroo[1] > $arrTarikhMabna[1])
+        {
+            $timeStamp = jmktime(0,0,0, (integer)$arrTarikhShoroo[1], (integer)$arrTarikhShoroo[2], (integer)$arrTarikhMabna[0]);
+        }
+        else
+        {
+            if ($arrTarikhShoroo[2] > $arrTarikhMabna[2])
+                $timeStamp = jmktime(0,0,0, (integer)$arrTarikhShoroo[1], (integer)$arrTarikhShoroo[2], (integer)$arrTarikhMabna[0]);
+            else
+                $timeStamp = jmktime(0,0,0, (integer)$arrTarikhShoroo[1], (integer)$arrTarikhShoroo[2], (integer)$arrTarikhMabna[0]+1);
+        }
+        $natijeh = jdate("Y/m/d", $timeStamp, "", "Asia/Tehran", "en");
+    }
+    else return false;
+
+    return $natijeh;
+}

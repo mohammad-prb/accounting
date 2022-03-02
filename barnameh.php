@@ -42,7 +42,7 @@ else
     <link rel="stylesheet" href="style/barnameh.css"/>
     <?php include ("code/head.php");?>
 </head>
-<body dir="rtl" onload="tanzimSaf();">
+<body dir="rtl" onload="tanzimSaf();emalFilterBRN();">
 <div id="fullCountainer">
 
     <?php require("code/peygham.php");?>
@@ -52,7 +52,7 @@ else
         <?php require("code/navar-bala.php");?>
         <div id="kadrTitrAnavin">
             <h2 class="titr"><span class="icon"></span><span class="matnTitr">برنامه زمانی</span></h2>
-            <select name="hesabha" class="sltHesabha" onchange="gereftanBarnameh();" title="انتخاب حساب">
+            <select name="hesabha" class="sltHesabha" onchange="emalFilterBRN();" title="انتخاب حساب">
                 <?php
                 $sql = "select * from tbl_hesab where vaziat = 1 order by tartib";
                 $result = $con->query($sql);
@@ -85,16 +85,14 @@ else
                             <a href="javascript:void(0);" onclick="virayeshBRN(this);" class="emkanatBRN btnVirayeshBRN"></a>
                         </div>
                     </div>
-                    <div class="kadrEtelaatBRN kadrTarikhShoroo"><span class="icon"></span><span class="matnTitr">شروع:</span><span class="meghdarBRN">1400/10/24</span></div>
                     <div class="kadrEtelaatBRN kadrNoe"><span class="icon"></span><span class="matnTitr">نوع:</span><span class="meghdarBRN">ماهانه</span></div>
-                    <div class="kadrEtelaatBRN kadrTedad"><span class="icon"></span><span class="matnTitr">تعداد:</span><span class="meghdarBRN">324</span></div>
-                    <div class="kadrEtelaatBRN kadrTedadPardakht"><span class="icon"></span><span class="matnTitr">پرداختی:</span><span class="meghdarBRN">124</span></div>
                     <div class="kadrEtelaatBRN kadrTedadMandeh"><span class="icon"></span><span class="matnTitr">مانده:</span><span class="meghdarBRN">334</span></div>
-                    <div class="kadrEtelaatBRN kadrMablagh"><span class="icon"></span><span class="matnTitr">کل مبلغ:</span><span class="meghdarBRN">233,530,000</span></div>
-                    <div class="kadrEtelaatBRN kadrMablaghMandeh"><span class="icon"></span><span class="matnTitr">مانده:</span><span class="meghdarBRN">546,330,000</span></div>
                     <div class="kadrEtelaatBRN kadrTarikh"><span class="icon"></span><span class="matnTitr">تاریخ بعدی:</span><span class="meghdarBRN">1400/12/23</span></div>
                     <div class="kadrEtelaatBRN kadrMablaghGhest"><span class="icon"></span><span class="matnTitr">مبلغ:</span><span class="meghdarBRN">540,000</span></div>
-                    <a href="javascript:void(0);" class="btnBRN" onclick=""><span class="icon"></span><span class="matnTitr">پرداخت</span></a>
+                    <div class="kadrBtnBRN">
+                        <a href="javascript:void(0);" class="btnBRN" onclick=""><span class="icon"></span><span class="matnTitr">اطلاعات</span></a>
+                        <a href="javascript:void(0);" class="btnBRN" onclick=""><span class="icon"></span><span class="matnTitr">پرداخت</span></a>
+                    </div>
                 </div>
 
             </div>
@@ -104,6 +102,7 @@ else
 </div>
 <script src="script/lib.js"></script>
 <script src="script/main.js"></script>
+<script src="script/barnameh.js"></script>
 <script>var tkn = "<?php echo $tkn;?>";</script>
 </body>
 </html>

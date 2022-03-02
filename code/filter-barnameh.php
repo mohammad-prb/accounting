@@ -22,7 +22,7 @@
     </div>
     <div class="etelaatSBT tamamSafheh">
         <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">عنوان:</span></div>
-        <input type="text" class="txtTozih" id="tozihSBTK" name="tozih" autocomplete="off"/>
+        <input type="text" class="txtTozih" id="onvanSBTK" name="tozih" autocomplete="off"/>
     </div>
     <div class="etelaatSBT">
         <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">تاریخ:</span></div>
@@ -44,7 +44,7 @@
     </a>
 </div>
 <script>
-    document.getElementById("kadrFilterSoorathesab").onkeydown = function(e){if (e.keyCode === 13) emalFilterSRT();};
+    document.getElementById("kadrFilterBRN").onkeydown = function(e){if (e.keyCode === 13) emalFilterSRT();};
     document.getElementById("mablaghSBTK").onkeydown = function(e){
         if (e.keyCode === 107) { // +
             event.preventDefault();
