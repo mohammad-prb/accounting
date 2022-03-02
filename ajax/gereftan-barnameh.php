@@ -54,19 +54,19 @@ if ($result !== false && $result->num_rows > 0)
                 break;
             case 2:
                 $row["noe"] = "روزانه";
-                $row["tarikhBadi"] = gereftanTarikhBadi($row["tarikhShoroo"], 1);
+                $row["tarikhBadi"] = gereftanTarikhGhest($row["tarikhShoroo"], 1, $row["tedadPardakht"]);
                 break;
             case 3:
                 $row["noe"] = "هفتگی";
-                $row["tarikhBadi"] = gereftanTarikhBadi($row["tarikhShoroo"], 7);
+                $row["tarikhBadi"] = gereftanTarikhGhest($row["tarikhShoroo"], 7, $row["tedadPardakht"]);
                 break;
             case 4:
                 $row["noe"] = "ماهانه";
-                $row["tarikhBadi"] = gereftanTarikhBadi($row["tarikhShoroo"], "mah");
+                $row["tarikhBadi"] = gereftanTarikhGhest($row["tarikhShoroo"], "mah", $row["tedadPardakht"]);
                 break;
             case 5:
                 $row["noe"] = "سالانه";
-                $row["tarikhBadi"] = gereftanTarikhBadi($row["tarikhShoroo"], "sal");
+                $row["tarikhBadi"] = gereftanTarikhGhest($row["tarikhShoroo"], "sal", $row["tedadPardakht"]);
                 break;
             default: die();
         }
