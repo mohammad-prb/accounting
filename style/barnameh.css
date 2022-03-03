@@ -68,7 +68,7 @@ a#emalFilter:active
     position: relative;
     float: right;
     width: 100%;
-    margin: 30px 0;
+    margin: 30px 0 20px;
 }
 
 .amarBRN
@@ -102,8 +102,36 @@ a#emalFilter:active
     overflow: hidden;
 }
 
+.kadrSatrTarikh
+{
+    position: relative;
+    float: right;
+    width: 100%;
+    height: 0;
+    margin: 20px 0;
+    overflow: visible;
+    border-top: 1px solid hsl(0, 0%, 80%);
+}
+
+span.satrTarikh
+{
+    display: inline-block;
+    position: absolute;
+    top: -11px;
+    right: 0;
+    left: 0;
+    width: 60px;
+    margin: 0 auto;
+    padding: 0 10px;
+    text-align: center;
+    font-size: 0.875rem;
+    color: hsl(0, 0%, 50%);
+    background-color: white;
+}
+
 .kadrBRN
 {
+    position: relative;
     float: right;
     width: calc(33.333% - 10px);
     margin: 5px;
@@ -120,6 +148,21 @@ a#emalFilter:active
 .kadrBRN[data-khorooji-ast="1"]
 {
     background-color: hsl(352, 100%, 95%);
+}
+
+.kadrBRN[data-moed-ast="1"]::after
+{
+    content: "";
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    font-family: myIcon;
+    text-align: center;
+    color: hsl(0, 0%, 100%);
+    background-color: hsl(204, 100%, 50%);
 }
 
 .kadrVasetBRN
@@ -142,6 +185,7 @@ a#emalFilter:active
 .kadrEtelaatBRN
 {
     float: right;
+    width: 50%;
     padding: 5px 0;
     text-align: center;
 }
@@ -180,16 +224,6 @@ a.emkanatBRN:hover
 a.emkanatBRN:active
 {
     color: hsl(0, 0%, 10%);
-}
-
-.kadrTarikhShoroo, .kadrNoe, .kadrMablagh, .kadrMablaghMandeh, .kadrTarikh, .kadrMablaghGhest
-{
-    width: 50%;
-}
-
-.kadrTedad, .kadrTedadPardakht, .kadrTedadMandeh
-{
-    width: 50%;
 }
 
 .kadrTarikh

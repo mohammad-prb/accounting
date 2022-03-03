@@ -76,26 +76,7 @@ else
                     <div class="meghdarAmarBRN" id="tedadVoroodiBRN">0</div>
                 </div>
             </div>
-            <div id="kadrBarnameh">
-                <div class="kadrBRN" data-khorooji-ast="1">
-                    <div class="kadrVasetBRN">
-                        <div class="kadrOnvan"><span class="icon"></span><span class="matnTitr">عنوان برنامه</span></div>
-                        <div class="kadrEmkanat">
-                            <a href="javascript:void(0);" class="emkanatBRN btnHazfBRN"></a>
-                            <a href="javascript:void(0);" onclick="virayeshBRN(this);" class="emkanatBRN btnVirayeshBRN"></a>
-                        </div>
-                    </div>
-                    <div class="kadrEtelaatBRN kadrNoe"><span class="icon"></span><span class="matnTitr">نوع:</span><span class="meghdarBRN">ماهانه</span></div>
-                    <div class="kadrEtelaatBRN kadrTedadMandeh"><span class="icon"></span><span class="matnTitr">مانده:</span><span class="meghdarBRN">334</span></div>
-                    <div class="kadrEtelaatBRN kadrTarikh"><span class="icon"></span><span class="matnTitr">تاریخ بعدی:</span><span class="meghdarBRN">1400/12/23</span></div>
-                    <div class="kadrEtelaatBRN kadrMablaghGhest"><span class="icon"></span><span class="matnTitr">مبلغ:</span><span class="meghdarBRN">540,000</span></div>
-                    <div class="kadrBtnBRN">
-                        <a href="javascript:void(0);" class="btnBRN" onclick=""><span class="icon"></span><span class="matnTitr">اطلاعات</span></a>
-                        <a href="javascript:void(0);" class="btnBRN" onclick=""><span class="icon"></span><span class="matnTitr">پرداخت</span></a>
-                    </div>
-                </div>
-
-            </div>
+            <div id="kadrBarnameh"></div>
         </div>
     </div>
 

@@ -9,13 +9,13 @@ include ("../code/etesal-db.php");
 
 if (isset($_POST["noeVariz"])) $noeVariz = htmlspecialchars(stripcslashes(trim($_POST["noeVariz"]))); else die();
 if (isset($_POST["hesabID"])) $hesabID = htmlspecialchars(stripcslashes(trim($_POST["hesabID"]))); else die();
+if (isset($_POST["vaziat"])) $vaziat = htmlspecialchars(stripcslashes(trim($_POST["vaziat"]))); else die();
 if (isset($_POST["noe"])) $noe = htmlspecialchars(stripcslashes(trim($_POST["noe"]))); else die();
 if (isset($_POST["onvan"])) $onvan = "%".htmlspecialchars(stripcslashes(trim($_POST["onvan"])))."%"; else die();
 if (isset($_POST["rooz"])) $rooz = htmlspecialchars(stripcslashes(trim($_POST["rooz"]))); else die();
 if (isset($_POST["mah"])) $mah = htmlspecialchars(stripcslashes(trim($_POST["mah"]))); else die();
 if (isset($_POST["sal"])) $sal = htmlspecialchars(stripcslashes(trim($_POST["sal"]))); else die();
 if (isset($_POST["mablagh"])) $mablagh = htmlspecialchars(stripcslashes(trim($_POST["mablagh"]))); else die();
-
 
 if (preg_match("/^(hameh|[0-1])$/", $noeVariz) !== 1) die();
 if (preg_match("/^[1-9]+[0-9]*$/", $hesabID) !== 1) die();
@@ -25,13 +25,18 @@ if (preg_match("/^(|0?[1-9]|1[0-2])$/", $mah) !== 1) die();
 if (preg_match("/^(|[1-9][0-9]{3})$/", $sal) !== 1) die();
 if (preg_match("/^(|[1-9][0-9]*)$/", $mablagh) !== 1) die();
 
+$tarikhAlan = jdate("Y/m/d", "", "", "Asia/Tehran", "en");
 $arrNatijeh = array();
-$sql = "select onvan, khoroojiAst, noeID, mablagh, tarikhShoroo, tedadKol, tedadPardakht from tbl_barnameh where vaziat = 1 and hesabID = " . $hesabID;
+$sql = "select id, onvan, khoroojiAst, noeID, gam, mablagh, tarikhShoroo, tedadKol, tedadPardakht from tbl_barnameh where vaziat = 1 and hesabID = " . $hesabID;
 
+if ($noe != "hameh") $sql .= " and noeID = " . $noe;
 if ($mablagh != "") $sql .= " and mablagh = " . $mablagh;
 if ($noeVariz != "hameh") $sql .= " and khoroojiAst = " . $noeVariz;
 if (strlen($mah) == 1) $mah = "0".$mah;
 if (strlen($rooz) == 1) $rooz = "0".$rooz;
+
+if ($vaziat == "jari") $sql .= " and tedadKol <> tedadPardakht";
+elseif ($vaziat == "tasvieh") $sql .= " and tedadKol = tedadPardakht";
 
 if ($sal == "") $strTarikh = "____/";
 else $strTarikh = $sal."/";
@@ -49,31 +54,47 @@ if ($result !== false && $result->num_rows > 0)
         switch ($row["noeID"])
         {
             case 1:
-                $row["noe"] = "یکبار";
-                $row["tarikhBadi"] = $row["tarikhShoroo"];
+                $row["noe"] = "روز";
+                $row["tarikhBadi"] = gereftanTarikhGhest($row["tarikhShoroo"], $row["gam"], $row["tedadPardakht"]);
                 break;
             case 2:
-                $row["noe"] = "روزانه";
-                $row["tarikhBadi"] = gereftanTarikhGhest($row["tarikhShoroo"], 1, $row["tedadPardakht"]);
-                break;
-            case 3:
-                $row["noe"] = "هفتگی";
-                $row["tarikhBadi"] = gereftanTarikhGhest($row["tarikhShoroo"], 7, $row["tedadPardakht"]);
-                break;
-            case 4:
                 $row["noe"] = "ماهانه";
                 $row["tarikhBadi"] = gereftanTarikhGhest($row["tarikhShoroo"], "mah", $row["tedadPardakht"]);
                 break;
-            case 5:
+            case 3:
                 $row["noe"] = "سالانه";
                 $row["tarikhBadi"] = gereftanTarikhGhest($row["tarikhShoroo"], "sal", $row["tedadPardakht"]);
                 break;
             default: die();
         }
         $row["tedadMandeh"] = (integer)$row["tedadKol"] - (integer)$row["tedadPardakht"];
-        array_push($arrNatijeh, $row);
+
+        if ($row["tedadMandeh"] == 0)
+        {
+            $row["tarikhBadi"] = "تمام";
+            $row["vaziat"] = "تسویه";
+        }
+        else $row["vaziat"] = "جاری";
+
+        if ($row["tarikhBadi"] < $tarikhAlan)
+        {
+            $row["moedAst"] = 1;
+            $row["vaziat"] = "موعد";
+        }
+        else $row["moedAst"] = 0;
+
+        if (($vaziat == "moed" && $row["tarikhBadi"] < $tarikhAlan || $vaziat != "moed"))
+            array_push($arrNatijeh, $row);
     }
 }
 
+/*      تابع مرتب کردن بر اساس تاریخ بعدی      */
+function moratabKon($a, $b)
+{
+    if ($a["tarikhBadi"] > $b["tarikhBadi"]) return 1;
+    elseif ($a["tarikhBadi"] == $b["tarikhBadi"]) return 0;
+    else return -1;
+}
+usort($arrNatijeh, "moratabKon");
 echo json_encode($arrNatijeh);
 $con->close();

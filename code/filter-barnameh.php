@@ -1,5 +1,15 @@
 <div id="kadrFilterBRN">
     <div class="etelaatSBT">
+        <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">وضعیت:</span></div>
+        <div class="kadrENT" id="vaziatSBTK">
+            <span class="kadrPoshtENT"></span>
+            <a class="gozinehENT" onclick="taghirENT(this);" data-value="hameh" href="javascript:void(0);">همه</a>
+            <a class="gozinehENT" onclick="taghirENT(this);" data-value="moed" href="javascript:void(0);">موعد</a>
+            <a class="gozinehENT" onclick="taghirENT(this);" data-value="jari" href="javascript:void(0);">جاری</a>
+            <a class="gozinehENT" onclick="taghirENT(this);" data-value="tasvieh" href="javascript:void(0);">تسویه</a>
+        </div>
+    </div>
+    <div class="etelaatSBT">
         <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">خ/و:</span></div>
         <div class="kadrENT" id="khoroojiAstSBTK">
             <span class="kadrPoshtENT"></span>
@@ -13,11 +23,9 @@
         <div class="kadrENT" id="noeSBTK">
             <span class="kadrPoshtENT"></span>
             <a class="gozinehENT" onclick="taghirENT(this);" data-value="hameh" href="javascript:void(0);">همه</a>
-            <a class="gozinehENT" onclick="taghirENT(this);" data-value="1" href="javascript:void(0);">یکبار</a>
-            <a class="gozinehENT" onclick="taghirENT(this);" data-value="2" href="javascript:void(0);">روزانه</a>
-            <a class="gozinehENT" onclick="taghirENT(this);" data-value="3" href="javascript:void(0);">هفتگی</a>
-            <a class="gozinehENT" onclick="taghirENT(this);" data-value="4" href="javascript:void(0);">ماهانه</a>
-            <a class="gozinehENT" onclick="taghirENT(this);" data-value="5" href="javascript:void(0);">سالانه</a>
+            <a class="gozinehENT" onclick="taghirENT(this);" data-value="1" href="javascript:void(0);">روز</a>
+            <a class="gozinehENT" onclick="taghirENT(this);" data-value="2" href="javascript:void(0);">ماهانه</a>
+            <a class="gozinehENT" onclick="taghirENT(this);" data-value="3" href="javascript:void(0);">سالانه</a>
         </div>
     </div>
     <div class="etelaatSBT tamamSafheh">
@@ -25,7 +33,7 @@
         <input type="text" class="txtTozih" id="onvanSBTK" name="tozih" autocomplete="off"/>
     </div>
     <div class="etelaatSBT">
-        <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">تاریخ:</span></div>
+        <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">شروع:</span></div>
         <div class="kadrTarikhSBT" id="tarikhSBTK">
             <input type="text" class="txtTarikh" name="rooz" onfocus="this.select();" oninput="if(this.value.length>1) this.nextElementSibling.focus();" maxlength="2" placeholder="روز" autocomplete="off"/>
             <input type="text" class="txtTarikh" name="mah" onfocus="this.select();" oninput="if(this.value.length>1) this.nextElementSibling.focus();" maxlength="2" placeholder="ماه" autocomplete="off"/>
@@ -44,7 +52,7 @@
     </a>
 </div>
 <script>
-    document.getElementById("kadrFilterBRN").onkeydown = function(e){if (e.keyCode === 13) emalFilterSRT();};
+    document.getElementById("kadrFilterBRN").onkeydown = function(e){if (e.keyCode === 13) emalFilterBRN();};
     document.getElementById("mablaghSBTK").onkeydown = function(e){
         if (e.keyCode === 107) { // +
             event.preventDefault();
@@ -54,6 +62,5 @@
             event.preventDefault();
             if (this.value.length < 8) this.value += "000";
         }
-        namayeshMablaghSBT(this);
     };
 </script>

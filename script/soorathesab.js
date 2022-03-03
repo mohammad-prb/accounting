@@ -295,7 +295,7 @@ function hazfSoorathesab(shom)
                     taraz.innerHTML = momayezdar(hazfMomayez(taraz.innerHTML) - mablagh);
                 }
 
-                if (lmn.nextElementSibling.className !== "kadrDorSTB" && lmn.previousElementSibling.className !== "kadrDorSTB")
+                if (((lmn.nextElementSibling && lmn.nextElementSibling.className !== "kadrDorSTB") || !lmn.nextElementSibling) && lmn.previousElementSibling.className !== "kadrDorSTB")
                     lmn.previousElementSibling.remove();
                 lmn.remove();
                 shomarehBandiItemhayeSRT();

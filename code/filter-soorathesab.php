@@ -107,7 +107,6 @@
             event.preventDefault();
             if (this.value.length < 8) this.value += "000";
         }
-        namayeshMablaghSBT(this);
     };
 
     document.getElementsByClassName("txtTarikh")[1].value = "<?php echo $mah;?>";
