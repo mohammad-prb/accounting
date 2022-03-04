@@ -193,7 +193,11 @@ function virayeshDST(lmn)
     document.body.appendChild(lmnKadr);
     taghirENT(lmnKadr.getElementsByClassName("gozinehENT")[noe-1]);
     document.getElementById("dastehVDST").select();
-    lmnKadr.onkeydown = function(e){if (e.keyCode === 13) sabtVirayeshDST(id);};
+
+    lmnKadr.onkeydown = function(e){
+        if (e.keyCode === 13) sabtVirayeshDST(id); // enter
+        else if (e.keyCode === 27) document.getElementById("CountainerKadrViraieshDST").remove(); // escape
+    };
 }
 
 /*      ثبت ویرایش دسته      */

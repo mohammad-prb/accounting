@@ -158,7 +158,11 @@ function virayeshHSB(lmn)
     lmnKadr.innerHTML = strHTML;
     document.body.appendChild(lmnKadr);
     document.getElementById("namVTNZ").select();
-    lmnKadr.onkeydown = function(e){if (e.keyCode === 13) sabtVirayeshHSB(id);};
+
+    lmnKadr.onkeydown = function(e){
+        if (e.keyCode === 13) sabtVirayeshHSB(id); // enter
+        else if (e.keyCode === 27) document.getElementById("CountainerKadrViraieshTNZ").remove(); // escape
+    };
 }
 
 /*      ثبت ویرایش حساب      */

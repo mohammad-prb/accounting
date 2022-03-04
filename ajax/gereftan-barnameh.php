@@ -16,6 +16,7 @@ if (isset($_POST["rooz"])) $rooz = htmlspecialchars(stripcslashes(trim($_POST["r
 if (isset($_POST["mah"])) $mah = htmlspecialchars(stripcslashes(trim($_POST["mah"]))); else die();
 if (isset($_POST["sal"])) $sal = htmlspecialchars(stripcslashes(trim($_POST["sal"]))); else die();
 if (isset($_POST["mablagh"])) $mablagh = htmlspecialchars(stripcslashes(trim($_POST["mablagh"]))); else die();
+if (isset($_POST["idPardakht"])) $idPardakht = htmlspecialchars(stripcslashes(trim($_POST["idPardakht"])));
 
 if (preg_match("/^(hameh|[0-1])$/", $noeVariz) !== 1) die();
 if (preg_match("/^[1-9]+[0-9]*$/", $hesabID) !== 1) die();
@@ -24,6 +25,20 @@ if (preg_match("/^(|0?[1-9]|[1-2][0-9]|3[0-1])$/", $rooz) !== 1) die();
 if (preg_match("/^(|0?[1-9]|1[0-2])$/", $mah) !== 1) die();
 if (preg_match("/^(|[1-9][0-9]{3})$/", $sal) !== 1) die();
 if (preg_match("/^(|[1-9][0-9]*)$/", $mablagh) !== 1) die();
+
+if (isset($idPardakht))
+{
+    $sql = "update tbl_barnameh set tedadPardakht = tedadPardakht+1 where vaziat = 1 and hesabID = ? and id = ? and tedadPardakht < tedadKol";
+    $stmt = $con->prepare($sql);
+    $stmt->bind_param("ii", $hesabID, $idPardakht);
+    if ($stmt->execute() != true)
+    {
+        $stmt->close();
+        $con->close();
+        die();
+    }
+    $stmt->close();
+}
 
 $tarikhAlan = jdate("Y/m/d", "", "", "Asia/Tehran", "en");
 $arrNatijeh = array();
@@ -72,13 +87,19 @@ if ($result !== false && $result->num_rows > 0)
         if ($row["tedadMandeh"] == 0)
         {
             $row["tarikhBadi"] = "تمام";
+            $row["vaziatID"] = "3";
             $row["vaziat"] = "تسویه";
         }
-        else $row["vaziat"] = "جاری";
+        else
+        {
+            $row["vaziatID"] = "1";
+            $row["vaziat"] = "جاری";
+        }
 
         if ($row["tarikhBadi"] < $tarikhAlan)
         {
             $row["moedAst"] = 1;
+            $row["vaziatID"] = "2";
             $row["vaziat"] = "موعد";
         }
         else $row["moedAst"] = 0;

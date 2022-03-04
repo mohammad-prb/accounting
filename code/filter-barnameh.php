@@ -50,6 +50,7 @@
             <span class="matnTitr">اعمال فیلتر</span>
         </span>
     </a>
+    <a id="btnAfzoodanBRN" href="javascript:void(0);" onclick="afzoodanBRN();" title="افزودن برنامه"></a>
 </div>
 <script>
     document.getElementById("kadrFilterBRN").onkeydown = function(e){if (e.keyCode === 13) emalFilterBRN();};

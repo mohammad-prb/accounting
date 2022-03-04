@@ -571,11 +571,11 @@ function virayeshSRT(lmn)
         '                    </div>\n' +
         '                    <div class="etelaatSBT">\n' +
         '                        <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">مبلغ:</span></div>\n' +
-        '                        <input type="text" class="txtMablagh" id="mablaghVSRT" name="mablagh" value="'+ mablagh +'" maxlength="10" placeholder="به ریال"/>\n' +
+        '                        <input type="text" class="txtMablagh" id="mablaghVSRT" name="mablagh" value="'+ mablagh +'" maxlength="10" placeholder="به ریال" autocomplete="off"/>\n' +
         '                    </div>\n' +
         '                    <div class="etelaatSBT">\n' +
         '                        <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">توضیخات:</span></div>\n' +
-        '                        <input type="text" class="txtTozih" id="tozihVSRT" name="tozih" value="'+ tozih +'" placeholder="اختیاری"/>\n' +
+        '                        <input type="text" class="txtTozih" id="tozihVSRT" name="tozih" value="'+ tozih +'" placeholder="اختیاری" autocomplete="off"/>\n' +
         '                    </div>\n' +
         '                </div>\n' +
         '                <span id="kadrDokmehVSRT">\n' +
@@ -588,7 +588,12 @@ function virayeshSRT(lmn)
     lmnVirayesh.setAttribute("id", "CountainerKadrViraieshSRT");
     lmnVirayesh.innerHTML = strHTML;
     document.body.appendChild(lmnVirayesh);
-    lmnVirayesh.onkeydown = function(e){if (e.keyCode === 13) sabtVirayeshSRT(id);};
+
+    lmnVirayesh.onkeydown = function(e){
+        if (e.keyCode === 13) sabtVirayeshSRT(id); // enter
+        else if (e.keyCode === 27) document.getElementById("CountainerKadrViraieshSRT").remove(); // escape
+    };
+
     document.getElementById("mablaghVSRT").onkeydown = function(e){
         if (e.keyCode === 107) { // +
             event.preventDefault();
@@ -598,7 +603,6 @@ function virayeshSRT(lmn)
             event.preventDefault();
             if (this.value.length < 8) this.value += "000";
         }
-        namayeshMablaghSBT(this);
     };
 
     if (khoroojiAst === 1)
