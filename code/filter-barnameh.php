@@ -23,7 +23,7 @@
         <div class="kadrENT" id="noeSBTK">
             <span class="kadrPoshtENT"></span>
             <a class="gozinehENT" onclick="taghirENT(this);" data-value="hameh" href="javascript:void(0);">همه</a>
-            <a class="gozinehENT" onclick="taghirENT(this);" data-value="1" href="javascript:void(0);">روز</a>
+            <a class="gozinehENT" onclick="taghirENT(this);" data-value="1" href="javascript:void(0);">روزانه</a>
             <a class="gozinehENT" onclick="taghirENT(this);" data-value="2" href="javascript:void(0);">ماهانه</a>
             <a class="gozinehENT" onclick="taghirENT(this);" data-value="3" href="javascript:void(0);">سالانه</a>
         </div>

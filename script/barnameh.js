@@ -1,5 +1,5 @@
 /*      تابع اعمال فیلتر صورتحساب      */
-function emalFilterBRN(id)
+function emalFilterBRN({id, tasviehAst = 0} = {})
 {
     errorDarad = false;
     var noeVariz = document.getElementById("khoroojiAstSBTK").dataset.value.trim().toString();
@@ -19,7 +19,7 @@ function emalFilterBRN(id)
 
     if (errorDarad) return;
     var strQ = "noeVariz=" + noeVariz + "&hesabID=" + hesabID + "&vaziat=" + vaziat + "&noe=" + noe + "&onvan=" + onvan + "&rooz=" + rooz + "&mah=" + mah + "&sal=" + sal + "&mablagh=" + mablagh;
-    if (id !== undefined) strQ += "&idPardakht=" + id;
+    if (id !== undefined) strQ += "&idPardakht=" + id + "&tasviehAst=" + tasviehAst;
 
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function ()
@@ -77,7 +77,8 @@ function emalFilterBRN(id)
                     '                    <div class="kadrEtelaatBRN kadrMablaghGhest"><span class="icon"></span><span class="matnTitr">مبلغ:</span><span class="meghdarBRN">'+ momayezdar(arrObjEtelaat[i]["mablagh"]) +'</span></div>\n' +
                     '                    <div class="kadrBtnBRN">\n' +
                     '                        <a href="javascript:void(0);" class="btnBRN" onclick=""><span class="icon"></span><span class="matnTitr">اطلاعات</span></a>\n' +
-                    (Number(arrObjEtelaat[i]["vaziatID"]) !== 3 ? '<a href="javascript:void(0);" class="btnBRN" onclick="emalFilterBRN('+ arrObjEtelaat[i]["id"] +');"><span class="icon"></span><span class="matnTitr">پرداخت</span></a>\n' : '') +
+                    (Number(arrObjEtelaat[i]["vaziatID"]) !== 3 ? '<a href="javascript:void(0);" class="btnBRN" onclick="emalFilterBRN({id:'+ arrObjEtelaat[i]["id"] +'});"><span class="icon"></span><span class="matnTitr">پرداخت</span></a>\n' +
+                        '<a href="javascript:void(0);" class="btnBRN" onclick="emalFilterBRN({id:'+ arrObjEtelaat[i]["id"] +', tasviehAst:1});"><span class="icon"></span><span class="matnTitr">تسویه</span></a>\n' : '') +
                     '                    </div>';
 
                 var lmn = document.createElement("div");
@@ -152,15 +153,6 @@ function hazfBarnameh(shom)
     xhttp.send("id="+id+"&hesabID="+hesabID+"&tk="+tkn);
 }
 
-/*      تغییر نوع در افزودن برنامه      */
-function taghirNoeBRN(lmn)
-{
-    if (Number(lmn.parentElement.dataset.value) === 1)
-        document.getElementById("gamVBRN").parentElement.style.display = "block";
-    else
-        document.getElementById("gamVBRN").parentElement.style.display = "none";
-}
-
 /*      افزودن برنامه      */
 function afzoodanBRN()
 {
@@ -187,13 +179,13 @@ function afzoodanBRN()
         '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">نوع:</span></div>\n' +
         '                            <div class="kadrENT" id="noeVBRN">\n' +
         '                                <span class="kadrPoshtENT"></span>\n' +
-        '                                <a class="gozinehENT" onclick="taghirENT(this);taghirNoeBRN(this);" data-value="1" href="javascript:void(0);">روز</a>\n' +
-        '                                <a class="gozinehENT" onclick="taghirENT(this);taghirNoeBRN(this);" data-value="2" href="javascript:void(0);">ماهانه</a>\n' +
-        '                                <a class="gozinehENT" onclick="taghirENT(this);taghirNoeBRN(this);" data-value="3" href="javascript:void(0);">سالانه</a>\n' +
+        '                                <a class="gozinehENT" onclick="taghirENT(this);" data-value="1" href="javascript:void(0);">روزانه</a>\n' +
+        '                                <a class="gozinehENT" onclick="taghirENT(this);" data-value="2" href="javascript:void(0);">ماهانه</a>\n' +
+        '                                <a class="gozinehENT" onclick="taghirENT(this);" data-value="3" href="javascript:void(0);">سالانه</a>\n' +
         '                            </div>\n' +
         '                        </div>\n' +
         '                        <div class="etelaatSBT">\n' +
-        '                            <div class="iconEtelaatSBT"><span class="matnTitr">هر چند روز؟</span></div>\n' +
+        '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">گام</span></div>\n' +
         '                            <input type="text" class="txtGam" id="gamVBRN" name="gam" maxlength="3" autocomplete="off">\n' +
         '                        </div>\n' +
         '                        <div class="etelaatSBT">\n' +
@@ -253,7 +245,7 @@ function sabtVirayeshBRN()
     errorDarad = false;
     var hesabID = Number(document.getElementsByClassName("sltHesabha")[0].value);
     var khoroojiAst = Number(document.getElementById("KhoroojiAstVBRN").dataset.value);
-    var onvan = document.getElementById("onvanVBRN").value.toString().replace(/(<([^>]+)>)/ig, '');
+    var onvan = document.getElementById("onvanVBRN").value.toString().trim().replace(/(<([^>]+)>)/ig, '');
     var noe = Number(document.getElementById("noeVBRN").dataset.value);
     var gam = document.getElementById("gamVBRN").value.toString();
     var tedadKol = document.getElementById("tedadVBRN").value.toString();
@@ -263,7 +255,7 @@ function sabtVirayeshBRN()
     var mablagh = document.getElementById("mablaghVBRN").value.toString();
 
     if (onvan === "") errorInput(document.getElementById("onvanVBRN"));
-    if (noe === 1 && !check(gam, "^[1-9][0-9]*$")) errorInput(document.getElementById("gamVBRN"));
+    if (!check(gam, "^[1-9][0-9]*$")) errorInput(document.getElementById("gamVBRN"));
     if (!check(tedadKol, "^(|[1-9][0-9]*)$")) errorInput(document.getElementById("tedadVBRN"));
     if (!check(rooz, "^(0?[1-9]|[1-2][0-9]|3[0-1])$")) errorInput(document.querySelectorAll("#tarikhVSRT>input.txtTarikh")[0]);
     if (!check(mah, "^(0?[1-9]|1[0-2])$")) errorInput(document.querySelectorAll("#tarikhVSRT>input.txtTarikh")[1]);
@@ -280,7 +272,6 @@ function sabtVirayeshBRN()
         {
             bastanLoading(document.getElementById("kadrVBRN"));
             var natijeh = this.responseText;
-            alert(natijeh);
             if (natijeh === "ok")
             {
                 flash("ثبت با موفقیت انجام شد.");

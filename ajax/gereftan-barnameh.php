@@ -17,9 +17,9 @@ if (isset($_POST["mah"])) $mah = htmlspecialchars(stripcslashes(trim($_POST["mah
 if (isset($_POST["sal"])) $sal = htmlspecialchars(stripcslashes(trim($_POST["sal"]))); else die();
 if (isset($_POST["mablagh"])) $mablagh = htmlspecialchars(stripcslashes(trim($_POST["mablagh"]))); else die();
 if (isset($_POST["idPardakht"])) $idPardakht = htmlspecialchars(stripcslashes(trim($_POST["idPardakht"])));
+if (isset($_POST["tasviehAst"])) $tasviehAst = htmlspecialchars(stripcslashes(trim($_POST["tasviehAst"])));
 
 if (preg_match("/^(hameh|[0-1])$/", $noeVariz) !== 1) die();
-if (preg_match("/^[1-9]+[0-9]*$/", $hesabID) !== 1) die();
 if (preg_match("/^(hameh|[1-5])$/", $noe) !== 1) die();
 if (preg_match("/^(|0?[1-9]|[1-2][0-9]|3[0-1])$/", $rooz) !== 1) die();
 if (preg_match("/^(|0?[1-9]|1[0-2])$/", $mah) !== 1) die();
@@ -28,7 +28,25 @@ if (preg_match("/^(|[1-9][0-9]*)$/", $mablagh) !== 1) die();
 
 if (isset($idPardakht))
 {
-    $sql = "update tbl_barnameh set tedadPardakht = tedadPardakht+1 where vaziat = 1 and hesabID = ? and id = ? and tedadPardakht < tedadKol";
+    if (preg_match("/^[1-9]+[0-9]*$/", $idPardakht) !== 1) die();
+    if (preg_match("/^[0-1]$/", $tasviehAst) !== 1) die();
+
+    if ($tasviehAst == 1)
+    {
+        $sql = "select tedadPardakht, tedadKol from tbl_barnameh where vaziat = 1 and hesabID = ? and id = ?";
+        $stmt = $con->prepare($sql);
+        $stmt->bind_param("ii", $hesabID, $idPardakht);
+        $stmt->execute();
+        $stmt->bind_result($tedadPardakht, $tedadKol);
+        if ($stmt->fetch())
+        {
+            $max = max($tedadPardakht, $tedadKol);
+            $sql = "update tbl_barnameh set tedadPardakht = ".$max.", tedadKol = ".$max." where vaziat = 1 and hesabID = ? and id = ?";
+        }
+        $stmt->close();
+    }
+    else $sql = "update tbl_barnameh set tedadPardakht = tedadPardakht+1 where vaziat = 1 and hesabID = ? and id = ?";
+
     $stmt = $con->prepare($sql);
     $stmt->bind_param("ii", $hesabID, $idPardakht);
     if ($stmt->execute() != true)
@@ -69,7 +87,7 @@ if ($result !== false && $result->num_rows > 0)
         switch ($row["noeID"])
         {
             case 1:
-                $row["noe"] = "روز";
+                $row["noe"] = "روزانه";
                 $row["tarikhBadi"] = gereftanTarikhGhest($row["tarikhShoroo"], $row["gam"], $row["tedadPardakht"]);
                 break;
             case 2:
@@ -82,9 +100,13 @@ if ($result !== false && $result->num_rows > 0)
                 break;
             default: die();
         }
-        $row["tedadMandeh"] = (integer)$row["tedadKol"] - (integer)$row["tedadPardakht"];
 
-        if ($row["tedadMandeh"] == 0)
+        if ((integer)$row["tedadKol"] == 0)
+            $row["tedadMandeh"] = "-";
+        else
+            $row["tedadMandeh"] = (integer)$row["tedadKol"] - (integer)$row["tedadPardakht"];
+
+        if ((integer)$row["tedadKol"] != 0 && $row["tedadMandeh"] == 0)
         {
             $row["tarikhBadi"] = "تمام";
             $row["vaziatID"] = "3";
@@ -98,11 +120,9 @@ if ($result !== false && $result->num_rows > 0)
 
         if ($row["tarikhBadi"] < $tarikhAlan)
         {
-            $row["moedAst"] = 1;
             $row["vaziatID"] = "2";
             $row["vaziat"] = "موعد";
         }
-        else $row["moedAst"] = 0;
 
         if (($vaziat == "moed" && $row["tarikhBadi"] < $tarikhAlan || $vaziat != "moed"))
             array_push($arrNatijeh, $row);
@@ -112,9 +132,14 @@ if ($result !== false && $result->num_rows > 0)
 /*      تابع مرتب کردن بر اساس تاریخ بعدی      */
 function moratabKon($a, $b)
 {
+    if ($a["tarikhBadi"] == $b["tarikhBadi"])
+    {
+        if ($a["tarikhShoroo"] < $b["tarikhShoroo"]) return 1;
+        else return 0;
+    }
+
     if ($a["tarikhBadi"] > $b["tarikhBadi"]) return 1;
-    elseif ($a["tarikhBadi"] == $b["tarikhBadi"]) return 0;
-    else return -1;
+    else return 0;
 }
 usort($arrNatijeh, "moratabKon");
 echo json_encode($arrNatijeh);
