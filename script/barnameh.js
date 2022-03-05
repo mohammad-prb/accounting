@@ -7,18 +7,24 @@ function emalFilterBRN({id, tasviehAst = 0} = {})
     var vaziat = document.getElementById("vaziatSBTK").dataset.value.trim().toString();
     var noe = document.getElementById("noeSBTK").dataset.value.trim().toString();
     var onvan = document.getElementById("onvanSBTK").value.trim().toString();
+    var gam = document.getElementById("gamSBTK").value.trim().toString();
+    var tedad = document.getElementById("tedadSBTK").value.trim().toString();
     var rooz = document.querySelectorAll("#tarikhSBTK>input")[0].value.trim().toString();
     var mah = document.querySelectorAll("#tarikhSBTK>input")[1].value.trim().toString();
     var sal = document.querySelectorAll("#tarikhSBTK>input")[2].value.trim().toString();
     var mablagh = document.getElementById("mablaghSBTK").value.trim().toString();
 
+    if (!check(gam, "^(|[1-9][0-9]*)$")) errorInput(document.getElementById("gamSBTK"));
+    if (!check(tedad, "^(|[1-9][0-9]*)$")) errorInput(document.getElementById("tedadVBRN"));
     if (!check(rooz, "^(|0?[1-9]|[1-2][0-9]|3[0-1])$")) errorInput(document.querySelectorAll("#tarikhSBTK>input")[0]);
     if (!check(mah, "^(|0?[1-9]|1[0-2])$")) errorInput(document.querySelectorAll("#tarikhSBTK>input")[1]);
     if (!check(sal, "^(|[1-9][0-9]{3})$")) errorInput(document.querySelectorAll("#tarikhSBTK>input")[2]);
     if (!check(mablagh, "^(|[1-9][0-9]*)$")) errorInput(document.getElementById("mablaghSBTK"));
 
     if (errorDarad) return;
-    var strQ = "noeVariz=" + noeVariz + "&hesabID=" + hesabID + "&vaziat=" + vaziat + "&noe=" + noe + "&onvan=" + onvan + "&rooz=" + rooz + "&mah=" + mah + "&sal=" + sal + "&mablagh=" + mablagh;
+    var strQ = "noeVariz=" + noeVariz + "&hesabID=" + hesabID + "&vaziat=" + vaziat +
+        "&noe=" + noe + "&onvan=" + onvan + "&gam=" + gam + "&tedad=" + tedad +
+        "&rooz=" + rooz + "&mah=" + mah + "&sal=" + sal + "&mablagh=" + mablagh;
     if (id !== undefined) strQ += "&idPardakht=" + id + "&tasviehAst=" + tasviehAst;
 
     var xhttp = new XMLHttpRequest();
@@ -86,6 +92,9 @@ function emalFilterBRN({id, tasviehAst = 0} = {})
                 lmn.dataset.id = arrObjEtelaat[i]["id"];
                 lmn.dataset.khoroojiAst = arrObjEtelaat[i]["khoroojiAst"];
                 lmn.dataset.vaziat = arrObjEtelaat[i]["vaziatID"];
+                lmn.dataset.noe = arrObjEtelaat[i]["noeID"];
+                lmn.dataset.gam = arrObjEtelaat[i]["gam"];
+                lmn.dataset.tedad = arrObjEtelaat[i]["tedadKol"];
                 lmn.innerHTML = strHTML;
                 lmnKadr.appendChild(lmn);
             }
@@ -172,10 +181,6 @@ function afzoodanBRN()
         '                            </div>\n' +
         '                        </div>\n' +
         '                        <div class="etelaatSBT">\n' +
-        '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">عنوان:</span></div>\n' +
-        '                            <input type="text" class="txtOnvan" id="onvanVBRN" name="onvan" maxlength="255" autocomplete="off">\n' +
-        '                        </div>\n' +
-        '                        <div class="etelaatSBT">\n' +
         '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">نوع:</span></div>\n' +
         '                            <div class="kadrENT" id="noeVBRN">\n' +
         '                                <span class="kadrPoshtENT"></span>\n' +
@@ -183,6 +188,10 @@ function afzoodanBRN()
         '                                <a class="gozinehENT" onclick="taghirENT(this);" data-value="2" href="javascript:void(0);">ماهانه</a>\n' +
         '                                <a class="gozinehENT" onclick="taghirENT(this);" data-value="3" href="javascript:void(0);">سالانه</a>\n' +
         '                            </div>\n' +
+        '                        </div>\n' +
+        '                        <div class="etelaatSBT">\n' +
+        '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">عنوان:</span></div>\n' +
+        '                            <input type="text" class="txtOnvan" id="onvanVBRN" name="onvan" maxlength="255" autocomplete="off">\n' +
         '                        </div>\n' +
         '                        <div class="etelaatSBT">\n' +
         '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">گام</span></div>\n' +
@@ -206,7 +215,7 @@ function afzoodanBRN()
         '                        </div>\n' +
         '                    </div>\n' +
         '                    <span id="kadrDokmehVBRN">\n' +
-        '                        <a class="dokmehTL dokmehTaeed" onclick="sabtVirayeshBRN();" href="javascript:void (0);"><span class="icon"></span><span class="matnTitr">تایید</span></a>\n' +
+        '                        <a class="dokmehTL dokmehTaeed" onclick="sabtBRN();" href="javascript:void (0);"><span class="icon"></span><span class="matnTitr">تایید</span></a>\n' +
         '                        <a class="dokmehTL dokmehLaghv" onclick="this.parentElement.parentElement.parentElement.parentElement.parentElement.remove();" href="javascript:void (0);"><span class="icon"></span><span class="matnTitr">انصراف</span></a>\n' +
         '                    </span>\n' +
         '                </div>\n' +
@@ -223,7 +232,7 @@ function afzoodanBRN()
 
     document.getElementById("onvanVBRN").select();
     lmn.onkeydown = function(e){
-        if (e.keyCode === 13) sabtVirayeshBRN(); // enter
+        if (e.keyCode === 13) sabtBRN(); // enter
         else if (e.keyCode === 27) document.getElementById("CountainerKadrViraieshBRN").remove(); // escape
     };
 
@@ -240,7 +249,7 @@ function afzoodanBRN()
 }
 
 /*      ثبت افزودن برنامه      */
-function sabtVirayeshBRN()
+function sabtBRN()
 {
     errorDarad = false;
     var hesabID = Number(document.getElementsByClassName("sltHesabha")[0].value);
@@ -263,7 +272,8 @@ function sabtVirayeshBRN()
     if (!check(mablagh, "^[1-9][0-9]*$")) errorInput(document.getElementById("mablaghVBRN"));
 
     if (errorDarad) return;
-    var strQ = "hesabID=" + hesabID + "&khoroojiAst=" + khoroojiAst + "&onvan=" + onvan + "&noe=" + noe + "&gam=" + gam + "&tedadKol=" + tedadKol + "&rooz=" + rooz + "&mah=" + mah + "&sal=" + sal + "&mablagh=" + mablagh;
+    var strQ = "hesabID=" + hesabID + "&khoroojiAst=" + khoroojiAst + "&onvan=" + onvan + "&noe=" + noe + "&gam=" + gam + "&tedadKol=" + tedadKol + "&rooz=" +
+        rooz + "&mah=" + mah + "&sal=" + sal + "&mablagh=" + mablagh;
 
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function ()
@@ -282,6 +292,150 @@ function sabtVirayeshBRN()
         }
     };
     xhttp.open("POST", "./ajax/sabt-barnameh.php?sid="+Math.random(), true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send(strQ+"&tk="+tkn);
+    namayeshLoading(document.getElementById("kadrVBRN"));
+}
+
+/*      باز کردن کادر ویرایش برنامه      */
+function virayeshBRN(lmn)
+{
+    if (document.getElementById("CountainerKadrViraieshBRN")) return;
+    var lmnKadr = lmn.parentElement.parentElement.parentElement;
+    var id = Number(lmnKadr.dataset.id);
+    var khoroojiAst = Number(lmnKadr.dataset.khoroojiAst);
+    var onvan = lmnKadr.querySelector(".kadrOnvan>span.matnTitr").innerHTML.trim();
+    var noe = Number(lmnKadr.dataset.noe);
+    var gam = Number(lmnKadr.dataset.gam);
+    var tedad = Number(lmnKadr.dataset.tedad);
+    var tarikh = lmnKadr.querySelector(".kadrTarikhShoroo>span.meghdarBRN").innerHTML.trim();
+    var mablagh = hazfMomayez(lmnKadr.querySelector(".kadrMablaghGhest>span.meghdarBRN").innerHTML);
+
+    var strHTML = '<div id="kadrNamayeshVBRN">\n' +
+        '            <a id="kadrPoshtVBRN" href="javascript:void(0);" onclick="this.parentElement.parentElement.remove();"></a>\n' +
+        '            <div id="kadrVBRN">\n' +
+        '                <div>\n' +
+        '                    <div id="titrVBRN"><span class="icon"></span><span class="matnTitr">افزودن برنامه</span></div>\n' +
+        '                    <div class="etelaatVBRN">\n' +
+        '                        <div class="etelaatSBT">\n' +
+        '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">خ/و:</span></div>\n' +
+        '                            <div class="kadrENT" id="KhoroojiAstVBRN">\n' +
+        '                                <span class="kadrPoshtENT"></span>\n' +
+        '                                <a class="gozinehENT" onclick="taghirENT(this);" data-value="1" href="javascript:void(0);">خروجی</a>\n' +
+        '                                <a class="gozinehENT" onclick="taghirENT(this);" data-value="0" href="javascript:void(0);">ورودی</a>\n' +
+        '                            </div>\n' +
+        '                        </div>\n' +
+        '                        <div class="etelaatSBT">\n' +
+        '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">نوع:</span></div>\n' +
+        '                            <div class="kadrENT" id="noeVBRN">\n' +
+        '                                <span class="kadrPoshtENT"></span>\n' +
+        '                                <a class="gozinehENT" onclick="taghirENT(this);" data-value="1" href="javascript:void(0);">روزانه</a>\n' +
+        '                                <a class="gozinehENT" onclick="taghirENT(this);" data-value="2" href="javascript:void(0);">ماهانه</a>\n' +
+        '                                <a class="gozinehENT" onclick="taghirENT(this);" data-value="3" href="javascript:void(0);">سالانه</a>\n' +
+        '                            </div>\n' +
+        '                        </div>\n' +
+        '                        <div class="etelaatSBT">\n' +
+        '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">عنوان:</span></div>\n' +
+        '                            <input type="text" class="txtOnvan" id="onvanVBRN" name="onvan" value="'+ onvan +'" maxlength="255" autocomplete="off">\n' +
+        '                        </div>\n' +
+        '                        <div class="etelaatSBT">\n' +
+        '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">گام</span></div>\n' +
+        '                            <input type="text" class="txtGam" id="gamVBRN" name="gam" value="'+ gam +'" maxlength="3" autocomplete="off">\n' +
+        '                        </div>\n' +
+        '                        <div class="etelaatSBT">\n' +
+        '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">تعداد کل:</span></div>\n' +
+        '                            <input type="text" class="txtTedad" id="tedadVBRN" name="tedad" value="'+ (tedad>0 ? tedad : '') +'" maxlength="4" placeholder="اختیاری" autocomplete="off">\n' +
+        '                        </div>\n' +
+        '                        <div class="etelaatSBT">\n' +
+        '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">شروع:</span></div>\n' +
+        '                            <div class="kadrTarikhSBT" id="tarikhVBRN">\n' +
+        '                                <input type="text" class="txtTarikh" name="rooz" value="'+ tarikh.split("/")[2] +'" onfocus="this.select();" oninput="if(this.value.length>1) this.nextElementSibling.focus();" maxlength="2" placeholder="روز" autocomplete="off">\n' +
+        '                                <input type="text" class="txtTarikh" name="mah" value="'+ tarikh.split("/")[1] +'" onfocus="this.select();" oninput="if(this.value.length>1) this.nextElementSibling.focus();" maxlength="2" placeholder="ماه" autocomplete="off">\n' +
+        '                                <input type="text" class="txtTarikh" name="sal" value="'+ tarikh.split("/")[0] +'" onfocus="this.select();" oninput="if(this.value.length>3) document.getElementById(\'mablaghVBRN\').focus();" maxlength="4" placeholder="سال" autocomplete="off">\n' +
+        '                            </div>\n' +
+        '                        </div>\n' +
+        '                        <div class="etelaatSBT">\n' +
+        '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">مبلغ:</span></div>\n' +
+        '                            <input type="text" class="txtMablagh" id="mablaghVBRN" name="mablagh" value="'+ mablagh +'" maxlength="10" placeholder="به ریال" autocomplete="off">\n' +
+        '                        </div>\n' +
+        '                    </div>\n' +
+        '                    <span id="kadrDokmehVBRN">\n' +
+        '                        <a class="dokmehTL dokmehTaeed" onclick="sabtVirayeshBRN('+ id +');" href="javascript:void (0);"><span class="icon"></span><span class="matnTitr">تایید</span></a>\n' +
+        '                        <a class="dokmehTL dokmehLaghv" onclick="this.parentElement.parentElement.parentElement.parentElement.parentElement.remove();" href="javascript:void (0);"><span class="icon"></span><span class="matnTitr">انصراف</span></a>\n' +
+        '                    </span>\n' +
+        '                </div>\n' +
+        '            </div>\n' +
+        '        </div>';
+
+    var lmnVirayesh = document.createElement("div");
+    lmnVirayesh.setAttribute("id", "CountainerKadrViraieshBRN");
+    lmnVirayesh.innerHTML = strHTML;
+    document.body.appendChild(lmnVirayesh);
+
+    taghirENT(lmnVirayesh.querySelectorAll("#KhoroojiAstVBRN>a.gozinehENT")[(khoroojiAst+1) % 2]);
+    taghirENT(lmnVirayesh.querySelectorAll("#noeVBRN>a.gozinehENT")[noe - 1]);
+
+    lmnVirayesh.onkeydown = function(e){
+        if (e.keyCode === 13) sabtVirayeshBRN(id); // enter
+        else if (e.keyCode === 27) document.getElementById("CountainerKadrViraieshBRN").remove(); // escape
+    };
+
+    document.getElementById("mablaghVBRN").onkeydown = function(e){
+        if (e.keyCode === 107) { // +
+            event.preventDefault();
+            if (this.value.length < 7) this.value += "0000";
+        }
+        else if (e.keyCode === 109) { // -
+            event.preventDefault();
+            if (this.value.length < 8) this.value += "000";
+        }
+    };
+}
+
+/*      ثبت ویرایش برنامه      */
+function sabtVirayeshBRN(id)
+{
+    errorDarad = false;
+    var hesabID = Number(document.getElementsByClassName("sltHesabha")[0].value);
+    var khoroojiAst = Number(document.getElementById("KhoroojiAstVBRN").dataset.value);
+    var noe = Number(document.getElementById("noeVBRN").dataset.value);
+    var onvan = document.getElementById("onvanVBRN").value.toString().replace(/(<([^>]+)>)/ig, '');
+    var gam = document.getElementById("gamVBRN").value.toString();
+    var tedadKol = document.getElementById("tedadVBRN").value.toString();
+    var rooz = document.querySelectorAll("#tarikhVBRN>input.txtTarikh")[0].value.toString();
+    var mah = document.querySelectorAll("#tarikhVBRN>input.txtTarikh")[1].value.toString();
+    var sal = document.querySelectorAll("#tarikhVBRN>input.txtTarikh")[2].value.toString();
+    var mablagh = document.getElementById("mablaghVBRN").value.toString();
+
+    if (onvan === "") errorInput(document.getElementById("onvanVBRN"));
+    if (!check(gam, "^[1-9][0-9]*$")) errorInput(document.getElementById("gamVBRN"));
+    if (!check(tedadKol, "^(|[1-9][0-9]*)$")) errorInput(document.getElementById("tedadVBRN"));
+    if (!check(rooz, "^(0?[1-9]|[1-2][0-9]|3[0-1])$")) errorInput(document.querySelectorAll("#tarikhVBRN>input.txtTarikh")[0]);
+    if (!check(mah, "^(0?[1-9]|1[0-2])$")) errorInput(document.querySelectorAll("#tarikhVBRN>input.txtTarikh")[1]);
+    if (!check(sal, "^[1-9][0-9]{3}$")) errorInput(document.querySelectorAll("#tarikhVBRN>input.txtTarikh")[2]);
+    if (!check(mablagh, "^[1-9][0-9]*$")) errorInput(document.getElementById("mablaghVBRN"));
+
+    if (errorDarad) return;
+    var strQ = "id=" + id + "&hesabID=" + hesabID + "&khoroojiAst=" + khoroojiAst + "&onvan=" + onvan + "&noe=" + noe + "&gam=" + gam +
+        "&tedadKol=" + tedadKol + "&rooz=" + rooz + "&mah=" + mah + "&sal=" + sal + "&mablagh=" + mablagh;
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function ()
+    {
+        if (this.readyState === 4 && this.status === 200)
+        {
+            bastanLoading(document.getElementById("kadrVBRN"));
+            var natijeh = this.responseText;
+            if (natijeh === "ok")
+            {
+                flash("ویرایش با موفقیت انجام شد.");
+                document.getElementById("CountainerKadrViraieshBRN").remove();
+                emalFilterBRN();
+            }
+            else namayeshPeygham("ویرایش با خطا مواجه شد، لطفا پس از بررسی فیلد ها مجددا تلاش کنید.");
+        }
+    };
+    xhttp.open("POST", "./ajax/virayesh-barnameh.php?sid="+Math.random(), true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send(strQ+"&tk="+tkn);
     namayeshLoading(document.getElementById("kadrVBRN"));

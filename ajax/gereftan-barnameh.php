@@ -12,6 +12,8 @@ if (isset($_POST["hesabID"])) $hesabID = htmlspecialchars(stripcslashes(trim($_P
 if (isset($_POST["vaziat"])) $vaziat = htmlspecialchars(stripcslashes(trim($_POST["vaziat"]))); else die();
 if (isset($_POST["noe"])) $noe = htmlspecialchars(stripcslashes(trim($_POST["noe"]))); else die();
 if (isset($_POST["onvan"])) $onvan = "%".htmlspecialchars(stripcslashes(trim($_POST["onvan"])))."%"; else die();
+if (isset($_POST["gam"])) $gam = htmlspecialchars(stripcslashes(trim($_POST["gam"]))); else die();
+if (isset($_POST["tedad"])) $tedad = htmlspecialchars(stripcslashes(trim($_POST["tedad"]))); else die();
 if (isset($_POST["rooz"])) $rooz = htmlspecialchars(stripcslashes(trim($_POST["rooz"]))); else die();
 if (isset($_POST["mah"])) $mah = htmlspecialchars(stripcslashes(trim($_POST["mah"]))); else die();
 if (isset($_POST["sal"])) $sal = htmlspecialchars(stripcslashes(trim($_POST["sal"]))); else die();
@@ -21,6 +23,8 @@ if (isset($_POST["tasviehAst"])) $tasviehAst = htmlspecialchars(stripcslashes(tr
 
 if (preg_match("/^(hameh|[0-1])$/", $noeVariz) !== 1) die();
 if (preg_match("/^(hameh|[1-5])$/", $noe) !== 1) die();
+if (preg_match("/^(|[1-9][0-9]*)$/", $gam) !== 1) die();
+if (preg_match("/^(|[1-9][0-9]*)$/", $tedad) !== 1) die();
 if (preg_match("/^(|0?[1-9]|[1-2][0-9]|3[0-1])$/", $rooz) !== 1) die();
 if (preg_match("/^(|0?[1-9]|1[0-2])$/", $mah) !== 1) die();
 if (preg_match("/^(|[1-9][0-9]{3})$/", $sal) !== 1) die();
@@ -63,6 +67,8 @@ $arrNatijeh = array();
 $sql = "select id, onvan, khoroojiAst, noeID, gam, mablagh, tarikhShoroo, tedadKol, tedadPardakht from tbl_barnameh where vaziat = 1 and hesabID = " . $hesabID;
 
 if ($noe != "hameh") $sql .= " and noeID = " . $noe;
+if ($gam != "") $sql .= " and gam = " . $gam;
+if ($tedad != "") $sql .= " and tedadKol = " . $tedad;
 if ($mablagh != "") $sql .= " and mablagh = " . $mablagh;
 if ($noeVariz != "hameh") $sql .= " and khoroojiAst = " . $noeVariz;
 if (strlen($mah) == 1) $mah = "0".$mah;
@@ -88,15 +94,15 @@ if ($result !== false && $result->num_rows > 0)
         {
             case 1:
                 $row["noe"] = "روزانه";
-                $row["tarikhBadi"] = gereftanTarikhGhest($row["tarikhShoroo"], $row["gam"], $row["tedadPardakht"]);
+                $row["tarikhBadi"] = gereftanTarikhGhest($row["tarikhShoroo"], "rooz", $row["gam"], $row["tedadPardakht"]);
                 break;
             case 2:
                 $row["noe"] = "ماهانه";
-                $row["tarikhBadi"] = gereftanTarikhGhest($row["tarikhShoroo"], "mah", $row["tedadPardakht"]);
+                $row["tarikhBadi"] = gereftanTarikhGhest($row["tarikhShoroo"], "mah", $row["gam"], $row["tedadPardakht"]);
                 break;
             case 3:
                 $row["noe"] = "سالانه";
-                $row["tarikhBadi"] = gereftanTarikhGhest($row["tarikhShoroo"], "sal", $row["tedadPardakht"]);
+                $row["tarikhBadi"] = gereftanTarikhGhest($row["tarikhShoroo"], "sal", $row["gam"], $row["tedadPardakht"]);
                 break;
             default: die();
         }

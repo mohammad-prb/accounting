@@ -32,6 +32,14 @@
         <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">عنوان:</span></div>
         <input type="text" class="txtTozih" id="onvanSBTK" name="tozih" autocomplete="off"/>
     </div>
+    <div class="etelaatSBT tamamSafheh">
+        <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">گام:</span></div>
+        <input type="text" class="txtGam" id="gamSBTK" name="gam" maxlength="3" autocomplete="off"/>
+    </div>
+    <div class="etelaatSBT tamamSafheh">
+        <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">تعدادکل:</span></div>
+        <input type="text" class="txtTedad" id="tedadSBTK" name="tedad" maxlength="4" autocomplete="off">
+    </div>
     <div class="etelaatSBT">
         <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">شروع:</span></div>
         <div class="kadrTarikhSBT" id="tarikhSBTK">
