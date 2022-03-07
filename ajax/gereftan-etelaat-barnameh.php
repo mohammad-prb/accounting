@@ -20,15 +20,24 @@ if ($result !== false && $result->num_rows > 0)
         {
             case 1:
                 $row["noe"] = "روزانه";
-                $row["rizTarikh"] = gereftanRizTarikh($row["tarikhShoroo"], "rooz", (integer)$row["gam"], (integer)$row["tedadKol"]);
+                if ((integer)$row["tedadKol"] == 0)
+                    $row["rizTarikh"] = gereftanRizTarikh($row["tarikhShoroo"], "rooz", (integer)$row["gam"], (integer)$row["tedadPardakht"]);
+                else
+                    $row["rizTarikh"] = gereftanRizTarikh($row["tarikhShoroo"], "rooz", (integer)$row["gam"], (integer)$row["tedadKol"]);
                 break;
             case 2:
                 $row["noe"] = "ماهانه";
-                $row["rizTarikh"] = gereftanRizTarikh($row["tarikhShoroo"], "mah", (integer)$row["gam"], (integer)$row["tedadKol"]);
+                if ((integer)$row["tedadKol"] == 0)
+                    $row["rizTarikh"] = gereftanRizTarikh($row["tarikhShoroo"], "mah", (integer)$row["gam"], (integer)$row["tedadPardakht"]);
+                else
+                    $row["rizTarikh"] = gereftanRizTarikh($row["tarikhShoroo"], "mah", (integer)$row["gam"], (integer)$row["tedadKol"]);
                 break;
             case 3:
                 $row["noe"] = "سالانه";
-                $row["rizTarikh"] = gereftanRizTarikh($row["tarikhShoroo"], "sal", (integer)$row["gam"], (integer)$row["tedadKol"]);
+                if ((integer)$row["tedadKol"] == 0)
+                    $row["rizTarikh"] = gereftanRizTarikh($row["tarikhShoroo"], "sal", (integer)$row["gam"], (integer)$row["tedadPardakht"]);
+                else
+                    $row["rizTarikh"] = gereftanRizTarikh($row["tarikhShoroo"], "sal", (integer)$row["gam"], (integer)$row["tedadKol"]);
                 break;
             default: die();
         }

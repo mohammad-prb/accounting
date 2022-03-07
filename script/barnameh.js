@@ -506,16 +506,6 @@ function gereftanEtelaatBRN(id)
                     '                            <span class="meghdarBRN">'+ (objNatijeh["mablaghMandeh"]==="-" ? "-" : momayezdar(objNatijeh["mablaghMandeh"])) +'</span>\n' +
                     '                        </div>\n' +
                     '                        <div class="etelaatSBT">\n' +
-                    '                            <span class="icon"></span>' +
-                    '                            <span class="matnTitr">شروع:</span>' +
-                    '                            <span class="meghdarBRN">'+ objNatijeh["tarikhShoroo"] +'</span>\n' +
-                    '                        </div>\n' +
-                    '                        <div class="etelaatSBT">\n' +
-                    '                            <span class="icon"></span>' +
-                    '                            <span class="matnTitr">پایان:</span>' +
-                    '                            <span class="meghdarBRN">'+ (Number(objNatijeh["rizTarikh"])===0 ? "-" : objNatijeh["rizTarikh"][objNatijeh["rizTarikh"].length-1]) +'</span>\n' +
-                    '                        </div>\n' +
-                    '                        <div class="etelaatSBT">\n' +
                     '                            <span class="icon"></span>' +
                     '                            <span class="matnTitr">تعداد کل:</span>' +
                     '                            <span class="meghdarBRN">'+ (Number(objNatijeh["tedadKol"])===0 ? "-" : momayezdar(objNatijeh["tedadKol"])) +'</span>\n' +
@@ -529,10 +519,16 @@ function gereftanEtelaatBRN(id)
                     '                            <span class="icon"></span>' +
                     '                            <span class="matnTitr">تعداد مانده:</span>' +
                     '                            <span class="meghdarBRN">'+ (objNatijeh["tedadMandeh"]==="-" ? "-" : momayezdar(objNatijeh["tedadMandeh"])) +'</span>\n' +
-                    '                        </div>\n' +
+                    '                        </div>' +
+                    '                        <div class="kadrRizTatikh">';
+
+                for (let i=0; i<objNatijeh["rizTarikh"].length; i++)
+                    strHTML += "<div class='rizTarikh"+ (Number(objNatijeh["tedadPardakht"])>i ? " pardakhti" : "") +"'>"+ objNatijeh["rizTarikh"][i] +"</div>";
+
+                strHTML += '                        </div>\n' +
                     '                    </div>\n' +
                     '                    <span id="kadrDokmehVBRN">\n' +
-                    '                        <a class="dokmehTL dokmehRizTarikh" onclick="" href="javascript:void (0);"><span class="icon"></span><span class="matnTitr">ریز تاریخ ها</span></a>\n' +
+                    '                        <a class="dokmehTL dokmehHazfPardakht" onclick="" href="javascript:void (0);"><span class="icon"></span><span class="matnTitr">پاک کردن یک پرداخت</span></a>\n' +
                     '                        <a class="dokmehTL dokmehLaghv" onclick="this.parentElement.parentElement.parentElement.parentElement.parentElement.remove();" href="javascript:void (0);"><span class="icon"></span><span class="matnTitr">بستن</span></a>\n' +
                     '                    </span>\n' +
                     '                </div>\n' +

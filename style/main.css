@@ -68,6 +68,12 @@ body::-webkit-scrollbar-thumb:hover
     background: hsl(0, 0%, 40%);
 }
 
+/* Handle on hover */
+body::-webkit-scrollbar-thumb:active
+{
+    background: hsl(0, 0%, 50%);
+}
+
 html
 {
     height: 100%;

@@ -387,7 +387,10 @@ a.btnBRN:active
 #titrVBRN
 {
     float: right;
-    padding: 0 10px 0 0;
+    width: calc(100% - 10px);
+    padding: 0 10px 10px 0;
+    margin-bottom: 5px;
+    border-bottom: 1px solid hsl(0, 0%, 80%);
     font-size: 1.25rem;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -397,11 +400,45 @@ a.btnBRN:active
 .etelaatVBRN
 {
     float: right;
-    width: calc(100% - 15px);
-    margin: 10px 15px 5px 0;
-    padding-top: 20px;
+    width: calc(100% - 18px);
+    margin: 0 15px 5px 0;
+    padding: 10px 0 0 3px;
+    overflow: auto;
+    max-height: 300px;
     color: hsl(0, 0%, 40%);
-    border-top: 1px solid hsl(0, 0%, 80%);
+}
+
+/* width */
+.etelaatVBRN::-webkit-scrollbar
+{
+    width: 4px;
+    height: 100%;
+}
+
+/* Track */
+.etelaatVBRN::-webkit-scrollbar-track
+{
+    background: hsl(0, 0%, 85%);
+    border-radius: 5px;
+}
+
+/* Handle */
+.etelaatVBRN::-webkit-scrollbar-thumb
+{
+    background: hsl(0, 0%, 60%);
+    border-radius: 5px;
+}
+
+/* Handle on hover */
+.etelaatVBRN::-webkit-scrollbar-thumb:hover
+{
+    background: hsl(0, 0%, 40%);
+}
+
+/* Handle on hover */
+.etelaatVBRN::-webkit-scrollbar-thumb:active
+{
+    background: hsl(0, 0%, 50%);
 }
 
 input.txtOnvan
@@ -466,27 +503,29 @@ input.txtTedad
     color: hsl(0, 0%, 0%);
 }
 
-a.dokmehRizTarikh, a.dokmehRizTarikh:link, a.dokmehRizTarikh:visited
+.kadrRizTatikh
 {
-    margin: 0 0 0 5px;
-    background-color: hsl(204, 100%, 90%);
-    color: hsl(204, 100%, 30%);
+    float: right;
+    width: 100%;
+    padding: 15px 0 5px;
+    border-top: 1px solid hsl(0, 0%, 80%);
 }
 
-a.dokmehRizTarikh:hover
+.rizTarikh
 {
-    background-color: hsl(204, 100%, 85%);
+    float: left;
+    margin: 0 0 5px 15px;
 }
 
-a.dokmehRizTarikh:active
+.rizTarikh.pardakhti
 {
-    transition: none;
-    background-color: hsl(204, 100%, 88%);
+    color: hsl(204, 100%, 50%);
 }
 
 a.dokmehHazfPardakht, a.dokmehHazfPardakht:link, a.dokmehHazfPardakht:visited
 {
     margin: 0 5px 0 0;
+    font-size: 1rem !important;
     color: hsl(39, 100%, 20%);
     background-color: hsl(39, 100%, 87%);
 }
@@ -500,9 +539,4 @@ a.dokmehHazfPardakht:active
 {
     transition: none;
     background-color: hsl(39, 100%, 83%);
-}
-
-a.dokmehRizTarikh span.icon, a.dokmehHazfPardakht span.icon
-{
-    font-size: 1rem !important;
 }
