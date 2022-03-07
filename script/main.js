@@ -295,10 +295,12 @@ function entekhabPishnahad(lmn, shom)
     var lmnPishnehad = document.querySelector("a.itemPishnahad[data-entekhabi]>span.titrPishnahad");
     if (lmnPishnehad)
     {
-        if (shom === undefined)
-            document.activeElement.value = lmnPishnehad.innerHTML.trim();
-        else
-            lmn.value = document.getElementsByClassName("titrPishnahad")[shom].innerHTML.trim();
+        document.activeElement.value = lmnPishnehad.innerHTML.trim();
+        taghirPishnahad(lmn);
+    }
+    else
+    {
+        lmn.value = document.getElementsByClassName("titrPishnahad")[shom].innerHTML.trim();
         taghirPishnahad(lmn);
     }
 }

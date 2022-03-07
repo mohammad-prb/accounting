@@ -33,7 +33,7 @@
         <input type="text" class="txtTozih" id="onvanSBTK" name="tozih" autocomplete="off"/>
     </div>
     <div class="etelaatSBT tamamSafheh">
-        <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">گام:</span></div>
+        <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">گام:</span></div>
         <input type="text" class="txtGam" id="gamSBTK" name="gam" maxlength="3" autocomplete="off"/>
     </div>
     <div class="etelaatSBT tamamSafheh">

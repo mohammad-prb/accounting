@@ -432,3 +432,44 @@ function gereftanTarikhGhest($tarikhShoroo, $noe, $gam, $tedadDadeShodeh = 0)
 
     return $natijeh;
 }
+
+/*      گرفتن ریز تاریخ ها، با یک تاریخ شروع و گام      */
+function gereftanRizTarikh($tarikhShoroo, $noe, $gam, $tedadKol)
+{
+    /*  نوع کلمات کلیدی rooz یا mah یا sal است.  */
+    /*  گام یعنی مثلا اگر نوع روز است، هر چند روز؟ یا اگر ماه است، هر چند ماه؟  */
+    if (preg_match("/^[1-9][0-9]{3}\/(0[1-9]|1[0-2])\/(0[1-9]|[1-2][0-9]|3[0-1])$/", $tarikhShoroo) !== 1) return 0;
+    if ($tedadKol == 0) return 0;
+    $arrTarikhShoroo = explode("/", $tarikhShoroo);
+    $natijeh = array();
+
+    if ($noe == "rooz")
+    {
+        $saniehRooz = 24 * 60 * 60;
+        $timeStampShoroo = jmktime(0,0,0, (integer)$arrTarikhShoroo[1], (integer)$arrTarikhShoroo[2], (integer)$arrTarikhShoroo[0]);
+        for ($i=0; $i<$tedadKol; $i++)
+        {
+            $timeStamp = $timeStampShoroo + ($i * $gam * $saniehRooz);
+            array_push($natijeh, jdate("Y/m/d", $timeStamp, "", "Asia/Tehran", "en"));
+        }
+    }
+    elseif ($noe == "mah")
+    {
+        for ($i=0; $i<$tedadKol; $i++)
+        {
+            $timeStamp = jmktime(0,0,0, (integer)$arrTarikhShoroo[1]+($gam*$i), (integer)$arrTarikhShoroo[2], (integer)$arrTarikhShoroo[0]);
+            array_push($natijeh, jdate("Y/m/d", $timeStamp, "", "Asia/Tehran", "en"));
+        }
+    }
+    elseif ($noe == "sal")
+    {
+        for ($i=0; $i<$tedadKol; $i++)
+        {
+            $timeStamp = jmktime(0,0,0, (integer)$arrTarikhShoroo[1], (integer)$arrTarikhShoroo[2], (integer)$arrTarikhShoroo[0]+($gam*$i));
+            array_push($natijeh, jdate("Y/m/d", $timeStamp, "", "Asia/Tehran", "en"));
+        }
+    }
+    else return false;
+
+    return $natijeh;
+}

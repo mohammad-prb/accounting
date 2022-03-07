@@ -21,6 +21,7 @@ function emalFilterBRN({id, tasviehAst = 0} = {})
     if (!check(sal, "^(|[1-9][0-9]{3})$")) errorInput(document.querySelectorAll("#tarikhSBTK>input")[2]);
     if (!check(mablagh, "^(|[1-9][0-9]*)$")) errorInput(document.getElementById("mablaghSBTK"));
 
+    if (id !== undefined) bastanPeygham();
     if (errorDarad) return;
     var strQ = "noeVariz=" + noeVariz + "&hesabID=" + hesabID + "&vaziat=" + vaziat +
         "&noe=" + noe + "&onvan=" + onvan + "&gam=" + gam + "&tedad=" + tedad +
@@ -82,9 +83,9 @@ function emalFilterBRN({id, tasviehAst = 0} = {})
                     '                    <div class="kadrEtelaatBRN kadrTarikh"><span class="icon"></span><span class="matnTitr">بعدی:</span><span class="meghdarBRN">'+ arrObjEtelaat[i]["tarikhBadi"] +'</span></div>\n' +
                     '                    <div class="kadrEtelaatBRN kadrMablaghGhest"><span class="icon"></span><span class="matnTitr">مبلغ:</span><span class="meghdarBRN">'+ momayezdar(arrObjEtelaat[i]["mablagh"]) +'</span></div>\n' +
                     '                    <div class="kadrBtnBRN">\n' +
-                    '                        <a href="javascript:void(0);" class="btnBRN" onclick=""><span class="icon"></span><span class="matnTitr">اطلاعات</span></a>\n' +
-                    (Number(arrObjEtelaat[i]["vaziatID"]) !== 3 ? '<a href="javascript:void(0);" class="btnBRN" onclick="emalFilterBRN({id:'+ arrObjEtelaat[i]["id"] +'});"><span class="icon"></span><span class="matnTitr">پرداخت</span></a>\n' +
-                        '<a href="javascript:void(0);" class="btnBRN" onclick="emalFilterBRN({id:'+ arrObjEtelaat[i]["id"] +', tasviehAst:1});"><span class="icon"></span><span class="matnTitr">تسویه</span></a>\n' : '') +
+                    '                        <a href="javascript:void(0);" class="btnBRN" onclick="gereftanEtelaatBRN('+ arrObjEtelaat[i]["id"] +');"><span class="icon"></span><span class="matnTitr">اطلاعات</span></a>\n' +
+                    (Number(arrObjEtelaat[i]["vaziatID"]) !== 3 ? '<a href="javascript:void(0);" class="btnBRN" onclick="namayeshPeygham(\'آیا برای پرداخت اطمینان دارید؟\', 1, \'emalFilterBRN({id:'+ arrObjEtelaat[i]["id"] +'});\');"><span class="icon"></span><span class="matnTitr">پرداخت</span></a>\n' +
+                        '<a href="javascript:void(0);" class="btnBRN" onclick="namayeshPeygham(\'آیا برای تسویه اطمینان دارید؟\', 1, \'emalFilterBRN({id:'+ arrObjEtelaat[i]["id"] +', tasviehAst:1});\');"><span class="icon"></span><span class="matnTitr">تسویه</span></a>\n' : '') +
                     '                    </div>';
 
                 var lmn = document.createElement("div");
@@ -170,7 +171,7 @@ function afzoodanBRN()
         '            <a id="kadrPoshtVBRN" href="javascript:void(0);" onclick="this.parentElement.parentElement.remove();"></a>\n' +
         '            <div id="kadrVBRN">\n' +
         '                <div>\n' +
-        '                    <div id="titrVBRN"><span class="icon"></span><span class="matnTitr">افزودن برنامه</span></div>\n' +
+        '                    <div id="titrVBRN"><span class="icon"></span><span class="matnTitr">افزودن برنامه زمانی</span></div>\n' +
         '                    <div class="etelaatVBRN">\n' +
         '                        <div class="etelaatSBT">\n' +
         '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">خ/و:</span></div>\n' +
@@ -194,7 +195,7 @@ function afzoodanBRN()
         '                            <input type="text" class="txtOnvan" id="onvanVBRN" name="onvan" maxlength="255" autocomplete="off">\n' +
         '                        </div>\n' +
         '                        <div class="etelaatSBT">\n' +
-        '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">گام</span></div>\n' +
+        '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">گام</span></div>\n' +
         '                            <input type="text" class="txtGam" id="gamVBRN" name="gam" maxlength="3" autocomplete="off">\n' +
         '                        </div>\n' +
         '                        <div class="etelaatSBT">\n' +
@@ -339,7 +340,7 @@ function virayeshBRN(lmn)
         '                            <input type="text" class="txtOnvan" id="onvanVBRN" name="onvan" value="'+ onvan +'" maxlength="255" autocomplete="off">\n' +
         '                        </div>\n' +
         '                        <div class="etelaatSBT">\n' +
-        '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">گام</span></div>\n' +
+        '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">گام</span></div>\n' +
         '                            <input type="text" class="txtGam" id="gamVBRN" name="gam" value="'+ gam +'" maxlength="3" autocomplete="off">\n' +
         '                        </div>\n' +
         '                        <div class="etelaatSBT">\n' +
@@ -439,4 +440,115 @@ function sabtVirayeshBRN(id)
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send(strQ+"&tk="+tkn);
     namayeshLoading(document.getElementById("kadrVBRN"));
+}
+
+/*      اطلاعات برنامه      */
+function gereftanEtelaatBRN(id)
+{
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function ()
+    {
+        if (this.readyState === 4 && this.status === 200)
+        {
+            bastanLoading(document.getElementById("kadrBarnameh"));
+            if (jsonMotabarAst(this.responseText))
+            {
+                var objNatijeh = JSON.parse(this.responseText);
+                var strHTML = '<div id="kadrNamayeshVBRN">\n' +
+                    '            <a id="kadrPoshtVBRN" href="javascript:void(0);" onclick="this.parentElement.parentElement.remove();"></a>\n' +
+                    '            <div id="kadrVBRN">\n' +
+                    '                <div>' +
+                    '                    <div id="titrVBRN"><span class="icon"></span><span class="matnTitr">اطلاعات برنامه زمانی</span></div>\n' +
+                    '                    <div class="etelaatVBRN">\n' +
+                    '                        <div class="etelaatSBT">\n' +
+                    '                            <span class="icon"></span>' +
+                    '                            <span class="matnTitr">عنوان:</span>' +
+                    '                            <span class="meghdarBRN">'+ objNatijeh["onvan"] +'</span>\n' +
+                    '                        </div>\n' +
+                    '                        <div class="etelaatSBT">\n' +
+                    '                            <span class="icon"></span>' +
+                    '                            <span class="matnTitr">خ/و:</span>' +
+                    '                            <span class="meghdarBRN">'+ (Number(objNatijeh["khoroojiAst"])===1 ? "خروجی" : "ورودی") +'</span>\n' +
+                    '                        </div>\n' +
+                    '                        <div class="etelaatSBT">\n' +
+                    '                            <span class="icon"></span>' +
+                    '                            <span class="matnTitr">وضعیت:</span>' +
+                    '                            <span class="meghdarBRN">'+ objNatijeh["vaziat"] +'</span>\n' +
+                    '                        </div>\n' +
+                    '                        <div class="etelaatSBT">\n' +
+                    '                            <span class="icon"></span>' +
+                    '                            <span class="matnTitr">نوع:</span>' +
+                    '                            <span class="meghdarBRN">'+ objNatijeh["noe"] +'</span>\n' +
+                    '                        </div>\n' +
+                    '                        <div class="etelaatSBT">\n' +
+                    '                            <span class="icon"></span>' +
+                    '                            <span class="matnTitr">گام:</span>' +
+                    '                            <span class="meghdarBRN">'+ momayezdar(objNatijeh["gam"]) +'</span>\n' +
+                    '                        </div>\n' +
+                    '                        <div class="etelaatSBT">\n' +
+                    '                            <span class="icon"></span>' +
+                    '                            <span class="matnTitr">هر قسط:</span>' +
+                    '                            <span class="meghdarBRN">'+ momayezdar(objNatijeh["mablagh"]) +'</span>\n' +
+                    '                        </div>\n' +
+                    '                        <div class="etelaatSBT">\n' +
+                    '                            <span class="icon"></span>' +
+                    '                            <span class="matnTitr">کل مبلغ:</span>' +
+                    '                            <span class="meghdarBRN">'+ (objNatijeh["mablaghKol"]==="-" ? "-" : momayezdar(objNatijeh["mablaghKol"])) +'</span>\n' +
+                    '                        </div>\n' +
+                    '                        <div class="etelaatSBT">\n' +
+                    '                            <span class="icon"></span>' +
+                    '                            <span class="matnTitr">پرداختی:</span>' +
+                    '                            <span class="meghdarBRN">'+ momayezdar(objNatijeh["mablaghPardakhti"]) +'</span>\n' +
+                    '                        </div>\n' +
+                    '                        <div class="etelaatSBT">\n' +
+                    '                            <span class="icon"></span>' +
+                    '                            <span class="matnTitr">مانده:</span>' +
+                    '                            <span class="meghdarBRN">'+ (objNatijeh["mablaghMandeh"]==="-" ? "-" : momayezdar(objNatijeh["mablaghMandeh"])) +'</span>\n' +
+                    '                        </div>\n' +
+                    '                        <div class="etelaatSBT">\n' +
+                    '                            <span class="icon"></span>' +
+                    '                            <span class="matnTitr">شروع:</span>' +
+                    '                            <span class="meghdarBRN">'+ objNatijeh["tarikhShoroo"] +'</span>\n' +
+                    '                        </div>\n' +
+                    '                        <div class="etelaatSBT">\n' +
+                    '                            <span class="icon"></span>' +
+                    '                            <span class="matnTitr">پایان:</span>' +
+                    '                            <span class="meghdarBRN">'+ (Number(objNatijeh["rizTarikh"])===0 ? "-" : objNatijeh["rizTarikh"][objNatijeh["rizTarikh"].length-1]) +'</span>\n' +
+                    '                        </div>\n' +
+                    '                        <div class="etelaatSBT">\n' +
+                    '                            <span class="icon"></span>' +
+                    '                            <span class="matnTitr">تعداد کل:</span>' +
+                    '                            <span class="meghdarBRN">'+ (Number(objNatijeh["tedadKol"])===0 ? "-" : momayezdar(objNatijeh["tedadKol"])) +'</span>\n' +
+                    '                        </div>\n' +
+                    '                        <div class="etelaatSBT">\n' +
+                    '                            <span class="icon"></span>' +
+                    '                            <span class="matnTitr">تعداد پرداختی:</span>' +
+                    '                            <span class="meghdarBRN">'+ momayezdar(objNatijeh["tedadPardakht"]) +'</span>\n' +
+                    '                        </div>\n' +
+                    '                        <div class="etelaatSBT">\n' +
+                    '                            <span class="icon"></span>' +
+                    '                            <span class="matnTitr">تعداد مانده:</span>' +
+                    '                            <span class="meghdarBRN">'+ (objNatijeh["tedadMandeh"]==="-" ? "-" : momayezdar(objNatijeh["tedadMandeh"])) +'</span>\n' +
+                    '                        </div>\n' +
+                    '                    </div>\n' +
+                    '                    <span id="kadrDokmehVBRN">\n' +
+                    '                        <a class="dokmehTL dokmehRizTarikh" onclick="" href="javascript:void (0);"><span class="icon"></span><span class="matnTitr">ریز تاریخ ها</span></a>\n' +
+                    '                        <a class="dokmehTL dokmehLaghv" onclick="this.parentElement.parentElement.parentElement.parentElement.parentElement.remove();" href="javascript:void (0);"><span class="icon"></span><span class="matnTitr">بستن</span></a>\n' +
+                    '                    </span>\n' +
+                    '                </div>\n' +
+                    '            </div>\n' +
+                    '        </div>';
+
+                var lmn = document.createElement("div");
+                lmn.setAttribute("id", "CountainerKadrViraieshBRN");
+                lmn.innerHTML = strHTML;
+                document.body.appendChild(lmn);
+            }
+            else namayeshPeygham("گرفتن اطلاعات با خطا مواجه شد، لطفا مجددا تلاش کنید.");
+        }
+    };
+    xhttp.open("POST", "./ajax/gereftan-etelaat-barnameh.php?sid="+Math.random(), true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("id="+id+"&tk="+tkn);
+    namayeshLoading(document.getElementById("kadrBarnameh"));
 }
