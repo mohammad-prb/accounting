@@ -543,7 +543,7 @@ function gereftanEtelaatBRN(id, hazfDarad = 0)
                 strHTML += '                        </div>\n' +
                     '                    </div>\n' +
                     '                    <span id="kadrDokmehVBRN">\n' +
-                    '                        <a class="dokmehTL dokmehHazfPardakht" onclick="gereftanEtelaatBRN('+ objNatijeh["id"] +', 1);" href="javascript:void (0);"><span class="icon"></span><span class="matnTitr">پاک کردن یک پرداخت</span></a>\n' +
+                    '                        <a class="dokmehTL dokmehHazfPardakht" onclick="gereftanEtelaatBRN('+ objNatijeh["id"] +', 1);" href="javascript:void (0);"><span class="icon"></span><span class="matnTitr">لغو یک پرداخت</span></a>\n' +
                     '                        <a class="dokmehTL dokmehLaghv" onclick="bastanBarnameh('+ hazfDarad +');" href="javascript:void (0);"><span class="icon"></span><span class="matnTitr">بستن</span></a>\n' +
                     '                    </span>\n' +
                     '                </div>\n' +

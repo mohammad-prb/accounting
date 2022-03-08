@@ -195,8 +195,8 @@ span.satrTarikh
 .kadrVasetBRN
 {
     float: right;
-    width: calc(100% - 40px);
-    margin: 0 20px 5px;
+    width: calc(100% - 30px);
+    margin: 0 15px 5px;
 }
 
 .kadrBRN[data-khorooji-ast="0"]>.kadrVasetBRN
@@ -473,6 +473,11 @@ input.txtTedad
     font-size: 1.5rem;
 }
 
+.dokmehHazfPardakht span.icon
+{
+    font-size: 1rem !important;
+}
+
 #kadrVBRN a.dokmehTaeed
 {
     margin: 0 0 0 5px;
@@ -544,4 +549,23 @@ a.dokmehHazfPardakht:active
 {
     transition: none;
     background-color: hsl(39, 100%, 83%);
+}
+
+@media only screen and (max-width: 1000px)
+{
+    .amarBRN
+    {
+        margin-left: 20px;
+    }
+
+    .kadrBRN
+    {
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    #kadrVBRN
+    {
+        width: calc(100% - 30px);
+    }
 }

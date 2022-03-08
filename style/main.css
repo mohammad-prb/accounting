@@ -327,8 +327,8 @@ a.gozinehENT:active
 a.dokmehTL, a.dokmehTL:link, a.dokmehTL:visited
 {
     float: right;
-    width: calc(50% - 25px);
-    padding: 10px;
+    width: calc(50% - 5px);
+    padding: 10px 0;
     text-align: center;
     border-radius: 8px;
     transition: color 0.1s, background-color 0.1s;
