@@ -1,0 +1,43 @@
+#navarRast
+{
+    width: 220px;
+    right: -220px;
+}
+
+#navarRast[data-vaziat="1"]
+{
+    right: 0;
+}
+
+#kadrMeshkiMNU
+{
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    z-index: 799;
+    background-color: hsla(0, 0%, 0%, 0.5);
+    transition: opacity 0.3s;
+}
+
+#sotoonChap
+{
+    width: calc(100% - 60px);
+}
+
+a.btnMNU, a.btnMNU:link, a.btnMNU:visited
+{
+    display: block;
+    float: right;
+    text-align: center;
+    margin-left: 10px;
+    font-family: myIcon;
+    font-size: 1.5rem;
+}
+
+.tarikhNVB
+{
+    float: left;
+}

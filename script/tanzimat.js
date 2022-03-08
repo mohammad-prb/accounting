@@ -2,6 +2,7 @@
 function tanzimSafTanzimat()
 {
     taghirENT(document.querySelectorAll('#theme>.gozinehENT')[Number(localStorage.getItem('darkmode'))]);
+    taghirENT(document.querySelectorAll('#halatMenu>.gozinehENT')[(Number(localStorage.getItem('menu'))===1?0:1)]);
     taghirENT(document.querySelectorAll('#pishfarzSoorathesab>.gozinehENT')[(localStorage.getItem('pishfarzSoorathesab')==="rooz"?0:1)]);
     taghirENT(document.querySelectorAll('#pishfarzAmar>.gozinehENT')[(localStorage.getItem('pishfarzAmar')==="mah"?0:1)]);
 }
@@ -290,6 +291,23 @@ function taghirTheme(darkModeAst)
     {
         document.querySelector('link[href="style/dark-mode.css"]').remove();
         document.querySelector('meta[name="theme-color"]').remove();
+    }
+}
+
+/*      تغییر تم      */
+function taghirHalatMenu(bazAst)
+{
+    localStorage.setItem("menu", bazAst);
+    if (bazAst === 0 && document.querySelector('link[href="style/menu-basteh.css"]') === null)
+    {
+        var lmn = document.createElement("link");
+        lmn.rel = "stylesheet";
+        lmn.href = "style/menu-basteh.css";
+        document.head.appendChild(lmn);
+    }
+    else if (bazAst === 1 && document.querySelector('link[href="style/menu-basteh.css"]'))
+    {
+        document.querySelector('link[href="style/menu-basteh.css"]').remove();
     }
 }
 

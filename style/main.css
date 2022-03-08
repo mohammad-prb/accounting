@@ -1090,7 +1090,7 @@ span.meghdarPishnahad
 
     #sotoonChap
     {
-        width: calc(100% - 30px);
+        width: calc(100% - 30px) !important;
         padding: 15px;
     }
 

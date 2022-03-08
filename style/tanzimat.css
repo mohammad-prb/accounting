@@ -23,6 +23,11 @@ a.gozinehENT, a.gozinehENT:link, a.gozinehENT:visited
     transition: color 0.1s;
 }
 
+#sotoonChap
+{
+    transition: width 0.3s;
+}
+
 h1#titrHDR
 {
     transition: color 0.1s;
