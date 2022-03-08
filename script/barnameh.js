@@ -84,7 +84,9 @@ function emalFilterBRN({id, tasviehAst = 0} = {})
                     '                    <div class="kadrEtelaatBRN kadrMablaghGhest"><span class="icon"></span><span class="matnTitr">مبلغ:</span><span class="meghdarBRN">'+ momayezdar(arrObjEtelaat[i]["mablagh"]) +'</span></div>\n' +
                     '                    <div class="kadrBtnBRN">\n' +
                     '                        <a href="javascript:void(0);" class="btnBRN" onclick="gereftanEtelaatBRN('+ arrObjEtelaat[i]["id"] +');"><span class="icon"></span><span class="matnTitr">اطلاعات</span></a>\n' +
-                    (Number(arrObjEtelaat[i]["vaziatID"]) !== 3 ? '<a href="javascript:void(0);" class="btnBRN" onclick="namayeshPeygham(\'آیا برای پرداخت اطمینان دارید؟\', 1, \'emalFilterBRN({id:'+ arrObjEtelaat[i]["id"] +'});\');"><span class="icon"></span><span class="matnTitr">پرداخت</span></a>\n' +
+                    (Number(arrObjEtelaat[i]["vaziatID"]) !== 3 ?
+                        '<a href="javascript:void(0);" class="btnBRN" onclick="namayeshPeygham(\'آیا برای پرداخت اطمینان دارید؟\', 1, \'emalFilterBRN({id:'+ arrObjEtelaat[i]["id"] +'});\');"><span class="icon"></span><span class="matnTitr">پرداخت</span></a>\n' : '') +
+                    (Number(arrObjEtelaat[i]["vaziatID"]) !== 3 && (arrObjEtelaat[i]["tedadKol"] > 0 || arrObjEtelaat[i]["tedadPardakht"] > 0) ?
                         '<a href="javascript:void(0);" class="btnBRN" onclick="namayeshPeygham(\'آیا برای تسویه اطمینان دارید؟\', 1, \'emalFilterBRN({id:'+ arrObjEtelaat[i]["id"] +', tasviehAst:1});\');"><span class="icon"></span><span class="matnTitr">تسویه</span></a>\n' : '') +
                     '                    </div>';
 
@@ -442,9 +444,17 @@ function sabtVirayeshBRN(id)
     namayeshLoading(document.getElementById("kadrVBRN"));
 }
 
-/*      اطلاعات برنامه      */
-function gereftanEtelaatBRN(id)
+/*      بستن کادر اطلاعات برنامه      */
+function bastanBarnameh(hazfAnjamShodehAst = 0)
 {
+    document.getElementById("CountainerKadrViraieshBRN").remove();
+    if (hazfAnjamShodehAst) emalFilterBRN();
+}
+
+/*      اطلاعات برنامه      */
+function gereftanEtelaatBRN(id, hazfDarad = 0)
+{
+    var hesabID = Number(document.getElementsByClassName("sltHesabha")[0].value);
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function ()
     {
@@ -453,9 +463,10 @@ function gereftanEtelaatBRN(id)
             bastanLoading(document.getElementById("kadrBarnameh"));
             if (jsonMotabarAst(this.responseText))
             {
+                if (hazfDarad === 1) document.getElementById("CountainerKadrViraieshBRN").remove();
                 var objNatijeh = JSON.parse(this.responseText);
                 var strHTML = '<div id="kadrNamayeshVBRN">\n' +
-                    '            <a id="kadrPoshtVBRN" href="javascript:void(0);" onclick="this.parentElement.parentElement.remove();"></a>\n' +
+                    '            <a id="kadrPoshtVBRN" href="javascript:void(0);" onclick="bastanBarnameh('+ hazfDarad +');"></a>\n' +
                     '            <div id="kadrVBRN">\n' +
                     '                <div>' +
                     '                    <div id="titrVBRN"><span class="icon"></span><span class="matnTitr">اطلاعات برنامه زمانی</span></div>\n' +
@@ -522,14 +533,18 @@ function gereftanEtelaatBRN(id)
                     '                        </div>' +
                     '                        <div class="kadrRizTatikh">';
 
-                for (let i=0; i<objNatijeh["rizTarikh"].length; i++)
-                    strHTML += "<div class='rizTarikh"+ (Number(objNatijeh["tedadPardakht"])>i ? " pardakhti" : "") +"'>"+ objNatijeh["rizTarikh"][i] +"</div>";
+                if (objNatijeh["rizTarikh"].length > 0)
+                {
+                    for (let i=0; i<objNatijeh["rizTarikh"].length; i++)
+                        strHTML += "<div class='rizTarikh"+ (Number(objNatijeh["tedadPardakht"])>i ? " pardakhti" : "") +"'>"+ objNatijeh["rizTarikh"][i] +"</div>";
+                }
+                else strHTML += "<div class='rizTarikh'>"+ objNatijeh["tarikhShoroo"] +"</div>";
 
                 strHTML += '                        </div>\n' +
                     '                    </div>\n' +
                     '                    <span id="kadrDokmehVBRN">\n' +
-                    '                        <a class="dokmehTL dokmehHazfPardakht" onclick="" href="javascript:void (0);"><span class="icon"></span><span class="matnTitr">پاک کردن یک پرداخت</span></a>\n' +
-                    '                        <a class="dokmehTL dokmehLaghv" onclick="this.parentElement.parentElement.parentElement.parentElement.parentElement.remove();" href="javascript:void (0);"><span class="icon"></span><span class="matnTitr">بستن</span></a>\n' +
+                    '                        <a class="dokmehTL dokmehHazfPardakht" onclick="gereftanEtelaatBRN('+ objNatijeh["id"] +', 1);" href="javascript:void (0);"><span class="icon"></span><span class="matnTitr">پاک کردن یک پرداخت</span></a>\n' +
+                    '                        <a class="dokmehTL dokmehLaghv" onclick="bastanBarnameh('+ hazfDarad +');" href="javascript:void (0);"><span class="icon"></span><span class="matnTitr">بستن</span></a>\n' +
                     '                    </span>\n' +
                     '                </div>\n' +
                     '            </div>\n' +
@@ -540,11 +555,12 @@ function gereftanEtelaatBRN(id)
                 lmn.innerHTML = strHTML;
                 document.body.appendChild(lmn);
             }
+            else if (this.responseText === "er:hazf") namayeshPeygham("حذف پرداخت با مشکل مواجه شد، لطفا مجددا تلاش کنید.");
             else namayeshPeygham("گرفتن اطلاعات با خطا مواجه شد، لطفا مجددا تلاش کنید.");
         }
     };
     xhttp.open("POST", "./ajax/gereftan-etelaat-barnameh.php?sid="+Math.random(), true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("id="+id+"&tk="+tkn);
+    xhttp.send("id="+id+"&hesabID="+hesabID+"&hazfDarad="+hazfDarad+"&tk="+tkn);
     namayeshLoading(document.getElementById("kadrBarnameh"));
 }

@@ -457,7 +457,15 @@ function gereftanRizTarikh($tarikhShoroo, $noe, $gam, $tedadKol)
     {
         for ($i=0; $i<$tedadKol; $i++)
         {
-            $timeStamp = jmktime(0,0,0, (integer)$arrTarikhShoroo[1]+($gam*$i), (integer)$arrTarikhShoroo[2], (integer)$arrTarikhShoroo[0]);
+            $ezafehMah = ((integer)$arrTarikhShoroo[1]+($gam*$i)) % 12;
+            if ($ezafehMah == 0)
+            {
+                $ezafehMah = 12;
+                $tedadSalEzafeh = floor(((integer)$arrTarikhShoroo[1]+($gam*$i)) / 12) - 1;
+            }
+            else $tedadSalEzafeh = floor(((integer)$arrTarikhShoroo[1]+($gam*$i)) / 12);
+
+            $timeStamp = jmktime(0,0,0, $ezafehMah, (integer)$arrTarikhShoroo[2], (integer)$arrTarikhShoroo[0]+$tedadSalEzafeh);
             array_push($natijeh, jdate("Y/m/d", $timeStamp, "", "Asia/Tehran", "en"));
         }
     }

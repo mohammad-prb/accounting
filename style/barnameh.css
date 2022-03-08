@@ -220,11 +220,16 @@ span.satrTarikh
 .kadrOnvan
 {
     float: right;
-    padding: 0 0 10px;
-    width: calc(100% - 65px);
+    padding: 0 3px 10px 0;
+    width: calc(100% - 68px);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.kadrOnvan>span.icon, .kadrOnvan>span.titr
+{
+    float: right;
 }
 
 .kadrEmkanat

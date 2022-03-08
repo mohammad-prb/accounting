@@ -216,6 +216,10 @@
     document.getElementById("tozihSBTK").onkeydown = function(e){
         if (e.keyCode === 13) // enter
             entekhabPishnahad(this);
+        else if (e.keyCode === 27) { // Esc
+            event.preventDefault();
+            ghatePishnahad(this);
+        }
         else if (e.keyCode === 38) { // jahat bala
             event.preventDefault();
             peymayeshPishnahadha(true);
@@ -228,6 +232,10 @@
     document.getElementById("tozihSBTV").onkeydown = function(e){
         if (e.keyCode === 13) // enter
             entekhabPishnahad(this);
+        else if (e.keyCode === 27) { // Esc
+            event.preventDefault();
+            ghatePishnahad(this);
+        }
         else if (e.keyCode === 38) { // jahat bala
             event.preventDefault();
             peymayeshPishnahadha(true);
