@@ -420,7 +420,15 @@ function gereftanTarikhGhest($tarikhShoroo, $noe, $gam, $tedadDadeShodeh = 0)
     }
     elseif ($noe == "mah")
     {
-        $timeStamp = jmktime(0,0,0, (integer)$arrTarikhShoroo[1]+($gam*$tedadDadeShodeh), (integer)$arrTarikhShoroo[2], (integer)$arrTarikhShoroo[0]);
+        $ezafehMah = ((integer)$arrTarikhShoroo[1]+($gam*$tedadDadeShodeh)) % 12;
+        if ($ezafehMah == 0)
+        {
+            $ezafehMah = 12;
+            $tedadSalEzafeh = floor(((integer)$arrTarikhShoroo[1]+($gam*$tedadDadeShodeh)) / 12) - 1;
+        }
+        else $tedadSalEzafeh = floor(((integer)$arrTarikhShoroo[1]+($gam*$tedadDadeShodeh)) / 12);
+
+        $timeStamp = jmktime(0,0,0, $ezafehMah, (integer)$arrTarikhShoroo[2], (integer)$arrTarikhShoroo[0]+$tedadSalEzafeh);
         $natijeh = jdate("Y/m/d", $timeStamp, "", "Asia/Tehran", "en");
     }
     elseif ($noe == "sal")
