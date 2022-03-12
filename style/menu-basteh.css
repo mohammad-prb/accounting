@@ -9,6 +9,12 @@
     right: 0;
 }
 
+.kadrMenu
+{
+    width: calc(100% - 10px);
+    margin: 0 0 0 10px;
+}
+
 #kadrMeshkiMNU
 {
     display: none;

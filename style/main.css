@@ -463,18 +463,18 @@ img.loading
     top: 0;
     right: 0;
     z-index: 800;
-    width: 200px;
+    width: 180px;
     height: 100%;
     overflow: auto;
     background-color: white;
-    transition: right 0.3s, background-color 0.1s;
+    transition: right 0.3s, width 0.3s, background-color 0.1s;
 }
 
 img#aksHDR
 {
     float: right;
     width: 40px;
-    margin: 20px 20px 10px;
+    margin: 20px 20px 10px 10px;
     color: #1a1a1a;
 }
 
@@ -482,7 +482,7 @@ h1#titrHDR
 {
     float: right;
     width: calc(100% - 80px);
-    margin: 20px 0 10px 0;
+    margin: 20px 0 10px 10px;
     padding: 0;
     white-space: nowrap;
     overflow: hidden;
@@ -493,10 +493,44 @@ h1#titrHDR
 .kadrMenu
 {
     float: right;
-    width: calc(100% - 20px);
-    margin: 0 0 0 20px;
+    width: calc(100% - 0px);
+    height: calc(100% - 80px);
+    margin: 0;
     padding-bottom: 10px;
     overflow: auto;
+}
+
+/* width */
+.kadrMenu::-webkit-scrollbar
+{
+    width: 4px;
+    height: 100%;
+}
+
+/* Track */
+.kadrMenu::-webkit-scrollbar-track
+{
+    background: hsl(0, 0%, 85%);
+    border-radius: 5px;
+}
+
+/* Handle */
+.kadrMenu::-webkit-scrollbar-thumb
+{
+    background: hsl(0, 0%, 60%);
+    border-radius: 5px;
+}
+
+/* Handle on hover */
+.kadrMenu::-webkit-scrollbar-thumb:hover
+{
+    background: hsl(0, 0%, 40%);
+}
+
+/* Handle on hover */
+.kadrMenu::-webkit-scrollbar-thumb:active
+{
+    background: hsl(0, 0%, 50%);
 }
 
 ul.menu
@@ -606,7 +640,7 @@ a#btnBoroBala:active
 {
     position: relative;
     float: left;
-    width: calc(100% - 260px);
+    width: calc(100% - 240px);
     padding: 30px;
     overflow: auto;
 }

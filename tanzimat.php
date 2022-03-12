@@ -130,7 +130,7 @@ $safheh = "tanzimat";
                 <div class="titrPSH"><span class="icon"></span><span class="matnTitr">حالت منو:</span></div>
                 <div class="kadrENT" id="halatMenu">
                     <span class="kadrPoshtENT"></span>
-                    <a class="gozinehENT" onclick="taghirENT(this);taghirHalatMenu(1);" data-value="1" href="javascript:void(0);">باز</a>
+                    <a class="gozinehENT" onclick="taghirENT(this);taghirHalatMenu(1);" data-value="1" href="javascript:void(0);">همیشه باز</a>
                     <a class="gozinehENT" onclick="taghirENT(this);taghirHalatMenu(0);" data-value="0" href="javascript:void(0);">بسته</a>
                 </div>
             </div>
