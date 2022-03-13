@@ -15,7 +15,7 @@ function emalFilterBRN({id, tasviehAst = 0} = {})
     var mablagh = document.getElementById("mablaghSBTK").value.trim().toString();
 
     if (!check(gam, "^(|[1-9][0-9]*)$")) errorInput(document.getElementById("gamSBTK"));
-    if (!check(tedad, "^(|[1-9][0-9]*)$")) errorInput(document.getElementById("tedadVBRN"));
+    if (!check(tedad, "^(|[1-9][0-9]*)$")) errorInput(document.getElementById("tedadSBTK"));
     if (!check(rooz, "^(|0?[1-9]|[1-2][0-9]|3[0-1])$")) errorInput(document.querySelectorAll("#tarikhSBTK>input")[0]);
     if (!check(mah, "^(|0?[1-9]|1[0-2])$")) errorInput(document.querySelectorAll("#tarikhSBTK>input")[1]);
     if (!check(sal, "^(|[1-9][0-9]{3})$")) errorInput(document.querySelectorAll("#tarikhSBTK>input")[2]);
