@@ -138,6 +138,8 @@ a#btnAfzoodanBRN:active
     margin: 20px 0;
     overflow: visible;
     border-top: 1px solid hsl(0, 0%, 80%);
+    animation: aniFade 0.3s;
+    animation-fill-mode: both;
 }
 
 span.satrTarikh
@@ -165,6 +167,8 @@ span.satrTarikh
     padding: 15px 0;
     border-radius: 8px;
     overflow: hidden;
+    animation: aniAzPaeen 0.3s;
+    animation-fill-mode: both;
 }
 
 .kadrBRN[data-khorooji-ast="0"]

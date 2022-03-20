@@ -1,9 +1,3 @@
-@keyframes aniBalaAmanad
-{
-    0%{top: 30px;opacity: 0;}
-    100%{top: 0;opacity: 1;}
-}
-
 #sotoonChap
 {
     margin-bottom: 20px;
@@ -165,7 +159,7 @@ a#btnSelectAll:active
     border-radius: 8px;
     overflow: hidden;
     margin-bottom: 10px;
-    animation: aniBalaAmanad 0.3s;
+    animation: aniAzPaeen 0.3s;
     animation-fill-mode: both;
 }
 
@@ -327,7 +321,7 @@ a.btnSelectSTB[data-vaziat="1"]
     margin: 10px 0 20px;
     overflow: visible;
     border-top: 1px solid hsl(0, 0%, 80%);
-    animation: aniBalaAmanad 0.3s;
+    animation: aniFade 0.3s;
     animation-fill-mode: both;
 }
 

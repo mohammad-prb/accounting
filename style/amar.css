@@ -241,12 +241,15 @@ a.btnLAMR>span.icon, a.btnLAMR>span.matnTitr
 
 .itemListAMR
 {
+    position: relative;
     float: right;
     width: 100%;
     padding: 5px 0;
     border-width: 0 0 1px 0;
     border-style: solid;
     border-image: linear-gradient(to right, hsl(0, 0%, 100%) 0%, hsl(0, 0%, 75%) 77%, hsl(0, 0%, 100%) 100%) 1 round;
+    animation: aniAzRast 0.3s;
+    animation-fill-mode: both;
 }
 
 .itemListAMR:last-child

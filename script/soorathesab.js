@@ -108,7 +108,7 @@ function tavizHesabSRT(lmn)
     namayeshLoading(document.getElementById("kadrFilterSoorathesab"));
 }
 
-var shomSaf = 1, tedadSoorathesabHarSaf = 100, tarikhSRT = "", tedadSaf;
+var tedadSoorathesabHarSaf = 100, shomSaf, tarikhSRT, tedadSaf;
 /*      انداختن صورتحساب ها      */
 function andakhtanSoorathesab()
 {
@@ -211,6 +211,7 @@ function emalFilterSRT()
 {
     errorDarad = false;
     shomSaf = 1;
+    tarikhSRT = "";
     var noeVariz = document.getElementById("khoroojiAstSBTK").dataset.value.trim().toString();
     var hesabID = Number(document.getElementsByClassName("sltHesabha")[0].value);
     var strQ = "noeVariz=" + noeVariz + "&hesabID=" + hesabID;

@@ -66,8 +66,11 @@ a#btnAfzoodanDST:active
 
 #kadrRahnama
 {
+    position: relative;
     float: right;
     width: 100%;
+    animation: aniAzRast 0.3s;
+    animation-fill-mode: both;
 }
 
 #kadrVasetRahnama
@@ -230,11 +233,14 @@ a.rahnama:nth-child(3)>span.icon
 
 .etelaatJDST
 {
+    position: relative;
     float: right;
     width: calc(100% - 55px);
     padding: 5px 8px;
     border-radius: 8px;
     background-color: hsl(0, 0%, 90%);
+    animation: aniAzRast 0.3s;
+    animation-fill-mode: both;
 }
 
 .etelaatJDST[data-noe="1"]
@@ -245,13 +251,13 @@ a.rahnama:nth-child(3)>span.icon
 
 .etelaatJDST[data-noe="2"]
 {
-    background-color: hsl(352, 100%, 95%);;
+    background-color: hsl(352, 100%, 95%);
     color: hsl(352, 100%, 40%);
 }
 
 .etelaatJDST[data-noe="3"]
 {
-    background-color: hsl(148, 64%, 87%);;
+    background-color: hsl(148, 64%, 87%);
     color: hsl(148, 100%, 30%);
 }
 

@@ -43,6 +43,18 @@
     100%{right: 20px; opacity: 0}
 }
 
+@keyframes aniAzRast
+{
+    0%{left: 30px;opacity: 0;}
+    100%{left: 0;opacity: 1;}
+}
+
+@keyframes aniAzPaeen
+{
+    0%{top: 30px;opacity: 0;}
+    100%{top: 0;opacity: 1;}
+}
+
 /* width */
 body::-webkit-scrollbar
 {
@@ -163,7 +175,8 @@ a.togel>.icon
 
 #fullCountainer
 {
-    overflow: auto;
+    float: right;
+    width: 100%;
 }
 
 h2.titr
@@ -642,7 +655,6 @@ a#btnBoroBala:active
     float: left;
     width: calc(100% - 240px);
     padding: 30px;
-    overflow: auto;
 }
 
 #kadrTarikh
@@ -676,11 +688,11 @@ a.btnMNU, a.btnMNU:link, a.btnMNU:visited
     float: right;
     width: 100%;
     margin-top: 20px;
-    overflow: auto;
 }
 
 .hesab
 {
+    position: relative;
     float: right;
     width: calc(33.333% - 20px);
     margin: 10px;
@@ -688,6 +700,8 @@ a.btnMNU, a.btnMNU:link, a.btnMNU:visited
     border-radius: 8px;
     overflow: auto;
     background-color: hsl(39, 100%, 87%);
+    animation: aniAzPaeen 0.3s;
+    animation-fill-mode: both;
 }
 
 .titrHSB
@@ -823,16 +837,20 @@ a.emkanatHSB:active
     padding: 15px 0 5px;
     margin-bottom: 10px;
     border-radius: 10px;
+    animation: aniAzRast 0.3s;
+    animation-fill-mode: both;
 }
 
 #kadrSBTK
 {
     background-color: hsl(352, 100%, 95%);
+    z-index: 8;
 }
 
 #kadrSBTV
 {
     background-color: hsl(148, 64%, 90%);
+    z-index: 7;
 }
 
 h3.titrSBT
@@ -901,6 +919,7 @@ a.btnErsalSBT, a.btnErsalSBT:link, a.btnErsalSBT:visited
 .etelaatSBT
 {
     position: relative;
+    z-index: 9;
     float: right;
     margin: 0 0 15px 20px;
 }
