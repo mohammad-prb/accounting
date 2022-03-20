@@ -548,6 +548,16 @@ a.satrTarikh:active
     color: hsl(0, 0%, 60%);
 }
 
+a#btnEdamehSRT:hover
+{
+    color: hsl(39, 100%, 50%);
+}
+
+a#btnEdamehSRT:active
+{
+    color: hsl(39, 100%, 30%);
+}
+
 #kadrAmarSelect
 {
     background-color: hsl(39, 100%, 8%);

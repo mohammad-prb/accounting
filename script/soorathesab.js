@@ -108,10 +108,109 @@ function tavizHesabSRT(lmn)
     namayeshLoading(document.getElementById("kadrFilterSoorathesab"));
 }
 
+var shomSaf = 1, tedadSoorathesabHarSaf = 100, tarikhSRT = "", tedadSaf;
+/*      انداختن صورتحساب ها      */
+function andakhtanSoorathesab()
+{
+    var shoroo = (shomSaf-1) * tedadSoorathesabHarSaf;
+    var lmnKadr = document.getElementById("kadrSoorathesab");
+    if (shomSaf === 1) lmnKadr.innerHTML = "";
+    if (document.getElementById("btnEdamehSRT")) document.getElementById("btnEdamehSRT").remove();
+
+    for (let i=shoroo; i<arrObjEtelaat.length && i<shoroo+tedadSoorathesabHarSaf; i++)
+    {
+        /*  افتادن تاریخ هنگام عوض شدن  */
+        if (arrObjEtelaat[i]["tarikh"] !== tarikhSRT)
+        {
+            tarikhSRT = arrObjEtelaat[i]["tarikh"];
+            var lmnTarikh = document.createElement("div");
+            lmnTarikh.setAttribute("class", "kadrSatrTarikh");
+            lmnTarikh.innerHTML = "<a href='javascript:void(0);' onclick='tanzimTarikhSoorathesab(this);' class='satrTarikh'>"+ tarikhSRT +"</a>";
+            lmnKadr.appendChild(lmnTarikh);
+        }
+
+        var strHTML = '<div class="kadrSTB '+ (Number(arrObjEtelaat[i]["khoroojiAst"]) === 1 ? "khorooji" : "voroodi") +'">\n' +
+            '               <div class="headerSTB">\n' +
+            '                    <div class="kadrEtelaatSTB">';
+
+        if (Number(arrObjEtelaat[i]["khoroojiAst"]) === 1)
+        {
+            strHTML += '<div class="etelaatSTB">\n' +
+                '    <div class="onvanEtelaatSTB"><span class="icon riz"></span><span class="matnTitr riz">وسیله:</span></div>\n' +
+                '    <div class="meghdarEtelaatSTB">'+ arrObjEtelaat[i]["vasileh"] + '</div>\n' +
+                '</div>';
+
+            if (Number(arrObjEtelaat[i]["vasilehID"]) === 3)
+            {
+                strHTML += '<div class="etelaatSTB">\n' +
+                    '    <div class="onvanEtelaatSTB"><span class="icon riz"></span><span class="matnTitr riz">واریز به:</span></div>\n' +
+                    '    <div class="meghdarEtelaatSTB fardSTB">'+ arrObjEtelaat[i]["nam"] +'</div>\n' +
+                    '</div>';
+            }
+        }
+        else if (Number(arrObjEtelaat[i]["khoroojiAst"]) === 0)
+        {
+            strHTML += '<div class="etelaatSTB">\n' +
+                '    <div class="onvanEtelaatSTB"><span class="icon riz"></span><span class="matnTitr riz">واریز از:</span></div>\n' +
+                '    <div class="meghdarEtelaatSTB fardSTB">'+ arrObjEtelaat[i]["nam"] +'</div>\n' +
+                '</div>';
+        }
+
+        strHTML += '<div class="etelaatSTB">\n' +
+            '                    <div class="onvanEtelaatSTB"><span class="icon riz"></span><span class="matnTitr riz">دسته:</span></div>\n' +
+            '                    <div class="meghdarEtelaatSTB dastehSTB">'+ arrObjEtelaat[i]["onvan"] +'</div>\n' +
+            '                </div>\n' +
+            '                <div class="etelaatSTB">\n' +
+            '                    <div class="onvanEtelaatSTB"><span class="icon riz"></span><span class="matnTitr riz">تاریخ:</span></div>\n' +
+            '                    <div class="meghdarEtelaatSTB tarikhSTB">'+ arrObjEtelaat[i]["tarikh"] +'</div>\n' +
+            '                </div>\n' +
+            '                <div class="etelaatSTB">\n' +
+            '                    <div class="onvanEtelaatSTB"><span class="icon riz"></span><span class="matnTitr riz">مبلغ:</span></div>\n' +
+            '                    <div class="meghdarEtelaatSTB mablaghSTB">'+ momayezdar(arrObjEtelaat[i]["mablagh"]) +'</div>\n' +
+            '                </div>\n' +
+            '            </div>\n' +
+            '            <div class="kadrEmkanatSTB">\n' +
+            '                <a href="javascript:void(0);" class="emkanatSTB btnHazfSTB"></a>\n' + // در تابع "شماره بندی" onclick مقدار دهی میشود
+            '                <a href="javascript:void(0);" onclick="virayeshSRT(this);" class="emkanatSTB btnVirayeshSTB"></a>\n' +
+            '            </div>\n' +
+            '        </div>' +
+            '        <div class="kadrTozihSTB">\n' +
+            '            <div class="onvanEtelaatSTB"><span class="icon riz"></span><span class="matnTitr riz">توضیحات:</span></div>\n' +
+            '            <div class="meghdarEtelaatSTB tozihSTB">'+ arrObjEtelaat[i]["tozih"] +'</div>\n' +
+            '        </div>' +
+            '    </div>\n' +
+            '    <a onclick="entekhabSTB(this);" class="emkanatSTB btnSelectSTB" data-vaziat="0"></a>';
+
+        var lmn = document.createElement("div");
+        lmn.setAttribute("class", "kadrDorSTB");
+        lmn.dataset.vaziat = "0";
+        lmn.dataset.id = arrObjEtelaat[i]["id"];
+        lmn.dataset.khoroojiAst = arrObjEtelaat[i]["khoroojiAst"];
+        lmn.dataset.vasilehId = arrObjEtelaat[i]["vasilehID"];
+        lmn.dataset.fardId = arrObjEtelaat[i]["fardID"];
+        lmn.dataset.dastehId = arrObjEtelaat[i]["dastehID"];
+        lmn.innerHTML = strHTML;
+        lmnKadr.appendChild(lmn);
+    }
+
+    shomSaf++;
+    if (tedadSaf - shomSaf > 0)
+    {
+        var lmnEdameh = document.createElement("a");
+        lmnEdameh.setAttribute("id", "btnEdamehSRT");
+        lmnEdameh.href = "javascript:void(0);";
+        lmnEdameh.setAttribute("onclick", "andakhtanSoorathesab();");
+        lmnEdameh.innerHTML = '<span class="icon riz"></span><span class="matnTitr riz">نمایش ادامه صورتحساب</span>';
+        document.getElementById("kadrSoorathesab").appendChild(lmnEdameh);
+    }
+}
+
+var arrObjEtelaat;
 /*      تابع اعمال فیلتر صورتحساب      */
 function emalFilterSRT()
 {
     errorDarad = false;
+    shomSaf = 1;
     var noeVariz = document.getElementById("khoroojiAstSBTK").dataset.value.trim().toString();
     var hesabID = Number(document.getElementsByClassName("sltHesabha")[0].value);
     var strQ = "noeVariz=" + noeVariz + "&hesabID=" + hesabID;
@@ -131,8 +230,8 @@ function emalFilterSRT()
     var tozih = document.getElementById("tozihSBTK").value.trim().toString();
 
     if (!check(rooz, "^(|0?[1-9]|[1-2][0-9]|3[0-1])$")) errorInput(document.querySelectorAll("#tarikhSBTK>input")[0]);
-    if (!check(mah, "^(0?[1-9]|1[0-2])$")) errorInput(document.querySelectorAll("#tarikhSBTK>input")[1]);
-    if (!check(sal, "^[1-9][0-9]{3}$")) errorInput(document.querySelectorAll("#tarikhSBTK>input")[2]);
+    if (!check(mah, "^(|0?[1-9]|1[0-2])$")) errorInput(document.querySelectorAll("#tarikhSBTK>input")[1]);
+    if (!check(sal, "^(|[1-9][0-9]{3})$")) errorInput(document.querySelectorAll("#tarikhSBTK>input")[2]);
     if (!check(mablagh, "^(|[1-9][0-9]*)$")) errorInput(document.getElementById("mablaghSBTK"));
 
     if (errorDarad) return;
@@ -146,10 +245,7 @@ function emalFilterSRT()
         if (this.readyState === 4 && this.status === 200)
         {
             bastanLoading(document.getElementById("kadrSoorathesab"));
-            var arrObjEtelaat = JSON.parse(this.responseText);
-            var tarikh = "";
-            var lmnKadr = document.getElementById("kadrSoorathesab");
-            lmnKadr.innerHTML = "";
+            arrObjEtelaat = JSON.parse(this.responseText);
 
             /*  آمار و اطلاعات فیلتر  */
             document.getElementById("tedadNataiejSRT").innerHTML = momayezdar(arrObjEtelaat.length);
@@ -158,86 +254,22 @@ function emalFilterSRT()
             var meghdarKhorooji = 0;
             var meghdarVoroodi = 0;
 
-            /*  آیتم های صورت حساب  */
             for (let i=0; i<arrObjEtelaat.length; i++)
             {
-                /*  افتادن تاریخ هنگام عوض شدن  */
-                if (arrObjEtelaat[i]["tarikh"] !== tarikh)
-                {
-                    tarikh = arrObjEtelaat[i]["tarikh"];
-                    var lmnTarikh = document.createElement("div");
-                    lmnTarikh.setAttribute("class", "kadrSatrTarikh");
-                    lmnTarikh.innerHTML = "<a href='javascript:void(0);' onclick='tanzimTarikhSoorathesab(this);' class='satrTarikh'>"+ tarikh +"</a>";
-                    lmnKadr.appendChild(lmnTarikh);
-                }
-
-                var strHTML = '<div class="kadrSTB '+ (Number(arrObjEtelaat[i]["khoroojiAst"]) === 1 ? "khorooji" : "voroodi") +'">\n' +
-                    '               <div class="headerSTB">\n' +
-                    '                    <div class="kadrEtelaatSTB">';
-
                 if (Number(arrObjEtelaat[i]["khoroojiAst"]) === 1)
                 {
                     tedadKhorooji++;
                     meghdarKhorooji += Number(arrObjEtelaat[i]["mablagh"]);
-                    strHTML += '<div class="etelaatSTB">\n' +
-                        '    <div class="onvanEtelaatSTB"><span class="icon riz"></span><span class="matnTitr riz">وسیله:</span></div>\n' +
-                        '    <div class="meghdarEtelaatSTB">'+ arrObjEtelaat[i]["vasileh"] + '</div>\n' +
-                        '</div>';
-
-                    if (Number(arrObjEtelaat[i]["vasilehID"]) === 3)
-                    {
-                        strHTML += '<div class="etelaatSTB">\n' +
-                            '    <div class="onvanEtelaatSTB"><span class="icon riz"></span><span class="matnTitr riz">واریز به:</span></div>\n' +
-                            '    <div class="meghdarEtelaatSTB fardSTB">'+ arrObjEtelaat[i]["nam"] +'</div>\n' +
-                            '</div>';
-                    }
                 }
                 else if (Number(arrObjEtelaat[i]["khoroojiAst"]) === 0)
                 {
                     tedadVoroodi++;
                     meghdarVoroodi += Number(arrObjEtelaat[i]["mablagh"]);
-                    strHTML += '<div class="etelaatSTB">\n' +
-                        '    <div class="onvanEtelaatSTB"><span class="icon riz"></span><span class="matnTitr riz">واریز از:</span></div>\n' +
-                        '    <div class="meghdarEtelaatSTB fardSTB">'+ arrObjEtelaat[i]["nam"] +'</div>\n' +
-                        '</div>';
                 }
-
-                strHTML += '<div class="etelaatSTB">\n' +
-                    '                    <div class="onvanEtelaatSTB"><span class="icon riz"></span><span class="matnTitr riz">دسته:</span></div>\n' +
-                    '                    <div class="meghdarEtelaatSTB dastehSTB">'+ arrObjEtelaat[i]["onvan"] +'</div>\n' +
-                    '                </div>\n' +
-                    '                <div class="etelaatSTB">\n' +
-                    '                    <div class="onvanEtelaatSTB"><span class="icon riz"></span><span class="matnTitr riz">تاریخ:</span></div>\n' +
-                    '                    <div class="meghdarEtelaatSTB tarikhSTB">'+ arrObjEtelaat[i]["tarikh"] +'</div>\n' +
-                    '                </div>\n' +
-                    '                <div class="etelaatSTB">\n' +
-                    '                    <div class="onvanEtelaatSTB"><span class="icon riz"></span><span class="matnTitr riz">مبلغ:</span></div>\n' +
-                    '                    <div class="meghdarEtelaatSTB mablaghSTB">'+ momayezdar(arrObjEtelaat[i]["mablagh"]) +'</div>\n' +
-                    '                </div>\n' +
-                    '            </div>\n' +
-                    '            <div class="kadrEmkanatSTB">\n' +
-                    '                <a href="javascript:void(0);" class="emkanatSTB btnHazfSTB"></a>\n' + // در تابع "شماره بندی" onclick مقدار دهی میشود
-                    '                <a href="javascript:void(0);" onclick="virayeshSRT(this);" class="emkanatSTB btnVirayeshSTB"></a>\n' +
-                    '            </div>\n' +
-                    '        </div>' +
-                    '        <div class="kadrTozihSTB">\n' +
-                    '            <div class="onvanEtelaatSTB"><span class="icon riz"></span><span class="matnTitr riz">توضیحات:</span></div>\n' +
-                    '            <div class="meghdarEtelaatSTB tozihSTB">'+ arrObjEtelaat[i]["tozih"] +'</div>\n' +
-                    '        </div>' +
-                    '    </div>\n' +
-                    '    <a onclick="entekhabSTB(this);" class="emkanatSTB btnSelectSTB" data-vaziat="0"></a>';
-
-                var lmn = document.createElement("div");
-                lmn.setAttribute("class", "kadrDorSTB");
-                lmn.dataset.vaziat = "0";
-                lmn.dataset.id = arrObjEtelaat[i]["id"];
-                lmn.dataset.khoroojiAst = arrObjEtelaat[i]["khoroojiAst"];
-                lmn.dataset.vasilehId = arrObjEtelaat[i]["vasilehID"];
-                lmn.dataset.fardId = arrObjEtelaat[i]["fardID"];
-                lmn.dataset.dastehId = arrObjEtelaat[i]["dastehID"];
-                lmn.innerHTML = strHTML;
-                lmnKadr.appendChild(lmn);
             }
+
+            tedadSaf = Math.ceil(arrObjEtelaat.length / tedadSoorathesabHarSaf);
+            andakhtanSoorathesab();
 
             document.getElementById("tedadKhoroojiSRT").innerHTML = momayezdar(tedadKhorooji);
             document.getElementById("tedadVoroodiSRT").innerHTML = momayezdar(tedadVoroodi);
@@ -384,6 +416,12 @@ function laghvSelect()
 /*      سلکت کردن همه صورتحساب ها      */
 function selectAllSRT()
 {
+    if (arrObjEtelaat.length > tedadSoorathesabHarSaf)
+    {
+        namayeshPeygham("زمانی که تعداد آیتم ها بیشتر از " + tedadSoorathesabHarSaf +" باشد، سلکت کردن همه غیر فعال است.");
+        return;
+    }
+
     var arrLmn = document.querySelectorAll("a.btnSelectSTB[data-vaziat='0']");
     if (arrLmn.length === 0) laghvSelect();
     else for (let i=0; i<arrLmn.length; i++) entekhabSTB(arrLmn[i]);
