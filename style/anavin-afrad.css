@@ -203,8 +203,11 @@ a.rahnama:nth-child(3)>span.icon
 
 #jadvalDST
 {
+    position: relative;
     float: right;
     width: 100%;
+    animation: aniAzRast 0.3s;
+    animation-fill-mode: both;
 }
 
 .itemJDST
@@ -239,8 +242,6 @@ a.rahnama:nth-child(3)>span.icon
     padding: 5px 8px;
     border-radius: 8px;
     background-color: hsl(0, 0%, 90%);
-    animation: aniAzRast 0.3s;
-    animation-fill-mode: both;
 }
 
 .etelaatJDST[data-noe="1"]
