@@ -206,8 +206,6 @@ a.rahnama:nth-child(3)>span.icon
     position: relative;
     float: right;
     width: 100%;
-    animation: aniAzRast 0.3s;
-    animation-fill-mode: both;
 }
 
 .itemJDST
@@ -218,6 +216,8 @@ a.rahnama:nth-child(3)>span.icon
     width: 100%;
     margin-bottom: 3px;
     transition: top 0.2s;
+    animation: aniAzRast 0.3s;
+    animation-fill-mode: both;
 }
 
 .itemJabejaeiJDST

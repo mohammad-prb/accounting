@@ -88,6 +88,8 @@ if (isset($_GET["tarikh"]) && strpos($_GET["tarikh"], "/") !== false)
                     </div>
                 </div>
                 <a id="btnFSRT" href="javascript:void(0);" onclick="emalTarikh();"><span class="icon"></span><span class="matnTitr">اعمال</span></a>
+                <a href="javascript:void(0);" class="btnTarikhAMR" onclick="emalTarikhMojood('mah');"><span class="icon"></span><span class="matnTitr">ماه جاری</span></a>
+                <a href="javascript:void(0);" class="btnTarikhAMR" onclick="emalTarikhMojood('sal');"><span class="icon"></span><span class="matnTitr">سال جاری</span></a>
                 <script>
                     document.getElementById("kadrFilterAMR").onkeydown = function(e){if (e.keyCode === 13) emalTarikh();};
                     document.getElementsByClassName("txtTarikh")[1].value = <?php echo $sal;?>;
@@ -156,6 +158,8 @@ if (isset($_GET["tarikh"]) && strpos($_GET["tarikh"], "/") !== false)
 <script src="script/chartjs/moment.js"></script>
 <script src="script/amar.js"></script>
 <script>
+    var mahJari = "<?php echo jdate("m", "", "", "Asia/Tehran", "en");?>";
+    var salJari = "<?php echo jdate("Y", "", "", "Asia/Tehran", "en");?>";
     var tkn = "<?php echo $tkn;?>";
     Chart.defaults.global.defaultFontSize = 14;
     Chart.defaults.global.defaultFontFamily = "vazir";

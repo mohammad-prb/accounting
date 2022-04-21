@@ -271,6 +271,7 @@ function jabejaeiDST(lmn, balaAst)
                 lmn.previousElementSibling.setAttribute("class", "itemJDST itemJabejaeiJDST");
                 lmn.style.top = "0";
                 lmn.previousElementSibling.style.top = "0";
+                lmn.style.animation = "none";
                 var lmnJadid = document.createElement("div");
                 lmn.parentElement.insertBefore(lmnJadid, lmn.previousElementSibling);
                 lmn.parentElement.replaceChild(lmn, lmnJadid);

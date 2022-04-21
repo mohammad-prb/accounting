@@ -153,6 +153,18 @@ function emalTarikh()
     namayeshLoading(document.getElementById("kadrAmar"));
 }
 
+/*      اعمال یکی از تاریخ های موجود روی صفحه      */
+function emalTarikhMojood(noe)
+{
+    if (noe === "mah")
+        document.getElementsByClassName("txtTarikh")[0].value = mahJari;
+    else if (noe === "sal")
+        document.getElementsByClassName("txtTarikh")[0].value = "";
+
+    document.getElementsByClassName("txtTarikh")[1].value = salJari;
+    emalTarikh();
+}
+
 /*      تغییر لیست آمار      */
 function taghirLAMR(id)
 {
