@@ -404,11 +404,45 @@ a#btnAfzoodanTNZ:active
 .etelaatVTNZ
 {
     float: right;
-    margin: 10px 0 0;
-    padding-top: 20px;
+    margin: 10px 15px 5px;
+    padding-top: 15px;
     color: hsl(0, 0%, 40%);
     border-top: 1px solid hsl(0, 0%, 80%);
     transition: color 0.1s;
+}
+
+.etelaatVTNZ>.etelaatSBT
+{
+    float: right;
+    width: 50%;
+    margin: 0 0 10px;
+    color: hsl(0, 0%, 40%);
+}
+
+.etelaatVTNZ .iconEtelaatSBT
+{
+    width: 72px;
+    text-align: left;
+}
+
+.etelaatVTNZ>.etelaatSBT>select:nth-child(2):not(.kadrENT)
+{
+    width: calc(100% - 77px);
+}
+
+.etelaatVTNZ>.etelaatSBT>input:nth-child(2):not(.kadrENT)
+{
+    width: calc(100% - 99px);
+}
+
+.etelaatVTNZ>.etelaatSBT .kadrTarikhSBT, .etelaatVTNZ>.etelaatSBT>select:nth-child(2):not(.kadrENT)
+{
+    width: calc(100% - 77px);
+}
+
+.etelaatVTNZ>.etelaatSBT input.txtTarikh
+{
+    width: calc(33.333% - 24px) !important;
 }
 
 .etelaatSBT
@@ -534,6 +568,11 @@ input#namVTNZ
         margin: 0 0 5px 0;
     }
 
+    .etelaatVTNZ .iconEtelaatSBT
+    {
+        width: auto;
+    }
+
     .etelaatVTNZ span.matnTitr
     {
         display: none;
@@ -541,12 +580,12 @@ input#namVTNZ
 
     .etelaatVTNZ input
     {
-        width: calc(100% - 50px);
+        width: calc(100% - 50px) !important;
     }
 
     .etelaatVTNZ select
     {
-        width: calc(100% - 28px);
+        width: calc(100% - 28px) !important;
     }
 
     #kadrTaeedJabejaei

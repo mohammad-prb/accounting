@@ -613,7 +613,7 @@ function virayeshSRT(lmn)
         '                        <input type="text" class="txtMablagh" id="mablaghVSRT" name="mablagh" value="'+ mablagh +'" maxlength="10" placeholder="به ریال" autocomplete="off"/>\n' +
         '                    </div>\n' +
         '                    <div class="etelaatSBT">\n' +
-        '                        <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">توضیخات:</span></div>\n' +
+        '                        <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">توضیح:</span></div>\n' +
         '                        <input type="text" class="txtTozih" id="tozihVSRT" name="tozih" value="'+ tozih +'" placeholder="اختیاری" autocomplete="off"/>\n' +
         '                    </div>\n' +
         '                </div>\n' +

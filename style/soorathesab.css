@@ -554,11 +554,50 @@ a.btnEmkanatSelect:active
 .etelaatVSRT
 {
     float: right;
-    width: calc(100% - 15px);
-    margin: 10px 15px 5px 0;
-    padding-top: 20px;
+    width: calc(100% - 30px);
+    margin: 10px 15px 5px;
+    padding-top: 15px;
     color: hsl(0, 0%, 40%);
     border-top: 1px solid hsl(0, 0%, 80%);
+}
+
+.etelaatVSRT>.etelaatSBT
+{
+    float: right;
+    width: 50%;
+    margin: 0 0 10px;
+    color: hsl(0, 0%, 40%);
+}
+
+.etelaatVSRT#khoroojiVSRT>.etelaatSBT:first-child
+{
+    width: 100%;
+}
+
+.etelaatVSRT .iconEtelaatSBT
+{
+    width: 67px;
+    text-align: left;
+}
+
+.etelaatVSRT>.etelaatSBT>select:nth-child(2):not(.kadrENT)
+{
+    width: calc(100% - 72px);
+}
+
+.etelaatVSRT>.etelaatSBT>input:nth-child(2):not(.kadrENT)
+{
+    width: calc(100% - 94px);
+}
+
+.etelaatVSRT>.etelaatSBT .kadrTarikhSBT, .etelaatVSRT>.etelaatSBT>select:nth-child(2):not(.kadrENT)
+{
+    width: calc(100% - 72px);
+}
+
+.etelaatVSRT>.etelaatSBT input.txtTarikh
+{
+    width: calc(33.333% - 24px) !important;
 }
 
 #kadrDokmehVSRT

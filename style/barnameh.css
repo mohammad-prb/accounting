@@ -409,12 +409,46 @@ a.btnBRN:active
 .etelaatVBRN
 {
     float: right;
-    width: calc(100% - 18px);
-    margin: 0 15px 5px 0;
-    padding: 10px 0 0 3px;
+    width: calc(100% - 30px);
+    margin: 0 15px 5px;
+    padding: 10px 0 0;
     overflow: auto;
     max-height: 300px;
     color: hsl(0, 0%, 40%);
+}
+
+#kadrInput50>.etelaatSBT
+{
+    float: right;
+    width: 50%;
+    margin: 0 0 10px;
+    color: hsl(0, 0%, 40%);
+}
+
+#kadrInput50 .iconEtelaatSBT
+{
+    width: 67px;
+    text-align: left;
+}
+
+#kadrInput50>.etelaatSBT>select:nth-child(2):not(.kadrENT)
+{
+    width: calc(100% - 72px);
+}
+
+#kadrInput50>.etelaatSBT>input:nth-child(2):not(.kadrENT)
+{
+    width: calc(100% - 94px);
+}
+
+#kadrInput50>.etelaatSBT .kadrTarikhSBT, #kadrInput50>.etelaatSBT>select:nth-child(2):not(.kadrENT)
+{
+    width: calc(100% - 72px);
+}
+
+#kadrInput50>.etelaatSBT input.txtTarikh
+{
+    width: calc(33.333% - 24px) !important;
 }
 
 /* width */

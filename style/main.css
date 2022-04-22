@@ -963,6 +963,7 @@ input.txtTarikh
 input.txtTarikh:last-child
 {
     width: 40px;
+    margin: 0;
 }
 
 input.txtMablagh

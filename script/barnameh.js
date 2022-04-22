@@ -174,7 +174,7 @@ function afzoodanBRN()
         '            <div id="kadrVBRN">\n' +
         '                <div>\n' +
         '                    <div id="titrVBRN"><span class="icon"></span><span class="matnTitr">افزودن برنامه زمانی</span></div>\n' +
-        '                    <div class="etelaatVBRN">\n' +
+        '                    <div class="etelaatVBRN" id="kadrInput50">\n' +
         '                        <div class="etelaatSBT">\n' +
         '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">خ/و:</span></div>\n' +
         '                            <div class="kadrENT" id="KhoroojiAstVBRN">\n' +
@@ -319,7 +319,7 @@ function virayeshBRN(lmn)
         '            <div id="kadrVBRN">\n' +
         '                <div>\n' +
         '                    <div id="titrVBRN"><span class="icon"></span><span class="matnTitr">افزودن برنامه</span></div>\n' +
-        '                    <div class="etelaatVBRN">\n' +
+        '                    <div class="etelaatVBRN" id="kadrInput50">\n' +
         '                        <div class="etelaatSBT">\n' +
         '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">خ/و:</span></div>\n' +
         '                            <div class="kadrENT" id="KhoroojiAstVBRN">\n' +
