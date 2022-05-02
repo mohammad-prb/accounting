@@ -1,4 +1,4 @@
-/*      تابع اعمال فیلتر صورتحساب      */
+/*      تابع اعمال فیلتر برنامه      */
 function emalFilterBRN({id, tasviehAst = 0} = {})
 {
     errorDarad = false;
@@ -113,14 +113,14 @@ function emalFilterBRN({id, tasviehAst = 0} = {})
     namayeshLoading(document.getElementById("kadrBarnameh"));
 }
 
-/*      شماره بندی آیتم های صورتحساب      */
+/*      شماره بندی آیتم های برنامه      */
 function shomarehBandiItemhayeBRN()
 {
     var arrlmn = document.getElementsByClassName("btnHazfBRN");
     for (let i=0; i<arrlmn.length; i++) arrlmn[i].setAttribute("onclick", "namayeshPeygham('آیا برای حذف اطمینان دارید؟', 1, 'hazfBarnameh("+i+")');");
 }
 
-/*      حذف یک صورتحساب      */
+/*      حذف یک برنامه      */
 function hazfBarnameh(shom)
 {
     bastanPeygham();

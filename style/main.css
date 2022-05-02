@@ -389,6 +389,128 @@ a.dokmehLaghv:active
 
 
 
+/*    لاگین   */
+
+#CountainerKadrLogin
+{
+    display: table;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1002;
+    background-color: hsla(0, 0%, 13%, 0.5);
+    animation: aniFade 0.1s;
+    animation-fill-mode: both;
+}
+
+#CountainerKadrLogin span.icon
+{
+    font-size: 1.5rem;
+}
+
+#kadrNamayeshLogin
+{
+    position: relative;
+    display: table-cell;
+    height: 100%;
+    width: 100%;
+    vertical-align: middle;
+}
+
+#kadrLogin
+{
+    position: relative;
+    display: block;
+    width: 400px;
+    margin: 0 auto;
+    animation: aniFade 0.2s;
+    animation-fill-mode: forwards;
+    background-color: white;
+    border-radius: 10px;
+}
+
+#kadrLogin>form
+{
+    position: relative;
+    width: calc(100% - 30px);
+    max-height: calc(100% - 30px);
+    overflow: auto;
+    padding: 15px;
+    margin: 0;
+}
+
+#titrLogin
+{
+    float: right;
+    width: calc(100% - 10px);
+    padding: 0 10px 10px 0;
+    border-bottom: 1px solid hsl(0, 0%, 80%);
+    margin-bottom: 20px;
+    font-size: 1.25rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+#matnLogin
+{
+    float: right;
+    width: 100%;
+    margin: 0 0 10px;
+    text-align: justify;
+    color: hsl(0, 0%, 40%);
+}
+
+.kadrEtelaatLogin
+{
+    float: right;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.titrEtelaatLogin
+{
+    float: left;
+    width: 29px;
+    text-align: left;
+    margin: 5px 8px 5px 0;
+}
+
+input.txtLogin
+{
+    float: left;
+    width: calc(100% - 59px);
+}
+
+a.dokmehLogin, a.dokmehLogin:link, a.dokmehLogin:visited
+{
+    float: right;
+    width: 100%;
+    padding: 10px 0;
+    text-align: center;
+    border-radius: 8px;
+    background-color: hsl(148, 64%, 85%);
+    color: hsl(148, 64%, 30%);
+    transition: color 0.1s, background-color 0.1s;
+}
+
+a.dokmehLogin:hover
+{
+    background-color: hsl(148, 64%, 75%);
+    color: hsl(148, 64%, 25%);
+}
+
+a.dokmehLogin:active
+{
+    transition: none;
+    background-color: hsl(148, 64%, 65%);
+    color: hsl(148, 64%, 25%);
+}
+
+
+
 /*  فلش  */
 
 .kadrFlash

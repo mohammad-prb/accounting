@@ -131,6 +131,44 @@ a.dokmehTaeed:active
     color: hsl(148, 64%, 75%);
 }
 
+#CountainerKadrLogin
+{
+    background-color: hsla(0, 0%, 9%);
+}
+
+#kadrLogin
+{
+    background-color: hsl(0, 0%, 3%);
+}
+
+#titrLogin
+{
+    border-bottom: 1px solid hsl(0, 0%, 20%);
+}
+
+#matnLogin
+{
+    color: hsl(0, 0%, 60%);
+}
+
+a.dokmehLogin, a.dokmehLogin:link, a.dokmehLogin:visited
+{
+    background-color: hsl(148, 64%, 8%);
+    color: hsl(148, 64%, 70%);
+}
+
+a.dokmehLogin:hover
+{
+    background-color: hsl(148, 64%, 11%);
+    color: hsl(148, 64%, 75%);
+}
+
+a.dokmehLogin:active
+{
+    background-color: hsl(148, 64%, 14%);
+    color: hsl(148, 64%, 75%);
+}
+
 a.dokmehLaghv, a.dokmehLaghv:link, a.dokmehLaghv:visited
 {
     background-color: hsl(0, 84%, 12%);
