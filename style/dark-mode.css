@@ -35,6 +35,12 @@ input, textarea
     color: hsl(0, 0%, 90%);
 }
 
+input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, input:-webkit-autofill:active
+{
+    -webkit-box-shadow: 0 0 0 30px black inset !important;
+    -webkit-text-fill-color: white !important;
+}
+
 select
 {
     border: 1px solid hsl(0, 0%, 20%);
@@ -133,7 +139,7 @@ a.dokmehTaeed:active
 
 #CountainerKadrLogin
 {
-    background-color: hsla(0, 0%, 9%);
+    background-color: hsl(0, 0%, 9%);
 }
 
 #kadrLogin

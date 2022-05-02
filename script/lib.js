@@ -1,3 +1,22 @@
+var PATTERN_CODE_MELI = /^\d{10}$/;
+var PATTERN_MOBILE_BA0 = /^09\d{9}$/;
+var PATTERN_MOBILE_BI0 = /^9\d{9}$/;
+var PATTERN_EMAIL = /^[a-z0-9.]+@[a-z0-9.]+.[a-z0-9]$/i;
+var PATTERN_SEN = /^[1-9][0-9]?$/;
+var PATTERN_FAGHAT_ADAD = /^\d+$/;
+var PATTERN_TARIKH_KAMEL = /^\d{4}\/(0[1-9]|1[0-2])\/(0[1-9]|[1-2][0-9]|3[0-1])$/;
+var PATTERN_SAAT_DAGHIGHEH_KAMEL = /^([0-1][0-9]|2[0-3]):[0-5][0-9]$/;
+var PATTERN_SAAT_SAGHIGHEH_SANIEH_KAMEL = /^([0-1][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$/;
+var PATTERN_SHOMAREH_KART = /^\d{16}$/;
+var PATTERN_USERNAME_BA_DOT = /^[\w.]+$/;
+var PATTERN_USERNAME_BI_DOT = /^\w+$/;
+var PATTERN_URL_SITE_BI_QUERY = /^https?:\/\/www\.[a-z0-9\-.]+\.[a-z0-9]+$/i;
+var PATTERN_URL_SITE_BA_QUERY = /^https?:\/\/www\.[a-z0-9\-.]+\.[a-z0-9]+.*$/i;
+var PATTERN_DOMAIN_SITE = /^[a-z0-9\-.]+\.[a-z0-9]$/i;
+var PATTERN_FARSI_AST = /^[ آابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهی]*$/;
+var PATTERN_FARSI_YA_ADAD_AST = /^[\dآابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهی ]*$/;
+var PATTERN_NEGARESH_FARSI_AST = /^[\d.؟!،؛:"ءةئؤإأآابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهی ]$/;
+
 function mobileAst(px = 767)
 {
     if (document.getElementsByTagName("body")[0].offsetWidth < px)
@@ -317,7 +336,11 @@ function getPassword(tedadRagham = 8)
 /*      تابع چک کردن یک عبارت با رگولار اکسپرشن      */
 function check(str, pattern, flag = "")
 {
-    var regex = new RegExp(pattern, flag);
+    var regex;
+
+    if (typeof pattern === "string") regex = new RegExp(pattern, flag);
+    else regex = pattern;
+
     if (str.match(regex) === null) return false;
     else return true;
 }
