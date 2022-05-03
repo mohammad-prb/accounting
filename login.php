@@ -59,7 +59,7 @@ if (isset($_SESSION["accountID"])) header("location:index.php");
                         </div>
                         <div class="kadrEtelaatLogin">
                             <div class="titrEtelaatLogin"><span class="icon"></span></div>
-                            <input type="password" name="pass" class="txtLogin" placeholder="رمز عبور"<?php echo (isset($_SESSION["tedadTalash"]) && $_SESSION["tedadTalash"] >= 5 ? ' style=\'pointer-events: none;\'' : '');?>/>
+                            <input type="password" name="pass" class="txtLogin" placeholder="رمز عبور" id="passwordLogin"<?php echo (isset($_SESSION["tedadTalash"]) && $_SESSION["tedadTalash"] >= 5 ? ' style=\'pointer-events: none;\'' : '');?>/>
                         </div>
                     </div>
                     <?php
@@ -84,13 +84,24 @@ if (isset($_SESSION["accountID"])) header("location:index.php");
     function ersalForm(lmnForm)
     {
         var username = document.getElementById("usernameLogin").value.toString().trim();
-        if (check(username, '^09[0-9]{9}$') || check(username, '^[a-z0-9\.]+@[a-z0-9\.]+\.[a-z0-9]$', "i"))
+        var password = document.getElementById("passwordLogin").value.toString().trim();
+        var errorDarad = false;
+
+        if (!check(username, '^09[0-9]{9}$') && !check(username, '^[a-z0-9\.]+@[a-z0-9\.]+\.[a-z0-9]$', "i"))
         {
-            lmnForm.submit();
-            namayeshLoading(document.getElementById("kadrLogin"));
-        }
-        else
             errorInput(document.getElementById("usernameLogin"));
+            errorDarad = true;
+        }
+
+        if (password === "")
+        {
+            errorInput(document.getElementById("passwordLogin"));
+            errorDarad = true;
+        }
+
+        if (errorDarad) return;
+        lmnForm.submit();
+        namayeshLoading(document.getElementById("kadrLogin"));
     }
     document.getElementsByTagName("form")[0].onkeydown = function (e) {if (e.keyCode === 13) ersalForm(this);};
     document.getElementById("usernameLogin").focus();

@@ -735,7 +735,7 @@ a.itemMNU[data-enekhabi]
 
 ul.menu>li:last-child>a, ul.menu>li:last-child>a:link, ul.menu>li:last-child>a:visited
 {
-    color: hsl(0, 84%, 40%);
+    color: hsl(0, 84%, 50%);
 }
 
 span.iconItemMNU

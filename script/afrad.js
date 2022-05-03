@@ -327,7 +327,7 @@ function sabtFard()
     if (nam.length < 1) errorInput(document.getElementById("namDST"));
     if (errorDarad) return;
 
-    if (arrLmn.length > 1)
+    if (arrLmn.length > 2)
         tartib = Number(arrLmn[arrLmn.length-2].dataset.tartib) + 1;
 
     var xhttp = new XMLHttpRequest();
