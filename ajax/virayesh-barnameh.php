@@ -33,6 +33,14 @@ if (preg_match("/^[1-9][0-9]*$/", $mablagh) !== 1) die();
 $tarikh = tarikhKon($sal, $mah, $rooz);
 if (empty($tedadKol)) $tedadKol = 0;
 
+$sql = "select id from tbl_hesab where id=? and accountID=?";
+$stmt = $con->prepare($sql);
+$stmt->bind_param("ii", $hesabID, $_SESSION["accountID"]);
+$stmt->execute();
+$stmt->bind_result($id);
+if (!$stmt->fetch()) die();
+$stmt->close();
+
 $sql = "update tbl_barnameh set onvan=?, khoroojiAst=?, noeID=?, gam=?, tedadKol=?, tarikhShoroo=?, mablagh=? where id=? and hesabID=? and vaziat=1";
 $stmt = $con->prepare($sql);
 $stmt->bind_param("siiiisiii", $onvan, $khoroojiAst, $noe, $gam, $tedadKol, $tarikh, $mablagh, $id, $hesabID);

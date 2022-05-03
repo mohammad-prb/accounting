@@ -1,7 +1,7 @@
 <div id="kadrHesabha">
     <h2 class="titr"><span class="icon"></span><span class="matnTitr">حساب ها</span></h2>
     <?php
-    $sql = "select * from tbl_hesab where vaziat = 1 order by tartib";
+    $sql = "select * from tbl_hesab where vaziat = 1 and accountID = ". $_SESSION["accountID"] ." order by tartib";
     $result = $con->query($sql);
     if ($result !== false && $result->num_rows > 0)
     {

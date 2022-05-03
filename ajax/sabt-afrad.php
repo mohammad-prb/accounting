@@ -18,6 +18,14 @@ if (preg_match("/^.{1,30}$/", $nam) !== 1) die();
 if (preg_match("/^[1-3]$/", $noe) !== 1) die();
 if (preg_match("/^[1-9]+[0-9]*$/", $tartib) !== 1) die();
 
+$sql = "select id from tbl_hesab where id=? and accountID=?";
+$stmt = $con->prepare($sql);
+$stmt->bind_param("ii", $hesabID, $_SESSION["accountID"]);
+$stmt->execute();
+$stmt->bind_result($id);
+if (!$stmt->fetch()) die();
+$stmt->close();
+
 $sql = "insert into tbl_afrad (hesabID, nam, vaziat, noe, tartib) values (?,?,1,?,?)";
 $stmt = $con->prepare($sql);
 $stmt->bind_param("isii", $hesabID, $nam, $noe, $tartib);

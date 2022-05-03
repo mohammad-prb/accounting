@@ -29,6 +29,14 @@ if (preg_match("/^(0?[1-9]|1[0-2])$/", $mah) !== 1) die();
 if (preg_match("/^[1-9][0-9]{3}$/", $sal) !== 1) die();
 if (preg_match("/^[1-9][0-9]*$/", $mablagh) !== 1) die();
 
+$sql = "select id from tbl_hesab where id=? and accountID=?";
+$stmt = $con->prepare($sql);
+$stmt->bind_param("ii", $hesabID, $_SESSION["accountID"]);
+$stmt->execute();
+$stmt->bind_result($id);
+if (!$stmt->fetch()) die();
+$stmt->close();
+
 if ($tedadKol == "") $tedadKol = 0;
 $tarikh = tarikhKon($sal, $mah, $rooz);
 $zamanSabt = jdate("Y-m-d H:i:s", "", "", "Asia/Tehran", "en");

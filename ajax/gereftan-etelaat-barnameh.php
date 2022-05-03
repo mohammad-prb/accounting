@@ -15,6 +15,14 @@ if (preg_match("/^[1-9][0-9]*$/", $id) !== 1) die();
 if (preg_match("/^[1-9][0-9]*$/", $hesabID) !== 1) die();
 if (preg_match("/^[0-1]$/", $hazfDarad) !== 1) die();
 
+$sql = "select id from tbl_hesab where id=? and accountID=?";
+$stmt = $con->prepare($sql);
+$stmt->bind_param("ii", $hesabID, $_SESSION["accountID"]);
+$stmt->execute();
+$stmt->bind_result($id);
+if (!$stmt->fetch()) die();
+$stmt->close();
+
 if ($hazfDarad == 1)
 {
     $sql = "update tbl_barnameh set tedadPardakht = tedadPardakht-1 where vaziat = 1 and tedadPardakht > 0 and hesabID = ? and id = ?";

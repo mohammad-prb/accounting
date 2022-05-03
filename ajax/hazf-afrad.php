@@ -12,6 +12,14 @@ if (isset($_POST["hesabID"])) $hesabID = htmlspecialchars(stripcslashes(trim($_P
 if (preg_match("/^[1-9]+[0-9]*$/", $id) !== 1) die();
 if (preg_match("/^[1-9]+[0-9]*$/", $hesabID) !== 1) die();
 
+$sql = "select id from tbl_hesab where id=? and accountID=?";
+$stmt = $con->prepare($sql);
+$stmt->bind_param("ii", $hesabID, $_SESSION["accountID"]);
+$stmt->execute();
+$stmt->bind_result($id);
+if (!$stmt->fetch()) die();
+$stmt->close();
+
 $sql = "select count(*) as tedad from tbl_soorathesab where vaziat = 1 and fardID = ? and hesabID = ?";
 $stmt = $con->prepare($sql);
 $stmt->bind_param("ii", $id, $hesabID);

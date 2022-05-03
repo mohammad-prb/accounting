@@ -10,6 +10,14 @@ include ("../code/etesal-db.php");
 if (isset($_POST["hesabID"])) $hesabID = htmlspecialchars(stripcslashes(trim($_POST["hesabID"]))); else die();
 if (preg_match("/^[1-9]+[0-9]*$/", $hesabID) !== 1) die();
 
+$sql = "select id from tbl_hesab where id=? and accountID=?";
+$stmt = $con->prepare($sql);
+$stmt->bind_param("ii", $hesabID, $_SESSION["accountID"]);
+$stmt->execute();
+$stmt->bind_result($id);
+if (!$stmt->fetch()) die();
+$stmt->close();
+
 $arrDasteh = $arrAfrad = array();
 
 $sql = "select id, onvan, noe, tartib from tbl_dasteh where (hesabID = ".$hesabID." or hesabID = 0) and vaziat = 1 and namayesh = 1 order by hesabID desc, tartib";

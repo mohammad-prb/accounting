@@ -15,6 +15,14 @@ if (preg_match("/^[1-9]+[0-9]*$/", $hesabID) !== 1) die();
 if (preg_match("/^[1-9]+[0-9]*$/", $id) !== 1) die();
 if (preg_match("/^[0-1]$/", $vaziat) !== 1) die();
 
+$sql = "select id from tbl_hesab where id=? and accountID=?";
+$stmt = $con->prepare($sql);
+$stmt->bind_param("ii", $hesabID, $_SESSION["accountID"]);
+$stmt->execute();
+$stmt->bind_result($id);
+if (!$stmt->fetch()) die();
+$stmt->close();
+
 $sql = "update tbl_dasteh set namayesh = ? where vaziat = 1 and id = ? and hesabID = ?";
 $stmt = $con->prepare($sql);
 $stmt->bind_param("iii", $vaziat, $id, $hesabID);

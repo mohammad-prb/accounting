@@ -11,6 +11,14 @@ if (isset($_POST["hesabID"])) $hesabID = htmlspecialchars(stripcslashes(trim($_P
 if (isset($_POST["arr"]) && is_string($_POST["arr"]) && is_array(json_decode($_POST["arr"], true))) $arrDasteh = json_decode($_POST["arr"]); else die();
 if (preg_match("/^[1-9]+[0-9]*$/", $hesabID) !== 1) die();
 
+$sql = "select id from tbl_hesab where id=? and accountID=?";
+$stmt = $con->prepare($sql);
+$stmt->bind_param("ii", $hesabID, $_SESSION["accountID"]);
+$stmt->execute();
+$stmt->bind_result($id);
+if (!$stmt->fetch()) die();
+$stmt->close();
+
 $sql = "";
 for ($i=0; $i<count($arrDasteh); $i++)
     $sql .= "update tbl_dasteh set tartib = ". ($i+1) ." where id = ". $arrDasteh[$i] ." and hesabID = ". $hesabID ." and vaziat = 1;";

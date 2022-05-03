@@ -30,6 +30,14 @@ if (preg_match("/^(|0?[1-9]|1[0-2])$/", $mah) !== 1) die();
 if (preg_match("/^(|[1-9][0-9]{3})$/", $sal) !== 1) die();
 if (preg_match("/^(|[1-9][0-9]*)$/", $mablagh) !== 1) die();
 
+$sql = "select id from tbl_hesab where id=? and accountID=?";
+$stmt = $con->prepare($sql);
+$stmt->bind_param("ii", $hesabID, $_SESSION["accountID"]);
+$stmt->execute();
+$stmt->bind_result($id);
+if (!$stmt->fetch()) die();
+$stmt->close();
+
 if (isset($idPardakht))
 {
     if (preg_match("/^[1-9]+[0-9]*$/", $idPardakht) !== 1) die();

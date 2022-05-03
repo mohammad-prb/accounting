@@ -246,6 +246,11 @@ function emalFilterSRT()
         if (this.readyState === 4 && this.status === 200)
         {
             bastanLoading(document.getElementById("kadrSoorathesab"));
+            if (!jsonMotabarAst(this.responseText))
+            {
+                namayeshPeygham("دریافت اطلاعات با خطا مواجه شد! لطفا دوباره امتحان کنید.");
+                return;
+            }
             arrObjEtelaat = JSON.parse(this.responseText);
 
             /*  آمار و اطلاعات فیلتر  */

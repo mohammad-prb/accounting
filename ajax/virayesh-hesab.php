@@ -21,9 +21,9 @@ if (preg_match("/^[0-9]{16}$/", $shomKart) !== 1) die();
 if (preg_match("/^(0|[1-9][0-9]*)$/", $mandehTaraz) !== 1) die();
 if (preg_match("/^[1-9]+[0-9]*$/", $bankID) !== 1) die();
 
-$sql = "update tbl_hesab set nam = ?, shomHesab = ?, shomKart = ?, mablaghTaraz = ?, bankID = ? where id = ? and vaziat = 1";
+$sql = "update tbl_hesab set nam = ?, shomHesab = ?, shomKart = ?, mablaghTaraz = ?, bankID = ? where id = ? and accountID = ? and vaziat = 1";
 $stmt = $con->prepare($sql);
-$stmt->bind_param("sssiii", $nam, $shomHesab, $shomKart, $mandehTaraz, $bankID, $id);
+$stmt->bind_param("sssiiii", $nam, $shomHesab, $shomKart, $mandehTaraz, $bankID, $id, $_SESSION["accountID"]);
 if ($stmt->execute() == true) echo "ok";
 $stmt->close();
 $con->close();

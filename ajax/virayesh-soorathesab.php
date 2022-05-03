@@ -31,11 +31,17 @@ $tarikh = tarikhKon($sal, $mah, $rooz);
 
 if (jmktime(0,0,0, $mah, $rooz, $sal) > time()) die("er:ayandeh");
 
-$sql = "select tarikhEftetah from tbl_hesab where vaziat = 1 and id = " . $hesabID;
+$sql = "select tarikhEftetah from tbl_hesab where vaziat = 1 and accountID = ". $_SESSION["accountID"] ." and id = " . $hesabID;
 $result = $con->query($sql);
 if ($result !== false && $result->num_rows > 0)
+{
     if ($row = $result->fetch_assoc())
+    {
         if ($tarikh < $row["tarikhEftetah"]) die("er:tarikh:" . $row["tarikhEftetah"]);
+    }
+    else die();
+}
+else die();
 
 if ((integer)$khoroojiAst == 1)
 {

@@ -13,6 +13,14 @@ $tarikhAlan = jdate("Y/m", "", "", "Asia/Tehran", "en");
 
 $arrNatijeh = array();
 
+$sql = "select id from tbl_hesab where id=? and accountID=?";
+$stmt = $con->prepare($sql);
+$stmt->bind_param("ii", $hesabID, $_SESSION["accountID"]);
+$stmt->execute();
+$stmt->bind_result($id);
+if (!$stmt->fetch()) die();
+$stmt->close();
+
 $sql = "select id, nam, noe, tartib, namayesh from tbl_afrad where vaziat = 1 and (hesabID = ". $hesabID ." or hesabID = 0) order by hesabID desc, tartib";
 $result = $con->query($sql);
 if ($result !== false && $result->num_rows > 0)
@@ -35,6 +43,7 @@ if ($result !== false && $result->num_rows > 0)
         if ($tarikhAlan == substr($row["tarikh"], 0, 7)) $arrNatijeh[$i]["tedadMah"]++;
     }
 }
+
 
 echo json_encode($arrNatijeh);
 $con->close();

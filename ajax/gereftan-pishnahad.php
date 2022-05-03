@@ -14,6 +14,14 @@ if (preg_match("/^[1-9]+[0-9]*$/", $hesabID) !== 1) die();
 if (preg_match("/^[0-1]$/", $khoroojiAst) !== 1) die();
 $ebaratLike = "%" . $ebarat . "%";
 
+$sql = "select id from tbl_hesab where id=? and accountID=?";
+$stmt = $con->prepare($sql);
+$stmt->bind_param("ii", $hesabID, $_SESSION["accountID"]);
+$stmt->execute();
+$stmt->bind_result($id);
+if (!$stmt->fetch()) die();
+$stmt->close();
+
 $arrNatijeh = array();
 $sql = @"select tozih, count(*) as tedad from tbl_soorathesab
         where tozih like ? and tozih <> ? and hesabID = ? and khoroojiAst = ? and vaziat = 1 and tozih <> ''

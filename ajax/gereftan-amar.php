@@ -24,7 +24,7 @@ else $sharthMahdoodeh = "";
 $arrMax = $arrMin = $arrKhorooji = $arrVoroodi = $arrMandeh = array();
 $meghdarKhorooji = $meghdarVoroodi = $tedadKhorooji = $tedadVoroodi = 0;
 
-$sql = "select mablaghTaraz, tarikhEftetah from tbl_hesab where vaziat = 1 and id = " . $hesabID;
+$sql = "select mablaghTaraz, tarikhEftetah from tbl_hesab where vaziat = 1 and accountID = ". $_SESSION["accountID"] ." and id = " . $hesabID;
 $result = $con->query($sql);
 if ($result !== false && $result->num_rows > 0)
 {
@@ -33,7 +33,9 @@ if ($result !== false && $result->num_rows > 0)
         $mandeh = (float)$row["mablaghTaraz"];
         $tarikhEftetah = $row["tarikhEftetah"];
     }
+    else die();
 }
+else die();
 
 $shomarandehRooz = 1;
 $shomarandehMah = 1;

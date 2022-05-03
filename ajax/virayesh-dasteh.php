@@ -18,6 +18,14 @@ if (preg_match("/^[1-9]+[0-9]*$/", $hesabID) !== 1) die();
 if (preg_match("/^.{1,30}$/", $onvan) !== 1) die();
 if (preg_match("/^[1-3]$/", $noe) !== 1) die();
 
+$sql = "select id from tbl_hesab where id=? and accountID=?";
+$stmt = $con->prepare($sql);
+$stmt->bind_param("ii", $hesabID, $_SESSION["accountID"]);
+$stmt->execute();
+$stmt->bind_result($id);
+if (!$stmt->fetch()) die();
+$stmt->close();
+
 $sql = "select noe from tbl_dasteh where id = ? and hesabID = ?";
 $stmt = $con->prepare($sql);
 $stmt->bind_param("ii", $id, $hesabID);

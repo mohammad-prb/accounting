@@ -2,7 +2,7 @@
     <h2 class="titr"><span class="icon"></span><span class="matnTitr">صورتحساب</span></h2>
     <select name="hesabha" class="sltHesabha" onchange="tavizHesabSRT(this);" title="انتخاب حساب">
         <?php
-        $sql = "select * from tbl_hesab where vaziat = 1 order by tartib";
+        $sql = "select * from tbl_hesab where vaziat = 1 and accountID = ". $_SESSION["accountID"] ." order by tartib";
         $result = $con->query($sql);
         if ($result !== false && $result->num_rows > 0)
             while ($row = $result->fetch_assoc())
@@ -37,7 +37,13 @@
                 <option value="hameh">-</option>
                 <?php
                 $arrDasteh = array();
-                $sql = "select id, onvan, noe, tartib from tbl_dasteh where (hesabID = ".$hesabID." or hesabID = 0) and vaziat = 1 order by hesabID desc, tartib";
+                $sql = @"select * from (select tbl_dasteh.id as id, onvan, noe, tbl_dasteh.tartib as tartib, hesabID from tbl_dasteh
+                        inner join tbl_hesab on tbl_hesab.id = hesabID
+                        where hesabID = ".$hesabID." and tbl_dasteh.vaziat = 1 and accountID = ". $_SESSION["accountID"] ."
+                        union all
+                        select tbl_dasteh.id as id, onvan, noe, tbl_dasteh.tartib as tartib, hesabID from tbl_dasteh
+                        where hesabID = 0 and tbl_dasteh.vaziat = 1) as tbl
+                        order by tbl.hesabID desc, tbl.tartib";
                 $result = $con->query($sql);
                 if ($result !== false && $result->num_rows > 0)
                 {
@@ -57,7 +63,13 @@
                 <option value="hameh">-</option>
                 <?php
                 $arrAfrad = array();
-                $sql = "select id, nam, noe, tartib from tbl_afrad where (hesabID = ".$hesabID." or hesabID = 0) and vaziat = 1 order by hesabID desc, tartib";
+                $sql = @"select * from (select tbl_afrad.id as id, tbl_afrad.nam as nam, noe, tbl_afrad.tartib as tartib, hesabID from tbl_afrad 
+                        inner join tbl_hesab on tbl_hesab.id = hesabID
+                        where hesabID = ".$hesabID." and tbl_afrad.vaziat = 1 and accountID = ". $_SESSION["accountID"] ."
+                        union all
+                        select tbl_afrad.id as id, tbl_afrad.nam as nam, noe, tbl_afrad.tartib as tartib, hesabID from tbl_afrad 
+                        where hesabID = 0 and tbl_afrad.vaziat = 1) as tbl
+                        order by tbl.hesabID desc, tbl.tartib";
                 $result = $con->query($sql);
                 if ($result !== false && $result->num_rows > 0)
                 {

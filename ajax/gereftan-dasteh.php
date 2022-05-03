@@ -11,6 +11,14 @@ if (isset($_POST["hesabID"])) $hesabID = htmlspecialchars(stripcslashes(trim($_P
 if (preg_match("/^[1-9]+[0-9]*$/", $hesabID) !== 1) die();
 $tarikhAlan = jdate("Y/m", "", "", "Asia/Tehran", "en");
 
+$sql = "select id from tbl_hesab where id=? and accountID=?";
+$stmt = $con->prepare($sql);
+$stmt->bind_param("ii", $hesabID, $_SESSION["accountID"]);
+$stmt->execute();
+$stmt->bind_result($id);
+if (!$stmt->fetch()) die();
+$stmt->close();
+
 $arrNatijeh = array();
 
 $sql = "select id, onvan, noe, tartib, namayesh from tbl_dasteh where vaziat = 1 and (hesabID = ". $hesabID ." or hesabID = 0) order by hesabID desc, tartib";
