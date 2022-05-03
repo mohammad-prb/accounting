@@ -309,6 +309,7 @@ function hazfSoorathesab(shom)
     {
         if (this.readyState === 4 && this.status === 200)
         {
+            bastanLoading(lmn);
             if (this.responseText === "ok")
             {
                 flash("حذف با موفقیت انجام شد.");

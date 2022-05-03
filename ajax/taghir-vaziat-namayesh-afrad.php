@@ -19,7 +19,7 @@ $sql = "select id from tbl_hesab where id=? and accountID=?";
 $stmt = $con->prepare($sql);
 $stmt->bind_param("ii", $hesabID, $_SESSION["accountID"]);
 $stmt->execute();
-$stmt->bind_result($id);
+$stmt->bind_result($temp);
 if (!$stmt->fetch()) die();
 $stmt->close();
 

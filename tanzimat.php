@@ -45,7 +45,7 @@ if (!isset($_SESSION["accountID"])) header("location:login.php");
             </div>
             <div id="jadvalTNZ">
                 <?php
-                $sql = "select * from tbl_hesab where vaziat = 1 order by tartib";
+                $sql = "select * from tbl_hesab where vaziat = 1 and accountID = ". $_SESSION["accountID"] ." order by tartib";
                 $result = $con->query($sql);
                 if ($result !== false && $result->num_rows > 0)
                 {

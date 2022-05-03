@@ -13,7 +13,7 @@ $hesabAmadehAst = false;
 if (isset($_GET["hesabID"]) && preg_match("/^[1-9]+[0-9]*$/", $_GET["hesabID"]) === 1)
 {
     $idHesab = (integer)$_GET["hesabID"];
-    $sql = "select id from tbl_hesab where id = ? and vaziat = 1";
+    $sql = "select id from tbl_hesab where id = ? and accountID = ". $_SESSION["accountID"] ." and vaziat = 1";
     $stmt = $con->prepare($sql);
     $stmt->bind_param("i", $idHesab);
     $stmt->execute();
@@ -24,7 +24,7 @@ if (isset($_GET["hesabID"]) && preg_match("/^[1-9]+[0-9]*$/", $_GET["hesabID"]) 
 }
 else
 {
-    $sql = "select * from tbl_hesab where vaziat = 1 order by tartib limit 1";
+    $sql = "select * from tbl_hesab where vaziat = 1 and accountID = ". $_SESSION["accountID"] ." order by tartib limit 1";
     $result = $con->query($sql);
     if ($result !== false && $result->num_rows > 0)
     {
