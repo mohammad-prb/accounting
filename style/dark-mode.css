@@ -247,6 +247,11 @@ a.itemMNU[data-enekhabi]
     color: hsl(204, 100%, 70%);
 }
 
+ul.menu>li:last-child>a, ul.menu>li:last-child>a:link, ul.menu>li:last-child>a:visited
+{
+    color: hsl(0, 84%, 60%);
+}
+
 #kadrMeshkiMNU
 {
     background-color: hsla(0, 0%, 10%, 0.8) !important;

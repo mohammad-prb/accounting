@@ -2,7 +2,7 @@
     <h2 class="titr"><span class="icon"></span><span class="matnTitr">ثبت واریزی</span></h2>
     <select name="hesabha" class="sltHesabha" onchange="taghirHesabSBT(this);" title="انتخاب حساب">
         <?php
-            $sql = "select * from tbl_hesab where vaziat = 1 order by tartib";
+            $sql = "select * from tbl_hesab where vaziat = 1 and accountID = ". $_SESSION["accountID"] ." order by tartib";
             $result = $con->query($sql);
             if ($result !== false && $result->num_rows > 0)
             {
@@ -34,7 +34,9 @@
                     <select name="dasteh" id="dastehSBTK">
                         <?php
                         $arrDasteh = array();
-                        $sql = "select id, onvan, noe, tartib from tbl_dasteh where (hesabID = ".$hesabID." or hesabID = 0) and vaziat = 1 and namayesh = 1 order by hesabID desc, tartib";
+                        $sql = @"select tbl_dasteh.id as id, onvan, noe, tbl_dasteh.tartib as tartib from tbl_dasteh 
+                                inner join tbl_hesab on tbl_hesab.id = hesabID
+                                where (hesabID = ".$hesabID." or hesabID = 0) and tbl_dasteh.vaziat = 1 and namayesh = 1 and accountID = ". $_SESSION["accountID"] ." order by hesabID desc, tbl_dasteh.tartib";
                         $result = $con->query($sql);
                         if ($result !== false && $result->num_rows > 0)
                         {
@@ -53,7 +55,9 @@
                     <select name="varizBe" id="varizBeSBTK">
                         <?php
                         $arrAfrad = array();
-                        $sql = "select id, nam, noe, tartib from tbl_afrad where (hesabID = ".$hesabID." or hesabID = 0) and vaziat = 1 and namayesh = 1 order by hesabID desc, tartib";
+                        $sql = "select tbl_afrad.id as id, tbl_afrad.nam as nam, noe, tbl_afrad.tartib as tartib from tbl_afrad 
+                                inner join tbl_hesab on tbl_hesab.id = hesabID
+                                where (hesabID = ".$hesabID." or hesabID = 0) and tbl_afrad.vaziat = 1 and namayesh = 1 and accountID = ". $_SESSION["accountID"] ." order by hesabID desc, tbl_afrad.tartib";
                         $result = $con->query($sql);
                         if ($result !== false && $result->num_rows > 0)
                         {
@@ -92,7 +96,8 @@
             <?php
             $sql = @"select mablagh, tarikh, onvan, tozih from tbl_soorathesab
                     inner join tbl_dasteh on tbl_dasteh.id = dastehID
-                    where tbl_soorathesab.vaziat = 1 and khoroojiAst = 1 and tbl_soorathesab.hesabID = ". $hesabID ." order by tbl_soorathesab.id desc limit 1";
+                    inner join tbl_hesab on tbl_hesab.id = tbl_soorathesab.hesabID
+                    where tbl_soorathesab.vaziat = 1 and khoroojiAst = 1 and tbl_soorathesab.hesabID = ". $hesabID ." and accountID = ". $_SESSION["accountID"] ." order by tbl_soorathesab.id desc limit 1";
             $result = $con->query($sql);
             if ($result !== false && $result->num_rows > 0)
             {
@@ -116,7 +121,9 @@
                     <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">دسته:</span></div>
                     <select name="dasteh" id="dastehSBTV">
                         <?php
-                        $sql = "select id, onvan, noe, tartib from tbl_dasteh where (hesabID = ".$hesabID." or hesabID = 0) and (noe <= 1 or noe = 3) and vaziat = 1 and namayesh = 1 order by hesabID desc, tartib";
+                        $sql = "select tbl_dasteh.id as id, onvan, noe, tbl_dasteh.tartib as tartib from tbl_dasteh
+                                inner join tbl_hesab on tbl_hesab.id = hesabID
+                                where (hesabID = ".$hesabID." or hesabID = 0) and (noe <= 1 or noe = 3) and tbl_dasteh.vaziat = 1 and namayesh = 1 and accountID = ". $_SESSION["accountID"] ." order by hesabID desc, tbl_dasteh.tartib";
                         $result = $con->query($sql);
                         if ($result !== false && $result->num_rows > 0)
                         {
@@ -132,7 +139,9 @@
                     <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">واریز از:</span></div>
                     <select name="varizKonandeh" id="varizKonandehSBTV">
                         <?php
-                        $sql = "select id, nam, noe, tartib from tbl_afrad where (hesabID = ".$hesabID." or hesabID = 0) and (noe <= 1 or noe = 3) and vaziat = 1 and namayesh = 1 order by hesabID desc, tartib";
+                        $sql = "select tbl_afrad.id as id, tbl_afrad.nam as nam, noe, tbl_afrad.tartib as tartib from tbl_afrad 
+                                inner join tbl_hesab on tbl_hesab.id = hesabID
+                                where (hesabID = ".$hesabID." or hesabID = 0) and (noe <= 1 or noe = 3) and tbl_afrad.vaziat = 1 and namayesh = 1 and accountID = ". $_SESSION["accountID"] ." order by hesabID desc, tbl_afrad.tartib";
                         $result = $con->query($sql);
                         if ($result !== false && $result->num_rows > 0)
                         {
@@ -169,7 +178,8 @@
             <?php
             $sql = @"select mablagh, tarikh, onvan, tozih from tbl_soorathesab
                     inner join tbl_dasteh on tbl_dasteh.id = dastehID
-                    where tbl_soorathesab.vaziat = 1 and khoroojiAst = 0 and tbl_soorathesab.hesabID = ". $hesabID ." order by tbl_soorathesab.id desc limit 1";
+                    inner join tbl_hesab on tbl_hesab.id = tbl_soorathesab.hesabID
+                    where tbl_soorathesab.vaziat = 1 and khoroojiAst = 0 and tbl_soorathesab.hesabID = ". $hesabID ." and accountID = ". $_SESSION["accountID"] ." order by tbl_soorathesab.id desc limit 1";
             $result = $con->query($sql);
             if ($result !== false && $result->num_rows > 0)
             {

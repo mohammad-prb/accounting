@@ -490,6 +490,20 @@ input.txtLogin
     width: calc(100% - 59px);
 }
 
+#errorLogin
+{
+    float: right;
+    width: 100%;
+    margin-bottom: 10px;
+    color: hsl(0, 84%, 50%);
+    text-align: justify;
+}
+
+#errorLogin>span.icon
+{
+    font-size: 1rem;
+}
+
 a.dokmehLogin, a.dokmehLogin:link, a.dokmehLogin:visited
 {
     float: right;
@@ -717,6 +731,11 @@ a.itemMNU[data-enekhabi]
 {
     background-color: hsl(204, 100%, 90%);
     color: hsl(204, 100%, 30%);
+}
+
+ul.menu>li:last-child>a, ul.menu>li:last-child>a:link, ul.menu>li:last-child>a:visited
+{
+    color: hsl(0, 84%, 40%);
 }
 
 span.iconItemMNU
@@ -1203,6 +1222,16 @@ span.meghdarPishnahad
     }
 
     #kadrPeygham
+    {
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        right: 0;
+        width: calc(100% - 20px);
+        max-width: 400px;
+    }
+
+    #kadrLogin
     {
         position: absolute;
         bottom: 10px;

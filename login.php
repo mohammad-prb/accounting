@@ -4,6 +4,38 @@ date_default_timezone_set("Asia/Tehran");
 include ("code/jdf.php");
 include ("code/lib.php");
 include ("code/etesal-db.php");
+
+if (isset($_GET["kh"])) if (isset($_SESSION["accountID"])) unset($_SESSION["accountID"]);
+
+if ((!isset($_SESSION["tedadTalash"]) || $_SESSION["tedadTalash"] < 5) && !isset($_SESSION["accountID"]) && $_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["user"]) && isset($_POST["pass"]))
+{
+    if (!isset($_SESSION["tedadTalash"])) $_SESSION["tedadTalash"] = 0;
+    $user = (string)$_POST["user"];
+    $pass = hash("md5", $_POST["pass"]);
+
+    if (preg_match("/^09\d{9}$/", $user) == 1)
+        $sql = "select id from tbl_account where vaziat = 1 and mobile = ? and ramz = ?";
+    else
+        $sql = "select id from tbl_account where vaziat = 1 and email = ? and ramz = ?";
+
+    $stmt = $con->prepare($sql);
+    $stmt->bind_param("ss", $user, $pass);
+    $stmt->execute();
+    $stmt->bind_result($id);
+    if ($stmt->fetch())
+    {
+        $_SESSION["tedadTalash"] = 0;
+        $_SESSION["accountID"] = $id;
+    }
+    else
+    {
+        if (isset($_SESSION["accountID"])) unset($_SESSION["accountID"]);
+        $_SESSION["tedadTalash"]++;
+    }
+    $stmt->close();
+}
+
+if (isset($_SESSION["accountID"])) header("location:index.php");
 ?>
 <!DOCTYPE html>
 <html lang="fa-ir">
@@ -18,19 +50,27 @@ include ("code/etesal-db.php");
     <div id="CountainerKadrLogin">
         <div id="kadrNamayeshLogin">
             <div id="kadrLogin">
-                <form action="index.php" method="post">
-                    <div id="titrLogin"><span class="icon"></span><span class="matnTitr">ورود به سیستم</span></div>
+                <form action="login.php" method="post" name="login">
+                    <div id="titrLogin"><span class="icon"></span><span class="matnTitr">ورود به سیستم</span></div>
                     <div id="matnLogin">
                         <div class="kadrEtelaatLogin">
                             <div class="titrEtelaatLogin"><span class="icon"></span></div>
-                            <input type="text" name="user" class="txtLogin" placeholder="موبایل یا ایمیل" id="usernameLogin"/>
+                            <input type="text" name="user" class="txtLogin" placeholder="موبایل یا ایمیل" id="usernameLogin"<?php echo (isset($_SESSION["tedadTalash"]) && $_SESSION["tedadTalash"] >= 5 ? ' style=\'pointer-events: none;\'' : '');?>/>
                         </div>
                         <div class="kadrEtelaatLogin">
                             <div class="titrEtelaatLogin"><span class="icon"></span></div>
-                            <input type="password" name="pass" class="txtLogin" placeholder="رمز عبور"/>
+                            <input type="password" name="pass" class="txtLogin" placeholder="رمز عبور"<?php echo (isset($_SESSION["tedadTalash"]) && $_SESSION["tedadTalash"] >= 5 ? ' style=\'pointer-events: none;\'' : '');?>/>
                         </div>
                     </div>
-                    <span id="kadrDokmehLogin"><a class="dokmehLogin" href="javascript:void (0);" onclick="ersalForm(this.parentElement.parentElement);"><span class="icon"></span><span class="matnTitr">ورود</span></a></span>
+                    <?php
+                    if (isset($_SESSION["tedadTalash"]) && $_SESSION["tedadTalash"] >= 5)
+                        echo '<div id="errorLogin"><span class="icon"></span><span class="matnTitr">ورود بیشتر از حد مجاز انجام شد، لطفا بعدا تلاش کنید.</span></div>';
+                    elseif ($_SERVER['REQUEST_METHOD'] == 'POST')
+                        echo @'<div id="errorLogin"><span class="icon"></span><span class="matnTitr">اطلاعات وارد شده نادرست است.</span></div>
+                                <span id="kadrDokmehLogin"><a class="dokmehLogin" href="javascript:void (0);" onclick="ersalForm(this.parentElement.parentElement);"><span class="icon"></span><span class="matnTitr">ورود</span></a></span>';
+                    else
+                        echo '<span id="kadrDokmehLogin"><a class="dokmehLogin" href="javascript:void (0);" onclick="ersalForm(this.parentElement.parentElement);"><span class="icon"></span><span class="matnTitr">ورود</span></a></span>';
+                    ?>
                 </form>
             </div>
         </div>
@@ -52,6 +92,8 @@ include ("code/etesal-db.php");
         else
             errorInput(document.getElementById("usernameLogin"));
     }
+    document.getElementsByTagName("form")[0].onkeydown = function (e) {if (e.keyCode === 13) ersalForm(this);};
+    document.getElementById("usernameLogin").focus();
 </script>
 </body>
 </html>

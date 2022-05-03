@@ -7,7 +7,9 @@ include ("code/etesal-db.php");
 include ("code/tolid-token.php");
 $safheh = "index";
 
-$sql = "select * from tbl_hesab where vaziat = 1 order by tartib limit 1";
+if (!isset($_SESSION["accountID"])) header("location:login.php");
+
+$sql = "select * from tbl_hesab where vaziat = 1 and accountID = ". $_SESSION["accountID"] ." order by tartib limit 1";
 $result = $con->query($sql);
 if ($result !== false && $result->num_rows > 0)
 {

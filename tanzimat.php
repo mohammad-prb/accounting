@@ -6,6 +6,8 @@ include ("code/lib.php");
 include ("code/etesal-db.php");
 include ("code/tolid-token.php");
 $safheh = "tanzimat";
+
+if (!isset($_SESSION["accountID"])) header("location:login.php");
 ?>
 <!DOCTYPE html>
 <html lang="fa-ir">

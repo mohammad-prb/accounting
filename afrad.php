@@ -7,6 +7,8 @@ include ("code/etesal-db.php");
 include ("code/tolid-token.php");
 $safheh = "afrad";
 
+if (!isset($_SESSION["accountID"])) header("location:login.php");
+
 $hesabAmadehAst = false;
 if (isset($_GET["hesabID"]) && preg_match("/^[1-9]+[0-9]*$/", $_GET["hesabID"]) === 1)
 {
