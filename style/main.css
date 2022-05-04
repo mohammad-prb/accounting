@@ -228,6 +228,11 @@ span.matnTitr.riz
     background-color: hsla(0, 0%, 70%, 0.5);
 }
 
+.kadrENT.saddarsadENT
+{
+    width: calc(100% - 4px);
+}
+
 span.kadrPoshtENT
 {
     position: absolute;
@@ -245,6 +250,9 @@ a.gozinehENT, a.gozinehENT:link, a.gozinehENT:visited
     float: right;
     padding: 3px 10px;
     text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     color: hsl(0, 0%, 40%);
 }
 
@@ -256,6 +264,11 @@ a.gozinehENT:hover
 a.gozinehENT:active
 {
     color: hsl(0, 0%, 20%);
+}
+
+.kadrENT.saddarsadENT a.gozinehENT
+{
+    padding: 3px 0;
 }
 
 
@@ -1113,6 +1126,52 @@ input.txtTarikh:last-child
     margin: 0;
 }
 
+.kadrSBT .etelaatSBT
+{
+    width: calc(50% - 13px);
+}
+
+.kadrSBT .etelaatSBT.kadrMablagh
+{
+    clear: both;
+}
+
+.kadrSBT .etelaatSBT.tamamSafheh
+{
+    width: calc(100% - 20px);
+}
+
+.kadrSBT .etelaatSBT>.iconEtelaatSBT
+{
+    width: 55px;
+    text-align: left;
+}
+
+.kadrSBT .etelaatSBT:nth-child(odd)
+{
+    margin: 0 0 15px 6px;
+}
+
+.kadrSBT .etelaatSBT> input
+{
+    width: calc(100% - 82px);
+}
+
+.kadrSBT .etelaatSBT> select
+{
+    width: calc(100% - 60px);
+}
+
+.kadrSBT .kadrTarikhSBT
+{
+    width: calc(100% - 60px);
+}
+
+.kadrSBT input.txtTarikh
+{
+    width: calc(33.333% - 24px);
+}
+
 input.txtMablagh
 {
     float: right;
@@ -1140,7 +1199,7 @@ input.txtTozih
     left: 0;
     top: 40px;
     z-index: 10;
-    width: calc(100% - 73px);
+    width: calc(100% - 60px);
     overflow: hidden;
     border-radius: 8px;
     background-color: hsl(204, 100%, 95%);
@@ -1389,6 +1448,16 @@ span.meghdarPishnahad
     .etelaatSBT>input:nth-child(2):not(.kadrENT)
     {
         width: calc(100% - 94px);
+    }
+
+    .kadrSBT .etelaatSBT>select:nth-child(2):not(.kadrENT)
+    {
+        width: calc(100% - 60px);
+    }
+
+    .kadrSBT .etelaatSBT>input:nth-child(2):not(.kadrENT)
+    {
+        width: calc(100% - 82px);
     }
 
     input.txtTarikh

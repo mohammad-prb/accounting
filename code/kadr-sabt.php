@@ -18,16 +18,7 @@
             <h3 class="titrSBT"><span class="icon"></span><span class="matnTitr">ثبت خروجی</span></h3>
             <a class="btnErsalSBT" href="javascript:void(0);" onclick="sabtVarizi(1);"><span class="icon"></span><span class="matnTitr">ثبت</span></a>
             <div class="kadrEtelaatSBT">
-                <div class="etelaatSBT">
-                    <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">وسیله:</span></div>
-                    <div class="kadrENT" id="vasilehSBTK">
-                        <span class="kadrPoshtENT"></span>
-                        <a class="gozinehENT" onclick="taghirENT(this);taghirVasilehSBT(this);" data-value="1" href="javascript:void(0);">کارت</a>
-                        <a class="gozinehENT" onclick="taghirENT(this);taghirVasilehSBT(this);" data-value="3" href="javascript:void(0);">انتقال</a>
-                        <a class="gozinehENT" onclick="taghirENT(this);taghirVasilehSBT(this);" data-value="4" href="javascript:void(0);">پرداخت</a>
-                        <a class="gozinehENT" onclick="taghirENT(this);taghirVasilehSBT(this);" data-value="5" href="javascript:void(0);">چک</a>
-                    </div>
-                </div>
+                <div class="etelaatSBT" id="kadrVasilehESBT"></div>
                 <div class="etelaatSBT">
                     <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">دسته:</span></div>
                     <select name="dasteh" id="dastehSBTK">
@@ -53,8 +44,16 @@
                         ?>
                     </select>
                 </div>
+                <div class="etelaatSBT">
+                    <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">تاریخ:</span></div>
+                    <div class="kadrTarikhSBT" id="tarikhSBTK">
+                        <input type="text" class="txtTarikh" name="rooz" value="<?php echo jdate("d", "", "", "Asia/Tehran", "en");?>" onfocus="this.select();" oninput="if(this.value.length>1) this.nextElementSibling.focus();" maxlength="2" placeholder="روز" autocomplete="off"/>
+                        <input type="text" class="txtTarikh" name="mah" value="<?php echo jdate("m", "", "", "Asia/Tehran", "en");?>" onfocus="this.select();" oninput="if(this.value.length>1) this.nextElementSibling.focus();" maxlength="2" placeholder="ماه" autocomplete="off"/>
+                        <input type="text" class="txtTarikh" name="sal" value="<?php echo jdate("Y", "", "", "Asia/Tehran", "en");?>" onfocus="this.select();" oninput="if(this.value.length>3) document.getElementById('mablaghSBTK').focus();" maxlength="4" placeholder="سال" autocomplete="off"/>
+                    </div>
+                </div>
                 <div class="etelaatSBT" style="display:none;">
-                    <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">واریز به:</span></div>
+                    <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">فرد:</span></div>
                     <select name="varizBe" id="varizBeSBTK">
                         <?php
                         $arrAfrad = array();
@@ -78,21 +77,15 @@
                         ?>
                     </select>
                 </div>
-                <div class="etelaatSBT">
-                    <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">تاریخ:</span></div>
-                    <div class="kadrTarikhSBT" id="tarikhSBTK">
-                        <input type="text" class="txtTarikh" name="rooz" value="<?php echo jdate("d", "", "", "Asia/Tehran", "en");?>" onfocus="this.select();" oninput="if(this.value.length>1) this.nextElementSibling.focus();" maxlength="2" placeholder="روز" autocomplete="off"/>
-                        <input type="text" class="txtTarikh" name="mah" value="<?php echo jdate("m", "", "", "Asia/Tehran", "en");?>" onfocus="this.select();" oninput="if(this.value.length>1) this.nextElementSibling.focus();" maxlength="2" placeholder="ماه" autocomplete="off"/>
-                        <input type="text" class="txtTarikh" name="sal" value="<?php echo jdate("Y", "", "", "Asia/Tehran", "en");?>" onfocus="this.select();" oninput="if(this.value.length>3) document.getElementById('mablaghSBTK').focus();" maxlength="4" placeholder="سال" autocomplete="off"/>
-                    </div>
-                </div>
-                <div class="etelaatSBT tamamSafheh">
+                <div class="etelaatSBT kadrMablagh">
                     <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">مبلغ:</span></div>
                     <input type="text" class="txtMablagh" id="mablaghSBTK" name="mablagh" oninput="namayeshMablaghSBT(this);" maxlength="10" placeholder="به ریال" autocomplete="off"/>
+                </div>
+                <div class="etelaatSBT">
                     <span class="mablaghSBT"></span>
                 </div>
                 <div class="etelaatSBT tamamSafheh">
-                    <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">توضیخات:</span></div>
+                    <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">توضیح:</span></div>
                     <input type="text" class="txtTozih" id="tozihSBTK" name="tozih" data-khorooji-ast="1" oninput="taghirPishnahad(this);" onfocus="taghirPishnahad(this);" onblur="ghatePishnahad(this);" placeholder="اختیاری" autocomplete="off"/>
                     <div class="kadrPishnahad" id="kadrPishnahadKhorooji"></div>
                 </div>
@@ -147,7 +140,7 @@
                     </select>
                 </div>
                 <div class="etelaatSBT">
-                    <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">واریز از:</span></div>
+                    <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">فرد:</span></div>
                     <select name="varizKonandeh" id="varizKonandehSBTV">
                         <?php
                         $sql = @"select * from (select tbl_afrad.id as id, tbl_afrad.nam as nam, noe, tbl_afrad.tartib as tartib, hesabID from tbl_afrad 
@@ -176,13 +169,16 @@
                         <input type="text" class="txtTarikh" name="sal" value="<?php echo jdate("Y", "", "", "Asia/Tehran", "en");?>" onfocus="this.select();" oninput="if(this.value.length>3) document.getElementById('mablaghSBTV').focus();" maxlength="4" placeholder="سال" autocomplete="off"/>
                     </div>
                 </div>
-                <div class="etelaatSBT tamamSafheh">
+                <div class="etelaatSBT"></div> <!-- برای دیباگ مارجین های کادر های فرد -->
+                <div class="etelaatSBT kadrMablagh">
                     <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">مبلغ:</span></div>
                     <input type="text" class="txtMablagh" id="mablaghSBTV" name="mablagh" oninput="namayeshMablaghSBT(this);" maxlength="10" placeholder="به ریال" autocomplete="off"/>
+                </div>
+                <div class="etelaatSBT">
                     <span class="mablaghSBT"></span>
                 </div>
                 <div class="etelaatSBT tamamSafheh">
-                    <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">توضیخات:</span></div>
+                    <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">توضیح:</span></div>
                     <input type="text" class="txtTozih" id="tozihSBTV" name="tozih" data-khorooji-ast="0" oninput="taghirPishnahad(this);" onfocus="taghirPishnahad(this);" onblur="ghatePishnahad(this);" placeholder="اختیاری" autocomplete="off"/>
                     <div class="kadrPishnahad" id="kadrPishnahadVoroodi"></div>
                 </div>

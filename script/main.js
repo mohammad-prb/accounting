@@ -1,10 +1,57 @@
-/*      تنظیم صفحه بعد از لود کامل      */
+/*      کلاس کادر انتخاب      */
+class entekhab
+{
+    lmn = document.createElement("div");
+    constructor({lmnKadr, saddarsadAst=false, id="", entekhb=1, onclick="", arrObjMaghadir=[]} = {})
+    {
+        // arrObjMaghadir : [{value:"", matn:"", onclick:fnc} , {---}]
+        this.lmn.setAttribute("class", "kadrENT");
+        this.lmn.innerHTML = '<span class="kadrPoshtENT"></span>';
+        let widthA = (100/arrObjMaghadir.length).toFixed(3);
+        if (id !== "") this.lmn.setAttribute("id", id);
+        if (saddarsadAst) this.lmn.setAttribute("class", "kadrENT saddarsadENT");
+
+        for (let i=0; i<arrObjMaghadir.length; i++)
+        {
+            let lmnA = document.createElement("a");
+            lmnA.setAttribute("class", "gozinehENT");
+            lmnA.setAttribute("href", "javascript:void(0);");
+            lmnA.dataset.value = arrObjMaghadir[i]["value"];
+            lmnA.innerHTML = arrObjMaghadir[i]["matn"];
+            lmnA.addEventListener("click", ()=>{this.taghirENT(lmnA)});
+            if (onclick !== "") lmnA.setAttribute("onclick", onclick);
+            if (saddarsadAst) lmnA.style.width = widthA + "%";
+            if (typeof lmnKadr === "string") lmnKadr = document.getElementById(lmnKadr);
+            this.lmn.appendChild(lmnA);
+        }
+        lmnKadr.appendChild(this.lmn);
+        this.taghirENT(lmnKadr.getElementsByClassName("gozinehENT")[entekhb-1]);
+        window.addEventListener("resize", ()=>{
+            let entekhabFeli = this.lmn.dataset.value;
+            console.log(entekhabFeli);
+            this.taghirENT(lmnKadr.querySelector(".gozinehENT[data-value='"+entekhabFeli+"']"));
+        });
+    }
+
+    taghirENT(lmn)
+    {
+        var lmnPosht = lmn.parentElement.getElementsByClassName("kadrPoshtENT")[0];
+        lmn.parentElement.dataset.value = lmn.dataset.value;
+        lmnPosht.style.width = lmn.clientWidth + "px";
+        lmnPosht.style.top = lmn.offsetTop + "px";
+        lmnPosht.style.left = lmn.offsetLeft + "px";
+    }
+}
+
+/*      تنظیم صفحه بعد از لود کامل ایندکس      */
 function tanzimSaf()
 {
-    var lmnENT = document.getElementsByClassName("kadrENT");
-    for (let i=0; i<lmnENT.length; i++)
-        if (lmnENT[i].getElementsByClassName("gozinehENT")[0])
-            taghirENT(lmnENT[i].getElementsByClassName("gozinehENT")[0]);
+    new entekhab({lmnKadr:"kadrVasilehESBT", saddarsadAst:true, id:"vasilehSBTK", onclick:"taghirVasilehSBT(this);", arrObjMaghadir:[
+            {value:1, matn:"کارت"},
+            {value:3, matn:"انتقال"},
+            {value:4, matn:"پرداخت"},
+            {value:5, matn:"چک"}
+        ]});
 }
 
 /*      باز و بست منو      */
@@ -90,23 +137,13 @@ function namayeshLoading(lmn)
     lmn.appendChild(loading);
 }
 
-/*      عوض کردن ورودی و خروجی در ثبت واریزی      */
-function taghirENT(lmn)
-{
-    var lmnPosht = lmn.parentElement.getElementsByClassName("kadrPoshtENT")[0];
-    lmn.parentElement.dataset.value = lmn.dataset.value;
-    lmnPosht.style.width = lmn.clientWidth + "px";
-    lmnPosht.style.top = lmn.offsetTop + "px";
-    lmnPosht.style.left = lmn.offsetLeft + "px";
-}
-
 /*      نمایش مبلغ ورودی کاربر با ممیز      */
 function namayeshMablaghSBT(lmn)
 {
     var meghdar = lmn.value.trim();
     if (!adadiAst(meghdar)) return;
-    if (meghdar === "") lmn.parentElement.getElementsByClassName("mablaghSBT")[0].innerHTML = "";
-    else lmn.parentElement.getElementsByClassName("mablaghSBT")[0].innerHTML = momayezdar(meghdar) + " ریال";
+    if (meghdar === "") lmn.parentElement.parentElement.getElementsByClassName("mablaghSBT")[0].innerHTML = "";
+    else lmn.parentElement.parentElement.getElementsByClassName("mablaghSBT")[0].innerHTML = momayezdar(meghdar) + " ریال";
 }
 
 var vasileh = 1;  // پیشفرض: کارتخوان
@@ -281,6 +318,15 @@ function peymayeshPishnahadha(balaAst)
             document.querySelector("a.itemPishnahad[data-entekhabi]").removeAttribute("data-entekhabi");
             lmnFaal.nextElementSibling.dataset.entekhabi = "";
         }
+        else if (!balaAst)
+        {
+            document.querySelector("a.itemPishnahad[data-entekhabi]").removeAttribute("data-entekhabi");
+        }
+    }
+    else if (balaAst)
+    {
+        var akharin = document.getElementsByClassName("itemPishnahad").length;
+        document.getElementsByClassName("itemPishnahad")[akharin-1].dataset.entekhabi = "";
     }
     else if (!balaAst)
     {
@@ -392,7 +438,7 @@ function sabtVarizi(noe)
                 {
                     document.getElementById("mablaghSBTK").value = "";
                     document.getElementById("tozihSBTK").value = "";
-                    document.getElementById("mablaghSBTK").parentElement.getElementsByClassName("mablaghSBT")[0].innerHTML = "";
+                    document.getElementById("mablaghSBTK").parentElement.parentElement.getElementsByClassName("mablaghSBT")[0].innerHTML = "";
                     lmnMandeh.innerHTML = momayezdar(hazfMomayez(lmnMandeh.innerHTML) - Number(mablagh));
                     document.getElementById("mablaghSBTK").select();
 
@@ -405,7 +451,7 @@ function sabtVarizi(noe)
                 {
                     document.getElementById("mablaghSBTV").value = "";
                     document.getElementById("tozihSBTV").value = "";
-                    document.getElementById("mablaghSBTV").parentElement.getElementsByClassName("mablaghSBT")[0].innerHTML = "";
+                    document.getElementById("mablaghSBTV").parentElement.parentElement.getElementsByClassName("mablaghSBT")[0].innerHTML = "";
                     lmnMandeh.innerHTML = momayezdar(hazfMomayez(lmnMandeh.innerHTML) + Number(mablagh));
                     document.getElementById("mablaghSBTV").select();
 
