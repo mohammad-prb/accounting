@@ -170,7 +170,7 @@ function virayeshAFD(lmn)
         '                    <div id="titrVDST"><span class="icon"></span><span class="matnTitr">ویرایش مخاطب</span></div>\n' +
         '                    <div class="etelaatVDST">\n' +
         '                        <div class="etelaatSBT">\n' +
-        '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">نام فرد:</span></div>\n' +
+        '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">نام:</span></div>\n' +
         '                            <input type="text" class="txtDasteh" id="fardVDST" name="dasteh" value="'+ nam +'" autocomplete="off">\n' +
         '                        </div>\n' +
         '                        <div class="etelaatSBT">\n' +

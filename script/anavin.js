@@ -170,7 +170,7 @@ function virayeshDST(lmn)
         '                    <div id="titrVDST"><span class="icon"></span><span class="matnTitr">ویرایش دسته</span></div>\n' +
         '                    <div class="etelaatVDST">\n' +
         '                        <div class="etelaatSBT">\n' +
-        '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">نام دسته:</span></div>\n' +
+        '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">نام:</span></div>\n' +
         '                            <input type="text" class="txtDasteh" id="dastehVDST" name="dasteh" value="'+ onvan +'" autocomplete="off">\n' +
         '                        </div>\n' +
         '                        <div class="etelaatSBT">\n' +

@@ -609,8 +609,8 @@ a#btnEdamehSRT:active
 
 #kadrAmarSelect
 {
-    background-color: hsl(39, 100%, 8%);
-    border: 1px solid hsl(39, 100%, 20%);
+    background-color: hsl(39, 100%, 5%);
+    border: 1px solid hsl(39, 100%, 10%);
     box-shadow: 0 0 5px hsl(0, 0%, 0%);
 }
 
@@ -851,19 +851,19 @@ a.btnLAMR[data-enekhabi="1"] > span.matnTitr
 
 .etelaatJDST[data-noe="1"]
 {
-    background-color: hsl(39, 100%, 7%);
+    background-color: hsl(39, 100%, 5%);
     color: hsl(39, 100%, 60%);
 }
 
 .etelaatJDST[data-noe="2"]
 {
-    background-color: hsl(352, 100%, 7%);;
+    background-color: hsl(352, 100%, 5%);;
     color: hsl(352, 100%, 60%);
 }
 
 .etelaatJDST[data-noe="3"]
 {
-    background-color: hsl(148, 64%, 7%);;
+    background-color: hsl(148, 64%, 5%);;
     color: hsl(148, 100%, 60%);
 }
 

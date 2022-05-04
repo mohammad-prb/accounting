@@ -1,6 +1,9 @@
 <?php
 session_start();
 date_default_timezone_set("Asia/Tehran");
+include ("code/config.php");
+if (VAZIAT_SITE != 1) die();
+
 include ("code/jdf.php");
 include ("code/lib.php");
 include ("code/etesal-db.php");
