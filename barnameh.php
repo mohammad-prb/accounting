@@ -47,7 +47,7 @@ else
     <link rel="stylesheet" href="style/barnameh.css"/>
     <?php include ("code/head.php");?>
 </head>
-<body dir="rtl" onload="tanzimSaf();emalFilterBRN();">
+<body dir="rtl" onload="tanzimSafBRN();emalFilterBRN();">
 <div id="fullCountainer">
 
     <?php require("code/peygham.php");?>

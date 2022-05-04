@@ -1429,7 +1429,7 @@ span.meghdarPishnahad
 
     .iconEtelaatSBT
     {
-        width: 67px;
+        width: 55px;
         text-align: left;
     }
 
@@ -1442,20 +1442,10 @@ span.meghdarPishnahad
 
     .kadrTarikhSBT, .etelaatSBT>select:nth-child(2):not(.kadrENT)
     {
-        width: calc(100% - 72px);
-    }
-
-    .etelaatSBT>input:nth-child(2):not(.kadrENT)
-    {
-        width: calc(100% - 94px);
-    }
-
-    .kadrSBT .etelaatSBT>select:nth-child(2):not(.kadrENT)
-    {
         width: calc(100% - 60px);
     }
 
-    .kadrSBT .etelaatSBT>input:nth-child(2):not(.kadrENT)
+    .etelaatSBT>input:nth-child(2):not(.kadrENT)
     {
         width: calc(100% - 82px);
     }

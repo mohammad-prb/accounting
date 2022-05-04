@@ -1,3 +1,13 @@
+/*      تنظیم صفحه بعد از لود کامل      */
+function tanzimSafDST()
+{
+    new entekhab({lmnKadr:"kadrAfzoodanENTDST", id:"noeDST", arrObjMaghadir:[
+            {value:1, matn:"خروجی و ورودی"},
+            {value:2, matn:"خروجی"},
+            {value:3, matn:"ورودی"}
+        ]});
+}
+
 /*      گرفتن دسته بندی ها      */
 function gereftanDasteh()
 {
@@ -173,14 +183,8 @@ function virayeshDST(lmn)
         '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">نام:</span></div>\n' +
         '                            <input type="text" class="txtDasteh" id="dastehVDST" name="dasteh" value="'+ onvan +'" autocomplete="off">\n' +
         '                        </div>\n' +
-        '                        <div class="etelaatSBT">\n' +
+        '                        <div class="etelaatSBT" id="kadrNoeENTVDST">\n' +
         '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">نوع:</span></div>\n' +
-        '                            <div class="kadrENT" id="noeVDST">\n' +
-        '                                <span class="kadrPoshtENT"></span>\n' +
-        '                                <a class="gozinehENT" onclick="taghirENT(this);" data-value="1" href="javascript:void(0);">خروجی و ورودی</a>\n' +
-        '                                <a class="gozinehENT" onclick="taghirENT(this);" data-value="2" href="javascript:void(0);">خروجی</a>\n' +
-        '                                <a class="gozinehENT" onclick="taghirENT(this);" data-value="3" href="javascript:void(0);">ورودی</a>\n' +
-        '                            </div>\n' +
         '                        </div>\n' +
         '                    </div>\n' +
         '                    <span id="kadrDokmehVDST">\n' +
@@ -191,8 +195,13 @@ function virayeshDST(lmn)
         '            </div>\n' +
         '        </div>';
     document.body.appendChild(lmnKadr);
-    taghirENT(lmnKadr.getElementsByClassName("gozinehENT")[noe-1]);
     document.getElementById("dastehVDST").select();
+
+    new entekhab({lmnKadr:"kadrNoeENTVDST", id:"noeVDST", entekhb:noe-1, arrObjMaghadir:[
+            {value:1, matn:"خروجی و ورودی"},
+            {value:2, matn:"خروجی"},
+            {value:3, matn:"ورودی"}
+        ]});
 
     lmnKadr.onkeydown = function(e){
         if (e.keyCode === 13) sabtVirayeshDST(id); // enter

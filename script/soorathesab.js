@@ -1,3 +1,20 @@
+/*      تنظیم صفحه بعد از لود کامل      */
+function tanzimSafSRT()
+{
+    new entekhab({lmnKadr:"kadrKhvESBT", id:"khoroojiAstSBTK", onclick:"taghirKVFSRT(this);", arrObjMaghadir:[
+            {value:"hameh", matn:"همه"},
+            {value:1, matn:"خروجی"},
+            {value:0, matn:"ورودی"}
+        ]});
+    sheiVasileh = new entekhab({lmnKadr:"kadrVashilehESBT", id:"vasilehSBTK", arrObjMaghadir:[
+            {value:"hameh", matn:"همه"},
+            {value:1, matn:"کارت"},
+            {value:3, matn:"انتقال"},
+            {value:4, matn:"پرداخت"},
+            {value:5, matn:"چک"}
+        ]});
+}
+
 /*      تابع تغییر دسته بندی، در فیلتر صورتحساب      */
 function taghirDastehFSRT(...noe)
 {
@@ -55,7 +72,7 @@ function taghirKVFSRT(lmn)
     else if (Number(noe) === 1)
     {
         lmnVasileh.style.display = "block";
-        taghirENT(lmnVasileh.getElementsByClassName("gozinehENT")[0]);
+        sheiVasileh.taghirENT(lmnVasileh.getElementsByClassName("gozinehENT")[0]);
         taghirDastehFSRT(1,2);
         taghirFardFSRT(1,2);
     }
@@ -555,15 +572,7 @@ function virayeshSRT(lmn)
     if (khoroojiAst === 1)
     {
         strHTML += '<div class="etelaatVSRT" id="khoroojiVSRT">\n' +
-            '                    <div class="etelaatSBT">\n' +
-            '                        <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">وسیله:</span></div>\n' +
-            '                        <div class="kadrENT" id="vasilehVSRT">\n' +
-            '                            <span class="kadrPoshtENT"></span>\n' +
-            '                            <a class="gozinehENT" onclick="taghirENT(this);taghirVasilehVSRT(this);" data-value="1" href="javascript:void(0);">کارت</a>\n' +
-            '                            <a class="gozinehENT" onclick="taghirENT(this);taghirVasilehVSRT(this);" data-value="3" href="javascript:void(0);">انتقال</a>\n' +
-            '                            <a class="gozinehENT" onclick="taghirENT(this);taghirVasilehVSRT(this);" data-value="4" href="javascript:void(0);">پرداخت</a>\n' +
-            '                            <a class="gozinehENT" onclick="taghirENT(this);taghirVasilehVSRT(this);" data-value="5" href="javascript:void(0);">چک</a>' +
-            '                        </div>\n' +
+            '                    <div class="etelaatSBT" id="vasilehENTVSRT">\n' +
             '                    </div>\n' +
             '                    <div class="etelaatSBT" style="display:none;">\n' +
             '                        <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">واریز به:</span></div>\n' +
@@ -651,9 +660,24 @@ function virayeshSRT(lmn)
 
     if (khoroojiAst === 1)
     {
-        var gozinehVasileh = document.querySelectorAll("#vasilehVSRT .gozinehENT")[vasilehId-1];
+        var andis;
+        switch (vasilehId)
+        {
+            case 1: andis = 0; break;
+            case 3: andis = 1; break;
+            case 4: andis = 2; break;
+            case 5: andis = 3;
+        }
+
+        new entekhab({lmnKadr:"vasilehENTVSRT", saddarsadAst:true, id:"vasilehVSRT", entekhb:andis, onclick:"taghirVasilehVSRT(this);", arrObjMaghadir:[
+                {value:1, matn:"کارت"},
+                {value:3, matn:"انتقال"},
+                {value:4, matn:"پرداخت"},
+                {value:5, matn:"چک"}
+            ]});
+
+        var gozinehVasileh = document.querySelectorAll("#vasilehVSRT .gozinehENT")[andis];
         vasilehVSRT = 0;
-        taghirENT(gozinehVasileh);
         taghirVasilehVSRT(gozinehVasileh);
     }
 }

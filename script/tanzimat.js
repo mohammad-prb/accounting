@@ -1,10 +1,22 @@
 /*      تنظیم صفحه تنظیمات      */
 function tanzimSafTanzimat()
 {
-    taghirENT(document.querySelectorAll('#theme>.gozinehENT')[Number(localStorage.getItem('darkmode'))]);
-    taghirENT(document.querySelectorAll('#halatMenu>.gozinehENT')[(Number(localStorage.getItem('menu'))===1?0:1)]);
-    taghirENT(document.querySelectorAll('#pishfarzSoorathesab>.gozinehENT')[(localStorage.getItem('pishfarzSoorathesab')==="rooz"?0:1)]);
-    taghirENT(document.querySelectorAll('#pishfarzAmar>.gozinehENT')[(localStorage.getItem('pishfarzAmar')==="mah"?0:1)]);
+    new entekhab({lmnKadr:"kadrThemENTPSH", id:"theme", entekhb:Number(localStorage.getItem('darkmode')), onclick:"taghirTheme(this);", arrObjMaghadir:[
+            {value:0, matn:"تم روشن"},
+            {value:1, matn:"تم تاریک"}
+        ]});
+    new entekhab({lmnKadr:"kadrMenuENTPSH", id:"halatMenu", entekhb:(Number(localStorage.getItem('menu'))===1?0:1), onclick:"taghirHalatMenu(this);", arrObjMaghadir:[
+            {value:1, matn:"همیشه باز"},
+            {value:0, matn:"بسته"}
+        ]});
+    new entekhab({lmnKadr:"kadrSoorathesabENTPSH", id:"pishfarzSoorathesab", entekhb:(localStorage.getItem('pishfarzSoorathesab')==="rooz"?0:1), onclick:"taghirPishfarzSRT(this);", arrObjMaghadir:[
+            {value:"rooz", matn:"روز جاری"},
+            {value:"mah", matn:"ماه جاری"}
+        ]});
+    new entekhab({lmnKadr:"kadrAmarENTPSH", id:"pishfarzAmar", entekhb:(localStorage.getItem('pishfarzAmar')==="mah"?0:1), onclick:"taghirPishfarzAMR(this);", arrObjMaghadir:[
+            {value:"mah", matn:"ماه جاری"},
+            {value:"sal", matn:"سال جاری"}
+        ]});
 }
 
 /*      شماره بندی حساب ها      */
@@ -272,8 +284,9 @@ function sabtHesab()
 }
 
 /*      تغییر تم      */
-function taghirTheme(darkModeAst)
+function taghirTheme(lmnEnt)
 {
+    var darkModeAst = Number(lmnEnt.dataset.value);
     localStorage.setItem("darkmode", darkModeAst);
     if (darkModeAst === 1 && document.querySelector('link[href="style/dark-mode.css"]') === null)
     {
@@ -294,9 +307,10 @@ function taghirTheme(darkModeAst)
     }
 }
 
-/*      تغییر تم      */
-function taghirHalatMenu(bazAst)
+/*      تغییر حالت منو      */
+function taghirHalatMenu(lmnEnt)
 {
+    var bazAst = Number(lmnEnt.dataset.value);
     localStorage.setItem("menu", bazAst);
     if (bazAst === 0 && document.querySelector('link[href="style/menu-basteh.css"]') === null)
     {

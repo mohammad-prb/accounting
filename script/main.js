@@ -2,7 +2,7 @@
 class entekhab
 {
     lmn = document.createElement("div");
-    constructor({lmnKadr, saddarsadAst=false, id="", entekhb=1, onclick="", arrObjMaghadir=[]} = {})
+    constructor({lmnKadr, saddarsadAst=false, id="", entekhb=0, onclick="", arrObjMaghadir=[]} = {})
     {
         // arrObjMaghadir : [{value:"", matn:"", onclick:fnc} , {---}]
         this.lmn.setAttribute("class", "kadrENT");
@@ -25,10 +25,9 @@ class entekhab
             this.lmn.appendChild(lmnA);
         }
         lmnKadr.appendChild(this.lmn);
-        this.taghirENT(lmnKadr.getElementsByClassName("gozinehENT")[entekhb-1]);
+        this.taghirENT(lmnKadr.getElementsByClassName("gozinehENT")[entekhb]);
         window.addEventListener("resize", ()=>{
             let entekhabFeli = this.lmn.dataset.value;
-            console.log(entekhabFeli);
             this.taghirENT(lmnKadr.querySelector(".gozinehENT[data-value='"+entekhabFeli+"']"));
         });
     }

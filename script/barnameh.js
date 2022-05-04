@@ -1,3 +1,25 @@
+/*      تنظیم صفحه بعد از لود کامل      */
+function tanzimSafBRN()
+{
+    new entekhab({lmnKadr:"vaziatENTBRN", id:"vaziatSBTK", arrObjMaghadir:[
+            {value:"hameh", matn:"همه"},
+            {value:"moed", matn:"موعد"},
+            {value:"jari", matn:"جاری"},
+            {value:"tasvieh", matn:"تسویه"}
+        ]});
+    new entekhab({lmnKadr:"KhvENTBRN", id:"khoroojiAstSBTK", arrObjMaghadir:[
+            {value:"hameh", matn:"همه"},
+            {value:1, matn:"خروجی"},
+            {value:0, matn:"ورودی"}
+        ]});
+    new entekhab({lmnKadr:"noeENTBRN", id:"noeSBTK", arrObjMaghadir:[
+            {value:"hameh", matn:"همه"},
+            {value:1, matn:"روزانه"},
+            {value:2, matn:"ماهانه"},
+            {value:3, matn:"سالانه"}
+        ]});
+}
+
 /*      تابع اعمال فیلتر برنامه      */
 function emalFilterBRN({id, tasviehAst = 0} = {})
 {
@@ -175,22 +197,11 @@ function afzoodanBRN()
         '                <div>\n' +
         '                    <div id="titrVBRN"><span class="icon"></span><span class="matnTitr">افزودن برنامه زمانی</span></div>\n' +
         '                    <div class="etelaatVBRN" id="kadrInput50">\n' +
-        '                        <div class="etelaatSBT">\n' +
+        '                        <div class="etelaatSBT" id="KhvENTVBRN">\n' +
         '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">خ/و:</span></div>\n' +
-        '                            <div class="kadrENT" id="KhoroojiAstVBRN">\n' +
-        '                                <span class="kadrPoshtENT"></span>\n' +
-        '                                <a class="gozinehENT" onclick="taghirENT(this);" data-value="1" href="javascript:void(0);">خروجی</a>\n' +
-        '                                <a class="gozinehENT" onclick="taghirENT(this);" data-value="0" href="javascript:void(0);">ورودی</a>\n' +
-        '                            </div>\n' +
         '                        </div>\n' +
-        '                        <div class="etelaatSBT">\n' +
+        '                        <div class="etelaatSBT" id="noeENTVBRN">\n' +
         '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">نوع:</span></div>\n' +
-        '                            <div class="kadrENT" id="noeVBRN">\n' +
-        '                                <span class="kadrPoshtENT"></span>\n' +
-        '                                <a class="gozinehENT" onclick="taghirENT(this);" data-value="1" href="javascript:void(0);">روزانه</a>\n' +
-        '                                <a class="gozinehENT" onclick="taghirENT(this);" data-value="2" href="javascript:void(0);">ماهانه</a>\n' +
-        '                                <a class="gozinehENT" onclick="taghirENT(this);" data-value="3" href="javascript:void(0);">سالانه</a>\n' +
-        '                            </div>\n' +
         '                        </div>\n' +
         '                        <div class="etelaatSBT">\n' +
         '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">عنوان:</span></div>\n' +
@@ -230,8 +241,15 @@ function afzoodanBRN()
     lmn.innerHTML = strHTML;
     document.body.appendChild(lmn);
 
-    var arrLmnEntekhab = document.querySelectorAll("a.gozinehENT:nth-child(2)");
-    for (let i=0; i<arrLmnEntekhab.length; i++) taghirENT(arrLmnEntekhab[i]);
+    new entekhab({lmnKadr:"KhvENTVBRN", id:"KhoroojiAstVBRN", arrObjMaghadir:[
+            {value:1, matn:"خروجی"},
+            {value:0, matn:"ورودی"}
+        ]});
+    new entekhab({lmnKadr:"noeENTVBRN", id:"noeVBRN", arrObjMaghadir:[
+            {value:1, matn:"روزانه"},
+            {value:2, matn:"ماهانه"},
+            {value:3, matn:"سالانه"}
+        ]});
 
     document.getElementById("onvanVBRN").select();
     lmn.onkeydown = function(e){
@@ -320,22 +338,11 @@ function virayeshBRN(lmn)
         '                <div>\n' +
         '                    <div id="titrVBRN"><span class="icon"></span><span class="matnTitr">افزودن برنامه</span></div>\n' +
         '                    <div class="etelaatVBRN" id="kadrInput50">\n' +
-        '                        <div class="etelaatSBT">\n' +
+        '                        <div class="etelaatSBT" id="KhvENTVBRN">\n' +
         '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">خ/و:</span></div>\n' +
-        '                            <div class="kadrENT" id="KhoroojiAstVBRN">\n' +
-        '                                <span class="kadrPoshtENT"></span>\n' +
-        '                                <a class="gozinehENT" onclick="taghirENT(this);" data-value="1" href="javascript:void(0);">خروجی</a>\n' +
-        '                                <a class="gozinehENT" onclick="taghirENT(this);" data-value="0" href="javascript:void(0);">ورودی</a>\n' +
-        '                            </div>\n' +
         '                        </div>\n' +
-        '                        <div class="etelaatSBT">\n' +
+        '                        <div class="etelaatSBT" id="noeENTVBRN">\n' +
         '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">نوع:</span></div>\n' +
-        '                            <div class="kadrENT" id="noeVBRN">\n' +
-        '                                <span class="kadrPoshtENT"></span>\n' +
-        '                                <a class="gozinehENT" onclick="taghirENT(this);" data-value="1" href="javascript:void(0);">روزانه</a>\n' +
-        '                                <a class="gozinehENT" onclick="taghirENT(this);" data-value="2" href="javascript:void(0);">ماهانه</a>\n' +
-        '                                <a class="gozinehENT" onclick="taghirENT(this);" data-value="3" href="javascript:void(0);">سالانه</a>\n' +
-        '                            </div>\n' +
         '                        </div>\n' +
         '                        <div class="etelaatSBT">\n' +
         '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">عنوان:</span></div>\n' +
@@ -375,8 +382,15 @@ function virayeshBRN(lmn)
     lmnVirayesh.innerHTML = strHTML;
     document.body.appendChild(lmnVirayesh);
 
-    taghirENT(lmnVirayesh.querySelectorAll("#KhoroojiAstVBRN>a.gozinehENT")[(khoroojiAst+1) % 2]);
-    taghirENT(lmnVirayesh.querySelectorAll("#noeVBRN>a.gozinehENT")[noe - 1]);
+    new entekhab({lmnKadr:"KhvENTVBRN", id:"KhoroojiAstVBRN", entekhb:(khoroojiAst+1)%2, arrObjMaghadir:[
+            {value:1, matn:"خروجی"},
+            {value:0, matn:"ورودی"}
+        ]});
+    new entekhab({lmnKadr:"noeENTVBRN", id:"noeVBRN", entekhb:(noe-1), arrObjMaghadir:[
+            {value:1, matn:"روزانه"},
+            {value:2, matn:"ماهانه"},
+            {value:3, matn:"سالانه"}
+        ]});
 
     lmnVirayesh.onkeydown = function(e){
         if (e.keyCode === 13) sabtVirayeshBRN(id); // enter

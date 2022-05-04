@@ -10,25 +10,11 @@
         ?>
     </select>
     <div id="kadrFilterSRT">
-        <div class="etelaatSBT">
+        <div class="etelaatSBT" id="kadrKhvESBT">
             <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">خ/و:</span></div>
-            <div class="kadrENT" id="khoroojiAstSBTK">
-                <span class="kadrPoshtENT"></span>
-                <a class="gozinehENT" onclick="taghirENT(this);taghirKVFSRT(this);" data-value="hameh" href="javascript:void(0);">همه</a>
-                <a class="gozinehENT" onclick="taghirENT(this);taghirKVFSRT(this);" data-value="1" href="javascript:void(0);">خروجی</a>
-                <a class="gozinehENT" onclick="taghirENT(this);taghirKVFSRT(this);" data-value="0" href="javascript:void(0);">ورودی</a>
-            </div>
         </div>
-        <div class="etelaatSBT" style="display:none;">
+        <div class="etelaatSBT" id="kadrVashilehESBT" style="display:none;">
             <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">وسیله:</span></div>
-            <div class="kadrENT" id="vasilehSBTK">
-                <span class="kadrPoshtENT"></span>
-                <a class="gozinehENT" onclick="taghirENT(this);taghirVasilehFSRT(this);" data-value="hameh" href="javascript:void(0);">همه</a>
-                <a class="gozinehENT" onclick="taghirENT(this);taghirVasilehFSRT(this);" data-value="1" href="javascript:void(0);">کارت</a>
-                <a class="gozinehENT" onclick="taghirENT(this);taghirVasilehFSRT(this);" data-value="3" href="javascript:void(0);">انتقال</a>
-                <a class="gozinehENT" onclick="taghirENT(this);taghirVasilehFSRT(this);" data-value="4" href="javascript:void(0);">پرداخت</a>
-                <a class="gozinehENT" onclick="taghirENT(this);taghirVasilehFSRT(this);" data-value="5" href="javascript:void(0);">چک</a>
-            </div>
         </div>
         <div class="etelaatSBT">
             <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">دسته:</span></div>
@@ -95,7 +81,7 @@
             <input type="text" class="txtMablagh" id="mablaghSBTK" name="mablagh" maxlength="10" placeholder="به ریال" autocomplete="off"/>
         </div>
         <div class="etelaatSBT tamamSafheh">
-            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">توضیخات:</span></div>
+            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">توضیح:</span></div>
             <input type="text" class="txtTozih" id="tozihSBTK" name="tozih" autocomplete="off"/>
         </div>
         <a href="javascript:void(0);" onclick="emalFilterSRT();" id="emalFilter">

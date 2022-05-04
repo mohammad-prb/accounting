@@ -123,37 +123,17 @@ if (!isset($_SESSION["accountID"])) header("location:login.php");
         </script>
         <div id="kadrPishfarzha">
             <h2 class="titrTNZ"><span class="icon"></span><span class="matnTitr">پیشفرض ها</span></h2>
-            <div class="kadrPSH">
+            <div class="kadrPSH" id="kadrThemENTPSH">
                 <div class="titrPSH"><span class="icon"></span><span class="matnTitr">تم برنامه:</span></div>
-                <div class="kadrENT" id="theme">
-                    <span class="kadrPoshtENT"></span>
-                    <a class="gozinehENT" onclick="taghirENT(this);taghirTheme(0);" data-value="0" href="javascript:void(0);">تم روشن</a>
-                    <a class="gozinehENT" onclick="taghirENT(this);taghirTheme(1);" data-value="1" href="javascript:void(0);">تم تاریک</a>
-                </div>
             </div>
-            <div class="kadrPSH makhfiDarMobile">
+            <div class="kadrPSH makhfiDarMobile" id="kadrMenuENTPSH">
                 <div class="titrPSH"><span class="icon"></span><span class="matnTitr">حالت منو:</span></div>
-                <div class="kadrENT" id="halatMenu">
-                    <span class="kadrPoshtENT"></span>
-                    <a class="gozinehENT" onclick="taghirENT(this);taghirHalatMenu(1);" data-value="1" href="javascript:void(0);">همیشه باز</a>
-                    <a class="gozinehENT" onclick="taghirENT(this);taghirHalatMenu(0);" data-value="0" href="javascript:void(0);">بسته</a>
-                </div>
             </div>
-            <div class="kadrPSH">
+            <div class="kadrPSH" id="kadrSoorathesabENTPSH">
                 <div class="titrPSH"><span class="icon"></span><span class="matnTitr">بازه صورتحساب:</span></div>
-                <div class="kadrENT" id="pishfarzSoorathesab">
-                    <span class="kadrPoshtENT"></span>
-                    <a class="gozinehENT" onclick="taghirENT(this);taghirPishfarzSRT(this);" data-value="rooz" href="javascript:void(0);">روز جاری</a>
-                    <a class="gozinehENT" onclick="taghirENT(this);taghirPishfarzSRT(this);" data-value="mah" href="javascript:void(0);">ماه جاری</a>
-                </div>
             </div>
-            <div class="kadrPSH">
+            <div class="kadrPSH" id="kadrAmarENTPSH">
                 <div class="titrPSH"><span class="icon"></span><span class="matnTitr">بازه آمار:</span></div>
-                <div class="kadrENT" id="pishfarzAmar">
-                    <span class="kadrPoshtENT"></span>
-                    <a class="gozinehENT" onclick="taghirENT(this);taghirPishfarzAMR(this);" data-value="mah" href="javascript:void(0);">ماه جاری</a>
-                    <a class="gozinehENT" onclick="taghirENT(this);taghirPishfarzAMR(this);" data-value="sal" href="javascript:void(0);">سال جاری</a>
-                </div>
             </div>
         </div>
     </div>

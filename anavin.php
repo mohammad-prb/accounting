@@ -47,7 +47,7 @@ else
     <link rel="stylesheet" href="style/anavin-afrad.css"/>
     <?php include ("code/head.php");?>
 </head>
-<body dir="rtl" onload="tanzimSaf();gereftanDasteh();">
+<body dir="rtl" onload="tanzimSafDST();gereftanDasteh();">
 <div id="fullCountainer">
 
     <?php require("code/peygham.php");?>
@@ -100,14 +100,7 @@ else
                 <div class="afzoodanDST"><span class="icon"></span><span class="matnTitr">افزودن:</span></div>
                 <input type="text" class="txtDasteh" id="dastehDST" name="dasteh" maxlength="30" placeholder="نام دسته" autocomplete="off"/>
             </div>
-            <div class="kadrAfzoodanDST">
-                <div class="kadrENT" id="noeDST">
-                    <span class="kadrPoshtENT"></span>
-                    <a class="gozinehENT" onclick="taghirENT(this);" data-value="1" href="javascript:void(0);">خروجی و ورودی</a>
-                    <a class="gozinehENT" onclick="taghirENT(this);" data-value="2" href="javascript:void(0);">خروجی</a>
-                    <a class="gozinehENT" onclick="taghirENT(this);" data-value="3" href="javascript:void(0);">ورودی</a>
-                </div>
-            </div>
+            <div class="kadrAfzoodanDST" id="kadrAfzoodanENTDST"></div>
             <a href="javascript:void(0);" onclick="sabtDasteh();" id="btnAfzoodanDST"><span class="icon"></span><span class="matnTitr">افزودن</span></a>
         </div>
         <script>

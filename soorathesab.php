@@ -60,7 +60,7 @@ if (isset($_GET["tarikh"]) && strpos($_GET["tarikh"], "/") !== false)
     <link rel="stylesheet" href="style/soorathesab.css"/>
     <?php include ("code/head.php");?>
 </head>
-<body dir="rtl" onload="tanzimSaf();emalFilterSRT();">
+<body dir="rtl" onload="tanzimSafSRT();emalFilterSRT();">
 <div id="fullCountainer">
 
     <?php require("code/peygham.php");?>
