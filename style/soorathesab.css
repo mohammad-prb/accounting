@@ -569,11 +569,6 @@ a.btnEmkanatSelect:active
     color: hsl(0, 0%, 40%);
 }
 
-.etelaatVSRT#khoroojiVSRT>.etelaatSBT:first-child
-{
-    width: 100%;
-}
-
 .etelaatVSRT .iconEtelaatSBT
 {
     width: 67px;

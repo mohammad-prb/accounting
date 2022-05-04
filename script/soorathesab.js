@@ -559,8 +559,7 @@ function virayeshSRT(lmn)
             '                        <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">وسیله:</span></div>\n' +
             '                        <div class="kadrENT" id="vasilehVSRT">\n' +
             '                            <span class="kadrPoshtENT"></span>\n' +
-            '                            <a class="gozinehENT" onclick="taghirENT(this);taghirVasilehVSRT(this);" data-value="1" href="javascript:void(0);">کارتخوان</a>\n' +
-            '                            <a class="gozinehENT" onclick="taghirENT(this);taghirVasilehVSRT(this);" data-value="2" href="javascript:void(0);">عابر بانک</a>\n' +
+            '                            <a class="gozinehENT" onclick="taghirENT(this);taghirVasilehVSRT(this);" data-value="1" href="javascript:void(0);">کارت</a>\n' +
             '                            <a class="gozinehENT" onclick="taghirENT(this);taghirVasilehVSRT(this);" data-value="3" href="javascript:void(0);">انتقال</a>\n' +
             '                            <a class="gozinehENT" onclick="taghirENT(this);taghirVasilehVSRT(this);" data-value="4" href="javascript:void(0);">پرداخت</a>\n' +
             '                            <a class="gozinehENT" onclick="taghirENT(this);taghirVasilehVSRT(this);" data-value="5" href="javascript:void(0);">چک</a>' +
