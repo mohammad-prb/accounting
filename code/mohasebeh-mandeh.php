@@ -5,9 +5,14 @@ if ($result2 !== false && $result2->num_rows > 0)
     if ($row2 = $result2->fetch_assoc())
         $mandeh = (integer)$row2["mablaghTaraz"];
 
-$sql2 = "select khoroojiAst, mablagh from tbl_soorathesab 
-        inner join tbl_hesab on tbl_hesab.id = hesabID
-        where tbl_soorathesab.vaziat = 1 and accountID = ". $_SESSION["accountID"] ." and hesabID = " . $hesabID;
+if (isset($idSoorathesab))
+    $sql2 = "select khoroojiAst, mablagh from tbl_soorathesab 
+            inner join tbl_hesab on tbl_hesab.id = hesabID
+            where tbl_soorathesab.vaziat = 1 and accountID = ". $_SESSION["accountID"] ." and hesabID = " . $hesabID ." and tbl_soorathesab.id <= " . $idSoorathesab;
+else
+    $sql2 = "select khoroojiAst, mablagh from tbl_soorathesab 
+            inner join tbl_hesab on tbl_hesab.id = hesabID
+            where tbl_soorathesab.vaziat = 1 and accountID = ". $_SESSION["accountID"] ." and hesabID = " . $hesabID;
 $result2 = $con->query($sql2);
 if ($result2 !== false && $result2->num_rows > 0)
 {

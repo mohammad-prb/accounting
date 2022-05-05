@@ -192,6 +192,7 @@ function andakhtanSoorathesab()
             '            </div>\n' +
             '        </div>' +
             '        <div class="kadrTozihSTB">\n' +
+            '            <div class="mandehSTB" title="مانده حساب">' + momayezdar(arrObjEtelaat[i]["mandeh"]) + '</div>\n' +
             '            <div class="onvanEtelaatSTB"><span class="icon riz"></span><span class="matnTitr riz">توضیحات:</span></div>\n' +
             '            <div class="meghdarEtelaatSTB tozihSTB">'+ arrObjEtelaat[i]["tozih"] +'</div>\n' +
             '        </div>' +
@@ -724,7 +725,7 @@ function sabtVirayeshSRT(id)
             if (natijeh === "ok")
             {
                 flash("ویرایش با موفقیت انجام شد.");
-                var strHTML = "";
+                var mandehGhabli, lmnGhabli, strHTML = "";
                 var lmn = document.querySelector(".kadrDorSTB[data-id='"+id+"']");
                 var mablaghGhabli = hazfMomayez(lmn.getElementsByClassName("mablaghSTB")[0].innerHTML);
                 var lmnTaraz = document.getElementById("tarazSRT");
@@ -735,6 +736,15 @@ function sabtVirayeshSRT(id)
                     var lmnKhorooji = document.getElementById("meghdarKhoroojiSRT");
                     lmnKhorooji.innerHTML = momayezdar(hazfMomayez(lmnKhorooji.innerHTML) - mablaghGhabli + Number(mablagh));
                     lmnTaraz.innerHTML = momayezdar(hazfMomayez(lmnTaraz.innerHTML) + mablaghGhabli - Number(mablagh));
+
+                    mandehGhabli = hazfMomayez(lmn.getElementsByClassName("mandehSTB")[0].innerHTML);
+                    lmnGhabli = lmn;
+                    do
+                    {
+                        if (lmnGhabli.getAttribute("class") === "kadrDorSTB")
+                            lmnGhabli.getElementsByClassName("mandehSTB")[0].innerHTML = momayezdar(mandehGhabli + (mablaghGhabli - Number(mablagh)));
+                        lmnGhabli = lmnGhabli.previousElementSibling;
+                    } while (lmnGhabli);
 
                     let vasileh = document.querySelector("#vasilehVSRT>a.gozinehENT[data-value='"+vasilehID+"']").innerHTML;
 
@@ -758,6 +768,15 @@ function sabtVirayeshSRT(id)
                     var lmnVoroodi = document.getElementById("meghdarVoroodiSRT");
                     lmnVoroodi.innerHTML = momayezdar(hazfMomayez(lmnVoroodi.innerHTML) - mablaghGhabli + Number(mablagh));
                     lmnTaraz.innerHTML = momayezdar(hazfMomayez(lmnTaraz.innerHTML) - mablaghGhabli + Number(mablagh));
+
+                    mandehGhabli = hazfMomayez(lmn.getElementsByClassName("mandehSTB")[0].innerHTML);
+                    lmnGhabli = lmn;
+                    do
+                    {
+                        if (lmnGhabli.getAttribute("class") === "kadrDorSTB")
+                            lmnGhabli.getElementsByClassName("mandehSTB")[0].innerHTML = momayezdar(mandehGhabli - (mablaghGhabli - Number(mablagh)));
+                        lmnGhabli = lmnGhabli.previousElementSibling;
+                    } while (lmnGhabli);
 
                     lmn.dataset.fardId = fard;
                     var lmnVarizKonandeh = document.getElementById("varizKonandehVSRT");

@@ -15,7 +15,7 @@ if (isset($_POST["rooz"])) $rooz = htmlspecialchars(stripcslashes(trim($_POST["r
 if (isset($_POST["mah"])) $mah = htmlspecialchars(stripcslashes(trim($_POST["mah"]))); else die();
 if (isset($_POST["sal"])) $sal = htmlspecialchars(stripcslashes(trim($_POST["sal"]))); else die();
 if (isset($_POST["mablagh"])) $mablagh = htmlspecialchars(stripcslashes(trim($_POST["mablagh"]))); else die();
-if (isset($_POST["tozih"])) $tozih = "%".htmlspecialchars(stripcslashes(trim($_POST["tozih"])))."%"; else die();
+if (isset($_POST["tozih"])) $tozih = htmlspecialchars(stripcslashes(trim($_POST["tozih"]))); else die();
 
 if (preg_match("/^(hameh|[0-1])$/", $noeVariz) !== 1) die();
 if (preg_match("/^[1-9]+[0-9]*$/", $hesabID) !== 1) die();
@@ -41,37 +41,48 @@ if ((integer)$noeVariz == 1)
     if (preg_match("/^(hameh|[1-5])$/", $vasilehID) !== 1) die();
 }
 
+if (strlen($mah) == 1) $mah = "0".$mah;
+if (strlen($rooz) == 1) $rooz = "0".$rooz;
 $arrNatijeh = array();
+$i = 0;
+
 $sql = @"select tbl_soorathesab.id as id, khoroojiAst, tbl_vasileh.nam as vasileh, vasilehID, dastehID, onvan, fardID, tbl_afrad.nam as nam, mablagh, tarikh, tozih from tbl_soorathesab
         inner join tbl_dasteh on tbl_dasteh.id = dastehID
         left join tbl_vasileh on tbl_vasileh.id = vasilehID
         left join tbl_afrad on tbl_afrad.id = fardID
-        where tbl_soorathesab.vaziat = 1 and tbl_soorathesab.hesabID = " . $hesabID;
-
-if ($dastehID != "hameh") $sql .= " and dastehID = " . $dastehID;
-if ($mablagh != "") $sql .= " and mablagh = " . $mablagh;
-if ($noeVariz != "hameh")
-{
-    $sql .= " and khoroojiAst = " . $noeVariz;
-    if ($noeVariz == 1 && $vasilehID != "hameh") $sql .= " and vasilehID = " . $vasilehID;
-}
-
-if ($fard != "hameh") $sql .= " and fardID = " . $fard;
-if (strlen($mah) == 1) $mah = "0".$mah;
-if (strlen($rooz) == 1) $rooz = "0".$rooz;
-
-if ($sal == "") $strTarikh = "____/";
-else $strTarikh = $sal . "/";
-if ($mah == "") $strTarikh .= "__/";
-else $strTarikh .= $mah . "/";
-if ($rooz == "") $strTarikh .= "__";
-else $strTarikh .= $rooz;
-
-$sql .= " and tarikh like '". $strTarikh ."' and tozih like '". $tozih ."' order by tarikh desc, id desc";
+        where tbl_soorathesab.vaziat = 1 and tbl_soorathesab.hesabID = " . $hesabID. " order by tarikh desc, id desc";
 $result = $con->query($sql);
 if ($result !== false && $result->num_rows > 0)
+{
     while ($row = $result->fetch_assoc())
-        array_push($arrNatijeh, $row);
+    {
+        if ($i == 0)
+        {
+            $idSoorathesab = (integer)$row["id"];
+            include ("../code/mohasebeh-mandeh.php");
+        }
+
+        $row["mandeh"] = (integer)$mandeh;
+        $bayadEzafehShavad = true;
+        if ($dastehID != "hameh" && $row["dastehID"] != $dastehID) $bayadEzafehShavad = false;
+        if ($mablagh != "" && $row["mablagh"] != $mablagh) $bayadEzafehShavad = false;
+        if ($noeVariz != "hameh" && $row["khoroojiAst"] != $noeVariz) $bayadEzafehShavad = false;
+        if ($noeVariz == 1 && $vasilehID != "hameh" && $row["vasilehID"] != $vasilehID) $bayadEzafehShavad = false;
+        if ($fard != "hameh" && $row["fardID"] != $fard) $bayadEzafehShavad = false;
+        if ($sal != "" && substr($row["tarikh"], 0, 4) != $sal) $bayadEzafehShavad = false;
+        if ($mah != "" && substr($row["tarikh"], 5, 2) != $mah) $bayadEzafehShavad = false;
+        if ($rooz != "" && substr($row["tarikh"], 8, 2) != $rooz) $bayadEzafehShavad = false;
+        if ($rooz != "" && substr($row["tarikh"], 8, 2) != $rooz) $bayadEzafehShavad = false;
+        if ($tozih != "" && strpos($row["tozih"], $tozih) === false) $bayadEzafehShavad = false;
+
+        if ($bayadEzafehShavad)
+            array_push($arrNatijeh, $row);
+
+        if ($row["khoroojiAst"] == 1) $mandeh += (integer)$row["mablagh"];
+        else $mandeh -= (integer)$row["mablagh"];
+        $i++;
+    }
+}
 
 echo json_encode($arrNatijeh);
 $con->close();
