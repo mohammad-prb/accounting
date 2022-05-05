@@ -81,7 +81,7 @@
                     <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">مبلغ:</span></div>
                     <input type="text" class="txtMablagh" id="mablaghSBTK" name="mablagh" oninput="namayeshMablaghSBT(this);" maxlength="10" placeholder="به ریال" autocomplete="off"/>
                 </div>
-                <div class="etelaatSBT">
+                <div class="etelaatSBT makhfiDarMobile">
                     <span class="mablaghSBT"></span>
                 </div>
                 <div class="etelaatSBT tamamSafheh">
@@ -169,12 +169,12 @@
                         <input type="text" class="txtTarikh" name="sal" value="<?php echo jdate("Y", "", "", "Asia/Tehran", "en");?>" onfocus="this.select();" oninput="if(this.value.length>3) document.getElementById('mablaghSBTV').focus();" maxlength="4" placeholder="سال" autocomplete="off"/>
                     </div>
                 </div>
-                <div class="etelaatSBT"></div> <!-- برای دیباگ مارجین های کادر های فرد -->
+                <div class="etelaatSBT makhfiDarMobile"></div> <!-- برای دیباگ مارجین های کادر های فرد -->
                 <div class="etelaatSBT kadrMablagh">
                     <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">مبلغ:</span></div>
                     <input type="text" class="txtMablagh" id="mablaghSBTV" name="mablagh" oninput="namayeshMablaghSBT(this);" maxlength="10" placeholder="به ریال" autocomplete="off"/>
                 </div>
-                <div class="etelaatSBT">
+                <div class="etelaatSBT makhfiDarMobile">
                     <span class="mablaghSBT"></span>
                 </div>
                 <div class="etelaatSBT tamamSafheh">

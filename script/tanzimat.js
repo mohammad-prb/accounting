@@ -155,7 +155,7 @@ function virayeshHSB(lmn)
         '                        </div>\n' +
         '                        <div class="etelaatSBT">\n' +
         '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">مانده تراز:</span></div>\n' +
-        '                            <input type="text" id="mandehVTNZ" name="mandeh" value="'+ mandehTaraz +'" autocomplete="off" placeholder="مانده فعلی">\n' +
+        '                            <input type="text" id="mandehVTNZ" name="mandeh" value="'+ mandehTaraz +'" autocomplete="off" placeholder="مانده زمان افتتاح">\n' +
         '                        </div>\n' +
         '                    </div>\n' +
         '                    <span id="kadrDokmehVTNZ">\n' +

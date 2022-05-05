@@ -559,7 +559,8 @@ input#namVTNZ
 
     .etelaatVTNZ
     {
-        padding-top: 10px;
+        width: 100%;
+        margin: 10px 0 5px;
     }
 
     .etelaatSBT

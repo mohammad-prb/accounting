@@ -547,12 +547,12 @@ input#dastehVDST
         display: none;
     }
 
-    .etelaatVDST > .etelaatSBT:nth-child(2) > .iconEtelaatSBT
+    .iconEtelaatSBT
     {
-        display: none;
+        width: 19px;
     }
 
-    input#dastehVDST
+    input#dastehVDST, input#fardVDST
     {
         width: calc(100% - 50px);
     }

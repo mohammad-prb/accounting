@@ -197,11 +197,13 @@ function afzoodanBRN()
         '                <div>\n' +
         '                    <div id="titrVBRN"><span class="icon"></span><span class="matnTitr">افزودن برنامه زمانی</span></div>\n' +
         '                    <div class="etelaatVBRN" id="kadrInput50">\n' +
-        '                        <div class="etelaatSBT" id="KhvENTVBRN">\n' +
-        '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">خ/و:</span></div>\n' +
+        '                        <div class="etelaatSBT">\n' +
+        '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">خ/و:</span></div>' +
+        '                            <div id="KhvENTVBRN"></div>\n' +
         '                        </div>\n' +
-        '                        <div class="etelaatSBT" id="noeENTVBRN">\n' +
+        '                        <div class="etelaatSBT">\n' +
         '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">نوع:</span></div>\n' +
+        '                            <div id="noeENTVBRN"></div>\n' +
         '                        </div>\n' +
         '                        <div class="etelaatSBT">\n' +
         '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">عنوان:</span></div>\n' +
@@ -241,11 +243,11 @@ function afzoodanBRN()
     lmn.innerHTML = strHTML;
     document.body.appendChild(lmn);
 
-    new entekhab({lmnKadr:"KhvENTVBRN", id:"KhoroojiAstVBRN", arrObjMaghadir:[
+    new entekhab({lmnKadr:"KhvENTVBRN", saddarsadAst:true, id:"KhoroojiAstVBRN", arrObjMaghadir:[
             {value:1, matn:"خروجی"},
             {value:0, matn:"ورودی"}
         ]});
-    new entekhab({lmnKadr:"noeENTVBRN", id:"noeVBRN", arrObjMaghadir:[
+    new entekhab({lmnKadr:"noeENTVBRN", saddarsadAst:true, id:"noeVBRN", arrObjMaghadir:[
             {value:1, matn:"روزانه"},
             {value:2, matn:"ماهانه"},
             {value:3, matn:"سالانه"}
@@ -338,11 +340,13 @@ function virayeshBRN(lmn)
         '                <div>\n' +
         '                    <div id="titrVBRN"><span class="icon"></span><span class="matnTitr">افزودن برنامه</span></div>\n' +
         '                    <div class="etelaatVBRN" id="kadrInput50">\n' +
-        '                        <div class="etelaatSBT" id="KhvENTVBRN">\n' +
+        '                        <div class="etelaatSBT">\n' +
         '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">خ/و:</span></div>\n' +
+        '                            <div id="KhvENTVBRN"></div>\n' +
         '                        </div>\n' +
-        '                        <div class="etelaatSBT" id="noeENTVBRN">\n' +
+        '                        <div class="etelaatSBT">\n' +
         '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">نوع:</span></div>\n' +
+        '                            <div id="noeENTVBRN"></div>\n' +
         '                        </div>\n' +
         '                        <div class="etelaatSBT">\n' +
         '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">عنوان:</span></div>\n' +
@@ -382,11 +386,11 @@ function virayeshBRN(lmn)
     lmnVirayesh.innerHTML = strHTML;
     document.body.appendChild(lmnVirayesh);
 
-    new entekhab({lmnKadr:"KhvENTVBRN", id:"KhoroojiAstVBRN", entekhb:(khoroojiAst+1)%2, arrObjMaghadir:[
+    new entekhab({lmnKadr:"KhvENTVBRN", saddarsadAst:true, id:"KhoroojiAstVBRN", entekhb:(khoroojiAst+1)%2, arrObjMaghadir:[
             {value:1, matn:"خروجی"},
             {value:0, matn:"ورودی"}
         ]});
-    new entekhab({lmnKadr:"noeENTVBRN", id:"noeVBRN", entekhb:(noe-1), arrObjMaghadir:[
+    new entekhab({lmnKadr:"noeENTVBRN", saddarsadAst:true, id:"noeVBRN", entekhb:(noe-1), arrObjMaghadir:[
             {value:1, matn:"روزانه"},
             {value:2, matn:"ماهانه"},
             {value:3, matn:"سالانه"}

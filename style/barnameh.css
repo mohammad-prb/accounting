@@ -451,6 +451,12 @@ a.btnBRN:active
     width: calc(33.333% - 24px) !important;
 }
 
+#KhvENTVBRN, #noeENTVBRN
+{
+    float: right;
+    width: calc(100% - 72px);
+}
+
 /* width */
 .etelaatVBRN::-webkit-scrollbar
 {
@@ -605,5 +611,21 @@ a.dokmehHazfPardakht:active
     #kadrVBRN
     {
         width: calc(100% - 30px);
+    }
+
+    .etelaatVBRN
+    {
+        width: 100%;
+        margin: 0 0 5px;
+    }
+
+    a#emalFilter, a#emalFilter:link, a#emalFilter:visited
+    {
+        margin-top: 10px;
+    }
+
+    a#btnAfzoodanBRN, a#btnAfzoodanBRN:link, a#btnAfzoodanBRN:visited
+    {
+        margin-top: 10px;
     }
 }
