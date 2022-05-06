@@ -352,6 +352,21 @@ function hazfSoorathesab(shom)
                     taraz.innerHTML = momayezdar(hazfMomayez(taraz.innerHTML) - mablagh);
                 }
 
+                var lmnGhabli = lmn;
+                lmnGhabli = lmnGhabli.previousElementSibling;
+                while (lmnGhabli)
+                {
+                    if (lmnGhabli.getAttribute("class") === "kadrDorSTB")
+                    {
+                        var mandehGhabli = hazfMomayez(lmnGhabli.getElementsByClassName("mandehSTB")[0].innerHTML);
+                        if (khoroojiAst === 1)
+                            lmnGhabli.getElementsByClassName("mandehSTB")[0].innerHTML = momayezdar(mandehGhabli + mablagh);
+                        else if (khoroojiAst === 0)
+                            lmnGhabli.getElementsByClassName("mandehSTB")[0].innerHTML = momayezdar(mandehGhabli - mablagh);
+                    }
+                    lmnGhabli = lmnGhabli.previousElementSibling;
+                }
+
                 if (((lmn.nextElementSibling && lmn.nextElementSibling.className !== "kadrDorSTB") || !lmn.nextElementSibling) && lmn.previousElementSibling.className !== "kadrDorSTB")
                     lmn.previousElementSibling.remove();
                 lmn.remove();
@@ -518,6 +533,11 @@ function hazfSoorathesabSelectShodeh()
             lmnMeghdarVoroodi.innerHTML = momayezdar(hazfMomayez(lmnMeghdarVoroodi.innerHTML) - mablaghVoroodi);
             lmnTaraz.innerHTML = momayezdar(hazfMomayez(lmnTaraz.innerHTML) - mablaghVoroodi + mablaghKhorooji);
             shomarehBandiItemhayeSRT();
+
+            var arrLmnMandeh = document.getElementsByClassName("mandehSTB");
+            for (var i=0; i<arrLmnMandeh.length; i++)
+                arrLmnMandeh[i].style.display = "none";
+            namayeshPeygham("برای نمایش مانده حساب بعد از هر واریز، مجددا دکمه اعمال فیلتر را بزنید، یا صفحه را رفرش کنید.");
 
             if (tedadMovafaghiat === arrNatijeh.length) flash(tedadMovafaghiat + " مورد با موفقیت حذف شد.");
             else namayeshPeygham("حذف " + tedadMovafaghiat + " مورد موفقیت آمیز بود، و " + (arrNatijeh.length - tedadMovafaghiat) + " مورد ناموفق بود. (نا موفق ها سلکت شده باقی مانده اند)");
