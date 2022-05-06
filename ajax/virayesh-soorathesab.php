@@ -55,9 +55,6 @@ if ((integer)$khoroojiAst == 1)
         if ($row = $result->fetch_assoc())
             $mablaghGhabli = $row["mablagh"];
 
-    include ("../code/mohasebeh-mandeh.php");
-    if (($mandeh + $mablaghGhabli - $mablagh) < 0) die("er:mandeh");
-
     $sql = "update tbl_soorathesab set vasilehID=?, dastehID=?, fardID=?, mablagh=?, tarikh=?, tozih=? where id=? and hesabID=? and khoroojiAst=1 and vaziat=1";
     $stmt = $con->prepare($sql);
     $stmt->bind_param("iiiissii", $vasilehID, $dastehID, $fard, $mablagh, $tarikh, $tozih, $id, $hesabID);

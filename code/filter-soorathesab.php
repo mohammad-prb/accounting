@@ -13,7 +13,7 @@
         <div class="etelaatSBT" id="kadrKhvESBT">
             <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">خ/و:</span></div>
         </div>
-        <div class="etelaatSBT" id="kadrVashilehESBT" style="display:none;">
+        <div class="etelaatSBT baAnimation" id="kadrVashilehESBT" style="display:none;">
             <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">وسیله:</span></div>
         </div>
         <div class="etelaatSBT">

@@ -575,7 +575,7 @@ function virayeshSRT(lmn)
         strHTML += '<div class="etelaatVSRT" id="khoroojiVSRT">\n' +
             '                    <div class="etelaatSBT" id="vasilehENTVSRT">\n' +
             '                    </div>\n' +
-            '                    <div class="etelaatSBT" style="display:none;">\n' +
+            '                    <div class="etelaatSBT baAnimation" style="display:none;">\n' +
             '                        <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">واریز به:</span></div>\n' +
             '                        <select name="varizBe" id="varizBeVSRT">';
 
@@ -805,7 +805,6 @@ function sabtVirayeshSRT(id)
                 lmn.getElementsByClassName("tozihSTB")[0].innerHTML = tozih;
                 document.getElementById("CountainerKadrViraieshSRT").remove();
             }
-            else if (natijeh === "er:mandeh") namayeshPeygham("مبلغ وارد شده اشتباه است. این مبلغ بیشتر از مانده حساب شماست.");
             else if (natijeh === "er:ayandeh") namayeshPeygham("تاریخ وارد شده نمی تواند در آینده باشد.");
             else if (natijeh.substr(0, 10) === "er:tarikh:") namayeshPeygham("تاریخ وارد شده اشتباه است. این تاریخ قبل از افتتاح حساب شما ("+ natijeh.substr(10, 10) +") است.");
             else namayeshPeygham("ویرایش با خطا مواجه شد، لطفا پس از بررسی فیلد ها مجددا تلاش کنید.");

@@ -215,6 +215,12 @@ span.matnTitr.riz
     padding: 1px 0;
 }
 
+.baAnimation
+{
+    animation: aniFade 0.3s;
+    animation-fill-mode: both;
+}
+
 
 /*  کادر انتخاب  */
 

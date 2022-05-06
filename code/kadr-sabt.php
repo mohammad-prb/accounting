@@ -52,7 +52,7 @@
                         <input type="text" class="txtTarikh" name="sal" value="<?php echo jdate("Y", "", "", "Asia/Tehran", "en");?>" onfocus="this.select();" oninput="if(this.value.length>3) document.getElementById('mablaghSBTK').focus();" maxlength="4" placeholder="سال" autocomplete="off"/>
                     </div>
                 </div>
-                <div class="etelaatSBT" style="display:none;">
+                <div class="etelaatSBT baAnimation" style="display:none;">
                     <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">فرد:</span></div>
                     <select name="varizBe" id="varizBeSBTK">
                         <?php
