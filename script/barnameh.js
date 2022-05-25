@@ -289,9 +289,9 @@ function sabtBRN()
     if (onvan === "") errorInput(document.getElementById("onvanVBRN"));
     if (!check(gam, "^[1-9][0-9]*$")) errorInput(document.getElementById("gamVBRN"));
     if (!check(tedadKol, "^(|[1-9][0-9]*)$")) errorInput(document.getElementById("tedadVBRN"));
-    if (!check(rooz, "^(0?[1-9]|[1-2][0-9]|3[0-1])$")) errorInput(document.querySelectorAll("#tarikhVSRT>input.txtTarikh")[0]);
-    if (!check(mah, "^(0?[1-9]|1[0-2])$")) errorInput(document.querySelectorAll("#tarikhVSRT>input.txtTarikh")[1]);
-    if (!check(sal, "^[1-9][0-9]{3}$")) errorInput(document.querySelectorAll("#tarikhVSRT>input.txtTarikh")[2]);
+    if (!check(rooz, "^(0?[1-9]|[1-2][0-9]|3[0-1])$")) errorInput(document.querySelectorAll("#tarikhVBRN>input.txtTarikh")[0]);
+    if (!check(mah, "^(0?[1-9]|1[0-2])$")) errorInput(document.querySelectorAll("#tarikhVBRN>input.txtTarikh")[1]);
+    if (!check(sal, "^[1-9][0-9]{3}$")) errorInput(document.querySelectorAll("#tarikhVBRN>input.txtTarikh")[2]);
     if (!check(mablagh, "^[1-9][0-9]*$")) errorInput(document.getElementById("mablaghVBRN"));
 
     if (errorDarad) return;

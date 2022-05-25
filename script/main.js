@@ -338,14 +338,14 @@ function entekhabPishnahad(lmn, shom)
 {
     lmn.focus();
     var lmnPishnehad = document.querySelector("a.itemPishnahad[data-entekhabi]>span.titrPishnahad");
-    if (lmnPishnehad)
-    {
-        document.activeElement.value = lmnPishnehad.innerHTML.trim();
-        taghirPishnahad(lmn);
-    }
-    else
+    if (shom !== undefined)
     {
         lmn.value = document.getElementsByClassName("titrPishnahad")[shom].innerHTML.trim();
+        taghirPishnahad(lmn);
+    }
+    else if (lmnPishnehad)
+    {
+        document.activeElement.value = lmnPishnehad.innerHTML.trim();
         taghirPishnahad(lmn);
     }
 }

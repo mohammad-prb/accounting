@@ -86,9 +86,9 @@ else
                     <div class="etelaatJDST">
                         <div class="iconJDST makhfiDarMobile"></div>
                         <div class="onvanJDST">نام فرد</div>
-                        <div class="tedadMahJDST makhfiDarMobile">تعداد (ماه)</div>
-                        <div class="tedadSalJDST makhfiDarMobile">تعداد (سال)</div>
-                        <div class="tedadKolJDST makhfiDarMobile">تعداد (کل)</div>
+                        <div class="tedadMahJDST makhfiDarMobile">استفاده (ماه)</div>
+                        <div class="tedadSalJDST makhfiDarMobile">استفاده (سال)</div>
+                        <div class="tedadKolJDST makhfiDarMobile">استفاده (کل)</div>
                         <div class="emkanatJDST">امکانات</div>
                     </div>
                 </div>

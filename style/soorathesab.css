@@ -384,8 +384,8 @@ a#btnEdamehSRT:active
     width: calc(100% - 42px);
     padding: 10px;
     border-radius: 8px;
-    background-color: hsl(39, 100%, 90%);
-    border: 1px solid hsl(39, 100%, 65%);
+    background-color: hsl(39, 100%, 95%);
+    border: 1px solid hsl(39, 100%, 85%);
     box-shadow: 0 0 5px hsl(0, 0%, 80%);
     transition: bottom 0.2s;
 }

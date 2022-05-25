@@ -37,7 +37,7 @@ function gereftanAfrad()
                     lmnDasteh.innerHTML = '<div class="shomJDST"></div>\n' +
                         '<div class="etelaatJDST" data-noe="'+ arrObjNatijeh[i]["noe"] +'">\n' +
                         '    <div class="iconJDST"></div>\n' +
-                        '    <div class="onvanJDST" onclick="namayeshPeygham(\''+arrObjNatijeh[i]["nam"]+'\')">'+ arrObjNatijeh[i]["nam"] +'</div>\n' +
+                        '    <div class="onvanJDST" onclick="if (mobileAst(1000)) namayeshPeygham(\''+arrObjNatijeh[i]["nam"] + ' (استفاده در ماه: ' + momayezdar(arrObjNatijeh[i]["tedadMah"]) + ' , استفاده در سال: ' + momayezdar(arrObjNatijeh[i]["tedadSal"]) + ' , استفاده در کل: ' + momayezdar(arrObjNatijeh[i]["tedadKol"]) + ')' +'\')">'+ arrObjNatijeh[i]["nam"] +'</div>\n' +
                         '    <div class="tedadMahJDST makhfiDarMobile">'+ momayezdar(arrObjNatijeh[i]["tedadMah"]) +'</div>\n' +
                         '    <div class="tedadSalJDST makhfiDarMobile">'+ momayezdar(arrObjNatijeh[i]["tedadSal"]) +'</div>\n' +
                         '    <div class="tedadKolJDST makhfiDarMobile">'+ momayezdar(arrObjNatijeh[i]["tedadKol"]) +'</div>\n' +

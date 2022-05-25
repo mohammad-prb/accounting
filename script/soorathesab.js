@@ -211,7 +211,6 @@ function andakhtanSoorathesab()
         lmnKadr.appendChild(lmn);
     }
 
-    shomSaf++;
     if (tedadSaf - shomSaf > 0)
     {
         var lmnEdameh = document.createElement("a");
@@ -221,6 +220,7 @@ function andakhtanSoorathesab()
         lmnEdameh.innerHTML = '<span class="icon riz"></span><span class="matnTitr riz">نمایش ادامه صورتحساب</span>';
         document.getElementById("kadrSoorathesab").appendChild(lmnEdameh);
     }
+    shomSaf++;
 }
 
 var arrObjEtelaat;
