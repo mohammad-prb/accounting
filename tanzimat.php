@@ -58,7 +58,7 @@ if (!isset($_SESSION["accountID"])) header("location:login.php");
                                 <div class="shomJTNZ"></div>
                                 <div class="etelaatJTNZ">
                                     <div class="bankJTNZ"><img src="pic/bank/'. $row["bankID"] .@'.png" alt="bank" class="aksBankJTNZ"/></div>
-                                    <div class="onvanJTNZ" onclick="namayeshPeygham(\''. $row["nam"] .'\');">'. $row["nam"] .@'</div>
+                                    <div class="onvanJTNZ" onclick="if (mobileAst(1000)) namayeshPeygham(\'' . $row["nam"] . '<br/> شماره حساب: ' . $row["shomHesab"] . ' <br/> شماره کارت: ' . $row["shomKart"] . ' <br/> تاریخ افتتاح: ' . $row["tarikhEftetah"] . ' <br/> مانده تراز: ' . momayezdar($row["mablaghTaraz"]) .'\');">'. $row["nam"] .@'</div>
                                     <div class="shomHesabJTNZ makhfiDarMobile">'. $row["shomHesab"] .@'</div>
                                     <div class="shomKartJTNZ makhfiDarMobile">'. $row["shomKart"] .@'</div>
                                     <div class="eftetahJTNZ makhfiDarMobile">'. $row["tarikhEftetah"] .@'</div>
@@ -82,9 +82,8 @@ if (!isset($_SESSION["accountID"])) header("location:login.php");
         </div>
         <div id="kadrAfzoodanHesab">
             <h2 class="titrTNZ"><span class="icon"></span><span class="matnTitr">افزودن حساب</span></h2>
-            <a href="javascript:void(0);" onclick="sabtHesab();" id="btnAfzoodanTNZ"><span class="icon"></span><span class="matnTitr">افزودن</span></a>
             <div class="kadrAfzoodanTNZ">
-                <div class="afzoodanTNZ"><span class="icon"></span><span class="matnTitr">نام:</span></div>
+                <div class="afzoodanTNZ"><span class="icon"></span><span class="matnTitr">نام حساب:</span></div>
                 <input type="text" id="namATNZ" name="nam" maxlength="30" autocomplete="off"/>
             </div>
             <div class="kadrAfzoodanTNZ">
@@ -107,16 +106,17 @@ if (!isset($_SESSION["accountID"])) header("location:login.php");
             </div>
             <div class="kadrAfzoodanTNZ">
                 <div class="afzoodanTNZ"><span class="icon"></span><span class="matnTitr">ش حساب:</span></div>
-                <input type="text" id="shomHesabATNZ" name="shomHesab" maxlength="100" autocomplete="off"/>
+                <input type="text" id="shomHesabATNZ" name="shomHesab" maxlength="100" autocomplete="off" placeholder="شماره حساب"/>
             </div>
             <div class="kadrAfzoodanTNZ">
                 <div class="afzoodanTNZ"><span class="icon"></span><span class="matnTitr">ش کارت:</span></div>
-                <input type="text" id="shomKartATNZ" name="shomKart" maxlength="16" autocomplete="off"/>
+                <input type="text" id="shomKartATNZ" name="shomKart" maxlength="16" autocomplete="off" placeholder="شماره کارت"/>
             </div>
             <div class="kadrAfzoodanTNZ">
                 <div class="afzoodanTNZ"><span class="icon"></span><span class="matnTitr">مانده تراز:</span></div>
                 <input type="text" id="mandehATNZ" name="mandeh" maxlength="20" placeholder="مانده فعلی" autocomplete="off"/>
             </div>
+            <a href="javascript:void(0);" onclick="sabtHesab();" id="btnAfzoodanTNZ"><span class="icon"></span><span class="matnTitr">افزودن</span></a>
         </div>
         <script>
             document.getElementById("kadrAfzoodanHesab").onkeydown = function(e){if (e.keyCode === 13) sabtHesab();};

@@ -568,7 +568,7 @@ input.txtTedad
 .rizTarikh
 {
     float: left;
-    margin: 0 0 5px 15px;
+    margin: 0 15px 5px 0;
 }
 
 .rizTarikh.pardakhti

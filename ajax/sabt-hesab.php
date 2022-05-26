@@ -14,7 +14,7 @@ if (isset($_POST["shomKart"])) $shomKart = htmlspecialchars(stripcslashes(trim($
 if (isset($_POST["taraz"])) $mandehTaraz = htmlspecialchars(stripcslashes(trim($_POST["taraz"]))); else die();
 $tarikhEftetah = jdate("Y/m/d", "", "", "Asia/Tehran", "en");
 
-if (preg_match("/^.{1,30}$/", $nam) !== 1) die();
+if (mb_strlen($nam) > 30) die("er:tool");
 if (preg_match("/^[1-9][0-9]*$/", $bankID) !== 1) die();
 if (preg_match("/^[0-9]{1,100}$/", $shomHesab) !== 1) die();
 if (preg_match("/^[0-9]{16}$/", $shomKart) !== 1) die();

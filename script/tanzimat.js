@@ -134,7 +134,7 @@ function virayeshHSB(lmn)
         '                    <div class="etelaatVTNZ">\n' +
         '                        <div class="etelaatSBT">\n' +
         '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">نام:</span></div>\n' +
-        '                            <input type="text" id="namVTNZ" name="nam" value="'+ nam +'" autocomplete="off" placeholder="نام حساب">\n' +
+        '                            <input type="text" id="namVTNZ" name="nam" value="'+ nam +'" autocomplete="off" placeholder="نام حساب" maxlength="30">\n' +
         '                        </div>\n' +
         '                        <div class="etelaatSBT">\n' +
         '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">بانک:</span></div>\n' +
@@ -188,7 +188,7 @@ function sabtVirayeshHSB(id)
     var mandehTaraz = document.getElementById("mandehVTNZ").value.trim();
     var bankID = document.getElementById("bankVTNZ").value.trim();
 
-    if (!check(nam, "^.{1,30}$")) errorInput(document.getElementById("namVTNZ"));
+    if (nam.length === 0) errorInput(document.getElementById("namVTNZ"));
     if (!check(shomHesab, "^[0-9]{1,100}$")) errorInput(document.getElementById("shomHesabVTNZ"));
     if (!check(shomKart, "^[0-9]{16}$")) errorInput(document.getElementById("shomKartVTNZ"));
     if (!check(mandehTaraz, "^(0|[1-9][0-9]*)$")) errorInput(document.getElementById("mandehVTNZ"));
@@ -212,6 +212,7 @@ function sabtVirayeshHSB(id)
                 lmn.getElementsByClassName("mandehTarazJTNZ")[0].innerHTML = momayezdar(mandehTaraz);
                 lmn.getElementsByClassName("aksBankJTNZ")[0].src = "pic/bank/"+ bankID + ".png";
             }
+            else if (this.responseText === "er:tool") namayeshPeygham("ثبت با خطا مواجه شد! نام حساب نباید بیشتر از 30 کاراکتر باشد.");
             else namayeshPeygham("ویرایش با خطا مواجه شد! لطفا دوباره امتحان کنید.");
         }
     };
@@ -231,7 +232,7 @@ function sabtHesab()
     var shomKart = document.getElementById("shomKartATNZ").value.trim();
     var taraz = document.getElementById("mandehATNZ").value.trim();
 
-    if (!check(nam, "^.{1,30}$")) errorInput(document.getElementById("namATNZ"));
+    if (nam.length === 0) errorInput(document.getElementById("namATNZ"));
     if (!check(shomHesab, "^[0-9]{1,100}$")) errorInput(document.getElementById("shomHesabATNZ"));
     if (!check(shomKart, "^[0-9]{16}$")) errorInput(document.getElementById("shomKartATNZ"));
     if (!check(taraz, "^(0|[1-9][0-9]*)$")) errorInput(document.getElementById("mandehATNZ"));
@@ -274,6 +275,7 @@ function sabtHesab()
                 document.getElementById("jadvalTNZ").appendChild(lmnHesab);
                 shomarehBandiHSB();
             }
+            else if (this.responseText === "er:tool") namayeshPeygham("ثبت با خطا مواجه شد! نام حساب نباید بیشتر از 30 کاراکتر باشد.");
             else namayeshPeygham("ثبت اطلاعات با خطا مواجه شد! لطفا دوباره امتحان کنید.");
         }
     };

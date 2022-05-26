@@ -136,6 +136,12 @@ function namayeshLoading(lmn)
     lmn.appendChild(loading);
 }
 
+/*      نمایش پیغام راهنما برای اینپوت های مبلغ      */
+function namayeshRahnamaMablagh()
+{
+    namayeshPeygham("میتوانید با استفاده از دکمه (+) 4 عدد 0 و با دکمه (-) 3 عدد 0 به مبلغ اضافه کنید.");
+}
+
 /*      نمایش مبلغ ورودی کاربر با ممیز      */
 function namayeshMablaghSBT(lmn)
 {

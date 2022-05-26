@@ -15,7 +15,7 @@ if (isset($_POST["noe"])) $noe = htmlspecialchars(stripcslashes(trim($_POST["noe
 
 if (preg_match("/^[1-9]+[0-9]*$/", $id) !== 1) die();
 if (preg_match("/^[1-9]+[0-9]*$/", $hesabID) !== 1) die();
-if (preg_match("/^.{1,30}$/", $nam) !== 1) die();
+if (mb_strlen($nam) > 30) die("er:tool");
 if (preg_match("/^[1-3]$/", $noe) !== 1) die();
 
 $sql = "select id from tbl_hesab where id=? and accountID=?";

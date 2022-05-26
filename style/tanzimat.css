@@ -236,7 +236,8 @@ a.btnJTNZ:last-child
 .kadrAfzoodanTNZ
 {
     float: right;
-    margin: 0 0 10px 20px;
+    width: 33.333%;
+    margin: 0 0 10px 0;
 }
 
 .kadrAfzoodanTNZ:last-child
@@ -244,36 +245,30 @@ a.btnJTNZ:last-child
     margin: 0 0 10px 0;
 }
 
+.kadrAfzoodanTNZ>input
+{
+    float: right;
+    width: calc(100% - 112px);
+}
+
+.kadrAfzoodanTNZ>select
+{
+    float: right;
+    width: calc(100% - 90px);
+}
+
 input#namATNZ
 {
-    float: right;
-    width: 149px;
     direction: rtl;
-}
-
-input#shomHesabATNZ
-{
-    float: right;
-    width: 120px;
-}
-
-input#shomKartATNZ
-{
-    float: right;
-    width: 150px;
-}
-
-input#mandehATNZ
-{
-    float: right;
-    width: 100px;
 }
 
 .afzoodanTNZ
 {
     float: right;
+    width: 85px;
     margin-left: 5px;
     padding: 9px 0 8px;
+    text-align: left;
     font-size: 0.75rem;
     color: hsla(0, 0%, 0%, 0.7);
     transition: color 0.1s;
@@ -281,11 +276,9 @@ input#mandehATNZ
 
 a#btnAfzoodanTNZ, a#btnAfzoodanTNZ:link, a#btnAfzoodanTNZ:visited
 {
-    position: absolute;
-    top: 25px;
-    left: 0;
     float: right;
     padding: 4px 15px;
+    margin: 1px 15px 0 0;
     border-radius: 8px;
     background-color: hsl(148, 64%, 85%);
     color: hsl(148, 64%, 30%);
@@ -642,7 +635,10 @@ input#namVTNZ
 
     a#btnAfzoodanTNZ, a#btnAfzoodanTNZ:link, a#btnAfzoodanTNZ:visited
     {
-        top: 20px;
+        width: 100%;
+        margin: 0;
+        padding: 8px 0;
+        text-align: center;
     }
 
     #kadrPishfarzha

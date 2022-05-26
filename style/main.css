@@ -962,13 +962,13 @@ a.emkanatHSB, a.emkanatHSB:link, a.emkanatHSB:visited
 
 a.emkanatHSB:hover
 {
-    color: hsl(352, 100%, 57%);
+    color: hsl(39, 100%, 40%);
 }
 
 a.emkanatHSB:active
 {
     transition: none;
-    color: hsl(352, 100%, 80%);
+    color: hsl(39, 100%, 50%);
 }
 
 
@@ -1190,6 +1190,25 @@ span.mablaghSBT
     padding: 5px 0;
     margin-right: 10px;
     color: hsl(0, 0%, 50%);
+}
+a.rahnamaGoosheh, a.rahnamaGoosheh:link, a.rahnamaGoosheh:visited
+{
+    position: absolute;
+    top: 4px;
+    left: calc(100% - 77px);
+    font-family: myIcon;
+    font-size: 0.75rem;
+    opacity: 0.6;
+}
+
+a.rahnamaGoosheh:hover
+{
+    opacity: 1;
+}
+
+a.rahnamaGoosheh:active
+{
+    opacity: 0.8;
 }
 
 input.txtTozih

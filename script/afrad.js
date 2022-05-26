@@ -243,6 +243,7 @@ function sabtVirayeshAFD(id)
             else if (this.responseText === "er:noe") namayeshPeygham("تغییر نوع غیر مجاز میباشد! برای این تغییر، باید مخاطب تمام واریز هایی که قبلا از این مخاطب استفاده کرده اند تغییر دهید.");
             else if (this.responseText === "er:khorooji") namayeshPeygham("تغییر نوع غیر مجاز میباشد! برای این تغییر، باید مخاطب تمام واریز های ورودی که قبلا از این مخاطب استفاده کرده اند تغییر دهید.");
             else if (this.responseText === "er:voroodi") namayeshPeygham("تغییر نوع غیر مجاز میباشد! برای این تغییر، باید مخاطب تمام واریز های خروجی که قبلا از این مخاطب استفاده کرده اند تغییر دهید.");
+            else if (this.responseText === "er:tool") namayeshPeygham("ویرایش با خطا مواجه شد! نام مخاطب نباید بیشتر از 30 کاراکتر باشد.");
             else namayeshPeygham("ویرایش با خطا مواجه شد! لطفا دوباره امتحان کنید.");
         }
     };
@@ -374,6 +375,7 @@ function sabtFard()
                 var lmnTedad = document.querySelectorAll(".tedadDST>span.matnTitr")[noe-1];
                 lmnTedad.innerHTML = Number(lmnTedad.innerHTML) + 1;
             }
+            else if (this.responseText === "er:tool") namayeshPeygham("ثبت با خطا مواجه شد! نام مخاطب نباید بیشتر از 30 کاراکتر باشد.");
             else namayeshPeygham("ثبت اطلاعات با خطا مواجه شد! لطفا دوباره امتحان کنید.");
         }
     };

@@ -15,7 +15,7 @@ if (isset($_POST["mandehTaraz"])) $mandehTaraz = htmlspecialchars(stripcslashes(
 if (isset($_POST["bankID"])) $bankID = htmlspecialchars(stripcslashes(trim($_POST["bankID"]))); else die();
 
 if (preg_match("/^[1-9]+[0-9]*$/", $id) !== 1) die();
-if (preg_match("/^.{1,30}$/", $nam) !== 1) die();
+if (mb_strlen($nam) > 30) die("er:tool");
 if (preg_match("/^[0-9]{1,100}$/", $shomHesab) !== 1) die();
 if (preg_match("/^[0-9]{16}$/", $shomKart) !== 1) die();
 if (preg_match("/^(0|[1-9][0-9]*)$/", $mandehTaraz) !== 1) die();
