@@ -59,6 +59,7 @@ if ($result !== false && $result->num_rows > 0)
         if ($i == 0)
         {
             $idSoorathesab = (integer)$row["id"];
+            $tarikhSoorathesab = $row["tarikh"];
             include ("../code/mohasebeh-mandeh.php");
         }
 
@@ -71,7 +72,6 @@ if ($result !== false && $result->num_rows > 0)
         if ($fard != "hameh" && $row["fardID"] != $fard) $bayadEzafehShavad = false;
         if ($sal != "" && substr($row["tarikh"], 0, 4) != $sal) $bayadEzafehShavad = false;
         if ($mah != "" && substr($row["tarikh"], 5, 2) != $mah) $bayadEzafehShavad = false;
-        if ($rooz != "" && substr($row["tarikh"], 8, 2) != $rooz) $bayadEzafehShavad = false;
         if ($rooz != "" && substr($row["tarikh"], 8, 2) != $rooz) $bayadEzafehShavad = false;
         if ($tozih != "" && strpos($row["tozih"], $tozih) === false) $bayadEzafehShavad = false;
 

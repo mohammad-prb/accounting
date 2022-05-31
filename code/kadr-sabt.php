@@ -79,8 +79,8 @@
                 </div>
                 <div class="etelaatSBT kadrMablagh">
                     <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">مبلغ:</span></div>
-                    <input type="text" class="txtMablagh" id="mablaghSBTK" name="mablagh" oninput="namayeshMablaghSBT(this);" maxlength="10" placeholder="به ریال" autocomplete="off"/>
                     <a href="javascript:void(0);" onclick="namayeshRahnamaMablagh();" class="rahnamaGoosheh makhfiDarMobile" title="راهنما"></a>
+                    <input type="text" class="txtMablagh" id="mablaghSBTK" name="mablagh" oninput="namayeshMablaghSBT(this);" maxlength="10" placeholder="به ریال" autocomplete="off"/>
                 </div>
                 <div class="etelaatSBT makhfiDarMobile">
                     <span class="mablaghSBT"></span>
@@ -173,8 +173,8 @@
                 <div class="etelaatSBT makhfiDarMobile"></div> <!-- برای دیباگ مارجین های کادر های فرد -->
                 <div class="etelaatSBT kadrMablagh">
                     <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">مبلغ:</span></div>
-                    <input type="text" class="txtMablagh" id="mablaghSBTV" name="mablagh" oninput="namayeshMablaghSBT(this);" maxlength="10" placeholder="به ریال" autocomplete="off"/>
                     <a href="javascript:void(0);" onclick="namayeshRahnamaMablagh();" class="rahnamaGoosheh makhfiDarMobile" title="راهنما"></a>
+                    <input type="text" class="txtMablagh" id="mablaghSBTV" name="mablagh" oninput="namayeshMablaghSBT(this);" maxlength="10" placeholder="به ریال" autocomplete="off"/>
                 </div>
                 <div class="etelaatSBT makhfiDarMobile">
                     <span class="mablaghSBT"></span>
@@ -221,6 +221,14 @@
             event.preventDefault();
             if (this.value.length < 8) this.value += "000";
         }
+        else if (e.keyCode === 38) { // jahat bala
+            event.preventDefault();
+            this.parentElement.parentElement.getElementsByClassName("txtTarikh")[0].select();
+        }
+        else if (e.keyCode === 40) { // jahat paeen
+            event.preventDefault();
+            document.getElementById("tozihSBTK").select();
+        }
         namayeshMablaghSBT(this);
     };
     document.getElementById("mablaghSBTV").onkeydown = function(e){
@@ -232,8 +240,38 @@
             event.preventDefault();
             if (this.value.length < 8) this.value += "000";
         }
+        else if (e.keyCode === 38) { // jahat bala
+            event.preventDefault();
+            this.parentElement.parentElement.getElementsByClassName("txtTarikh")[0].select();
+        }
+        else if (e.keyCode === 40) { // jahat paeen
+            event.preventDefault();
+            document.getElementById("tozihSBTV").select();
+        }
         namayeshMablaghSBT(this);
     };
+
+    /*  تاریخ ها  */
+    var arrLmnTarikh = document.getElementsByClassName("txtTarikh");
+    for (let i=0; i<arrLmnTarikh.length; i++)
+    {
+        arrLmnTarikh[i].onkeydown = function(e){
+            if (e.keyCode === 40) { // jahat paeen
+                event.preventDefault();
+                this.parentElement.parentElement.parentElement.getElementsByClassName("txtMablagh")[0].select();
+            }
+            if (e.keyCode === 37) { // jahat chap
+                event.preventDefault();
+                if (this.nextElementSibling)
+                    this.nextElementSibling.select();
+            }
+            if (e.keyCode === 39) { // jahat rast
+                event.preventDefault();
+                if (this.previousElementSibling)
+                    this.previousElementSibling.select();
+            }
+        };
+    }
 
     /*  کادر پیشنهاد توضیحات  */
     document.getElementById("tozihSBTK").onkeydown = function(e){

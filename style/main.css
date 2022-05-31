@@ -1191,6 +1191,7 @@ span.mablaghSBT
     margin-right: 10px;
     color: hsl(0, 0%, 50%);
 }
+
 a.rahnamaGoosheh, a.rahnamaGoosheh:link, a.rahnamaGoosheh:visited
 {
     position: absolute;
@@ -1198,17 +1199,17 @@ a.rahnamaGoosheh, a.rahnamaGoosheh:link, a.rahnamaGoosheh:visited
     left: calc(100% - 77px);
     font-family: myIcon;
     font-size: 0.75rem;
-    opacity: 0.6;
+    opacity: 0.4;
 }
 
 a.rahnamaGoosheh:hover
 {
-    opacity: 1;
+    opacity: 0.8;
 }
 
 a.rahnamaGoosheh:active
 {
-    opacity: 0.8;
+    opacity: 0.6;
 }
 
 input.txtTozih

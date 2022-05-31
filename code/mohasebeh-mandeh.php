@@ -8,7 +8,7 @@ if ($result2 !== false && $result2->num_rows > 0)
 if (isset($idSoorathesab))
     $sql2 = "select khoroojiAst, mablagh from tbl_soorathesab 
             inner join tbl_hesab on tbl_hesab.id = hesabID
-            where tbl_soorathesab.vaziat = 1 and accountID = ". $_SESSION["accountID"] ." and hesabID = " . $hesabID ." and tbl_soorathesab.id <= " . $idSoorathesab;
+            where tbl_soorathesab.vaziat = 1 and accountID = ". $_SESSION["accountID"] ." and hesabID = " . $hesabID ." and (tbl_soorathesab.id <= " . $idSoorathesab . " or tbl_soorathesab.tarikh < '". $tarikhSoorathesab ."')";
 else
     $sql2 = "select khoroojiAst, mablagh from tbl_soorathesab 
             inner join tbl_hesab on tbl_hesab.id = hesabID
