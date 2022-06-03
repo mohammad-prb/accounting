@@ -1,19 +1,23 @@
 /*      تنظیم صفحه تنظیمات      */
 function tanzimSafTanzimat()
 {
-    new entekhab({lmnKadr:"kadrThemENTPSH", id:"theme", entekhb:Number(localStorage.getItem('darkmode')), onclick:"taghirTheme(this);", arrObjMaghadir:[
+    new entekhab({lmnKadr:"kadrThemENTPSH", id:"theme", saddarsadAst:true, entekhb:Number(localStorage.getItem('darkmode')), onclick:"taghirTheme(this);", arrObjMaghadir:[
             {value:0, matn:"تم روشن"},
             {value:1, matn:"تم تاریک"}
         ]});
-    new entekhab({lmnKadr:"kadrMenuENTPSH", id:"halatMenu", entekhb:(Number(localStorage.getItem('menu'))===1?0:1), onclick:"taghirHalatMenu(this);", arrObjMaghadir:[
+    new entekhab({lmnKadr:"kadrMenuENTPSH", id:"halatMenu", saddarsadAst:true, entekhb:(Number(localStorage.getItem('menu'))===1?0:1), onclick:"taghirHalatMenu(this);", arrObjMaghadir:[
             {value:1, matn:"همیشه باز"},
             {value:0, matn:"بسته"}
         ]});
-    new entekhab({lmnKadr:"kadrSoorathesabENTPSH", id:"pishfarzSoorathesab", entekhb:(localStorage.getItem('pishfarzSoorathesab')==="rooz"?0:1), onclick:"taghirPishfarzSRT(this);", arrObjMaghadir:[
+    new entekhab({lmnKadr:"kadrPishnahadENTPSH", id:"pishfarzPishnahad", saddarsadAst:true, entekhb:(localStorage.getItem('pishfarzPishnahad')==="sal"?0:1), onclick:"taghirPishfarzPIS(this);", arrObjMaghadir:[
+            {value:"sal", matn:"سالانه"},
+            {value:"kol", matn:"کل تایم"}
+        ]});
+    new entekhab({lmnKadr:"kadrSoorathesabENTPSH", id:"pishfarzSoorathesab", saddarsadAst:true, entekhb:(localStorage.getItem('pishfarzSoorathesab')==="rooz"?0:1), onclick:"taghirPishfarzSRT(this);", arrObjMaghadir:[
             {value:"rooz", matn:"روز جاری"},
             {value:"mah", matn:"ماه جاری"}
         ]});
-    new entekhab({lmnKadr:"kadrAmarENTPSH", id:"pishfarzAmar", entekhb:(localStorage.getItem('pishfarzAmar')==="mah"?0:1), onclick:"taghirPishfarzAMR(this);", arrObjMaghadir:[
+    new entekhab({lmnKadr:"kadrAmarENTPSH", id:"pishfarzAmar", saddarsadAst:true, entekhb:(localStorage.getItem('pishfarzAmar')==="mah"?0:1), onclick:"taghirPishfarzAMR(this);", arrObjMaghadir:[
             {value:"mah", matn:"ماه جاری"},
             {value:"sal", matn:"سال جاری"}
         ]});
@@ -325,6 +329,15 @@ function taghirHalatMenu(lmnEnt)
     {
         document.querySelector('link[href="style/menu-basteh.css"]').remove();
     }
+
+    setTimeout(function(){entekhab.tanzimENT();}, 300);
+}
+
+/*      تغییر پیشفرض پیشنهادها      */
+function taghirPishfarzPIS(lmn)
+{
+    var meghdar = lmn.parentElement.dataset.value;
+    localStorage.setItem("pishfarzPishnahad", meghdar);
 }
 
 /*      تغییر پیشفرض صورتحساب      */

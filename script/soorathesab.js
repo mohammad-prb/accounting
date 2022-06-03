@@ -72,7 +72,7 @@ function taghirKVFSRT(lmn)
     else if (Number(noe) === 1)
     {
         lmnVasileh.style.display = "block";
-        sheiVasileh.taghirENT(lmnVasileh.getElementsByClassName("gozinehENT")[0]);
+        entekhab.taghirENT(lmnVasileh.getElementsByClassName("gozinehENT")[0]);
         taghirDastehFSRT(1,2);
         taghirFardFSRT(1,2);
     }
@@ -96,22 +96,22 @@ function tavizHesabSRT(lmn)
             bastanLoading(document.getElementById("kadrFilterSoorathesab"));
 
             var objNatijeh = JSON.parse(this.responseText);
-            var arrAfrad = objNatijeh["afrad"];
+            arrObjAfrad = objNatijeh["afrad"];
             khorojiAst = 0; // برای اینکه تابع "تغییر KV" در صورت تغییر این متغیر کار میکند
             arrObjDasteh = objNatijeh["dasteh"];
-            taghirENT(document.querySelector("#khoroojiAstSBTK .gozinehENT"));
+            entekhab.taghirENT(document.querySelector("#khoroojiAstSBTK .gozinehENT"));
             taghirKVFSRT(document.querySelector("#khoroojiAstSBTK .gozinehENT"));
 
             /* واریز به ها */
             var lmnSelect = document.getElementById("varizBeSBTK");
             lmnSelect.innerHTML = "<option value='hameh'>-</option>";
-            for (let i=0; i<arrAfrad.length; i++)
+            for (let i=0; i<arrObjAfrad.length; i++)
             {
-                if (Number(arrAfrad[i]["noe"]) <= 2)
+                if (Number(arrObjAfrad[i]["noe"]) <= 2)
                 {
                     var option = document.createElement("option");
-                    option.value = arrAfrad[i]["id"];
-                    option.innerHTML = arrAfrad[i]["nam"];
+                    option.value = arrObjAfrad[i]["id"];
+                    option.innerHTML = arrObjAfrad[i]["nam"];
                     lmnSelect.appendChild(option);
                 }
             }

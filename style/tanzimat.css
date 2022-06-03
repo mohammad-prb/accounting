@@ -492,17 +492,26 @@ input#namVTNZ
 .kadrPSH
 {
     float: right;
-    margin: 0 0 10px 30px;
+    width: 33.333%;
+    margin: 0 0 10px 0;
 }
 
 .titrPSH
 {
     float: right;
+    width: 100px;
     margin-left: 5px;
     padding: 9px 0 8px;
+    text-align: left;
     font-size: 0.75rem;
     color: hsla(0, 0%, 0%, 0.7);
     transition: color 0.1s;
+}
+
+.kadrENTTNZ
+{
+    float: right;
+    width: calc(100% - 105px);
 }
 
 @media only screen and (max-width: 1000px)
@@ -620,7 +629,6 @@ input#namVTNZ
     .afzoodanTNZ
     {
         width: 72px;
-        text-align: left;
     }
 
     .kadrAfzoodanTNZ>select:nth-child(2)
@@ -655,5 +663,10 @@ input#namVTNZ
     .kadrENT
     {
         float: left;
+    }
+
+    .titrPSH
+    {
+        text-align: right;
     }
 }

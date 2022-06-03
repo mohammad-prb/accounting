@@ -18,27 +18,37 @@ class entekhab
             lmnA.setAttribute("href", "javascript:void(0);");
             lmnA.dataset.value = arrObjMaghadir[i]["value"];
             lmnA.innerHTML = arrObjMaghadir[i]["matn"];
-            lmnA.addEventListener("click", ()=>{this.taghirENT(lmnA)});
+            lmnA.addEventListener("click", ()=>{entekhab.taghirENT(lmnA)});
             if (onclick !== "") lmnA.setAttribute("onclick", onclick);
             if (saddarsadAst) lmnA.style.width = widthA + "%";
             if (typeof lmnKadr === "string") lmnKadr = document.getElementById(lmnKadr);
             this.lmn.appendChild(lmnA);
         }
         lmnKadr.appendChild(this.lmn);
-        this.taghirENT(lmnKadr.getElementsByClassName("gozinehENT")[entekhb]);
+        entekhab.taghirENT(lmnKadr.getElementsByClassName("gozinehENT")[entekhb]);
         window.addEventListener("resize", ()=>{
             let entekhabFeli = this.lmn.dataset.value;
-            this.taghirENT(lmnKadr.querySelector(".gozinehENT[data-value='"+entekhabFeli+"']"));
+            entekhab.taghirENT(lmnKadr.querySelector(".gozinehENT[data-value='"+entekhabFeli+"']"));
         });
     }
 
-    taghirENT(lmn)
+    static taghirENT(lmn)
     {
         var lmnPosht = lmn.parentElement.getElementsByClassName("kadrPoshtENT")[0];
         lmn.parentElement.dataset.value = lmn.dataset.value;
         lmnPosht.style.width = lmn.clientWidth + "px";
         lmnPosht.style.top = lmn.offsetTop + "px";
         lmnPosht.style.left = lmn.offsetLeft + "px";
+    }
+
+    static tanzimENT()
+    {
+        let arrLmn = document.getElementsByClassName("kadrENT");
+        for (let i=0; i<arrLmn.length; i++)
+        {
+            let entekhabFeli = arrLmn[i].dataset.value;
+            entekhab.taghirENT(arrLmn[i].querySelector(".gozinehENT[data-value='"+entekhabFeli+"']"));
+        }
     }
 }
 
@@ -300,7 +310,7 @@ function taghirPishnahad(lmn)
     };
     xhttp.open("POST", "./ajax/gereftan-pishnahad.php?sid="+Math.random(), true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("hesabID="+hesabID+"&ebarat="+ebarat+"&khoroojiAst="+khoroojiAst+"&tk="+tkn);
+    xhttp.send("hesabID="+hesabID+"&bazeh="+localStorage.getItem("pishfarzPishnahad")+"&ebarat="+ebarat+"&khoroojiAst="+khoroojiAst+"&tk="+tkn);
 }
 
 /*      پیمایش پیشنهادها      */

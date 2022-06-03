@@ -123,17 +123,25 @@ if (!isset($_SESSION["accountID"])) header("location:login.php");
         </script>
         <div id="kadrPishfarzha">
             <h2 class="titrTNZ"><span class="icon"></span><span class="matnTitr">پیشفرض ها</span></h2>
-            <div class="kadrPSH" id="kadrThemENTPSH">
+            <div class="kadrPSH">
                 <div class="titrPSH"><span class="icon"></span><span class="matnTitr">تم برنامه:</span></div>
+                <div class="kadrENTTNZ" id="kadrThemENTPSH"></div>
             </div>
-            <div class="kadrPSH makhfiDarMobile" id="kadrMenuENTPSH">
+            <div class="kadrPSH makhfiDarMobile">
                 <div class="titrPSH"><span class="icon"></span><span class="matnTitr">حالت منو:</span></div>
+                <div class="kadrENTTNZ" id="kadrMenuENTPSH"></div>
             </div>
-            <div class="kadrPSH" id="kadrSoorathesabENTPSH">
-                <div class="titrPSH"><span class="icon"></span><span class="matnTitr">بازه صورتحساب:</span></div>
+            <div class="kadrPSH">
+                <div class="titrPSH"><span class="icon"></span><span class="matnTitr">پیشنهادها:</span></div>
+                <div class="kadrENTTNZ" id="kadrPishnahadENTPSH"></div>
             </div>
-            <div class="kadrPSH" id="kadrAmarENTPSH">
-                <div class="titrPSH"><span class="icon"></span><span class="matnTitr">بازه آمار:</span></div>
+            <div class="kadrPSH">
+                <div class="titrPSH"><span class="icon"></span><span class="matnTitr">صورتحساب:</span></div>
+                <div class="kadrENTTNZ" id="kadrSoorathesabENTPSH"></div>
+            </div>
+            <div class="kadrPSH">
+                <div class="titrPSH"><span class="icon"></span><span class="matnTitr">بازه آمار:</span></div>
+                <div class="kadrENTTNZ" id="kadrAmarENTPSH"></div>
             </div>
         </div>
     </div>
