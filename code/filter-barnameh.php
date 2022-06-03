@@ -1,24 +1,33 @@
 <div id="kadrFilterBRN">
-    <div class="etelaatSBT" id="vaziatENTBRN">
+    <div class="etelaatSBT">
         <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">وضعیت:</span></div>
+        <div class="kadrVasetSBT" id="vaziatENTBRN"></div>
     </div>
-    <div class="etelaatSBT" id="KhvENTBRN">
+    <div class="etelaatSBT">
         <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">خ/و:</span></div>
+        <div class="kadrVasetSBT" id="KhvENTBRN"></div>
     </div>
-    <div class="etelaatSBT" id="noeENTBRN">
+    <div class="etelaatSBT">
         <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">نوع:</span></div>
+        <div class="kadrVasetSBT" id="noeENTBRN"></div>
     </div>
-    <div class="etelaatSBT tamamSafheh">
+    <div class="etelaatSBT">
         <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">عنوان:</span></div>
-        <input type="text" class="txtTozih" id="onvanSBTK" name="tozih" autocomplete="off"/>
+        <div class="kadrVasetSBT">
+            <input type="text" class="txtTozih" id="onvanSBTK" name="tozih" autocomplete="off"/>
+        </div>
     </div>
-    <div class="etelaatSBT tamamSafheh">
+    <div class="etelaatSBT">
         <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">گام:</span></div>
-        <input type="text" class="txtGam" id="gamSBTK" name="gam" maxlength="3" autocomplete="off"/>
+        <div class="kadrVasetSBT">
+            <input type="text" class="txtGam" id="gamSBTK" name="gam" maxlength="3" autocomplete="off"/>
+        </div>
     </div>
-    <div class="etelaatSBT tamamSafheh">
-        <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">تعدادکل:</span></div>
-        <input type="text" class="txtTedad" id="tedadSBTK" name="tedad" maxlength="4" autocomplete="off">
+    <div class="etelaatSBT">
+        <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">تعداد:</span></div>
+        <div class="kadrVasetSBT">
+            <input type="text" class="txtTedad" id="tedadSBTK" name="tedad" maxlength="4" autocomplete="off">
+        </div>
     </div>
     <div class="etelaatSBT">
         <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">شروع:</span></div>
@@ -28,9 +37,11 @@
             <input type="text" class="txtTarikh" name="sal" onfocus="this.select();" oninput="if(this.value.length>3) document.getElementById('mablaghSBTK').focus();" maxlength="4" placeholder="سال" autocomplete="off"/>
         </div>
     </div>
-    <div class="etelaatSBT tamamSafheh">
+    <div class="etelaatSBT">
         <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">مبلغ:</span></div>
-        <input type="text" class="txtMablagh" id="mablaghSBTK" name="mablagh" maxlength="10" placeholder="به ریال" autocomplete="off"/>
+        <div class="kadrVasetSBT">
+            <input type="text" class="txtMablagh" id="mablaghSBTK" name="mablagh" maxlength="10" placeholder="به ریال" autocomplete="off"/>
+        </div>
     </div>
     <a href="javascript:void(0);" onclick="emalFilterBRN();" id="emalFilter">
         <span id="kadrVasetEmalFilter">

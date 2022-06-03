@@ -10,7 +10,7 @@ function tanzimSafTanzimat()
             {value:0, matn:"بسته"}
         ]});
     new entekhab({lmnKadr:"kadrPishnahadENTPSH", id:"pishfarzPishnahad", saddarsadAst:true, entekhb:(localStorage.getItem('pishfarzPishnahad')==="sal"?0:1), onclick:"taghirPishfarzPIS(this);", arrObjMaghadir:[
-            {value:"sal", matn:"سالانه"},
+            {value:"sal", matn:"اخیر"},
             {value:"kol", matn:"کل تایم"}
         ]});
     new entekhab({lmnKadr:"kadrSoorathesabENTPSH", id:"pishfarzSoorathesab", saddarsadAst:true, entekhb:(localStorage.getItem('pishfarzSoorathesab')==="rooz"?0:1), onclick:"taghirPishfarzSRT(this);", arrObjMaghadir:[

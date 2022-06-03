@@ -28,7 +28,6 @@ if (preg_match("/^[1-9][0-9]*$/", $mablagh) !== 1) die();
 
 $tarikh = tarikhKon($sal, $mah, $rooz);
 $zamanSabt = jdate("Y-m-d H:i:s", "", "", "Asia/Tehran", "en");
-
 if (jmktime(0,0,0, $mah, $rooz, $sal) > time()) die("er:ayandeh");
 
 $sql = "select tarikhEftetah from tbl_hesab where vaziat = 1 and accountID = ". $_SESSION["accountID"] ." and id = " . $hesabID;
@@ -55,6 +54,32 @@ if ((integer)$khoroojiAst == 1)
 else
 {
     $vasilehID = 0;
+}
+
+if ($dastehID != 1)
+{
+    $sql = @"select * from tbl_dasteh 
+        inner join tbl_hesab on tbl_hesab.id = hesabID 
+        where tbl_dasteh.id = ". $dastehID ." and hesabID = ". $hesabID ." and accountID = ". $_SESSION["accountID"];
+    $result = $con->query($sql);
+    if ($result !== false && $result->num_rows > 0) {
+        if ($row = $result->fetch_assoc()) {
+            // ok
+        } else die();
+    } else die();
+}
+
+if ((!$khoroojiAst || $vasilehID == 3) && $fard != 2)
+{
+    $sql = @"select * from tbl_afrad
+        inner join tbl_hesab on tbl_hesab.id = hesabID
+        where tbl_afrad.id = ". $fard ." and hesabID = ". $hesabID ." and accountID = ". $_SESSION["accountID"];
+    $result = $con->query($sql);
+    if ($result !== false && $result->num_rows > 0) {
+        if ($row = $result->fetch_assoc()) {
+            // ok
+        } else die();
+    } else die();
 }
 
 $sql = "insert into tbl_soorathesab (hesabID, khoroojiAst, vasilehID, dastehID, fardID, mablagh, tarikh, tozih, zamanSabt) values (?,?,?,?,?,?,?,?,?)";

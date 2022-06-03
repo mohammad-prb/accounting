@@ -1,8 +1,8 @@
 /*      تنظیم صفحه بعد از لود کامل      */
 function tanzimSafAFD()
 {
-    new entekhab({lmnKadr:"kadrAfzoodanENTAFD", id:"noeDST", arrObjMaghadir:[
-            {value:1, matn:"خروجی و ورودی"},
+    new entekhab({lmnKadr:"kadrAfzoodanENTAFD", id:"noeDST", saddarsadAst:true, arrObjMaghadir:[
+            {value:1, matn:"همه"},
             {value:2, matn:"خروجی"},
             {value:3, matn:"ورودی"}
         ]});
@@ -183,8 +183,9 @@ function virayeshAFD(lmn)
         '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">نام:</span></div>\n' +
         '                            <input type="text" class="txtDasteh" id="fardVDST" name="dasteh" value="'+ nam +'" autocomplete="off">\n' +
         '                        </div>\n' +
-        '                        <div class="etelaatSBT" id="kadrNoeENTVDST">\n' +
+        '                        <div class="etelaatSBT">\n' +
         '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">نوع:</span></div>\n' +
+        '                            <div class="kadrVasetVDST" id="kadrNoeENTVDST"></div>\n' +
         '                        </div>\n' +
         '                    </div>\n' +
         '                    <span id="kadrDokmehVDST">\n' +
@@ -197,8 +198,8 @@ function virayeshAFD(lmn)
     document.body.appendChild(lmnKadr);
     document.getElementById("fardVDST").select();
 
-    new entekhab({lmnKadr:"kadrNoeENTVDST", id:"noeVDST", entekhb:noe-1, arrObjMaghadir:[
-            {value:1, matn:"خروجی و ورودی"},
+    new entekhab({lmnKadr:"kadrNoeENTVDST", id:"noeVDST", saddarsadAst:true, entekhb:noe-1, arrObjMaghadir:[
+            {value:1, matn:"همه"},
             {value:2, matn:"خروجی"},
             {value:3, matn:"ورودی"}
         ]});

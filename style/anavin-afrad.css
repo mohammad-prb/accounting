@@ -17,6 +17,7 @@
 .kadrAfzoodanDST
 {
     float: right;
+    width: 308px;
     margin: 0 0 10px 30px;
 }
 
@@ -34,6 +35,12 @@ input.txtDasteh
     float: right;
     width: 226px;
     direction: rtl;
+}
+
+#kadrAfzoodanENTDST, #kadrAfzoodanENTAFD
+{
+    float: right;
+    width: calc(100% - 44px);
 }
 
 a#btnAfzoodanDST, a#btnAfzoodanDST:link, a#btnAfzoodanDST:visited
@@ -459,9 +466,21 @@ a.btnJDST:last-child
     margin-bottom: 5px;
 }
 
-input#dastehVDST
+.iconEtelaatSBT
 {
-    width: 226px;
+    width: 40px;
+    text-align: left;
+}
+
+input#dastehVDST, input#fardVDST
+{
+    width: calc(100% - 67px);
+}
+
+.kadrVasetVDST
+{
+    float: left;
+    width: calc(100% - 45px);
 }
 
 #kadrDokmehVDST
@@ -542,21 +561,6 @@ input#dastehVDST
         width: calc(100% - 20px);
     }
 
-    .etelaatVDST span.matnTitr
-    {
-        display: none;
-    }
-
-    .iconEtelaatSBT
-    {
-        width: 19px;
-    }
-
-    input#dastehVDST, input#fardVDST
-    {
-        width: calc(100% - 50px);
-    }
-
     #kadrTaeedJabejaei
     {
         left: 10px;
@@ -585,5 +589,29 @@ input#dastehVDST
     {
         width: 100%;
         margin: 0 0 10px 0;
+    }
+
+    .afzoodanDST
+    {
+        width: 55px;
+        text-align: left;
+    }
+
+    input.txtDasteh
+    {
+        width: calc(100% - 82px);
+    }
+
+    #kadrAfzoodanENTDST, #kadrAfzoodanENTAFD
+    {
+        width: calc(100% - 60px);
+    }
+
+    a#btnAfzoodanDST, a#btnAfzoodanDST:link, a#btnAfzoodanDST:visited
+    {
+        width: 100%;
+        margin: 0;
+        padding: 8px 0;
+        text-align: center;
     }
 }

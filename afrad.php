@@ -100,7 +100,10 @@ else
                 <div class="afzoodanDST"><span class="icon"></span><span class="matnTitr">افزودن:</span></div>
                 <input type="text" class="txtDasteh" id="namDST" name="dasteh" maxlength="30" placeholder="نام فرد" autocomplete="off"/>
             </div>
-            <div class="kadrAfzoodanDST" id="kadrAfzoodanENTAFD"></div>
+            <div class="kadrAfzoodanDST">
+                <div class="afzoodanDST"><span class="icon"></span><span class="matnTitr">نوع:</span></div>
+                <div id="kadrAfzoodanENTAFD"></div>
+            </div>
             <a href="javascript:void(0);" onclick="sabtFard();" id="btnAfzoodanDST"><span class="icon"></span><span class="matnTitr">افزودن</span></a>
         </div>
         <script>

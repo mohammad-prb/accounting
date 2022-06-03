@@ -1,12 +1,12 @@
 /*      تنظیم صفحه بعد از لود کامل      */
 function tanzimSafSRT()
 {
-    new entekhab({lmnKadr:"kadrKhvESBT", id:"khoroojiAstSBTK", onclick:"taghirKVFSRT(this);", arrObjMaghadir:[
+    new entekhab({lmnKadr:"kadrKhvESBT", id:"khoroojiAstSBTK", saddarsadAst:true, onclick:"taghirKVFSRT(this);", arrObjMaghadir:[
             {value:"hameh", matn:"همه"},
             {value:1, matn:"خروجی"},
             {value:0, matn:"ورودی"}
         ]});
-    sheiVasileh = new entekhab({lmnKadr:"kadrVashilehESBT", id:"vasilehSBTK", arrObjMaghadir:[
+    sheiVasileh = new entekhab({lmnKadr:"kadrVashilehESBT", id:"vasilehSBTK", saddarsadAst:true, arrObjMaghadir:[
             {value:"hameh", matn:"همه"},
             {value:1, matn:"کارت"},
             {value:3, matn:"انتقال"},
@@ -59,7 +59,7 @@ function taghirKVFSRT(lmn)
     if (noe === khorojiAst) return;
     khorojiAst = noe;
 
-    var lmnVasileh = document.getElementById("vasilehSBTK").parentElement;
+    var lmnVasileh = document.getElementById("kadrVashilehESBT").parentElement;
     var lmnVarizBe = document.getElementById("varizBeSBTK").parentElement;
     lmnVarizBe.style.display = "block";
 
@@ -301,6 +301,7 @@ function emalFilterSRT()
             document.getElementById("meghdarVoroodiSRT").innerHTML = momayezdar(meghdarVoroodi);
             document.getElementById("tarazSRT").innerHTML = momayezdar(meghdarVoroodi - meghdarKhorooji);
             shomarehBandiItemhayeSRT();
+            entekhab.tanzimENT();
         }
     };
     xhttp.open("POST", "./ajax/gereftan-soorathesab.php?sid="+Math.random(), true);

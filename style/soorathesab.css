@@ -17,20 +17,42 @@
     margin-top: 10px;
 }
 
+.etelaatSBT
+{
+    width: 33.333%;
+    margin: 0 0 15px 0;
+}
+
 .etelaatSBT.tamamSafheh
 {
-    width: auto;
-    margin-left: 30px;
+    width: 100%;
 }
 
-input.txtMablagh
+.iconEtelaatSBT
 {
-    width: 112px;
+    width: 55px;
+    text-align: left;
 }
 
-input.txtTozih
+.kadrVasetSBT, .kadrTarikhSBT
 {
-    width: 300px;
+    width: calc(100% - 60px);
+    margin: 0 !important;
+}
+
+.etelaatSBT input
+{
+    width: calc(100% - 22px);
+}
+
+.etelaatSBT select
+{
+    width: 100%;
+}
+
+input.txtTarikh
+{
+    width: calc(33.333% - 24px) !important;
 }
 
 a#emalFilter, a#emalFilter:link, a#emalFilter:visited
@@ -296,6 +318,7 @@ a.btnSelectSTB[data-vaziat="1"]
 
 .kadrTozihSTB
 {
+    position: relative;
     float: right;
     width: calc(100% - 20px);
     margin: 0 10px 10px;
@@ -649,9 +672,34 @@ a.btnEmkanatSelect:active
         margin-left: 20px;
     }
 
+    .kadrEtelaatSTB
+    {
+        width: calc(100% - 33px);
+    }
+
     .etelaatSTB
     {
-        margin: 0 0 5px 10px;
+        width: 100%;
+        margin: 0 0 5px 0;
+    }
+
+    .kadrEmkanatSTB
+    {
+        padding-top: 33px;
+        width: 28px;
+    }
+
+    a.emkanatSTB, a.emkanatSTB:link, a.emkanatSTB:visited
+    {
+        margin: 0 0 5px 0;
+    }
+
+    .mandehSTB
+    {
+        position: absolute;
+        top: -25px;
+        left: 0;
+        font-size: 0.875rem;
     }
 
     .kadrDorSTB[data-vaziat="1"]>.kadrSTB

@@ -1,18 +1,18 @@
 /*      تنظیم صفحه بعد از لود کامل      */
 function tanzimSafBRN()
 {
-    new entekhab({lmnKadr:"vaziatENTBRN", id:"vaziatSBTK", arrObjMaghadir:[
+    new entekhab({lmnKadr:"vaziatENTBRN", id:"vaziatSBTK", saddarsadAst:true, arrObjMaghadir:[
             {value:"hameh", matn:"همه"},
             {value:"moed", matn:"موعد"},
             {value:"jari", matn:"جاری"},
             {value:"tasvieh", matn:"تسویه"}
         ]});
-    new entekhab({lmnKadr:"KhvENTBRN", id:"khoroojiAstSBTK", arrObjMaghadir:[
+    new entekhab({lmnKadr:"KhvENTBRN", id:"khoroojiAstSBTK", saddarsadAst:true, arrObjMaghadir:[
             {value:"hameh", matn:"همه"},
             {value:1, matn:"خروجی"},
             {value:0, matn:"ورودی"}
         ]});
-    new entekhab({lmnKadr:"noeENTBRN", id:"noeSBTK", arrObjMaghadir:[
+    new entekhab({lmnKadr:"noeENTBRN", id:"noeSBTK", saddarsadAst:true, arrObjMaghadir:[
             {value:"hameh", matn:"همه"},
             {value:1, matn:"روزانه"},
             {value:2, matn:"ماهانه"},

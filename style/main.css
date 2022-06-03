@@ -787,7 +787,7 @@ a#btnBoroBala, a#btnBoroBala:link, a#btnBoroBala:visited
     top: -45px;
     left: 0;
     right: 0;
-    z-index: 5;
+    z-index: 50;
     width: 24px;
     height: 24px;
     padding: 8px;

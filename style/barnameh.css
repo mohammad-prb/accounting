@@ -24,20 +24,42 @@
     margin-top: 10px;
 }
 
+.etelaatSBT
+{
+    width: 33.333%;
+    margin: 0 0 15px 0;
+}
+
 .etelaatSBT.tamamSafheh
 {
-    width: auto;
-    margin-left: 30px;
+    width: 100%;
 }
 
-input.txtMablagh
+.iconEtelaatSBT
 {
-    width: 150px;
+    width: 65px;
+    text-align: left;
 }
 
-input.txtTozih
+.kadrVasetSBT, .kadrTarikhSBT
 {
-    width: 200px;
+    width: calc(100% - 70px);
+    margin: 0 !important;
+}
+
+.etelaatSBT input
+{
+    width: calc(100% - 22px);
+}
+
+.etelaatSBT select
+{
+    width: 100%;
+}
+
+input.txtTarikh
+{
+    width: calc(33.333% - 24px) !important;
 }
 
 a#emalFilter, a#emalFilter:link, a#emalFilter:visited
@@ -488,22 +510,6 @@ a.btnBRN:active
 .etelaatVBRN::-webkit-scrollbar-thumb:active
 {
     background: hsl(0, 0%, 50%);
-}
-
-input.txtOnvan
-{
-    width: 200px;
-    direction: rtl;
-}
-
-input.txtGam
-{
-    width: 35px;
-}
-
-input.txtTedad
-{
-    width: 50px;
 }
 
 #kadrDokmehVBRN
