@@ -485,11 +485,11 @@ function gereftanEtelaatBRN(id, hazfDarad = 0)
                 var objNatijeh = JSON.parse(this.responseText);
                 var strHTML = '<div id="kadrNamayeshVBRN">\n' +
                     '            <a id="kadrPoshtVBRN" href="javascript:void(0);" onclick="bastanBarnameh('+ hazfDarad +');"></a>\n' +
-                    '            <div id="kadrVBRN">\n' +
+                    '            <div id="kadrVBRN" class="etelaatBRN">\n' +
                     '                <div>' +
                     '                    <div id="titrVBRN"><span class="icon"></span><span class="matnTitr">اطلاعات برنامه زمانی</span></div>\n' +
                     '                    <div class="etelaatVBRN">\n' +
-                    '                        <div class="etelaatSBT">\n' +
+                    '                        <div class="etelaatSBT tamamSafheh">\n' +
                     '                            <span class="icon"></span>' +
                     '                            <span class="matnTitr">عنوان:</span>' +
                     '                            <span class="meghdarBRN">'+ objNatijeh["onvan"] +'</span>\n' +

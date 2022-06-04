@@ -69,7 +69,7 @@ else
         </div>
         <div id="kadrRahnama">
             <div id="kadrVasetRahnama">
-                <a href="javascript:void(0);" onclick="taghirNoeDST(this);" class="rahnama" data-vaziat="1"><span class="icon"></span><span class="matnTitr">خروجی و ورودی</span></a>
+                <a href="javascript:void(0);" onclick="taghirNoeDST(this);" class="rahnama" data-vaziat="1"><span class="icon"></span><span class="matnTitr">مشترک</span></a>
                 <a href="javascript:void(0);" onclick="taghirNoeDST(this);" class="rahnama" data-vaziat="1"><span class="icon"></span><span class="matnTitr">خروجی</span></a>
                 <a href="javascript:void(0);" onclick="taghirNoeDST(this);" class="rahnama" data-vaziat="1"><span class="icon"></span><span class="matnTitr">ورودی</span></a>
             </div>

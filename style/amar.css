@@ -331,7 +331,7 @@ a.btnLAMR>span.icon, a.btnLAMR>span.matnTitr
     {
         width: calc(100% - 20px);
         padding: 10px;
-        margin: 0;
+        margin: 10px 0 0;
     }
 
     .filterSRT

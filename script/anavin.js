@@ -2,7 +2,7 @@
 function tanzimSafDST()
 {
     new entekhab({lmnKadr:"kadrAfzoodanENTDST", id:"noeDST", saddarsadAst:true, arrObjMaghadir:[
-            {value:1, matn:"همه"},
+            {value:1, matn:"مشترک"},
             {value:2, matn:"خروجی"},
             {value:3, matn:"ورودی"}
         ]});
@@ -199,7 +199,7 @@ function virayeshDST(lmn)
     document.getElementById("dastehVDST").select();
 
     new entekhab({lmnKadr:"kadrNoeENTVDST", id:"noeVDST", saddarsadAst:true, entekhb:noe-1, arrObjMaghadir:[
-            {value:1, matn:"همه"},
+            {value:1, matn:"مشترک"},
             {value:2, matn:"خروجی"},
             {value:3, matn:"ورودی"}
         ]});

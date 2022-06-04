@@ -506,16 +506,28 @@ input#dastehVDST, input#fardVDST
 
 @media only screen and (max-width: 1000px)
 {
+    #kadrRahnama
+    {
+        margin-top: 10px;
+    }
+
     #kadrVasetRahnama
     {
+        width: calc(100% - 10px);
         margin: 0;
         padding: 10px 5px;
+    }
+
+    a.rahnama, a.rahnama:link, a.rahnama:visited
+    {
+        width: calc(33.333% - 20px);
+        text-align: center;
     }
 
     #kadrTedadDST
     {
         width: 100%;
-        margin: 20px 0;
+        margin: 10px 0 20px;
     }
 
     .shomJDST

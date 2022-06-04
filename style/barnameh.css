@@ -432,8 +432,8 @@ a.btnBRN:active
 {
     float: right;
     width: calc(100% - 30px);
-    margin: 0 15px 5px;
-    padding: 10px 0 0;
+    margin: 0 5px 5px;
+    padding: 10px 10px 0;
     overflow: auto;
     max-height: 300px;
     color: hsl(0, 0%, 40%);
@@ -477,6 +477,11 @@ a.btnBRN:active
 {
     float: right;
     width: calc(100% - 72px);
+}
+
+input.txtOnvan
+{
+    direction: rtl;
 }
 
 /* width */
@@ -541,6 +546,19 @@ a.btnBRN:active
 
 
 /*  کادر اطلاعات برنامه  */
+
+.etelaatBRN .etelaatSBT
+{
+    width: 25%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.etelaatBRN .etelaatSBT.tamamSafheh
+{
+    width: 100%;
+}
 
 .etelaatSBT>span.icon
 {
@@ -622,6 +640,14 @@ a.dokmehHazfPardakht:active
     .etelaatVBRN
     {
         width: 100%;
+        padding: 10px 0 0;
+        margin: 0 0 5px;
+    }
+
+    .etelaatBRN .etelaatVBRN
+    {
+        width: calc(100% - 20px);
+        padding: 10px 10px 0;
         margin: 0 0 5px;
     }
 
