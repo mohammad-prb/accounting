@@ -758,12 +758,14 @@ function sabtVirayeshSRT(id)
                     lmnKhorooji.innerHTML = momayezdar(hazfMomayez(lmnKhorooji.innerHTML) - mablaghGhabli + Number(mablagh));
                     lmnTaraz.innerHTML = momayezdar(hazfMomayez(lmnTaraz.innerHTML) + mablaghGhabli - Number(mablagh));
 
-                    mandehGhabli = hazfMomayez(lmn.getElementsByClassName("mandehSTB")[0].innerHTML);
                     lmnGhabli = lmn;
                     do
                     {
                         if (lmnGhabli.getAttribute("class") === "kadrDorSTB")
+                        {
+                            mandehGhabli = hazfMomayez(lmnGhabli.getElementsByClassName("mandehSTB")[0].innerHTML);
                             lmnGhabli.getElementsByClassName("mandehSTB")[0].innerHTML = momayezdar(mandehGhabli + (mablaghGhabli - Number(mablagh)));
+                        }
                         lmnGhabli = lmnGhabli.previousElementSibling;
                     } while (lmnGhabli);
 
@@ -790,12 +792,14 @@ function sabtVirayeshSRT(id)
                     lmnVoroodi.innerHTML = momayezdar(hazfMomayez(lmnVoroodi.innerHTML) - mablaghGhabli + Number(mablagh));
                     lmnTaraz.innerHTML = momayezdar(hazfMomayez(lmnTaraz.innerHTML) - mablaghGhabli + Number(mablagh));
 
-                    mandehGhabli = hazfMomayez(lmn.getElementsByClassName("mandehSTB")[0].innerHTML);
                     lmnGhabli = lmn;
                     do
                     {
                         if (lmnGhabli.getAttribute("class") === "kadrDorSTB")
+                        {
+                            mandehGhabli = hazfMomayez(lmnGhabli.getElementsByClassName("mandehSTB")[0].innerHTML);
                             lmnGhabli.getElementsByClassName("mandehSTB")[0].innerHTML = momayezdar(mandehGhabli - (mablaghGhabli - Number(mablagh)));
+                        }
                         lmnGhabli = lmnGhabli.previousElementSibling;
                     } while (lmnGhabli);
 

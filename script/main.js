@@ -149,7 +149,7 @@ function namayeshLoading(lmn)
 /*      نمایش پیغام راهنما برای اینپوت های مبلغ      */
 function namayeshRahnamaMablagh()
 {
-    namayeshPeygham("میتوانید با استفاده از دکمه (+) 4 عدد 0 و با دکمه (-) 3 عدد 0 به مبلغ اضافه کنید.");
+    namayeshPeygham("میتوانید با استفاده از دکمه '+' چهار 0 و با دکمه '-' سه 0 به مبلغ اضافه کنید.");
 }
 
 /*      نمایش مبلغ ورودی کاربر با ممیز      */
@@ -458,6 +458,8 @@ function sabtVarizi(noe)
                     document.getElementById("mablaghSBTK").select();
 
                     var lmnDasteh = document.getElementById("dastehSBTK");
+                    document.getElementsByClassName("kadrVasetAKV")[0].setAttribute("class", "kadrVasetAKV akharinVariz");
+                    document.getElementsByClassName("kadrVasetAKV")[1].setAttribute("class", "kadrVasetAKV");
                     document.getElementById("mablaghAKVK").innerHTML = momayezdar(mablagh);
                     document.getElementById("onvanAKVK").innerHTML = lmnDasteh.options[lmnDasteh.selectedIndex].text;
                     document.getElementById("tarikhAKVK").innerHTML = tarikhKon(sal, mah, rooz);
@@ -471,6 +473,8 @@ function sabtVarizi(noe)
                     document.getElementById("mablaghSBTV").select();
 
                     var lmnDasteh = document.getElementById("dastehSBTV");
+                    document.getElementsByClassName("kadrVasetAKV")[0].setAttribute("class", "kadrVasetAKV");
+                    document.getElementsByClassName("kadrVasetAKV")[1].setAttribute("class", "kadrVasetAKV akharinVariz");
                     document.getElementById("mablaghAKVV").innerHTML = momayezdar(mablagh);
                     document.getElementById("onvanAKVV").innerHTML = lmnDasteh.options[lmnDasteh.selectedIndex].text;
                     document.getElementById("tarikhAKVV").innerHTML = tarikhKon(sal, mah, rooz);

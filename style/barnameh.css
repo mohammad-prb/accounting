@@ -579,6 +579,9 @@ input.txtOnvan
 .etelaatSBT>span.meghdarBRN
 {
     color: hsl(0, 0%, 0%);
+    /*background-color: hsl(0, 0%, 92%);*/
+    /*border-radius: 5px;*/
+    /*padding: 0 10px;*/
 }
 
 .kadrRizTatikh
@@ -617,6 +620,12 @@ a.dokmehHazfPardakht:active
 {
     transition: none;
     background-color: hsl(39, 100%, 83%);
+}
+
+a.rahnamaGoosheh, a.rahnamaGoosheh:link, a.rahnamaGoosheh:visited
+{
+    left: unset;
+    right: 77px;
 }
 
 @media only screen and (max-width: 1000px)

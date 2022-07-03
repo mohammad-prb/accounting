@@ -409,9 +409,14 @@ a.gozinehENT:active
     border-bottom: 1px solid hsl(0, 0%, 15%);
 }
 
-.etelaatAKV
+.kadrVasetAKV
 {
-    color: hsla(0, 0%, 100%, 0.7);
+    color: hsla(0, 0%, 100%, 0.5);
+}
+
+.kadrVasetAKV.akharinVariz
+{
+    color: hsl(0, 0%, 1000%);
 }
 
 .hesab

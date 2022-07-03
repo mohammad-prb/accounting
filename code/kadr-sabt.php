@@ -95,7 +95,7 @@
         <div class="kadrVasetAKV">
             <div class="etelaatAKV"><span class="icon"></span><span class="matnTitr">آخرین ثبت خروجی:</span></div>
             <?php
-            $sql = @"select mablagh, tarikh, onvan, tozih from tbl_soorathesab
+            $sql = @"select tbl_soorathesab.id as id, mablagh, tarikh, onvan, tozih from tbl_soorathesab
                     inner join tbl_dasteh on tbl_dasteh.id = dastehID
                     inner join tbl_hesab on tbl_hesab.id = tbl_soorathesab.hesabID
                     where tbl_soorathesab.vaziat = 1 and khoroojiAst = 1 and tbl_soorathesab.hesabID = ". $hesabID ." and accountID = ". $_SESSION["accountID"] ." order by tbl_soorathesab.id desc limit 1";
@@ -104,6 +104,7 @@
             {
                 if ($row = $result->fetch_assoc())
                 {
+                    $idAkharinKhorooji = $row["id"];
                     echo '<div class="etelaatAKV" id="mablaghAKVK">'. momayezdar($row["mablagh"]) .'</div>';
                     echo '<div class="etelaatAKV" id="onvanAKVK">'. $row["onvan"] .'</div>';
                     echo '<div class="etelaatAKV" id="tarikhAKVK">'. $row["tarikh"] .'</div>';
@@ -189,7 +190,7 @@
         <div class="kadrVasetAKV">
             <div class="etelaatAKV"><span class="icon"></span><span class="matnTitr">آخرین ثبت ورودی:</span></div>
             <?php
-            $sql = @"select mablagh, tarikh, onvan, tozih from tbl_soorathesab
+            $sql = @"select tbl_soorathesab.id as id, mablagh, tarikh, onvan, tozih from tbl_soorathesab
                     inner join tbl_dasteh on tbl_dasteh.id = dastehID
                     inner join tbl_hesab on tbl_hesab.id = tbl_soorathesab.hesabID
                     where tbl_soorathesab.vaziat = 1 and khoroojiAst = 0 and tbl_soorathesab.hesabID = ". $hesabID ." and accountID = ". $_SESSION["accountID"] ." order by tbl_soorathesab.id desc limit 1";
@@ -198,6 +199,7 @@
             {
                 if ($row = $result->fetch_assoc())
                 {
+                    $idAkharinVoroodi = $row["id"];
                     echo '<div class="etelaatAKV" id="mablaghAKVV">'. momayezdar($row["mablagh"]) .'</div>';
                     echo '<div class="etelaatAKV" id="onvanAKVV">'. $row["onvan"] .'</div>';
                     echo '<div class="etelaatAKV" id="tarikhAKVV">'. $row["tarikh"] .'</div>';
@@ -208,6 +210,7 @@
     </div>
 </div>
 <script>
+    document.getElementsByClassName("kadrVasetAKV")[<?php echo ($idAkharinKhorooji > $idAkharinVoroodi ? 0 : 1);?>].setAttribute("class", "kadrVasetAKV akharinVariz");
     document.getElementById("kadrSBTK").onkeydown = function(e){if (e.keyCode === 13) sabtVarizi(1);}; // enter
     document.getElementById("kadrSBTV").onkeydown = function(e){if (e.keyCode === 13) sabtVarizi(0);}; // enter
 

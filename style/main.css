@@ -1286,6 +1286,12 @@ span.meghdarPishnahad
     margin: 0 10px;
     padding: 0 10px;
     border-radius: 8px;
+    color: hsla(0, 0%, 0%, 0.5);
+}
+
+.kadrVasetAKV.akharinVariz
+{
+    color: hsl(0, 0%, 0%);
 }
 
 .etelaatAKV
@@ -1296,7 +1302,6 @@ span.meghdarPishnahad
     overflow: hidden;
     text-overflow: ellipsis;
     font-size: 0.875rem;
-    color: hsla(0, 0%, 0%, 0.7);
 }
 
 @media only screen and (max-width: 1000px)

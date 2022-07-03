@@ -20,6 +20,12 @@ function tanzimSafBRN()
         ]});
 }
 
+/*      نمایش پیغام راهنما برای اینپوت های گام      */
+function namayeshRahnamaGam()
+{
+    namayeshPeygham("تعداد فاصله بین هر تاریخ. (به طور مثال در صورتی که نوع برنامه روزانه باشد، گام یعنی 'هر چند روز؟' و همینطور برای ماهانه و سالانه)");
+}
+
 /*      تابع اعمال فیلتر برنامه      */
 function emalFilterBRN({id, tasviehAst = 0} = {})
 {
@@ -210,8 +216,9 @@ function afzoodanBRN()
         '                            <input type="text" class="txtOnvan" id="onvanVBRN" name="onvan" maxlength="255" autocomplete="off">\n' +
         '                        </div>\n' +
         '                        <div class="etelaatSBT">\n' +
-        '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">گام</span></div>\n' +
-        '                            <input type="text" class="txtGam" id="gamVBRN" name="gam" maxlength="3" autocomplete="off">\n' +
+        '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">گام:</span></div>\n' +
+        '                            <input type="text" class="txtGam" id="gamVBRN" name="gam" value="1" maxlength="3" autocomplete="off">\n' +
+        '                            <a href="javascript:void(0);" onclick="namayeshRahnamaGam();" class="rahnamaGoosheh" title="راهنما"></a>\n' +
         '                        </div>\n' +
         '                        <div class="etelaatSBT">\n' +
         '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">تعداد کل:</span></div>\n' +
@@ -227,7 +234,7 @@ function afzoodanBRN()
         '                        </div>\n' +
         '                        <div class="etelaatSBT">\n' +
         '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">مبلغ:</span></div>\n' +
-        '                            <input type="text" class="txtMablagh" id="mablaghVBRN" name="mablagh" maxlength="10" placeholder="به ریال" autocomplete="off">\n' +
+        '                            <input type="text" class="txtMablagh" id="mablaghVBRN" name="mablagh" maxlength="10" placeholder="مبلغ هر قسط (به ریال)" autocomplete="off">\n' +
         '                        </div>\n' +
         '                    </div>\n' +
         '                    <span id="kadrDokmehVBRN">\n' +
@@ -353,8 +360,9 @@ function virayeshBRN(lmn)
         '                            <input type="text" class="txtOnvan" id="onvanVBRN" name="onvan" value="'+ onvan +'" maxlength="255" autocomplete="off">\n' +
         '                        </div>\n' +
         '                        <div class="etelaatSBT">\n' +
-        '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">گام</span></div>\n' +
+        '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">گام:</span></div>\n' +
         '                            <input type="text" class="txtGam" id="gamVBRN" name="gam" value="'+ gam +'" maxlength="3" autocomplete="off">\n' +
+        '                            <a href="javascript:void(0);" onclick="namayeshRahnamaGam();" class="rahnamaGoosheh" title="راهنما"></a>\n' +
         '                        </div>\n' +
         '                        <div class="etelaatSBT">\n' +
         '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">تعداد کل:</span></div>\n' +
@@ -370,7 +378,7 @@ function virayeshBRN(lmn)
         '                        </div>\n' +
         '                        <div class="etelaatSBT">\n' +
         '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">مبلغ:</span></div>\n' +
-        '                            <input type="text" class="txtMablagh" id="mablaghVBRN" name="mablagh" value="'+ mablagh +'" maxlength="10" placeholder="به ریال" autocomplete="off">\n' +
+        '                            <input type="text" class="txtMablagh" id="mablaghVBRN" name="mablagh" value="'+ mablagh +'" maxlength="10" placeholder="مبلغ هر قسط (به ریال)" autocomplete="off">\n' +
         '                        </div>\n' +
         '                    </div>\n' +
         '                    <span id="kadrDokmehVBRN">\n' +
@@ -515,6 +523,21 @@ function gereftanEtelaatBRN(id, hazfDarad = 0)
                     '                            <span class="meghdarBRN">'+ momayezdar(objNatijeh["gam"]) +'</span>\n' +
                     '                        </div>\n' +
                     '                        <div class="etelaatSBT">\n' +
+                    '                            <span class="icon"></span>' +
+                    '                            <span class="matnTitr">تعداد کل:</span>' +
+                    '                            <span class="meghdarBRN">'+ (Number(objNatijeh["tedadKol"])===0 ? "-" : momayezdar(objNatijeh["tedadKol"])) +'</span>\n' +
+                    '                        </div>\n' +
+                    '                        <div class="etelaatSBT">\n' +
+                    '                            <span class="icon"></span>' +
+                    '                            <span class="matnTitr">تعداد پرداختی:</span>' +
+                    '                            <span class="meghdarBRN">'+ momayezdar(objNatijeh["tedadPardakht"]) +'</span>\n' +
+                    '                        </div>\n' +
+                    '                        <div class="etelaatSBT">\n' +
+                    '                            <span class="icon"></span>' +
+                    '                            <span class="matnTitr">تعداد مانده:</span>' +
+                    '                            <span class="meghdarBRN">'+ (objNatijeh["tedadMandeh"]==="-" ? "-" : momayezdar(objNatijeh["tedadMandeh"])) +'</span>\n' +
+                    '                        </div>' +
+                    '                        <div class="etelaatSBT">\n' +
                     '                            <span class="icon"></span>' +
                     '                            <span class="matnTitr">هر قسط:</span>' +
                     '                            <span class="meghdarBRN">'+ momayezdar(objNatijeh["mablagh"]) +'</span>\n' +
@@ -534,21 +557,6 @@ function gereftanEtelaatBRN(id, hazfDarad = 0)
                     '                            <span class="matnTitr">مانده:</span>' +
                     '                            <span class="meghdarBRN">'+ (objNatijeh["mablaghMandeh"]==="-" ? "-" : momayezdar(objNatijeh["mablaghMandeh"])) +'</span>\n' +
                     '                        </div>\n' +
-                    '                        <div class="etelaatSBT">\n' +
-                    '                            <span class="icon"></span>' +
-                    '                            <span class="matnTitr">تعداد کل:</span>' +
-                    '                            <span class="meghdarBRN">'+ (Number(objNatijeh["tedadKol"])===0 ? "-" : momayezdar(objNatijeh["tedadKol"])) +'</span>\n' +
-                    '                        </div>\n' +
-                    '                        <div class="etelaatSBT">\n' +
-                    '                            <span class="icon"></span>' +
-                    '                            <span class="matnTitr">تعداد پرداختی:</span>' +
-                    '                            <span class="meghdarBRN">'+ momayezdar(objNatijeh["tedadPardakht"]) +'</span>\n' +
-                    '                        </div>\n' +
-                    '                        <div class="etelaatSBT">\n' +
-                    '                            <span class="icon"></span>' +
-                    '                            <span class="matnTitr">تعداد مانده:</span>' +
-                    '                            <span class="meghdarBRN">'+ (objNatijeh["tedadMandeh"]==="-" ? "-" : momayezdar(objNatijeh["tedadMandeh"])) +'</span>\n' +
-                    '                        </div>' +
                     '                        <div class="kadrRizTatikh">';
 
                 if (objNatijeh["rizTarikh"].length > 0)
