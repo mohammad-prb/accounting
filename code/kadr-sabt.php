@@ -79,7 +79,7 @@
                 </div>
                 <div class="etelaatSBT kadrMablagh">
                     <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">مبلغ:</span></div>
-                    <a href="javascript:void(0);" onclick="namayeshRahnamaMablagh();" class="rahnamaGoosheh makhfiDarMobile" title="راهنما"></a>
+                    <a href="javascript:void(0);" onclick="tooltip({lmn:this, matn:'میتوانید با استفاده از دکمه \'+\' چهار 0 و با دکمه \'-\' سه 0 به مبلغ اضافه کنید.'});" class="rahnamaGoosheh makhfiDarMobile" title="راهنما"></a>
                     <input type="text" class="txtMablagh" id="mablaghSBTK" name="mablagh" oninput="namayeshMablaghSBT(this);" maxlength="10" placeholder="به ریال" autocomplete="off"/>
                 </div>
                 <div class="etelaatSBT makhfiDarMobile">
@@ -174,7 +174,7 @@
                 <div class="etelaatSBT makhfiDarMobile"></div> <!-- برای دیباگ مارجین های کادر های فرد -->
                 <div class="etelaatSBT kadrMablagh">
                     <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">مبلغ:</span></div>
-                    <a href="javascript:void(0);" onclick="namayeshRahnamaMablagh();" class="rahnamaGoosheh makhfiDarMobile" title="راهنما"></a>
+                    <a href="javascript:void(0);" onclick="tooltip({lmn:this, matn:'میتوانید با استفاده از دکمه \'+\' چهار 0 و با دکمه \'-\' سه 0 به مبلغ اضافه کنید.'});" class="rahnamaGoosheh makhfiDarMobile" title="راهنما"></a>
                     <input type="text" class="txtMablagh" id="mablaghSBTV" name="mablagh" oninput="namayeshMablaghSBT(this);" maxlength="10" placeholder="به ریال" autocomplete="off"/>
                 </div>
                 <div class="etelaatSBT makhfiDarMobile">
@@ -210,7 +210,10 @@
     </div>
 </div>
 <script>
-    document.getElementsByClassName("kadrVasetAKV")[<?php echo ($idAkharinKhorooji > $idAkharinVoroodi ? 0 : 1);?>].setAttribute("class", "kadrVasetAKV akharinVariz");
+    <?php
+    if (isset($idAkharinKhorooji) && isset($idAkharinVoroodi))
+        echo 'document.getElementsByClassName("kadrVasetAKV")['. ($idAkharinKhorooji > $idAkharinVoroodi ? 0 : 1). '].setAttribute("class", "kadrVasetAKV akharinVariz");';
+    ?>
     document.getElementById("kadrSBTK").onkeydown = function(e){if (e.keyCode === 13) sabtVarizi(1);}; // enter
     document.getElementById("kadrSBTV").onkeydown = function(e){if (e.keyCode === 13) sabtVarizi(0);}; // enter
 

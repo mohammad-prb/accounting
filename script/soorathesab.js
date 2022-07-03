@@ -119,7 +119,7 @@ function tavizHesabSRT(lmn)
             emalFilterSRT();
         }
     };
-    xhttp.open("POST", "./ajax/gereften-etelaat-hesab.php?sid="+Math.random(), true);
+    xhttp.open("POST", "./ajax/gereftan-etelaat-hesab.php?sid="+Math.random(), true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("hesabID="+hesabID+"&tk="+tkn);
     namayeshLoading(document.getElementById("kadrFilterSoorathesab"));

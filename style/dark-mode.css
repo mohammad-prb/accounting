@@ -84,6 +84,29 @@ a, a:link, a:visited
     box-shadow: 1px 1px 3px hsl(0, 0%, 0%);
 }
 
+a.kadrTooltip, a.kadrTooltip:link, a.kadrTooltip:visited
+{
+    color: hsl(0, 0%, 80%);
+    background-color: hsl(204, 100%, 5%);
+    box-shadow: 0 0 5px hsl(0, 0%, 25%);
+}
+
+a.kadrTooltip::after
+{
+    background-color: hsl(204, 100%, 5%);
+    box-shadow: 2px 2px 2px hsla(0, 0%, 100%, 0.1);
+}
+
+span.khatLoadingTooltip
+{
+    background-color: hsl(204, 100%, 50%);
+}
+
+a.kadrTooltip.tooltipPaeen::after
+{
+    box-shadow: -2px -2px 2px hsla(0, 0%, 100%, 0.1);
+}
+
 #CountainerKadrNamayeshPeygham
 {
     background-color: hsla(0, 0%, 10%, 0.8);

@@ -20,12 +20,6 @@ function tanzimSafBRN()
         ]});
 }
 
-/*      نمایش پیغام راهنما برای اینپوت های گام      */
-function namayeshRahnamaGam()
-{
-    namayeshPeygham("تعداد فاصله بین هر تاریخ. (به طور مثال در صورتی که نوع برنامه روزانه باشد، گام یعنی 'هر چند روز؟' و همینطور برای ماهانه و سالانه)");
-}
-
 /*      تابع اعمال فیلتر برنامه      */
 function emalFilterBRN({id, tasviehAst = 0} = {})
 {
@@ -218,7 +212,7 @@ function afzoodanBRN()
         '                        <div class="etelaatSBT">\n' +
         '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">گام:</span></div>\n' +
         '                            <input type="text" class="txtGam" id="gamVBRN" name="gam" value="1" maxlength="3" autocomplete="off">\n' +
-        '                            <a href="javascript:void(0);" onclick="namayeshRahnamaGam();" class="rahnamaGoosheh" title="راهنما"></a>\n' +
+        '                            <a href="javascript:void(0);" onclick="tooltip({lmn:this, jahat:\'paeen\', maxWidth:140, matn:\'تعداد فاصله بین هر تاریخ. (مثلا در صورتی که نوع برنامه روزانه باشد، گام یعنی هر چند روز؟)\'});"" class="rahnamaGoosheh" title="راهنما"></a>\n' +
         '                        </div>\n' +
         '                        <div class="etelaatSBT">\n' +
         '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">تعداد کل:</span></div>\n' +
@@ -362,7 +356,7 @@ function virayeshBRN(lmn)
         '                        <div class="etelaatSBT">\n' +
         '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">گام:</span></div>\n' +
         '                            <input type="text" class="txtGam" id="gamVBRN" name="gam" value="'+ gam +'" maxlength="3" autocomplete="off">\n' +
-        '                            <a href="javascript:void(0);" onclick="namayeshRahnamaGam();" class="rahnamaGoosheh" title="راهنما"></a>\n' +
+        '                            <a href="javascript:void(0);" onclick="tooltip({lmn:this, jahat:\'paeen\', maxWidth:140, matn:\'تعداد فاصله بین هر تاریخ. (مثلا در صورتی که نوع برنامه روزانه باشد، گام یعنی هر چند روز؟)\'});"" class="rahnamaGoosheh" title="راهنما"></a>\n' +
         '                        </div>\n' +
         '                        <div class="etelaatSBT">\n' +
         '                            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">تعداد کل:</span></div>\n' +

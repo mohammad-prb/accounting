@@ -27,6 +27,7 @@
 .etelaatSBT
 {
     width: 33.333%;
+    z-index: unset;
     margin: 0 0 15px 0;
 }
 

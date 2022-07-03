@@ -34,12 +34,12 @@ if ($result !== false && $result->num_rows > 0)
 
 $arrNatijeh = array("dasteh"=>$arrDasteh, "afrad"=>$arrAfrad);
 
-$sql = @"(select mablagh, tarikh, onvan, khoroojiAst from tbl_soorathesab
+$sql = @"(select tbl_soorathesab.id as id, mablagh, tarikh, onvan, khoroojiAst from tbl_soorathesab
         inner join tbl_dasteh on tbl_dasteh.id = dastehID
         where tbl_soorathesab.vaziat = 1 and tbl_soorathesab.hesabID = ". $hesabID .@" and khoroojiAst = 1
         order by tbl_soorathesab.id desc limit 1)
         union
-        (select mablagh, tarikh, onvan, khoroojiAst from tbl_soorathesab
+        (select tbl_soorathesab.id as id, mablagh, tarikh, onvan, khoroojiAst from tbl_soorathesab
         inner join tbl_dasteh on tbl_dasteh.id = dastehID
         where tbl_soorathesab.vaziat = 1 and tbl_soorathesab.hesabID = ". $hesabID .@" and khoroojiAst = 0
         order by tbl_soorathesab.id desc limit 1)";

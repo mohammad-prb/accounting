@@ -131,6 +131,52 @@ function flash(matn, icon = "")
     setTimeout(function(){lmn.remove();}, 5000);
 }
 
+/*      نمایش تولتیپ      */
+function tooltip({lmn, matn, mahvShavad = 0, jahat = "bala", maxWidth = 150} = {})
+{
+    // المنت کانتینر باید پوزیشن غیر استاتیک باشد
+    // عدد "محو شود" مقدار ثانیه است (0 یعنی محو نشود)
+    var lmnPedar = lmn.parentElement;
+    var width = lmn.clientWidth;
+    var height = lmn.clientHeight;
+    var top = lmn.offsetTop;
+    var left = lmn.offsetLeft;
+
+    var lmnTooltip = document.createElement("a");
+    lmnTooltip.setAttribute("href", "javascript:void(0);");
+    lmnTooltip.setAttribute("class", "kadrTooltip" + (jahat==="paeen"?" tooltipPaeen":""));
+    lmnTooltip.innerHTML = matn;
+    lmnTooltip.style.maxWidth = maxWidth + "px";
+
+    if (mahvShavad > 0)
+    {
+        var lmnLoading = document.createElement("span");
+        lmnLoading.setAttribute("class", "khatLoadingTooltip");
+        lmnLoading.style.animation = "aniLoadingTooltip " + mahvShavad + "s linear";
+        lmnLoading.style.animationFillMode = "both";
+        lmnTooltip.appendChild(lmnLoading);
+        setTimeout(()=>{if (lmnTooltip) lmnTooltip.blur();}, mahvShavad*1000);
+    }
+
+    lmnPedar.appendChild(lmnTooltip);
+    lmnTooltip.style.width = lmnTooltip.clientWidth-20 + "px";
+
+    lmnTooltip.focus();
+    lmnTooltip.addEventListener("blur", ()=>{lmnTooltip.remove();});
+
+    var heightTooltip = lmnTooltip.clientHeight;
+    if (jahat === "bala")
+        lmnTooltip.style.top = -(heightTooltip+15) + top + "px";
+    else if (jahat === "paeen")
+        lmnTooltip.style.top = top + height + 15 + "px";
+
+    var widthTooltip = lmnTooltip.clientWidth;
+    if (widthTooltip > width)
+        lmnTooltip.style.left = (left - (widthTooltip-width)/2) + "px";
+    else
+        lmnTooltip.style.left = ((width-widthTooltip)/2 + left) + "px";
+}
+
 /*      بستن کادر لودینگ      */
 function bastanLoading(lmn)
 {
@@ -144,12 +190,6 @@ function namayeshLoading(lmn)
     loading.setAttribute("class", "kadrKolLoading");
     loading.innerHTML = '<div class="kadrLoading"><img src="pic/loading.png" class="loading"></div>';
     lmn.appendChild(loading);
-}
-
-/*      نمایش پیغام راهنما برای اینپوت های مبلغ      */
-function namayeshRahnamaMablagh()
-{
-    namayeshPeygham("میتوانید با استفاده از دکمه '+' چهار 0 و با دکمه '-' سه 0 به مبلغ اضافه کنید.");
 }
 
 /*      نمایش مبلغ ورودی کاربر با ممیز      */
@@ -272,9 +312,17 @@ function taghirHesabSBT(lmn)
                 document.getElementById("onvanAKVV").innerHTML = "";
                 document.getElementById("tarikhAKVV").innerHTML = "";
             }
+
+            if (objNatijeh["khorooji"] !== undefined && objNatijeh["voroodi"] !== undefined)
+                document.getElementsByClassName("kadrVasetAKV")[(objNatijeh["khorooji"]["id"] > objNatijeh["voroodi"]["id"] ? 0 : 1)].setAttribute("class", "kadrVasetAKV akharinVariz");
+            else
+            {
+                document.getElementsByClassName("kadrVasetAKV")[0].setAttribute("class", "kadrVasetAKV");
+                document.getElementsByClassName("kadrVasetAKV")[1].setAttribute("class", "kadrVasetAKV");
+            }
         }
     };
-    xhttp.open("POST", "./ajax/gereften-etelaat-hesab.php?sid="+Math.random(), true);
+    xhttp.open("POST", "./ajax/gereftan-etelaat-hesab.php?sid="+Math.random(), true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("hesabID="+hesabID+"&tk="+tkn);
     namayeshLoading(document.getElementById("kadrSBTK"));
