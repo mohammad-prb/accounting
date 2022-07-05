@@ -253,19 +253,19 @@ a.rahnama:nth-child(3)>span.icon
 
 .etelaatJDST[data-noe="1"]
 {
-    background-color: hsl(39, 100%, 90%);
+    background-color: hsl(39, 100%, 93%);
     color: hsl(39, 100%, 35%);
 }
 
 .etelaatJDST[data-noe="2"]
 {
-    background-color: hsl(352, 100%, 95%);
+    background-color: hsl(352, 100%, 97%);
     color: hsl(352, 100%, 40%);
 }
 
 .etelaatJDST[data-noe="3"]
 {
-    background-color: hsl(148, 64%, 87%);
+    background-color: hsl(148, 64%, 92%);
     color: hsl(148, 100%, 30%);
 }
 

@@ -524,7 +524,7 @@ input.txtOnvan
     width: 100%;
 }
 
-#kadrDokmehVBRN span.icon
+#kadrDokmehVBRN>a.dokmehTL>span.icon
 {
     font-size: 1.5rem;
 }

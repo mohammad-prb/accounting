@@ -343,6 +343,57 @@ a.kadrTooltip.tooltipPaeen::after
     top: unset;
 }
 
+a.kadrTooltip.btnDar
+{
+    padding: 10px;
+}
+
+span.kadrBtnTooltip
+{
+    float: right;
+    width: 100%;
+    margin: 5px 0 0 0;
+}
+
+span.btnTooltip
+{
+    float: right;
+    width: calc(50% - 2px);
+    padding: 5px 0;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: color 0.1s, background-color 0.1s;
+}
+
+span.btnTooltip:nth-child(1)
+{
+    margin: 0 0 0 2px;
+    background-color: hsl(148, 64%, 85%);
+    color: hsl(148, 64%, 30%);
+}
+
+span.btnTooltip:nth-child(1):hover
+{
+    transition: none;
+    background-color: hsl(148, 64%, 75%);
+    color: hsl(148, 64%, 25%);
+}
+
+span.btnTooltip:nth-child(2)
+{
+    margin: 0 2px 0 0;
+    background-color: hsl(0, 84%, 92%);
+    color: hsl(0, 84%, 50%);
+}
+
+span.btnTooltip:nth-child(2):hover
+{
+    transition: none;
+    background-color: hsl(0, 84%, 87%);
+    color: hsl(0, 84%, 45%);
+}
+
 
 /*    پیغام   */
 

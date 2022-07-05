@@ -107,7 +107,7 @@ function emalFilterBRN({id, tasviehAst = 0} = {})
                     '                    <div class="kadrBtnBRN">\n' +
                     '                        <a href="javascript:void(0);" class="btnBRN" onclick="gereftanEtelaatBRN('+ arrObjEtelaat[i]["id"] +');"><span class="icon"></span><span class="matnTitr">اطلاعات</span></a>\n' +
                     (Number(arrObjEtelaat[i]["vaziatID"]) !== 3 ?
-                        '<a href="javascript:void(0);" class="btnBRN" onclick="namayeshPeygham(\'آیا برای پرداخت اطمینان دارید؟\', 1, \'emalFilterBRN({id:'+ arrObjEtelaat[i]["id"] +'});\');"><span class="icon"></span><span class="matnTitr">پرداخت</span></a>\n' : '') +
+                        '<a href="javascript:void(0);" class="btnBRN"><span class="icon"></span><span class="matnTitr">پرداخت</span></a>\n' : '') +
                     (Number(arrObjEtelaat[i]["vaziatID"]) !== 3 && (arrObjEtelaat[i]["tedadKol"] > 0 || arrObjEtelaat[i]["tedadPardakht"] > 0) ?
                         '<a href="javascript:void(0);" class="btnBRN" onclick="namayeshPeygham(\'آیا برای تسویه اطمینان دارید؟\', 1, \'emalFilterBRN({id:'+ arrObjEtelaat[i]["id"] +', tasviehAst:1});\');"><span class="icon"></span><span class="matnTitr">تسویه</span></a>\n' : '') +
                     '                    </div>';
@@ -122,6 +122,14 @@ function emalFilterBRN({id, tasviehAst = 0} = {})
                 lmn.dataset.tedad = arrObjEtelaat[i]["tedadKol"];
                 lmn.innerHTML = strHTML;
                 lmnKadr.appendChild(lmn);
+
+                if (Number(arrObjEtelaat[i]["vaziatID"]) !== 3)
+                {
+                    lmn.getElementsByClassName("btnBRN")[1].addEventListener("click", function ()
+                    {
+                        tooltip({lmn:this, mahvShavad:10, fnc:()=>{emalFilterBRN({id:arrObjEtelaat[i]["id"]})}, matn:"آیا برای پرداخت اطمینان دارید؟"});
+                    });
+                }
             }
 
             document.getElementById("tedadKhoroojiBRN").innerHTML = momayezdar(tedadKhorooji);
@@ -563,7 +571,7 @@ function gereftanEtelaatBRN(id, hazfDarad = 0)
                 strHTML += '                        </div>\n' +
                     '                    </div>\n' +
                     '                    <span id="kadrDokmehVBRN">\n' +
-                    '                        <a class="dokmehTL dokmehHazfPardakht" onclick="gereftanEtelaatBRN('+ objNatijeh["id"] +', 1);" href="javascript:void (0);"><span class="icon"></span><span class="matnTitr">لغو یک پرداخت</span></a>\n' +
+                    '                        <a class="dokmehTL dokmehHazfPardakht" href="javascript:void (0);"><span class="icon"></span><span class="matnTitr">لغو یک پرداخت</span></a>\n' +
                     '                        <a class="dokmehTL dokmehLaghv" onclick="bastanBarnameh('+ hazfDarad +');" href="javascript:void (0);"><span class="icon"></span><span class="matnTitr">بستن</span></a>\n' +
                     '                    </span>\n' +
                     '                </div>\n' +
@@ -574,6 +582,11 @@ function gereftanEtelaatBRN(id, hazfDarad = 0)
                 lmn.setAttribute("id", "CountainerKadrViraieshBRN");
                 lmn.innerHTML = strHTML;
                 document.body.appendChild(lmn);
+
+                lmn.getElementsByClassName("dokmehTL")[0].addEventListener("click", function ()
+                {
+                    tooltip({lmn:this, mahvShavad:10, fnc:()=>{gereftanEtelaatBRN(objNatijeh["id"], 1)}, matn:"آیا برای لغو اطمینان دارید؟"});
+                });
             }
             else if (this.responseText === "er:hazf") namayeshPeygham("حذف پرداخت با مشکل مواجه شد، لطفا مجددا تلاش کنید.");
             else namayeshPeygham("گرفتن اطلاعات با خطا مواجه شد، لطفا مجددا تلاش کنید.");

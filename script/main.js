@@ -132,7 +132,7 @@ function flash(matn, icon = "")
 }
 
 /*      نمایش تولتیپ      */
-function tooltip({lmn, matn, mahvShavad = 0, jahat = "bala", maxWidth = 150} = {})
+function tooltip({lmn, matn, mahvShavad = 0, jahat = "bala", maxWidth = 150, fnc} = {})
 {
     // المنت کانتینر باید پوزیشن غیر استاتیک باشد
     // عدد "محو شود" مقدار ثانیه است (0 یعنی محو نشود)
@@ -144,9 +144,21 @@ function tooltip({lmn, matn, mahvShavad = 0, jahat = "bala", maxWidth = 150} = {
 
     var lmnTooltip = document.createElement("a");
     lmnTooltip.setAttribute("href", "javascript:void(0);");
-    lmnTooltip.setAttribute("class", "kadrTooltip" + (jahat==="paeen"?" tooltipPaeen":""));
+    lmnTooltip.setAttribute("class", "kadrTooltip" + (jahat==="paeen"?" tooltipPaeen":"") + (typeof fnc === "function"?" btnDar":""));
     lmnTooltip.innerHTML = matn;
     lmnTooltip.style.maxWidth = maxWidth + "px";
+
+    if (typeof fnc === "function")
+    {
+        var lmnKadrBtn = document.createElement("span");
+        lmnKadrBtn.setAttribute("class", "kadrBtnTooltip");
+        lmnKadrBtn.innerHTML = "<span class='btnTooltip'><span class='icon'></span><span class='matnTitr'>تایید</span></span>" +
+            "<span class='btnTooltip'><span class='icon'></span><span class='matnTitr'>انصراف</span></span>";
+        lmnTooltip.appendChild(lmnKadrBtn);
+
+        lmnKadrBtn.getElementsByClassName("btnTooltip")[0].addEventListener("click", fnc);
+        lmnKadrBtn.getElementsByClassName("btnTooltip")[1].addEventListener("click", ()=>{lmnTooltip.blur();});
+    }
 
     if (mahvShavad > 0)
     {
