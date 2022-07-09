@@ -159,6 +159,7 @@ function tooltip({lmn, matn, mahvShavad = 0, jahat = "bala", maxWidth = 150, fnc
         lmnTooltip.appendChild(lmnKadrBtn);
 
         lmnKadrBtn.getElementsByClassName("btnTooltip")[0].addEventListener("click", fnc);
+        lmnKadrBtn.getElementsByClassName("btnTooltip")[0].addEventListener("click", ()=>{lmnTooltip.blur();});
         lmnKadrBtn.getElementsByClassName("btnTooltip")[1].addEventListener("click", ()=>{lmnTooltip.blur();});
     }
 

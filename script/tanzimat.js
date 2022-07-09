@@ -426,3 +426,52 @@ function sabtEtelaatAccount(lmn, noe)
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("meghdar="+meghdar+"&noe="+noe+"&tk="+tkn);
 }
+
+/*      باز کردن کادر تایید حذف اکانت      */
+function taeedHazfAccount()
+{
+    var lmnPeygham = document.createElement("div");
+    lmnPeygham.setAttribute("id", "CountainerKadrNamayeshPeyghamHA");
+    lmnPeygham.innerHTML = '<div id="kadrNamayeshPeyghamHA">\n' +
+        '            <a id="kadrPoshtPeyghamHA" href="javascript:void(0);" onclick="this.parentElement.parentElement.remove();"></a>\n' +
+        '            <div id="kadrPeyghamHA">\n' +
+        '                <div>\n' +
+        '                    <div id="titrPeyghamHA"><span class="icon"></span><span class="matnTitr">پیغام سیستم</span></div>\n' +
+        '                    <div id="matnPeyghamHA">این عمل غیرقابل بازگشت است. اگر برای حذف کامل حساب کابری خود اطمینان دارید، پس از وارد کردن رمز عبور دکمه تایید را بزنید.</div>\n' +
+        '                    <input type="text" id="txtRamzHA" placeholder="رمز عبور" autocomplete="off"/>\n' +
+        '                    <span id="kadrDokmehPeyghamHA">' +
+        '                       <a class="dokmehTL dokmehTaeed" onclick="hazfAccount();" href="javascript:void (0);"><span class="icon"></span><span class="matnTitr">تایید</span></a>' +
+        '                       <a class="dokmehTL dokmehLaghv" onclick="this.parentElement.parentElement.parentElement.parentElement.parentElement.remove();" href="javascript:void (0);"><span class="icon"></span><span class="matnTitr">انصراف</span></a>' +
+        '                   </span>\n' +
+        '                </div>\n' +
+        '            </div>\n' +
+        '        </div>';
+    document.body.appendChild(lmnPeygham);
+}
+
+/*      حذف اکانت      */
+function hazfAccount()
+{
+    var ramz = document.getElementById("txtRamzHA").value.trim();
+    if (ramz === "")
+    {
+        errorInput(document.getElementById("txtRamzHA"));
+        return;
+    }
+
+    namayeshLoading(document.getElementById("CountainerKadrNamayeshPeyghamHA"));
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function ()
+    {
+        if (this.readyState === 4 && this.status === 200)
+        {
+            bastanLoading(document.getElementById("CountainerKadrNamayeshPeyghamHA"));
+            if (this.responseText === "ok") location.reload();
+            else if (this.responseText === "er:tedad") namayeshPeygham("تعداد تلاش شما بیش از حد مجاز بوده، لطفا پس از مدتی دوباره تلاش کنید.");
+            else namayeshPeygham("رمز وارد شده نامعتبر است.");
+        }
+    };
+    xhttp.open("POST", "./ajax/hazf-account.php?sid="+Math.random(), true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("ramz="+ramz+"&tk="+tkn);
+}

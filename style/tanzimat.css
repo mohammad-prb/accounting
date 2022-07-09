@@ -536,7 +536,7 @@ a.btnTaeed, a.btnTaeed:link, a.btnTaeed:visited
 {
     float: right;
     pointer-events: none;
-    opacity: 0.3;
+    opacity: 0.4;
     position: absolute;
     top: 5px;
     right: 95px;
@@ -612,8 +612,115 @@ a#btnHazfAccount:active
     color: hsl(0, 84%, 40%);
 }
 
+
+/*      حذف حساب        */
+
+#CountainerKadrNamayeshPeyghamHA
+{
+    display: table;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1001;
+    background-color: hsla(0, 0%, 13%, 0.5);
+    animation: aniFade 0.1s;
+    animation-fill-mode: both;
+}
+
+#CountainerKadrNamayeshPeyghamHA span.icon
+{
+    font-size: 1.5rem;
+}
+
+#kadrNamayeshPeyghamHA
+{
+    position: relative;
+    display: table-cell;
+    height: 100%;
+    width: 100%;
+    vertical-align: middle;
+}
+
+#kadrPoshtPeyghamHA
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    cursor: context-menu;
+}
+
+#kadrPeyghamHA
+{
+    position: relative;
+    display: block;
+    width: 400px;
+    margin: 0 auto;
+    animation: aniFade 0.2s;
+    animation-fill-mode: forwards;
+    background-color: white;
+    border-radius: 10px;
+}
+
+#kadrPeyghamHA>div
+{
+    position: relative;
+    width: calc(100% - 30px);
+    max-height: calc(100% - 30px);
+    overflow: auto;
+    padding: 15px;
+}
+
+#titrPeyghamHA
+{
+    float: right;
+    width: calc(100% - 10px);
+    padding: 0 10px 10px 0;
+    border-bottom: 1px solid hsl(0, 0%, 80%);
+    margin-bottom: 20px;
+    font-size: 1.25rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+#matnPeyghamHA
+{
+    float: right;
+    width: calc(100% - 30px);
+    margin: 0 15px 10px;
+    text-align: justify;
+    color: hsl(0, 0%, 40%);
+}
+
+#kadrDokmehPeyghamHA
+{
+    float: right;
+    width: 100%;
+}
+
+input#txtRamzHA
+{
+    margin: 5px;
+    width: calc(100% - 32px);
+}
+
 @media only screen and (max-width: 1000px)
 {
+    #kadrPeyghamHA
+    {
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        right: 0;
+        width: calc(100% - 20px);
+        max-width: 400px;
+    }
+
     .shomJTNZ
     {
         width: 20px;

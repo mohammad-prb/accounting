@@ -293,11 +293,11 @@ a.kadrTooltip, a.kadrTooltip:link, a.kadrTooltip:visited
     z-index: 31;
     padding: 5px 10px;
     border-radius: 8px;
-    background-color: hsl(204, 100%, 95%);
+    background-color: hsl(204, 100%, 100%);
     font-size: 0.75rem;
     text-align: justify;
     color: hsl(0, 0%, 20%);
-    box-shadow: 0 0 5px hsl(0, 0%, 70%);
+    border: 1px solid hsl(0, 0%, 80%);
     cursor: context-menu;
     animation: aniFade 0.3s;
     animation-fill-mode: both;
@@ -308,22 +308,24 @@ a.kadrTooltip::after
     content: "";
     display: block;
     position: absolute;
-    bottom: -5px;
-    left: calc(50% - 5px);
+    bottom: -6px;
+    left: calc(50% - 6px);
     z-index: 30;
     width: 10px;
     height: 10px;
     transform: rotate(45deg);
-    background-color: hsl(204, 100%, 95%);
-    box-shadow: 2px 2px 2px hsla(0, 0%, 0%, 0.1);
+    background-color: hsl(204, 100%, 100%);
+    border-width: 0 1px 1px 0;
+    border-style: solid;
+    border-color: hsl(0, 0%, 80%);
 }
 
 span.khatLoadingTooltip
 {
     position: absolute;
-    top: 0;
+    top: 3px;
     right: 0;
-    width: calc(100% - 8px);
+    width: calc(100% - 6px);
     margin: 0 4px;
     height: 2px;
     border-radius: 2px;
@@ -332,9 +334,9 @@ span.khatLoadingTooltip
 
 a.kadrTooltip.tooltipPaeen::after
 {
-    top: -5px;
+    top: -6px;
     bottom: unset;
-    box-shadow: -2px -2px 2px hsla(0, 0%, 0%, 0.1);
+    border-width: 1px 0 0 1px;
 }
 
 .tooltipPaeen span.khatLoadingTooltip
@@ -476,6 +478,12 @@ span.btnTooltip:nth-child(2):hover
     margin: 0 15px 10px;
     text-align: justify;
     color: hsl(0, 0%, 40%);
+}
+
+#kadrDokmehPeygham
+{
+    float: right;
+    width: 100%;
 }
 
 a.dokmehTL, a.dokmehTL:link, a.dokmehTL:visited

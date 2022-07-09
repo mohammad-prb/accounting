@@ -87,24 +87,19 @@ a, a:link, a:visited
 a.kadrTooltip, a.kadrTooltip:link, a.kadrTooltip:visited
 {
     color: hsl(0, 0%, 80%);
-    background-color: hsl(204, 100%, 5%);
-    box-shadow: 0 0 5px hsl(0, 0%, 20%);
+    background-color: hsl(204, 100%, 0%);
+    border: 1px solid hsl(0, 0%, 20%);
 }
 
 a.kadrTooltip::after
 {
-    background-color: hsl(204, 100%, 5%);
-    box-shadow: 2px 2px 2px hsla(0, 0%, 100%, 0.07);
+    background-color: hsl(204, 100%, 0%);
+    border-color: hsl(0, 0%, 20%);
 }
 
 span.khatLoadingTooltip
 {
     background-color: hsl(204, 100%, 50%);
-}
-
-a.kadrTooltip.tooltipPaeen::after
-{
-    box-shadow: -2px -2px 2px hsla(0, 0%, 100%, 0.07);
 }
 
 span.btnTooltip:nth-child(1)
@@ -131,7 +126,7 @@ span.btnTooltip:nth-child(2):hover
     color: hsl(0, 84%, 75%);
 }
 
-#CountainerKadrNamayeshPeygham
+#CountainerKadrNamayeshPeygham, #CountainerKadrNamayeshPeyghamHA
 {
     background-color: hsla(0, 0%, 10%, 0.8);
 }
@@ -151,17 +146,17 @@ span.btnTooltip:nth-child(2):hover
     background-color: hsla(0, 0%, 10%, 0.8);
 }
 
-#kadrPeygham
+#kadrPeygham, #kadrPeyghamHA
 {
     background-color: hsl(0, 0%, 3%);
 }
 
-#titrPeygham
+#titrPeygham, #titrPeyghamHA
 {
     border-bottom: 1px solid hsl(0, 0%, 20%);
 }
 
-#matnPeygham
+#matnPeygham, #matnPeyghamHA
 {
     color: hsl(0, 0%, 60%);
 }
