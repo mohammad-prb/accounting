@@ -121,6 +121,18 @@ if (!isset($_SESSION["accountID"])) header("location:login.php");
         <script>
             document.getElementById("kadrAfzoodanHesab").onkeydown = function(e){if (e.keyCode === 13) sabtHesab();};
         </script>
+        <?php
+        $sql = "select * from tbl_account where vaziat = 1 and id = " . $_SESSION["accountID"];
+        $result = $con->query($sql);
+        if ($result !== false && $result->num_rows > 0)
+        {
+            if ($row = $result->fetch_assoc())
+            {
+                $mobile = $row["mobile"];
+                $email = $row["email"];
+            }
+        }
+        ?>
         <div id="kadrPishfarzha">
             <h2 class="titrTNZ"><span class="icon"></span><span class="matnTitr">پیشفرض ها</span></h2>
             <div class="kadrPSH">
@@ -144,6 +156,27 @@ if (!isset($_SESSION["accountID"])) header("location:login.php");
                 <div class="kadrENTTNZ" id="kadrAmarENTPSH"></div>
             </div>
         </div>
+        <div id="kadrEtelaatAccount">
+            <h2 class="titrTNZ"><span class="icon"></span><span class="matnTitr">اطلاعات حساب کاربری</span></h2>
+            <div class="kadrAfzoodanTNZ">
+                <div class="afzoodanTNZ"><span class="icon"></span><span class="matnTitr">موبایل:</span></div>
+                <input type="text" id="mobileTNZ" name="mobile" value="<?php echo $mobile;?>" oninput="taghirMobile(this);" maxlength="11" autocomplete="off"/>
+                <a href="javascript:void(0);" class="btnTaeed" onclick="sabtEtelaatAccount(this, 'mobile');" title="ثبت"></a>
+            </div>
+            <div class="kadrAfzoodanTNZ">
+                <div class="afzoodanTNZ"><span class="icon"></span><span class="matnTitr">ایمیل:</span></div>
+                <input type="text" id="emailTNZ" name="email" value="<?php echo $email;?>" oninput="taghirEmail(this);" autocomplete="off"/>
+                <a href="javascript:void(0);" class="btnTaeed" onclick="sabtEtelaatAccount(this, 'email');" title="ثبت"></a>
+            </div>
+            <div class="kadrAfzoodanTNZ">
+                <a href="javascript:void(0);" class="btnEmkanatAccount" id="btnTaghirRamzAccount"><span class="icon"></span><span class="matnTitr">تغییر رمز</span></a>
+                <a href="javascript:void(0);" class="btnEmkanatAccount" id="btnHazfAccount"><span class="icon"></span><span class="matnTitr">حذف حساب</span></a>
+            </div>
+        </div>
+        <script>
+            document.getElementById("mobileTNZ").onkeydown = function(e){if (e.keyCode === 13) sabtEtelaatAccount(this.nextElementSibling, 'mobile');};
+            document.getElementById("emailTNZ").onkeydown = function(e){if (e.keyCode === 13) sabtEtelaatAccount(this.nextElementSibling, 'email');};
+        </script>
     </div>
 
 </div>
@@ -151,6 +184,8 @@ if (!isset($_SESSION["accountID"])) header("location:login.php");
 <script src="script/main.js"></script>
 <script src="script/tanzimat.js"></script>
 <script>
+    var mobile = '<?php echo $mobile;?>';
+    var email = '<?php echo $email;?>';
     <?php if (isset($_GET["p"])) echo 'namayeshPeygham("برای شروع به کار، ابتدا یک حساب باز کنید.");';?>
     shomarehBandiHSB();
     var tkn = "<?php echo $tkn;?>";

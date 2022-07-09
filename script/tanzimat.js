@@ -353,3 +353,76 @@ function taghirPishfarzAMR(lmn)
     var meghdar = lmn.parentElement.dataset.value;
     localStorage.setItem("pishfarzAmar", meghdar);
 }
+
+/*      تغییر موبایل      */
+function taghirMobile(lmn)
+{
+    if (lmn.value.trim() === mobile)
+    {
+        lmn.nextElementSibling.removeAttribute("style");
+    }
+    else
+    {
+        lmn.nextElementSibling.style.pointerEvents = "unset";
+        lmn.nextElementSibling.style.opacity = "1";
+    }
+}
+
+/*      تغییر ایمیل      */
+function taghirEmail(lmn)
+{
+    if (lmn.value.trim() === email)
+    {
+        lmn.nextElementSibling.removeAttribute("style");
+    }
+    else
+    {
+        lmn.nextElementSibling.style.pointerEvents = "unset";
+        lmn.nextElementSibling.style.opacity = "1";
+    }
+}
+
+/*      ثبت اطلاعات اکانت      */
+function sabtEtelaatAccount(lmn, noe)
+{
+    var meghdar = lmn.previousElementSibling.value.trim();
+    lmn.previousElementSibling.blur();
+    if (noe === "mobile" && !check(meghdar, PATTERN_MOBILE_BA0))
+    {
+        errorInput(lmn.previousElementSibling);
+        return;
+    }
+    else if (noe === "email" && !check(meghdar, PATTERN_EMAIL))
+    {
+        errorInput(lmn.previousElementSibling);
+        return;
+    }
+
+    namayeshLoading(document.getElementById("kadrEtelaatAccount"));
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function ()
+    {
+        if (this.readyState === 4 && this.status === 200)
+        {
+            bastanLoading(document.getElementById("kadrEtelaatAccount"));
+            if (this.responseText === "ok")
+            {
+                flash("ثبت اطلاعات با موفقیت انجام شد.");
+                if (noe === "mobile")
+                {
+                    mobile = meghdar;
+                    taghirMobile(lmn.previousElementSibling);
+                }
+                else if (noe === "email")
+                {
+                    email = meghdar;
+                    taghirEmail(lmn.previousElementSibling);
+                }
+            }
+            else namayeshPeygham("ثبت با خطا مواجه شد، لطفا پس از بررسی مجدد تلاش کنید.");
+        }
+    };
+    xhttp.open("POST", "./ajax/sabt-etelaat-account.php?sid="+Math.random(), true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("meghdar="+meghdar+"&noe="+noe+"&tk="+tkn);
+}

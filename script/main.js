@@ -27,8 +27,10 @@ class entekhab
         lmnKadr.appendChild(this.lmn);
         entekhab.taghirENT(lmnKadr.getElementsByClassName("gozinehENT")[entekhb]);
         window.addEventListener("resize", ()=>{
-            let entekhabFeli = this.lmn.dataset.value;
-            entekhab.taghirENT(lmnKadr.querySelector(".gozinehENT[data-value='"+entekhabFeli+"']"));
+            setTimeout(()=>{
+                let entekhabFeli = this.lmn.dataset.value;
+                entekhab.taghirENT(lmnKadr.querySelector(".gozinehENT[data-value='"+entekhabFeli+"']"));
+            }, 300);    // دیباگ تنظیم شدن در ترنزیشن بسته و باز شدن منو
         });
     }
 
