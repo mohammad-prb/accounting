@@ -444,7 +444,7 @@ function taghirRamz()
         '            <div id="kadrPeyghamHA">\n' +
         '                <div>\n' +
         '                    <div id="titrPeyghamHA"><span class="icon"></span><span class="matnTitr">پیغام سیستم</span></div>\n' +
-        '                    <div id="matnPeyghamHA">پس از پر کردن مقادیر زیر، دکمه تایید را بزنید.</div>\n' +
+        '                    <div id="matnPeyghamHA">رمز باید حداقل 8 کاراکتر باشد.</div>\n' +
         '                    <input type="password" class="txtPeygham" id="txtRamzGhabliHA" placeholder="رمز عبور فعلی" autocomplete="off"/>\n' +
         '                    <input type="password" class="txtPeygham" id="txtRamzJadidHA" placeholder="رمز عبور جدید" autocomplete="off"/>\n' +
         '                    <input type="password" class="txtPeygham" id="txtTekrarRamzJadidHA" placeholder="تکرار رمز عبور جدید" autocomplete="off"/>\n' +
@@ -456,6 +456,7 @@ function taghirRamz()
         '            </div>\n' +
         '        </div>';
     document.body.appendChild(lmnPeygham);
+    lmnPeygham.onkeydown = function(e){if (e.keyCode === 13) SabtTaghirRamz();};
 }
 
 /*      ثبت تغییر رمز اکانت      */
@@ -537,6 +538,7 @@ function taeedHazfAccount()
         '            </div>\n' +
         '        </div>';
     document.body.appendChild(lmnPeygham);
+    lmnPeygham.onkeydown = function(e){if (e.keyCode === 13) hazfAccount();};
 }
 
 /*      حذف اکانت      */
