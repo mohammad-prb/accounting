@@ -20,7 +20,12 @@ elseif ($noe === "email")
 }
 else die();
 
-// تکراری نبودن ایمیل و موبایل در خود جدول جلوگیری شده است (ستون موبایل و ایمیل در دیتابیس یونیک میباشند)
+$sql = "select id from tbl_account where vaziat = 1 and ". $noe ." = '". $meghdar ."'";
+$result = $con->query($sql);
+if ($result !== false && $result->num_rows > 0)
+    if ($row = $result->fetch_assoc())
+        die("er:tekrari");
+
 if ($noe === "mobile")
     $sql = "update tbl_account set mobile = ? where id = ?";
 elseif ($noe === "email")

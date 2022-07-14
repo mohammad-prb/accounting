@@ -703,7 +703,7 @@ a#btnHazfAccount:active
     width: 100%;
 }
 
-input#txtRamzHA
+input.txtPeygham
 {
     margin: 5px;
     width: calc(100% - 32px);

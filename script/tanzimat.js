@@ -419,12 +419,102 @@ function sabtEtelaatAccount(lmn, noe)
                     taghirEmail(lmn.previousElementSibling);
                 }
             }
+            else if (this.responseText === "er:tekrari")
+            {
+                if (noe === "mobile")
+                    namayeshPeygham("ثبت با خطا مواجه شد، این شماره قبلا ثبت شده است.");
+                else if (noe === "email")
+                    namayeshPeygham("ثبت با خطا مواجه شد، این ایمیل قبلا ثبت شده است.");
+            }
             else namayeshPeygham("ثبت با خطا مواجه شد، لطفا پس از بررسی مجدد تلاش کنید.");
         }
     };
     xhttp.open("POST", "./ajax/sabt-etelaat-account.php?sid="+Math.random(), true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("meghdar="+meghdar+"&noe="+noe+"&tk="+tkn);
+}
+
+/*      باز کردن کادر تغییر رمز اکانت      */
+function taghirRamz()
+{
+    var lmnPeygham = document.createElement("div");
+    lmnPeygham.setAttribute("id", "CountainerKadrNamayeshPeyghamHA");
+    lmnPeygham.innerHTML = '<div id="kadrNamayeshPeyghamHA">\n' +
+        '            <a id="kadrPoshtPeyghamHA" href="javascript:void(0);" onclick="this.parentElement.parentElement.remove();"></a>\n' +
+        '            <div id="kadrPeyghamHA">\n' +
+        '                <div>\n' +
+        '                    <div id="titrPeyghamHA"><span class="icon"></span><span class="matnTitr">پیغام سیستم</span></div>\n' +
+        '                    <div id="matnPeyghamHA">پس از پر کردن مقادیر زیر، دکمه تایید را بزنید.</div>\n' +
+        '                    <input type="password" class="txtPeygham" id="txtRamzGhabliHA" placeholder="رمز عبور فعلی" autocomplete="off"/>\n' +
+        '                    <input type="password" class="txtPeygham" id="txtRamzJadidHA" placeholder="رمز عبور جدید" autocomplete="off"/>\n' +
+        '                    <input type="password" class="txtPeygham" id="txtTekrarRamzJadidHA" placeholder="تکرار رمز عبور جدید" autocomplete="off"/>\n' +
+        '                    <span id="kadrDokmehPeyghamHA">' +
+        '                       <a class="dokmehTL dokmehTaeed" onclick="SabtTaghirRamz();" href="javascript:void (0);"><span class="icon"></span><span class="matnTitr">تایید</span></a>' +
+        '                       <a class="dokmehTL dokmehLaghv" onclick="this.parentElement.parentElement.parentElement.parentElement.parentElement.remove();" href="javascript:void (0);"><span class="icon"></span><span class="matnTitr">انصراف</span></a>' +
+        '                   </span>\n' +
+        '                </div>\n' +
+        '            </div>\n' +
+        '        </div>';
+    document.body.appendChild(lmnPeygham);
+}
+
+/*      ثبت تغییر رمز اکانت      */
+function SabtTaghirRamz()
+{
+    var ramzGhabli = document.getElementById("txtRamzGhabliHA").value.trim();
+    var ramzJadid = document.getElementById("txtRamzJadidHA").value.trim();
+    var tekrarRamz = document.getElementById("txtTekrarRamzJadidHA").value.trim();
+    var check = true;
+
+    if (ramzGhabli.length < 8)
+    {
+        check = false;
+        errorInput(document.getElementById("txtRamzGhabliHA"));
+    }
+    if (ramzJadid.length < 8)
+    {
+        check = false;
+        errorInput(document.getElementById("txtRamzJadidHA"));
+    }
+    if (tekrarRamz.length < 8)
+    {
+        check = false;
+        errorInput(document.getElementById("txtTekrarRamzJadidHA"));
+    }
+
+    if (!check)
+    {
+        namayeshPeygham("رمز عبور باید بیشتر از 8 کاراکتر باشد.");
+        return;
+    }
+
+    if (ramzJadid !== tekrarRamz)
+    {
+        errorInput(document.getElementById("txtTekrarRamzJadidHA"));
+        namayeshPeygham("رمز عبور جدید با تکرار رمز عبور مطابقت ندارد.");
+        return;
+    }
+
+    namayeshLoading(document.getElementById("CountainerKadrNamayeshPeyghamHA"));
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function ()
+    {
+        if (this.readyState === 4 && this.status === 200)
+        {
+            bastanLoading(document.getElementById("CountainerKadrNamayeshPeyghamHA"));
+            if (this.responseText === "ok")
+            {
+                flash("تغییر رمز موفقیت آمیز بود.");
+                document.getElementById("CountainerKadrNamayeshPeyghamHA").remove();
+            }
+            else if (this.responseText === "er:tedad") namayeshPeygham("تعداد تلاش شما بیش از حد مجاز بوده، لطفا پس از مدتی دوباره تلاش کنید.");
+            else if (this.responseText === "er:ramz") namayeshPeygham("'رمز قبلی' وارد شده نامعتبر است.");
+            else namayeshPeygham("تغییر رمز با خطا مواجه شد. پس از بررسی مجدد فیلد ها، دوباره تلاش کنید.");
+        }
+    };
+    xhttp.open("POST", "./ajax/taghir-ramz.php?sid="+Math.random(), true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("ramzG="+ramzGhabli+"&ramzJ="+ramzJadid+"&ramzT="+tekrarRamz+"&tk="+tkn);
 }
 
 /*      باز کردن کادر تایید حذف اکانت      */
@@ -438,7 +528,7 @@ function taeedHazfAccount()
         '                <div>\n' +
         '                    <div id="titrPeyghamHA"><span class="icon"></span><span class="matnTitr">پیغام سیستم</span></div>\n' +
         '                    <div id="matnPeyghamHA">این عمل غیرقابل بازگشت است. اگر برای حذف کامل حساب کابری خود اطمینان دارید، پس از وارد کردن رمز عبور دکمه تایید را بزنید.</div>\n' +
-        '                    <input type="text" id="txtRamzHA" placeholder="رمز عبور" autocomplete="off"/>\n' +
+        '                    <input type="text" class="txtPeygham" id="txtRamzHA" placeholder="رمز عبور" autocomplete="off"/>\n' +
         '                    <span id="kadrDokmehPeyghamHA">' +
         '                       <a class="dokmehTL dokmehTaeed" onclick="hazfAccount();" href="javascript:void (0);"><span class="icon"></span><span class="matnTitr">تایید</span></a>' +
         '                       <a class="dokmehTL dokmehLaghv" onclick="this.parentElement.parentElement.parentElement.parentElement.parentElement.remove();" href="javascript:void (0);"><span class="icon"></span><span class="matnTitr">انصراف</span></a>' +
