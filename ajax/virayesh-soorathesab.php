@@ -22,7 +22,7 @@ if (preg_match("/^[1-9]+[0-9]*$/", $id) !== 1) die();
 if (preg_match("/^[0-1]$/", $khoroojiAst) !== 1) die();
 if (preg_match("/^[1-9]+[0-9]*$/", $hesabID) !== 1) die();
 if (preg_match("/^[1-9]+[0-9]*$/", $dastehID) !== 1) die();
-if (preg_match("/^[1-9]+[0-9]*$/", $fard) !== 1) die();
+if (preg_match("/^[0-9]+$/", $fard) !== 1) die();
 if (preg_match("/^(0?[1-9]|[1-2][0-9]|3[0-1])$/", $rooz) !== 1) die();
 if (preg_match("/^(0?[1-9]|1[0-2])$/", $mah) !== 1) die();
 if (preg_match("/^[1-9][0-9]{3}$/", $sal) !== 1) die();
@@ -56,24 +56,23 @@ if ($dastehID != 1)
     } else die();
 }
 
+if ($fard != 2 && $fard != 0)
+{
+    $sql = @"select * from tbl_afrad
+        inner join tbl_hesab on tbl_hesab.id = hesabID
+        where tbl_afrad.id = ". $fard ." and hesabID = ". $hesabID ." and accountID = ". $_SESSION["accountID"];
+    $result = $con->query($sql);
+    if ($result !== false && $result->num_rows > 0) {
+        if ($row = $result->fetch_assoc()) {
+            // ok
+        } else die();
+    } else die();
+}
+
 if ((integer)$khoroojiAst == 1)
 {
     if (isset($_POST["vasilehID"])) $vasilehID = $_POST["vasilehID"]; else die();
     if (preg_match("/^[1-5]$/", $vasilehID) !== 1) die();
-    if ($vasilehID != 3) $fard = 0;
-
-    if ($vasilehID == 3 && $fard != 2)
-    {
-        $sql = @"select * from tbl_afrad
-        inner join tbl_hesab on tbl_hesab.id = hesabID
-        where tbl_afrad.id = ". $fard ." and hesabID = ". $hesabID ." and accountID = ". $_SESSION["accountID"];
-        $result = $con->query($sql);
-        if ($result !== false && $result->num_rows > 0) {
-            if ($row = $result->fetch_assoc()) {
-                // ok
-            } else die();
-        } else die();
-    }
 
     $sql = "update tbl_soorathesab set vasilehID=?, dastehID=?, fardID=?, mablagh=?, tarikh=?, tozih=? where id=? and hesabID=? and khoroojiAst=1 and vaziat=1";
     $stmt = $con->prepare($sql);
@@ -81,19 +80,6 @@ if ((integer)$khoroojiAst == 1)
 }
 else
 {
-    if ($fard != 2)
-    {
-        $sql = @"select * from tbl_afrad
-        inner join tbl_hesab on tbl_hesab.id = hesabID
-        where tbl_afrad.id = ". $fard ." and hesabID = ". $hesabID ." and accountID = ". $_SESSION["accountID"];
-        $result = $con->query($sql);
-        if ($result !== false && $result->num_rows > 0) {
-            if ($row = $result->fetch_assoc()) {
-                // ok
-            } else die();
-        } else die();
-    }
-
     $sql = "update tbl_soorathesab set dastehID=?, fardID=?, mablagh=?, tarikh=?, tozih=? where id=? and hesabID=? and khoroojiAst=0 and vaziat=1";
     $stmt = $con->prepare($sql);
     $stmt->bind_param("iiissii", $dastehID, $fard, $mablagh, $tarikh, $tozih, $id, $hesabID);

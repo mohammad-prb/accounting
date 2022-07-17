@@ -20,7 +20,7 @@ if (isset($_POST["tozih"])) $tozih = htmlspecialchars(filter_var(stripcslashes(t
 if (preg_match("/^[0-1]$/", $khoroojiAst) !== 1) die();
 if (preg_match("/^[1-9]+[0-9]*$/", $hesabID) !== 1) die();
 if (preg_match("/^[1-9]+[0-9]*$/", $dastehID) !== 1) die();
-if (preg_match("/^[1-9]+[0-9]*$/", $fard) !== 1) die();
+if (preg_match("/^[0-9]+$/", $fard) !== 1) die();
 if (preg_match("/^(0?[1-9]|[1-2][0-9]|3[0-1])$/", $rooz) !== 1) die();
 if (preg_match("/^(0?[1-9]|1[0-2])$/", $mah) !== 1) die();
 if (preg_match("/^[1-9][0-9]{3}$/", $sal) !== 1) die();
@@ -46,7 +46,6 @@ if ((integer)$khoroojiAst == 1)
 {
     if (isset($_POST["vasilehID"])) $vasilehID = $_POST["vasilehID"]; else die();
     if (preg_match("/^[1-5]$/", $vasilehID) !== 1) die();
-    if ($vasilehID != 3) $fard = 0;
 
     include ("../code/mohasebeh-mandeh.php");
     if ($mandeh - $mablagh < 0) die("er:mandeh");
@@ -69,7 +68,7 @@ if ($dastehID != 1)
     } else die();
 }
 
-if ((!$khoroojiAst || $vasilehID == 3) && $fard != 2)
+if ($fard != 2 && $fard != 0)
 {
     $sql = @"select * from tbl_afrad
         inner join tbl_hesab on tbl_hesab.id = hesabID

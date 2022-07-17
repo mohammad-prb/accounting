@@ -52,9 +52,10 @@
                         <input type="text" class="txtTarikh" name="sal" value="<?php echo jdate("Y", "", "", "Asia/Tehran", "en");?>" onfocus="this.select();" oninput="if(this.value.length>3) document.getElementById('mablaghSBTK').focus();" maxlength="4" placeholder="سال" autocomplete="off"/>
                     </div>
                 </div>
-                <div class="etelaatSBT baAnimation" style="display:none;">
+                <div class="etelaatSBT">
                     <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">فرد:</span></div>
                     <select name="varizBe" id="varizBeSBTK">
+                        <option value="0"></option>
                         <?php
                         $arrAfrad = array();
                         $sql = @"select * from (select tbl_afrad.id as id, tbl_afrad.nam as nam, noe, tbl_afrad.tartib as tartib, hesabID from tbl_afrad 
@@ -144,6 +145,7 @@
                 <div class="etelaatSBT">
                     <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">فرد:</span></div>
                     <select name="varizKonandeh" id="varizKonandehSBTV">
+                        <option value="0"></option>
                         <?php
                         $sql = @"select * from (select tbl_afrad.id as id, tbl_afrad.nam as nam, noe, tbl_afrad.tartib as tartib, hesabID from tbl_afrad 
                                 inner join tbl_hesab on tbl_hesab.id = hesabID

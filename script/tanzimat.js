@@ -443,7 +443,7 @@ function taghirRamz()
         '            <a id="kadrPoshtPeyghamHA" href="javascript:void(0);" onclick="this.parentElement.parentElement.remove();"></a>\n' +
         '            <div id="kadrPeyghamHA">\n' +
         '                <div>\n' +
-        '                    <div id="titrPeyghamHA"><span class="icon"></span><span class="matnTitr">پیغام سیستم</span></div>\n' +
+        '                    <div id="titrPeyghamHA"><span class="icon"></span><span class="matnTitr">تغییر رمز عبور</span></div>\n' +
         '                    <div id="matnPeyghamHA">رمز باید حداقل 8 کاراکتر باشد.</div>\n' +
         '                    <input type="password" class="txtPeygham" id="txtRamzGhabliHA" placeholder="رمز عبور فعلی" autocomplete="off"/>\n' +
         '                    <input type="password" class="txtPeygham" id="txtRamzJadidHA" placeholder="رمز عبور جدید" autocomplete="off"/>\n' +
@@ -527,7 +527,7 @@ function taeedHazfAccount()
         '            <a id="kadrPoshtPeyghamHA" href="javascript:void(0);" onclick="this.parentElement.parentElement.remove();"></a>\n' +
         '            <div id="kadrPeyghamHA">\n' +
         '                <div>\n' +
-        '                    <div id="titrPeyghamHA"><span class="icon"></span><span class="matnTitr">پیغام سیستم</span></div>\n' +
+        '                    <div id="titrPeyghamHA"><span class="icon"></span><span class="matnTitr">حذف حساب کاربری</span></div>\n' +
         '                    <div id="matnPeyghamHA">این عمل غیرقابل بازگشت است. اگر برای حذف کامل حساب کابری خود اطمینان دارید، پس از وارد کردن رمز عبور دکمه تایید را بزنید.</div>\n' +
         '                    <input type="text" class="txtPeygham" id="txtRamzHA" placeholder="رمز عبور" autocomplete="off"/>\n' +
         '                    <span id="kadrDokmehPeyghamHA">' +

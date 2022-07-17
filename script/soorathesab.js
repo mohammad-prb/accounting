@@ -156,19 +156,12 @@ function andakhtanSoorathesab()
                 '    <div class="onvanEtelaatSTB"><span class="icon riz"></span><span class="matnTitr riz">وسیله:</span></div>\n' +
                 '    <div class="meghdarEtelaatSTB">'+ arrObjEtelaat[i]["vasileh"] + '</div>\n' +
                 '</div>';
-
-            if (Number(arrObjEtelaat[i]["vasilehID"]) === 3)
-            {
-                strHTML += '<div class="etelaatSTB">\n' +
-                    '    <div class="onvanEtelaatSTB"><span class="icon riz"></span><span class="matnTitr riz">واریز به:</span></div>\n' +
-                    '    <div class="meghdarEtelaatSTB fardSTB">'+ arrObjEtelaat[i]["nam"] +'</div>\n' +
-                    '</div>';
-            }
         }
-        else if (Number(arrObjEtelaat[i]["khoroojiAst"]) === 0)
+
+        if (Number(arrObjEtelaat[i]["fardID"]) !== 0)
         {
             strHTML += '<div class="etelaatSTB">\n' +
-                '    <div class="onvanEtelaatSTB"><span class="icon riz"></span><span class="matnTitr riz">واریز از:</span></div>\n' +
+                '    <div class="onvanEtelaatSTB"><span class="icon riz"></span><span class="matnTitr riz">مخاطب:</span></div>\n' +
                 '    <div class="meghdarEtelaatSTB fardSTB">'+ arrObjEtelaat[i]["nam"] +'</div>\n' +
                 '</div>';
         }
@@ -559,17 +552,6 @@ function tanzimTarikhSoorathesab(lmn)
     emalFilterSRT();
 }
 
-var vasilehVSRT = 0;
-/*      تغییر وسیله در ویرایش صورتحساب      */
-function taghirVasilehVSRT(lmn)
-{
-    if (vasilehVSRT === Number(lmn.parentElement.dataset.value)) return;
-    vasilehVSRT = Number(lmn.parentElement.dataset.value);
-
-    if (vasilehVSRT === 3) document.getElementById("varizBeVSRT").parentElement.style.display = "block";
-    else document.getElementById("varizBeVSRT").parentElement.style.display = "none";
-}
-
 /*      باز کردن کادر ویرایش صورتحساب      */
 function virayeshSRT(lmn)
 {
@@ -596,9 +578,10 @@ function virayeshSRT(lmn)
         strHTML += '<div class="etelaatVSRT" id="khoroojiVSRT">\n' +
             '                    <div class="etelaatSBT" id="vasilehENTVSRT">\n' +
             '                    </div>\n' +
-            '                    <div class="etelaatSBT baAnimation" style="display:none;">\n' +
-            '                        <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">واریز به:</span></div>\n' +
-            '                        <select name="varizBe" id="varizBeVSRT">';
+            '                    <div class="etelaatSBT">\n' +
+            '                        <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">فرد:</span></div>\n' +
+            '                        <select name="varizBe" id="mokhatabVSRT">' +
+            '                           <option value="0"></option>';
 
         for (let i=0; i<arrObjAfrad.length; i++)
         {
@@ -612,8 +595,9 @@ function virayeshSRT(lmn)
     {
         strHTML += '<div class="etelaatVSRT" id="voroodiVSRT">' +
             '    <div class="etelaatSBT">\n' +
-            '        <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">واریز از:</span></div>\n' +
-            '        <select name="varizKonandeh" id="varizKonandehVSRT">';
+            '        <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">فرد:</span></div>\n' +
+            '        <select name="varizKonandeh" id="mokhatabVSRT">' +
+            '           <option value="0"></option>';
 
         for (let i=0; i<arrObjAfrad.length; i++)
         {
@@ -691,16 +675,12 @@ function virayeshSRT(lmn)
             case 5: andis = 3;
         }
 
-        new entekhab({lmnKadr:"vasilehENTVSRT", saddarsadAst:true, id:"vasilehVSRT", entekhb:andis, onclick:"taghirVasilehVSRT(this);", arrObjMaghadir:[
+        new entekhab({lmnKadr:"vasilehENTVSRT", saddarsadAst:true, id:"vasilehVSRT", entekhb:andis, arrObjMaghadir:[
                 {value:1, matn:"کارت"},
                 {value:3, matn:"انتقال"},
                 {value:4, matn:"پرداخت"},
                 {value:5, matn:"چک"}
             ]});
-
-        var gozinehVasileh = document.querySelectorAll("#vasilehVSRT .gozinehENT")[andis];
-        vasilehVSRT = 0;
-        taghirVasilehVSRT(gozinehVasileh);
     }
 }
 
@@ -715,12 +695,10 @@ function sabtVirayeshSRT(id)
     if (khoroojiAst === 1)
     {
         var vasilehID = document.getElementById("vasilehVSRT").dataset.value.toString();
-        var fard = document.getElementById("varizBeVSRT").value.toString();
-
         strQ += "&vasilehID=" + vasilehID;
     }
-    else var fard = document.getElementById("varizKonandehVSRT").value.toString();
 
+    var fard = document.getElementById("mokhatabVSRT").value.toString();
     var dastehID = document.getElementById("dastehVSRT").value.toString();
     var rooz = document.querySelectorAll("#tarikhVSRT>input.txtTarikh")[0].value.toString();
     var mah = document.querySelectorAll("#tarikhVSRT>input.txtTarikh")[1].value.toString();
@@ -775,16 +753,6 @@ function sabtVirayeshSRT(id)
                         '    <div class="onvanEtelaatSTB"><span class="icon riz"></span><span class="matnTitr riz">وسیله:</span></div>\n' +
                         '    <div class="meghdarEtelaatSTB">'+ vasileh +'</div>\n' +
                         '</div>';
-
-                    if (Number(vasilehID) === 3)
-                    {
-                        lmn.dataset.fardId = fard;
-                        var lmnVarizBe = document.getElementById("varizBeVSRT");
-                        strHTML += '<div class="etelaatSTB">\n' +
-                            '                    <div class="onvanEtelaatSTB"><span class="icon riz"></span><span class="matnTitr riz">واریز به:</span></div>\n' +
-                            '                    <div class="meghdarEtelaatSTB fardSTB">'+ lmnVarizBe.options[lmnVarizBe.selectedIndex].text +'</div>\n' +
-                            '                </div>';
-                    }
                 }
                 else
                 {
@@ -802,12 +770,15 @@ function sabtVirayeshSRT(id)
                         }
                         lmnGhabli = lmnGhabli.previousElementSibling;
                     } while (lmnGhabli);
+                }
 
+                if (Number(fard) !== 0)
+                {
                     lmn.dataset.fardId = fard;
-                    var lmnVarizKonandeh = document.getElementById("varizKonandehVSRT");
+                    var mokhatab = document.getElementById("mokhatabVSRT");
                     strHTML += '<div class="etelaatSTB">\n' +
-                        '                    <div class="onvanEtelaatSTB"><span class="icon riz"></span><span class="matnTitr riz">واریز از:</span></div>\n' +
-                        '                    <div class="meghdarEtelaatSTB fardSTB">'+ lmnVarizKonandeh.options[lmnVarizKonandeh.selectedIndex].text +'</div>\n' +
+                        '                    <div class="onvanEtelaatSTB"><span class="icon riz"></span><span class="matnTitr riz">مخاطب:</span></div>\n' +
+                        '                    <div class="meghdarEtelaatSTB fardSTB">'+ mokhatab.options[mokhatab.selectedIndex].text +'</div>\n' +
                         '                </div>';
                 }
 

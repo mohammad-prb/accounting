@@ -57,7 +57,7 @@ class entekhab
 /*      تنظیم صفحه بعد از لود کامل ایندکس      */
 function tanzimSaf()
 {
-    new entekhab({lmnKadr:"kadrVasilehESBT", saddarsadAst:true, id:"vasilehSBTK", onclick:"taghirVasilehSBT(this);", arrObjMaghadir:[
+    new entekhab({lmnKadr:"kadrVasilehESBT", saddarsadAst:true, id:"vasilehSBTK", arrObjMaghadir:[
             {value:1, matn:"کارت"},
             {value:3, matn:"انتقال"},
             {value:4, matn:"پرداخت"},
@@ -216,17 +216,6 @@ function namayeshMablaghSBT(lmn)
     else lmn.parentElement.parentElement.getElementsByClassName("mablaghSBT")[0].innerHTML = momayezdar(meghdar) + " ریال";
 }
 
-var vasileh = 1;  // پیشفرض: کارتخوان
-/*      تغییر وسیله پرداخت      */
-function taghirVasilehSBT(lmn)
-{
-    if (vasileh === Number(lmn.parentElement.dataset.value)) return;
-    vasileh = Number(lmn.parentElement.dataset.value);
-
-    if (vasileh === 3) document.getElementById("varizBeSBTK").parentElement.style.display = "block";
-    else document.getElementById("varizBeSBTK").parentElement.style.display = "none";
-}
-
 /*      تغییر حساب در ثبت واریزی      */
 function taghirHesabSBT(lmn)
 {
@@ -242,8 +231,6 @@ function taghirHesabSBT(lmn)
             var objNatijeh = JSON.parse(this.responseText);
             var arrObjAfrad = objNatijeh["afrad"];
             var arrObjDasteh = objNatijeh["dasteh"];
-            vasileh = 0; // برای اینکه تابع "تغییر وسیله" در صورت تغییر این متغیر کار میکند
-            taghirVasilehSBT(document.querySelector("#vasilehSBTK .gozinehENT"));
 
             /* دسته بندی ثبت خروجی */
             var lmnSelectDastehBandi = document.getElementById("dastehSBTK");
@@ -275,7 +262,7 @@ function taghirHesabSBT(lmn)
 
             /* واریز به ها */
             var lmnSelectSBTK = document.getElementById("varizBeSBTK");
-            lmnSelectSBTK.innerHTML = "";
+            lmnSelectSBTK.innerHTML = '<option value="0"></option>';
             for (let i=0; i<arrObjAfrad.length; i++)
             {
                 if (arrObjAfrad[i]["noe"] <= 2)
@@ -289,7 +276,7 @@ function taghirHesabSBT(lmn)
 
             /* واریز کننده ها */
             var lmnSelectSBTV = document.getElementById("varizKonandehSBTV");
-            lmnSelectSBTV.innerHTML = "";
+            lmnSelectSBTV.innerHTML = '<option value="0"></option>';
             for (let i=0; i<arrObjAfrad.length; i++)
             {
                 if (Number(arrObjAfrad[i]["noe"]) <= 1 || Number(arrObjAfrad[i]["noe"]) === 3)
