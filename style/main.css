@@ -61,6 +61,15 @@
     100%{width: 0;}
 }
 
+@keyframes aniTavajoh
+{
+    0%{opacity: 1;}
+    25%{opacity: 0.5;}
+    50%{opacity: 1;}
+    75%{opacity: 0.5;}
+    100%{opacity: 1;}
+}
+
 /* width */
 body::-webkit-scrollbar
 {
@@ -1088,6 +1097,36 @@ a.emkanatHSB:active
 {
     transition: none;
     color: hsl(39, 100%, 50%);
+}
+
+
+
+/*  چک برنامه زمانی  */
+
+a#kadrCheckBarnameh, a#kadrCheckBarnameh:link, a#kadrCheckBarnameh:visited
+{
+    float: right;
+    margin-bottom: 20px;
+    padding: 5px 10px;
+    background-color: hsl(204, 100%, 90%);
+    color: hsl(204, 100%, 30%);
+    border-radius: 8px;
+    transition: background-color 0.1s, color 0.1s;
+    animation: aniTavajoh 0.5s 0.5s linear;
+    animation-fill-mode: both;
+}
+
+a#kadrCheckBarnameh:hover
+{
+    background-color: hsl(204, 100%, 85%);
+    color: hsl(204, 100%, 20%);
+}
+
+a#kadrCheckBarnameh:active
+{
+    transition: none;
+    background-color: hsl(204, 100%, 80%);
+    color: hsl(204, 100%, 20%);
 }
 
 

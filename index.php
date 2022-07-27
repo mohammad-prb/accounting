@@ -37,9 +37,12 @@ else header("location:tanzimat.php?p");
     <?php require("code/menu.php");?>
 
     <div id="sotoonChap">
-        <?php require("code/navar-bala.php");?>
-        <?php require("code/kadr-sabt.php");?>
-        <?php require("code/kadr-hesabha.php");?>
+        <?php
+        require("code/navar-bala.php");
+        require("code/check-barnameh.php");
+        require("code/kadr-sabt.php");
+        require("code/kadr-hesabha.php");
+        ?>
     </div>
 
 </div>
