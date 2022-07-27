@@ -6,8 +6,8 @@ function tanzimSafTanzimat()
             {value:1, matn:"تم تاریک"}
         ]});
     new entekhab({lmnKadr:"kadrMenuENTPSH", id:"halatMenu", saddarsadAst:true, entekhb:(Number(localStorage.getItem('menu'))===1?0:1), onclick:"taghirHalatMenu(this);", arrObjMaghadir:[
-            {value:1, matn:"همیشه باز"},
-            {value:0, matn:"بسته"}
+            {value:1, matn:"ثابت"},
+            {value:0, matn:"کشویی"}
         ]});
     new entekhab({lmnKadr:"kadrPishnahadENTPSH", id:"pishfarzPishnahad", saddarsadAst:true, entekhb:(localStorage.getItem('pishfarzPishnahad')==="sal"?0:1), onclick:"taghirPishfarzPIS(this);", arrObjMaghadir:[
             {value:"sal", matn:"اخیر"},

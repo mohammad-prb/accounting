@@ -550,15 +550,19 @@ input.txtOnvan
 
 .etelaatBRN .etelaatSBT
 {
-    width: 25%;
+    width: calc(25% - 26px);
+    margin: 3px;
+    padding: 5px 10px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    background-color: hsl(0, 0%, 95%);
+    border-radius: 5px;
 }
 
 .etelaatBRN .etelaatSBT.tamamSafheh
 {
-    width: 100%;
+    width: calc(100% - 26px);
 }
 
 .etelaatSBT>span.icon
@@ -580,15 +584,13 @@ input.txtOnvan
 .etelaatSBT>span.meghdarBRN
 {
     color: hsl(0, 0%, 0%);
-    /*background-color: hsl(0, 0%, 92%);*/
-    /*border-radius: 5px;*/
-    /*padding: 0 10px;*/
 }
 
 .kadrRizTatikh
 {
     float: right;
     width: 100%;
+    margin-top: 10px;
     padding: 15px 0 5px;
     border-top: 1px solid hsl(0, 0%, 80%);
 }

@@ -500,8 +500,6 @@ function gereftanEtelaatBRN(id, hazfDarad = 0)
                     '                    <div id="titrVBRN"><span class="icon"></span><span class="matnTitr">اطلاعات برنامه زمانی</span></div>\n' +
                     '                    <div class="etelaatVBRN">\n' +
                     '                        <div class="etelaatSBT tamamSafheh">\n' +
-                    '                            <span class="icon"></span>' +
-                    '                            <span class="matnTitr">عنوان:</span>' +
                     '                            <span class="meghdarBRN">'+ objNatijeh["onvan"] +'</span>\n' +
                     '                        </div>\n' +
                     '                        <div class="etelaatSBT">\n' +

@@ -1283,6 +1283,11 @@ a.btnBRN:active
     color: hsla(0, 0%, 100%, 0.7);
 }
 
+.etelaatBRN .etelaatSBT
+{
+    background-color: hsl(0, 0%, 8%);
+}
+
 .etelaatSBT>span.meghdarBRN
 {
     color: hsl(0, 0%, 100%);

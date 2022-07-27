@@ -772,9 +772,9 @@ function sabtVirayeshSRT(id)
                     } while (lmnGhabli);
                 }
 
+                lmn.dataset.fardId = fard;
                 if (Number(fard) !== 0)
                 {
-                    lmn.dataset.fardId = fard;
                     var mokhatab = document.getElementById("mokhatabVSRT");
                     strHTML += '<div class="etelaatSTB">\n' +
                         '                    <div class="onvanEtelaatSTB"><span class="icon riz"></span><span class="matnTitr riz">مخاطب:</span></div>\n' +
