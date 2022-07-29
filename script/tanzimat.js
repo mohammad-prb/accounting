@@ -21,6 +21,14 @@ function tanzimSafTanzimat()
             {value:"mah", matn:"ماه جاری"},
             {value:"sal", matn:"سال جاری"}
         ]});
+    new entekhab({lmnKadr:"kadrFilterSRT", id:"pishfarzFilterSRT", saddarsadAst:true, entekhb:Number(localStorage.getItem('pishfarzFilterSRT')), onclick:"taghirPishfarzFSRT(this);", arrObjMaghadir:[
+            {value:"0", matn:"فیلتر بسته"},
+            {value:"1", matn:"فیلتر باز"}
+        ]});
+    new entekhab({lmnKadr:"kadrFilterBRN", id:"pishfarzFilterBRN", saddarsadAst:true, entekhb:Number(localStorage.getItem('pishfarzFilterBRN')), onclick:"taghirPishfarzFBRN(this);", arrObjMaghadir:[
+            {value:"0", matn:"فیلتر بسته"},
+            {value:"1", matn:"فیلتر باز"}
+        ]});
 }
 
 /*      شماره بندی حساب ها      */
@@ -352,6 +360,20 @@ function taghirPishfarzAMR(lmn)
 {
     var meghdar = lmn.parentElement.dataset.value;
     localStorage.setItem("pishfarzAmar", meghdar);
+}
+
+/*      تغییر پیشفرض حالت فیلتر صورتحساب      */
+function taghirPishfarzFSRT(lmnEnt)
+{
+    var entekhab = Number(lmnEnt.dataset.value);
+    localStorage.setItem("pishfarzFilterSRT", entekhab);
+}
+
+/*      تغییر پیشفرض حالت فیلتر برنامه زمانی      */
+function taghirPishfarzFBRN(lmnEnt)
+{
+    var entekhab = Number(lmnEnt.dataset.value);
+    localStorage.setItem("pishfarzFilterBRN", entekhab);
 }
 
 /*      تغییر موبایل      */

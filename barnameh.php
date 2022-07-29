@@ -90,6 +90,7 @@ else
 <script src="script/main.js"></script>
 <script src="script/barnameh.js"></script>
 <script>
+    if (Number(localStorage.getItem("pishfarzFilterBRN")) === 1) bazoBastFilterBRN(document.getElementById("btnBazoBastBRN"));
     var tkn = "<?php echo $tkn;?>";
     var tarikh = "<?php echo jdate("Y/m/d", "", "", "Asia/Tehran", "en");?>";
 </script>

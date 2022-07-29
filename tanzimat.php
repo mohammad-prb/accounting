@@ -148,12 +148,20 @@ if (!isset($_SESSION["accountID"])) header("location:login.php");
                 <div class="kadrENTTNZ" id="kadrPishnahadENTPSH"></div>
             </div>
             <div class="kadrPSH">
-                <div class="titrPSH"><span class="icon"></span><span class="matnTitr">صورتحساب:</span></div>
+                <div class="titrPSH"><span class="icon"></span><span class="matnTitr">بازه صورتحساب:</span></div>
                 <div class="kadrENTTNZ" id="kadrSoorathesabENTPSH"></div>
             </div>
             <div class="kadrPSH">
                 <div class="titrPSH"><span class="icon"></span><span class="matnTitr">بازه آمار:</span></div>
                 <div class="kadrENTTNZ" id="kadrAmarENTPSH"></div>
+            </div>
+            <div class="kadrPSH">
+                <div class="titrPSH"><span class="icon"></span><span class="matnTitr">صورتحساب:</span></div>
+                <div class="kadrENTTNZ" id="kadrFilterSRT"></div>
+            </div>
+            <div class="kadrPSH">
+                <div class="titrPSH"><span class="icon"></span><span class="matnTitr">برنامه زمانی:</span></div>
+                <div class="kadrENTTNZ" id="kadrFilterBRN"></div>
             </div>
         </div>
         <div id="kadrEtelaatAccount">

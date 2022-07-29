@@ -17,6 +17,16 @@
     margin-top: 10px;
 }
 
+#kadrVasetSRT
+{
+    position: relative;
+    float: right;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s;
+}
+
 .etelaatSBT
 {
     width: 33.333%;
@@ -55,14 +65,82 @@ input.txtTarikh
     width: calc(33.333% - 24px) !important;
 }
 
-a#emalFilter, a#emalFilter:link, a#emalFilter:visited
+a#btnBazoBastSRT, a#btnBazoBastSRT:link, a#btnBazoBastSRT:visited
 {
     float: right;
-    width: calc(100% - 49px);
-    padding: 8px 0;
-    margin-left: 5px;
+    width: calc(100% - 16px);
+    height: 26px;
+    padding: 8px;
     border-radius: 8px;
     text-align: center;
+    overflow: hidden;
+    background-color: hsl(0, 0%, 90%);
+    color: hsl(0, 0%, 30%);
+    transition: background-color 0.1s, width 0.3s;
+}
+
+a#btnBazoBastSRT:hover
+{
+    background-color: hsl(0, 0%, 83%);
+}
+
+a#btnBazoBastSRT:active
+{
+    transition: none;
+    background-color: hsl(0, 0%, 86%);
+}
+
+span.iconBala
+{
+    font-size: 1.5rem;
+    font-family: myIcon;
+}
+
+#kadrVasetBtnSRT
+{
+    float: left;
+    width: 0;
+    height: 42px;
+    overflow: hidden;
+    transition: width 0.3s;
+}
+
+a#btnAmaSRT, a#btnAmaSRT:link, a#btnAmaSRT:visited
+{
+    float: left;
+    width: 26px;
+    height: 26px;
+    padding: 8px;
+    border-radius: 8px;
+    text-align: center;
+    overflow: hidden;
+    background-color: hsl(204, 100%, 90%);
+    color: hsl(204, 100%, 30%);
+    font-family: myIcon;
+    font-size: 1.5rem;
+    transition: background-color 0.1s;
+}
+
+a#btnAmaSRT:hover
+{
+    background-color: hsl(204, 100%, 83%);
+}
+
+a#btnAmaSRT:active
+{
+    transition: none;
+    background-color: hsl(204, 100%, 86%);
+}
+
+a#emalFilter, a#emalFilter:link, a#emalFilter:visited
+{
+    float: left;
+    width: calc(100% - 47px);
+    padding: 8px 0;
+    margin: 0 0 0 5px;
+    border-radius: 8px;
+    text-align: center;
+    overflow: hidden;
     color: hsl(39, 100%, 20%);
     background-color: hsl(39, 100%, 87%);
     transition: background-color 0.1s;
@@ -84,32 +162,6 @@ span#kadrVasetEmalFilter
     display: block;
     width: 98px;
     margin: auto;
-}
-
-a#btnAmaSRT, a#btnAmaSRT:link, a#btnAmaSRT:visited
-{
-    float: left;
-    width: 26px;
-    height: 26px;
-    padding: 8px;
-    border-radius: 8px;
-    text-align: center;
-    background-color: hsl(204, 100%, 90%);
-    color: hsl(204, 100%, 30%);
-    font-family: myIcon;
-    font-size: 1.5rem;
-    transition: background-color 0.1s;
-}
-
-a#btnAmaSRT:hover
-{
-    background-color: hsl(204, 100%, 83%);
-}
-
-a#btnAmaSRT:active
-{
-    transition: none;
-    background-color: hsl(204, 100%, 86%);
 }
 
 #kadrAmarSoorathesab
@@ -647,14 +699,9 @@ a.btnEmkanatSelect:active
 
 @media only screen and (max-width: 1000px)
 {
-    a#emalFilter, a#emalFilter:link, a#emalFilter:visited
+    #kadrVasetSRT
     {
-        margin-top: 10px;
-    }
-
-    a#btnAmaSRT, a#btnAmaSRT:link, a#btnAmaSRT:visited
-    {
-        margin-top: 10px;
+        margin-bottom: 10px;
     }
 
     #kadrAmarSoorathesab

@@ -20,6 +20,35 @@ function tanzimSafBRN()
         ]});
 }
 
+/*      بازو بست فیلتر      */
+function bazoBastFilterBRN(lmn)
+{
+    var lmnKadr = document.getElementById("kadrVasetBRN");
+    if (Number(lmnKadr.dataset.vaziat) === 1)
+    {
+        lmnKadr.dataset.vaziat = 0;
+        lmnKadr.style.maxHeight = 0;
+
+        lmn.title = "";
+        lmn.style.width = "calc(100% - 16px)";
+        lmn.innerHTML = '<span class="icon"></span><span class="matnTitr">فیلتر</span>';
+
+        document.getElementById("kadrVasetBtnBRN").style.width = "0";
+    }
+    else
+    {
+        lmnKadr.dataset.vaziat = 1;
+        lmnKadr.style.maxHeight = "328px";
+
+        lmn.title = "بستن کادر فیلتر";
+        lmn.style.width = "26px";
+        lmn.innerHTML = '<span class="iconBala"></span>';
+
+        document.getElementById("kadrVasetBtnBRN").style.width = "calc(100% - 47px)";
+        setTimeout(()=>{entekhab.tanzimENT();}, 300);
+    }
+}
+
 /*      تابع اعمال فیلتر برنامه      */
 function emalFilterBRN({id, tasviehAst = 0} = {})
 {

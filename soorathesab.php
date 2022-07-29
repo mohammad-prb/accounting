@@ -134,6 +134,7 @@ if (isset($_GET["tarikh"]) && strpos($_GET["tarikh"], "/") !== false)
 <script src="script/main.js"></script>
 <script src="script/soorathesab.js"></script>
 <script>
+    if (Number(localStorage.getItem("pishfarzFilterSRT")) === 1) bazoBastFilterSRT(document.getElementById("btnBazoBastSRT"));
     var arrObjDasteh = <?php echo json_encode($arrDasteh);?>;
     var arrObjAfrad = <?php echo json_encode($arrAfrad);?>;
     var tkn = "<?php echo $tkn;?>";

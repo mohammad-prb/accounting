@@ -518,6 +518,22 @@ a.emkanatHSB:active
     color: hsla(0, 0%, 100%, 0.7);
 }
 
+a#btnBazoBastSRT, a#btnBazoBastSRT:link, a#btnBazoBastSRT:visited, a#btnBazoBastBRN, a#btnBazoBastBRN:link, a#btnBazoBastBRN:visited
+{
+    background-color: hsl(0, 0%, 10%);
+    color: hsl(0, 0%, 70%);
+}
+
+a#btnBazoBastSRT:hover, a#btnBazoBastBRN:hover
+{
+    background-color: hsl(0, 0%, 12%);
+}
+
+a#btnBazoBastSRT:active, a#btnBazoBastBRN:active
+{
+    background-color: hsl(0, 0%, 11%);
+}
+
 a#emalFilter, a#emalFilter:link, a#emalFilter:visited
 {
     color: hsl(39, 100%, 80%);

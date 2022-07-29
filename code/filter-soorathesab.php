@@ -10,97 +10,102 @@
         ?>
     </select>
     <div id="kadrFilterSRT">
-        <div class="etelaatSBT">
-            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">خ/و:</span></div>
-            <div class="kadrVasetSBT" id="kadrKhvESBT"></div>
-        </div>
-        <div class="etelaatSBT baAnimation" style="display:none;">
-            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">وسیله:</span></div>
-            <div class="kadrVasetSBT" id="kadrVashilehESBT"></div>
-        </div>
-        <div class="etelaatSBT">
-            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">دسته:</span></div>
-            <div class="kadrVasetSBT">
-                <select name="dasteh" id="dastehSBTK">
-                    <option value="hameh">-</option>
-                    <?php
-                    $arrDasteh = array();
-                    $sql = @"select * from (select tbl_dasteh.id as id, onvan, noe, tbl_dasteh.tartib as tartib, hesabID from tbl_dasteh
-                            inner join tbl_hesab on tbl_hesab.id = hesabID
-                            where hesabID = ".$hesabID." and tbl_dasteh.vaziat = 1 and accountID = ". $_SESSION["accountID"] ."
-                            union all
-                            select tbl_dasteh.id as id, onvan, noe, tbl_dasteh.tartib as tartib, hesabID from tbl_dasteh
-                            where hesabID = 0 and tbl_dasteh.vaziat = 1) as tbl
-                            order by tbl.hesabID desc, tbl.tartib";
-                    $result = $con->query($sql);
-                    if ($result !== false && $result->num_rows > 0)
-                    {
-                        while ($row = $result->fetch_assoc())
+        <div id="kadrVasetSRT" data-vaziat="0">
+            <div class="etelaatSBT">
+                <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">خ/و:</span></div>
+                <div class="kadrVasetSBT" id="kadrKhvESBT"></div>
+            </div>
+            <div class="etelaatSBT baAnimation" style="display:none;">
+                <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">وسیله:</span></div>
+                <div class="kadrVasetSBT" id="kadrVashilehESBT"></div>
+            </div>
+            <div class="etelaatSBT">
+                <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">دسته:</span></div>
+                <div class="kadrVasetSBT">
+                    <select name="dasteh" id="dastehSBTK">
+                        <option value="hameh">-</option>
+                        <?php
+                        $arrDasteh = array();
+                        $sql = @"select * from (select tbl_dasteh.id as id, onvan, noe, tbl_dasteh.tartib as tartib, hesabID from tbl_dasteh
+                                inner join tbl_hesab on tbl_hesab.id = hesabID
+                                where hesabID = ".$hesabID." and tbl_dasteh.vaziat = 1 and accountID = ". $_SESSION["accountID"] ."
+                                union all
+                                select tbl_dasteh.id as id, onvan, noe, tbl_dasteh.tartib as tartib, hesabID from tbl_dasteh
+                                where hesabID = 0 and tbl_dasteh.vaziat = 1) as tbl
+                                order by tbl.hesabID desc, tbl.tartib";
+                        $result = $con->query($sql);
+                        if ($result !== false && $result->num_rows > 0)
                         {
-                            array_push($arrDasteh, $row);
-                            if ($row["noe"] <= 1)
-                                echo '<option value="'. $row["id"] .'">'. $row["onvan"] .'</option>';
+                            while ($row = $result->fetch_assoc())
+                            {
+                                array_push($arrDasteh, $row);
+                                if ($row["noe"] <= 1)
+                                    echo '<option value="'. $row["id"] .'">'. $row["onvan"] .'</option>';
+                            }
                         }
-                    }
-                    ?>
-                </select>
+                        ?>
+                    </select>
+                </div>
             </div>
-        </div>
-        <div class="etelaatSBT">
-            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">فرد:</span></div>
-            <div class="kadrVasetSBT">
-                <select name="varizBe" id="varizBeSBTK">
-                    <option value="hameh">-</option>
-                    <?php
-                    $arrAfrad = array();
-                    $sql = @"select * from (select tbl_afrad.id as id, tbl_afrad.nam as nam, noe, tbl_afrad.tartib as tartib, hesabID from tbl_afrad 
-                            inner join tbl_hesab on tbl_hesab.id = hesabID
-                            where hesabID = ".$hesabID." and tbl_afrad.vaziat = 1 and accountID = ". $_SESSION["accountID"] ."
-                            union all
-                            select tbl_afrad.id as id, tbl_afrad.nam as nam, noe, tbl_afrad.tartib as tartib, hesabID from tbl_afrad 
-                            where hesabID = 0 and tbl_afrad.vaziat = 1) as tbl
-                            order by tbl.hesabID desc, tbl.tartib";
-                    $result = $con->query($sql);
-                    if ($result !== false && $result->num_rows > 0)
-                    {
-                        while ($row = $result->fetch_assoc())
+            <div class="etelaatSBT">
+                <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">فرد:</span></div>
+                <div class="kadrVasetSBT">
+                    <select name="varizBe" id="varizBeSBTK">
+                        <option value="hameh">-</option>
+                        <?php
+                        $arrAfrad = array();
+                        $sql = @"select * from (select tbl_afrad.id as id, tbl_afrad.nam as nam, noe, tbl_afrad.tartib as tartib, hesabID from tbl_afrad 
+                                inner join tbl_hesab on tbl_hesab.id = hesabID
+                                where hesabID = ".$hesabID." and tbl_afrad.vaziat = 1 and accountID = ". $_SESSION["accountID"] ."
+                                union all
+                                select tbl_afrad.id as id, tbl_afrad.nam as nam, noe, tbl_afrad.tartib as tartib, hesabID from tbl_afrad 
+                                where hesabID = 0 and tbl_afrad.vaziat = 1) as tbl
+                                order by tbl.hesabID desc, tbl.tartib";
+                        $result = $con->query($sql);
+                        if ($result !== false && $result->num_rows > 0)
                         {
-                            array_push($arrAfrad, $row);
-                            if ($row["noe"] <= 1)
-                                echo '<option value="'. $row["id"] .'">'. $row["nam"] .'</option>';
+                            while ($row = $result->fetch_assoc())
+                            {
+                                array_push($arrAfrad, $row);
+                                if ($row["noe"] <= 1)
+                                    echo '<option value="'. $row["id"] .'">'. $row["nam"] .'</option>';
+                            }
                         }
-                    }
-                    ?>
-                </select>
+                        ?>
+                    </select>
+                </div>
+            </div>
+            <div class="etelaatSBT">
+                <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">تاریخ:</span></div>
+                <div class="kadrTarikhSBT" id="tarikhSBTK">
+                    <input type="text" class="txtTarikh" name="rooz" onfocus="this.select();" oninput="if(this.value.length>1) this.nextElementSibling.focus();" maxlength="2" placeholder="روز" autocomplete="off"/>
+                    <input type="text" class="txtTarikh" name="mah" onfocus="this.select();" oninput="if(this.value.length>1) this.nextElementSibling.focus();" maxlength="2" placeholder="ماه" autocomplete="off"/>
+                    <input type="text" class="txtTarikh" name="sal" onfocus="this.select();" oninput="if(this.value.length>3) document.getElementById('mablaghSBTK').focus();" maxlength="4" placeholder="سال" autocomplete="off"/>
+                </div>
+            </div>
+            <div class="etelaatSBT">
+                <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">مبلغ:</span></div>
+                <div class="kadrVasetSBT">
+                    <input type="text" class="txtMablagh" id="mablaghSBTK" name="mablagh" maxlength="10" placeholder="به ریال" autocomplete="off"/>
+                </div>
+            </div>
+            <div class="etelaatSBT tamamSafheh">
+                <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">توضیح:</span></div>
+                <div class="kadrVasetSBT">
+                    <input type="text" class="txtTozih" id="tozihSBTK" name="tozih" autocomplete="off"/>
+                </div>
             </div>
         </div>
-        <div class="etelaatSBT">
-            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">تاریخ:</span></div>
-            <div class="kadrTarikhSBT" id="tarikhSBTK">
-                <input type="text" class="txtTarikh" name="rooz" onfocus="this.select();" oninput="if(this.value.length>1) this.nextElementSibling.focus();" maxlength="2" placeholder="روز" autocomplete="off"/>
-                <input type="text" class="txtTarikh" name="mah" onfocus="this.select();" oninput="if(this.value.length>1) this.nextElementSibling.focus();" maxlength="2" placeholder="ماه" autocomplete="off"/>
-                <input type="text" class="txtTarikh" name="sal" onfocus="this.select();" oninput="if(this.value.length>3) document.getElementById('mablaghSBTK').focus();" maxlength="4" placeholder="سال" autocomplete="off"/>
-            </div>
+        <a href="javascript:void(0);" onclick="bazoBastFilterSRT(this);" id="btnBazoBastSRT"><span class="icon"></span><span class="matnTitr">فیلتر</span></a>
+        <div id="kadrVasetBtnSRT">
+            <a id="btnAmaSRT" href="amar.php" title="آمار"></a>
+            <a href="javascript:void(0);" onclick="emalFilterSRT();" id="emalFilter">
+                <span id="kadrVasetEmalFilter">
+                    <span class="icon"></span>
+                    <span class="matnTitr">اعمال فیلتر</span>
+                </span>
+            </a>
         </div>
-        <div class="etelaatSBT">
-            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">مبلغ:</span></div>
-            <div class="kadrVasetSBT">
-                <input type="text" class="txtMablagh" id="mablaghSBTK" name="mablagh" maxlength="10" placeholder="به ریال" autocomplete="off"/>
-            </div>
-        </div>
-        <div class="etelaatSBT tamamSafheh">
-            <div class="iconEtelaatSBT"><span class="icon"></span><span class="matnTitr">توضیح:</span></div>
-            <div class="kadrVasetSBT">
-                <input type="text" class="txtTozih" id="tozihSBTK" name="tozih" autocomplete="off"/>
-            </div>
-        </div>
-        <a href="javascript:void(0);" onclick="emalFilterSRT();" id="emalFilter">
-            <span id="kadrVasetEmalFilter">
-                <span class="icon"></span>
-                <span class="matnTitr">اعمال فیلتر</span>
-            </span>
-        </a>
-        <a id="btnAmaSRT" href="amar.php" title="آمار"></a>
     </div>
 </div>
 <script>
