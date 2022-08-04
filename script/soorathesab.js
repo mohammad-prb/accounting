@@ -33,7 +33,12 @@ function bazoBastFilterSRT(lmn)
     else
     {
         lmnKadr.dataset.vaziat = 1;
-        lmnKadr.style.maxHeight = "287px";
+        if (mobileAst(1000)) lmnKadr.style.maxHeight = "287px";
+        else lmnKadr.style.maxHeight = "153px";
+        window.addEventListener("resize", ()=>{
+            if (mobileAst(1000) && lmnKadr.style.maxHeight === "153px") lmnKadr.style.maxHeight = "287px";
+            else if (!mobileAst(1000) && lmnKadr.style.maxHeight === "287px") lmnKadr.style.maxHeight = "153px";
+        });
 
         lmn.title = "بستن کادر فیلتر";
         lmn.style.width = "26px";
