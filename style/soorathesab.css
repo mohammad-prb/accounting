@@ -176,7 +176,7 @@ a#btnSelectAll, a#btnSelectAll:link, a#btnSelectAll:visited
 {
     position: absolute;
     left: 0;
-    bottom: -30px;
+    bottom: -25px;
     padding: 1px;
     cursor: pointer;
     color: hsl(0, 0%, 30%);
@@ -711,7 +711,7 @@ a.btnEmkanatSelect:active
 
     a#btnSelectAll, a#btnSelectAll:link, a#btnSelectAll:visited
     {
-        bottom: -25px;
+        bottom: -14px;
     }
 
     .amarSRT

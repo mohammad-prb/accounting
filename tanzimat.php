@@ -156,6 +156,10 @@ if (!isset($_SESSION["accountID"])) header("location:login.php");
                 <div class="kadrENTTNZ" id="kadrAmarENTPSH"></div>
             </div>
             <div class="kadrPSH">
+                <div class="titrPSH"><span class="icon"></span><span class="matnTitr">جداکننده تاریخ:</span></div>
+                <div class="kadrENTTNZ" id="kadrJodaKanandeh"></div>
+            </div>
+            <div class="kadrPSH">
                 <div class="titrPSH"><span class="icon"></span><span class="matnTitr">صورتحساب:</span></div>
                 <div class="kadrENTTNZ" id="kadrFilterSRT"></div>
             </div>

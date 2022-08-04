@@ -21,6 +21,10 @@ function tanzimSafTanzimat()
             {value:"mah", matn:"ماه جاری"},
             {value:"sal", matn:"سال جاری"}
         ]});
+    new entekhab({lmnKadr:"kadrJodaKanandeh", id:"jodaKanandeh", saddarsadAst:true, entekhb:Number(localStorage.getItem('jodaKanandeh')), onclick:"taghirJodaKanandeh(this);", arrObjMaghadir:[
+            {value:"0", matn:"غیر فعال"},
+            {value:"1", matn:"فعال"}
+        ]});
     new entekhab({lmnKadr:"kadrFilterSRT", id:"pishfarzFilterSRT", saddarsadAst:true, entekhb:Number(localStorage.getItem('pishfarzFilterSRT')), onclick:"taghirPishfarzFSRT(this);", arrObjMaghadir:[
             {value:"0", matn:"فیلتر بسته"},
             {value:"1", matn:"فیلتر باز"}
@@ -360,6 +364,13 @@ function taghirPishfarzAMR(lmn)
 {
     var meghdar = lmn.parentElement.dataset.value;
     localStorage.setItem("pishfarzAmar", meghdar);
+}
+
+/*      تغییر پیشفرض جدا کننده تاریخ صورتحساب      */
+function taghirJodaKanandeh(lmnEnt)
+{
+    var entekhab = Number(lmnEnt.dataset.value);
+    localStorage.setItem("jodaKanandeh", entekhab);
 }
 
 /*      تغییر پیشفرض حالت فیلتر صورتحساب      */

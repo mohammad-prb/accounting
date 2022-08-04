@@ -171,7 +171,7 @@ function andakhtanSoorathesab()
     for (let i=shoroo; i<arrObjEtelaat.length && i<shoroo+tedadSoorathesabHarSaf; i++)
     {
         /*  افتادن تاریخ هنگام عوض شدن  */
-        if (arrObjEtelaat[i]["tarikh"] !== tarikhSRT)
+        if (Number(localStorage.getItem('jodaKanandeh')) === 1 && arrObjEtelaat[i]["tarikh"] !== tarikhSRT)
         {
             tarikhSRT = arrObjEtelaat[i]["tarikh"];
             var lmnTarikh = document.createElement("div");
