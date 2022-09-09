@@ -561,7 +561,7 @@ function taeedHazfAccount()
         '            <div id="kadrPeyghamHA">\n' +
         '                <div>\n' +
         '                    <div id="titrPeyghamHA"><span class="icon"></span><span class="matnTitr">حذف حساب کاربری</span></div>\n' +
-        '                    <div id="matnPeyghamHA">این عمل غیرقابل بازگشت است. اگر برای حذف کامل حساب کابری خود اطمینان دارید، پس از وارد کردن رمز عبور دکمه تایید را بزنید.</div>\n' +
+        '                    <div id="matnPeyghamHA">اگر برای حذف کامل حساب کابری خود اطمینان دارید، پس از وارد کردن رمز عبور دکمه تایید را بزنید.</div>\n' +
         '                    <input type="text" class="txtPeygham" id="txtRamzHA" placeholder="رمز عبور" autocomplete="off"/>\n' +
         '                    <span id="kadrDokmehPeyghamHA">' +
         '                       <a class="dokmehTL dokmehTaeed" onclick="hazfAccount();" href="javascript:void (0);"><span class="icon"></span><span class="matnTitr">تایید</span></a>' +

@@ -184,7 +184,7 @@ if (!isset($_SESSION["accountID"])) header("location:login.php");
                 <a href="javascript:void(0);" class="btnEmkanatAccount" id="btnTaghirRamzAccount" onclick="taghirRamz();">
                     <span class="icon"></span><span class="matnTitr">تغییر رمز</span>
                 </a>
-                <a href="javascript:void(0);" class="btnEmkanatAccount" id="btnHazfAccount" onclick="tooltip({lmn:this, mahvShavad:10, fnc:taeedHazfAccount, matn:'آیا برای حذف اطمینان دارید؟'})">
+                <a href="javascript:void(0);" class="btnEmkanatAccount" id="btnHazfAccount" onclick="tooltip({lmn:this, mahvShavad:10, fnc:taeedHazfAccount, matn:'آیا برای حذف اطمینان دارید؟'});">
                     <span class="icon"></span><span class="matnTitr">حذف حساب</span>
                 </a>
             </div>

@@ -375,8 +375,15 @@ a.btnJDST:last-child
 
 #kadrTaeedJabejaei>a
 {
-    margin-top: 0;
     cursor: pointer;
+    width: calc(50% - 5px);
+    padding: 10px 0;
+    margin: 0 0 0 5px;
+}
+
+#kadrTaeedJabejaei>a:first-child
+{
+    margin: 0 5px 0 0;
 }
 
 
@@ -489,19 +496,9 @@ input#dastehVDST, input#fardVDST
     width: 100%;
 }
 
-#kadrDokmehVDST span.icon
+#kadrVDST a.dokmehTL
 {
-    font-size: 1.5rem;
-}
-
-#kadrVDST a.dokmehTaeed
-{
-    margin: 0 0 0 5px;
-}
-
-#kadrVDST a.dokmehLaghv
-{
-    margin: 0 5px 0 0;
+    margin: 0 10px 0 0;
 }
 
 @media only screen and (max-width: 1000px)
@@ -580,21 +577,21 @@ input#dastehVDST, input#fardVDST
         padding: 5px;
     }
 
-    #kadrTaeedJabejaei > a
+    #kadrTaeedJabejaei>a
     {
         font-size: 0.875rem;
         width: calc(50% - 18px);
         padding: 10px 8px;
     }
 
-    #kadrTaeedJabejaei > a.dokmehTaeed
+    #kadrTaeedJabejaei>a.dokmehTaeed
     {
-        margin-left: 2px;
+        margin: 0 2px 0 0;
     }
 
-    #kadrTaeedJabejaei > a.dokmehLaghv
+    #kadrTaeedJabejaei>a.dokmehLaghv
     {
-        margin-right: 2px;
+        margin: 0 0 0 2px;
     }
 
     .kadrAfzoodanDST

@@ -527,7 +527,7 @@ function gereftanEtelaatBRN(id, hazfDarad = 0)
             {
                 if (hazfDarad === 1) document.getElementById("CountainerKadrViraieshBRN").remove();
                 var objNatijeh = JSON.parse(this.responseText);
-                var strHTML = '<div id="kadrNamayeshVBRN">\n' +
+                var strHTML = '<div id="kadrNamayeshVBRN" class="kadrKolEtelaatBRN">\n' +
                     '            <a id="kadrPoshtVBRN" href="javascript:void(0);" onclick="bastanBarnameh('+ hazfDarad +');"></a>\n' +
                     '            <div id="kadrVBRN" class="etelaatBRN">\n' +
                     '                <div>' +
@@ -603,8 +603,8 @@ function gereftanEtelaatBRN(id, hazfDarad = 0)
                 strHTML += '                        </div>\n' +
                     '                    </div>\n' +
                     '                    <span id="kadrDokmehVBRN">\n' +
-                    '                        <a class="dokmehTL dokmehHazfPardakht" href="javascript:void (0);"><span class="icon"></span><span class="matnTitr">لغو یک پرداخت</span></a>\n' +
                     '                        <a class="dokmehTL dokmehLaghv" onclick="bastanBarnameh('+ hazfDarad +');" href="javascript:void (0);"><span class="icon"></span><span class="matnTitr">بستن</span></a>\n' +
+                    '                        <a class="dokmehTL dokmehHazfPardakht" href="javascript:void (0);"><span class="icon"></span><span class="matnTitr">لغو یک پرداخت</span></a>\n' +
                     '                    </span>\n' +
                     '                </div>\n' +
                     '            </div>\n' +
@@ -615,7 +615,7 @@ function gereftanEtelaatBRN(id, hazfDarad = 0)
                 lmn.innerHTML = strHTML;
                 document.body.appendChild(lmn);
 
-                lmn.getElementsByClassName("dokmehTL")[0].addEventListener("click", function ()
+                lmn.getElementsByClassName("dokmehTL")[1].addEventListener("click", function ()
                 {
                     tooltip({lmn:this, mahvShavad:10, fnc:()=>{gereftanEtelaatBRN(objNatijeh["id"], 1)}, matn:"آیا برای لغو اطمینان دارید؟"});
                 });

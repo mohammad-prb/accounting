@@ -319,8 +319,15 @@ a#btnAfzoodanTNZ:active
 
 #kadrTaeedJabejaei>a
 {
-    margin-top: 0;
     cursor: pointer;
+    width: calc(50% - 5px);
+    padding: 10px 0;
+    margin: 0 0 0 5px;
+}
+
+#kadrTaeedJabejaei>a:first-child
+{
+    margin: 0 5px 0 0;
 }
 
 
@@ -461,19 +468,9 @@ input#namVTNZ
     width: 100%;
 }
 
-#kadrDokmehVTNZ span.icon
+#kadrVTNZ a.dokmehTL
 {
-    font-size: 1.5rem;
-}
-
-#kadrVTNZ a.dokmehTaeed
-{
-    margin: 0 0 0 5px;
-}
-
-#kadrVTNZ a.dokmehLaghv
-{
-    margin: 0 5px 0 0;
+    margin: 0 10px 0 0;
 }
 
 
@@ -627,11 +624,6 @@ a#btnHazfAccount:active
     background-color: hsla(0, 0%, 13%, 0.5);
     animation: aniFade 0.1s;
     animation-fill-mode: both;
-}
-
-#CountainerKadrNamayeshPeyghamHA span.icon
-{
-    font-size: 1.5rem;
 }
 
 #kadrNamayeshPeyghamHA
@@ -812,12 +804,12 @@ input.txtPeygham
 
     #kadrTaeedJabejaei>a.dokmehTaeed
     {
-        margin-left: 2px;
+        margin: 0 2px 0 0;
     }
 
     #kadrTaeedJabejaei>a.dokmehLaghv
     {
-        margin-right: 2px;
+        margin: 0 0 0 2px;
     }
 
     #kadrAfzoodanHesab

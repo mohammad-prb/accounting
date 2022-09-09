@@ -374,28 +374,28 @@ span.btnTooltip
 span.btnTooltip:nth-child(1)
 {
     margin: 0 0 0 2px;
-    background-color: hsl(148, 64%, 85%);
+    background-color: hsl(148, 64%, 90%);
     color: hsl(148, 64%, 30%);
 }
 
 span.btnTooltip:nth-child(1):hover
 {
     transition: none;
-    background-color: hsl(148, 64%, 75%);
+    background-color: hsl(148, 64%, 80%);
     color: hsl(148, 64%, 25%);
 }
 
 span.btnTooltip:nth-child(2)
 {
     margin: 0 2px 0 0;
-    background-color: hsl(0, 84%, 92%);
+    background-color: hsl(0, 84%, 93%);
     color: hsl(0, 84%, 50%);
 }
 
 span.btnTooltip:nth-child(2):hover
 {
     transition: none;
-    background-color: hsl(0, 84%, 87%);
+    background-color: hsl(0, 84%, 90%);
     color: hsl(0, 84%, 45%);
 }
 
@@ -413,11 +413,6 @@ span.btnTooltip:nth-child(2):hover
     background-color: hsla(0, 0%, 13%, 0.5);
     animation: aniFade 0.1s;
     animation-fill-mode: both;
-}
-
-#CountainerKadrNamayeshPeygham span.icon
-{
-    font-size: 1.5rem;
 }
 
 #kadrNamayeshPeygham
@@ -491,9 +486,9 @@ span.btnTooltip:nth-child(2):hover
 
 a.dokmehTL, a.dokmehTL:link, a.dokmehTL:visited
 {
-    float: right;
-    width: calc(50% - 5px);
-    padding: 10px 0;
+    float: left;
+    padding: 5px 10px 5px 13px;
+    margin: 5px 10px 0 0;
     text-align: center;
     border-radius: 8px;
     transition: color 0.1s, background-color 0.1s;
@@ -501,7 +496,6 @@ a.dokmehTL, a.dokmehTL:link, a.dokmehTL:visited
 
 a.dokmehTaeed, a.dokmehTaeed:link, a.dokmehTaeed:visited
 {
-    margin: 10px 0 0 5px;
     background-color: hsl(148, 64%, 85%);
     color: hsl(148, 64%, 30%);
 }
@@ -521,7 +515,6 @@ a.dokmehTaeed:active
 
 a.dokmehLaghv, a.dokmehLaghv:link, a.dokmehLaghv:visited
 {
-    margin: 10px 5px 0 0;
     background-color: hsl(0, 84%, 92%);
     color: hsl(0, 84%, 50%);
 }
@@ -1477,6 +1470,22 @@ span.meghdarPishnahad
         right: 0;
         width: calc(100% - 20px);
         max-width: 400px;
+    }
+
+    a.dokmehTL, a.dokmehTL:link, a.dokmehTL:visited
+    {
+        width: calc(50% - 5px);
+        padding: 8px 0;
+    }
+
+    a.dokmehTaeed, a.dokmehTaeed:link, a.dokmehTaeed:visited
+    {
+        margin: 0 5px 0 0;
+    }
+
+    a.dokmehLaghv, a.dokmehLaghv:link, a.dokmehLaghv:visited
+    {
+        margin: 0 0 0 5px;
     }
 
     #kadrLogin
