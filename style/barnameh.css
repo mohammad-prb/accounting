@@ -714,4 +714,14 @@ a.rahnamaGoosheh, a.rahnamaGoosheh:link, a.rahnamaGoosheh:visited
     {
         margin-bottom: 10px;
     }
+
+    .kadrKolEtelaatBRN a.dokmehLaghv
+    {
+        margin: 5px 5px 0 0 !important;
+    }
+
+    .kadrKolEtelaatBRN a.dokmehHazfPardakht
+    {
+        margin: 5px 0 0 5px !important;
+    }
 }
