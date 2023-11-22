@@ -26,9 +26,11 @@ if ($result !== false && $result->num_rows > 0)
     if ($row = $result->fetch_assoc())
         $tartib = $row["tartib"] + 1;
 
-$sql = "insert into tbl_hesab (accountID, nam, vaziat, bankID, shomHesab, shomKart, mablaghTaraz, tarikhEftetah, tartib) values (?,1,?,?,?,?,?,?)";
+$idAccount = $_SESSION["accountID"];
+$vaziat = 1;
+$sql = "insert into tbl_hesab (accountID, nam, vaziat, bankID, shomHesab, shomKart, mablaghTaraz, tarikhEftetah, tartib) values (?,?,?,?,?,?,?,?,?)";
 $stmt = $con->prepare($sql);
-$stmt->bind_param("isissisi", $_SESSION["accountID"], $nam, $bankID, $shomHesab, $shomKart, $mandehTaraz, $tarikhEftetah, $tartib);
+$stmt->bind_param("isiissisi", $idAccount, $nam, $vaziat, $bankID, $shomHesab, $shomKart, $mandehTaraz, $tarikhEftetah, $tartib);
 if ($stmt->execute() == true) echo "ok:" . $stmt->insert_id . ":" . $tartib . ":" . $tarikhEftetah;
 $stmt->close();
 $con->close();
